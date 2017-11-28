@@ -5,7 +5,6 @@
 
 int main(void)
 {
-	Json json;
 	string path;
 	UnixUdp unixudp;
 	string server_path = "unixudp.udp.server.socket";
@@ -29,6 +28,7 @@ int main(void)
 		if( len > 0 )
 		{
 			buf[len] = 0;
+			Json json;
 			json.Parse(buf);
 			printf("value1:%f\n", json["value1"].GetDouble());
 			printf("value2:%f\n", json["value2"].GetDouble());

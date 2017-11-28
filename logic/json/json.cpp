@@ -30,7 +30,30 @@ bool Json::Parse(const xstring& s)
 	}
 	return Parse( (const char*)s.data() );
 }
-
+const bool Json::ParseOk(void)const
+{
+	return parseok;
+}
+const Value& Json::NullValue(void) const
+{
+	return nullvalue;
+}
+JsonIterator Json::begin()
+{
+	if( true == parseok )
+	{
+		return doc.MemberBegin();
+	}
+	return nomember;
+}
+JsonIterator Json::end()
+{
+	if( true == parseok )
+	{
+		return doc.MemberEnd();
+	}
+	return nomember;
+}
 Value& Json::operator[](const char* s)
 {
 	if( NULL == s )

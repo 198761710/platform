@@ -1,29 +1,42 @@
-ARCH:=/usr/bin/
-CC:=$(ARCH)g++
-CFLAGS:= -Isocket -Ijson -Ijson/rapidjson -Icgicc
-SRC:= socket/unix-udp.cpp json/json.cpp
-TARGETS:= bin/unix-udp-client.exe 
-TARGETS+= bin/unix-udp-server.exe
-TARGETS+= bin/unix-udp-connect.exe
-TARGETS+= bin/json.exe
+ARCH := /usr/bin/
+CC := $(ARCH)g++
+STRIP := $(ARCH)strip
+CFLAGS := -Iservice -Isocket -Ijson -Ijson/rapidjson -Icgicc
+SRC := $(wildcard socket/*.c)
+CPP := $(wildcard json/*.cpp)
+CPP += $(wildcard socket/*.cpp)
+CPP += $(wildcard service/*.cpp)
+CPP += $(wildcard logicwalker/*.cpp)
+OBJ := $(patsubst %.c, %.o, $(SRC))
+OBJ += $(patsubst %.cpp, %.o, $(CPP))
+TARGETS := bin/unix-udp-client.exe 
+TARGETS += bin/unix-udp-server.exe
+TARGETS += bin/unix-udp-connect.exe
+TARGETS += bin/service.exe
+TARGETS += bin/json.exe
 
 target: $(TARGETS)
+	@$(STRIP) $(TARGETS)
+	@ls -lhs $(TARGETS)
 
-bin/unix-udp-client.exe: $(SRC) test/unix-udp-client.cpp
-	@echo $(CC) $+ -o $@
-	@$(CC) $(CFLAGS) $+ -o $@
-
-bin/unix-udp-connect.exe: $(SRC) test/unix-udp-connect.cpp
-	@echo $(CC) $+ -o $@
-	@$(CC) $(CFLAGS) $+ -o $@
-
-bin/unix-udp-server.exe: $(SRC) test/unix-udp-server.cpp
-	@echo $(CC) $+ -o $@
-	@$(CC) $(CFLAGS) $+ -o $@
-
-bin/json.exe: $(SRC) test/json.cpp
-	@echo $(CC) $+ -o $@
-	@$(CC) $(CFLAGS) $+ -o $@
+packet.exe: $(OBJ) test/packet.o
+	@$(CC) $+ -o $@
+bin/service.exe: $(OBJ) test/service.o
+	@$(CC)  $+ -o $@
+bin/unix-udp-client.exe: $(OBJ) test/unix-udp-client.o
+	@$(CC)  $+ -o $@
+bin/unix-udp-connect.exe: $(OBJ) test/unix-udp-connect.o
+	@$(CC)  $+ -o $@
+bin/unix-udp-server.exe: $(OBJ) test/unix-udp-server.o
+	@$(CC)  $+ -o $@
+bin/json.exe: $(OBJ) test/json.o
+	@$(CC) $+ -o $@
+.c.o:
+	@echo $(CC) $*.c -o $*.o
+	@$(CC) $(CFLAGS) $*.c -c -o $*.o
+.cpp.o:
+	@echo $(CC) $*.cpp -o $*.o
+	@$(CC) $(CFLAGS) $*.cpp -c -o $*.o
 
 clean:
-	@rm bin/*.exe
+	@rm -rfv */*.o bin/*.exe

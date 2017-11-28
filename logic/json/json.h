@@ -6,19 +6,7 @@
 #include "rapidjson/stringbuffer.h"
 using namespace rapidjson;
 
-class JsonValue : public Value
-{
-public:
-	bool				tobool(void);
-	int					toint(void);
-	unsigned int		touint(void);
-	long long			toint64(void);
-	unsigned long long  touint64(void);
-	float				tofloat(void);
-	double				todouble(void);
-	xstring				tostring(void);
-};
-
+typedef	Document::MemberIterator JsonIterator;
 class Json
 {
 private:	
@@ -27,6 +15,7 @@ private:
 	Value nullvalue;
 	StringBuffer sb;
 	Writer<StringBuffer> writer;
+	JsonIterator nomember;
 
 public:
 	Json(void);
@@ -36,9 +25,14 @@ public:
 public:
 	bool Parse(const char* s);
 	bool Parse(const xstring& s);
+	const bool ParseOk(void)const;
+	const Value& NullValue(void)const;
+	const JsonIterator& NullNode(void)const;
 	Value& operator[](const char* s);
 	Value& operator[](const xstring& s);
 	Value& operator[](const unsigned int i);
+	JsonIterator begin(void);
+	JsonIterator end(void);
 
 public:
 	void Clear(void);

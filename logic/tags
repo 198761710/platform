@@ -4,9 +4,11 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADD	logicwalker/parser.h	/^     ADD = 283,$/;"	e	enum:yytokentype
+AND	logicwalker/parser.h	/^     AND = 274,$/;"	e	enum:yytokentype
 ARCH	logicwalker/makefile	/^ARCH:=\/usr\/bin\/$/;"	m
 ARCH	logicwalker/makefile	/^ARCH:=arm-linux-$/;"	m
-ARCH	makefile	/^ARCH:=\/usr\/bin\/$/;"	m
+ARCH	makefile	/^ARCH := \/usr\/bin\/$/;"	m
 ARCH	socket/makefile	/^ARCH:=\/usr\/bin\/$/;"	m
 ASCII	json/rapidjson/encodings.h	/^struct ASCII {$/;"	s
 ATOMIC_ELEMENT	cgicc/HTMLClasses.h	60;"	d
@@ -96,10 +98,8 @@ BigInteger	json/rapidjson/internal/biginteger.h	/^    BigInteger(const BigIntege
 BigInteger	json/rapidjson/internal/biginteger.h	/^    BigInteger(const char* decimals, size_t length) : count_(1) {$/;"	f	class:internal::BigInteger
 BigInteger	json/rapidjson/internal/biginteger.h	/^    explicit BigInteger(uint64_t u) : count_(1) {$/;"	f	class:internal::BigInteger
 BigInteger	json/rapidjson/internal/biginteger.h	/^class BigInteger {$/;"	c	namespace:internal
-Bind	socket/unix-tcp.cpp	/^bool UnixTcp::Bind(const string& path)$/;"	f	class:UnixTcp
 Bind	socket/unix-udp.cpp	/^bool UnixUdp::Bind(const string& path)$/;"	f	class:UnixUdp
 Block	socket/tcpclient.cpp	/^bool TcpClient::Block(void)$/;"	f	class:TcpClient
-Block	socket/unix-tcp.cpp	/^bool UnixTcp::Block(void)$/;"	f	class:UnixTcp
 Block	socket/unix-udp.cpp	/^bool UnixUdp::Block(void)$/;"	f	class:UnixUdp
 Bool	json/json.cpp	/^bool Json::Bool(int b)$/;"	f	class:Json
 Bool	json/rapidjson/document.h	/^    bool Bool(bool b) { new (stack_.template Push<ValueType>()) ValueType(b); return true; }$/;"	f	class:GenericDocument
@@ -118,18 +118,20 @@ C16	json/rapidjson/reader.h	352;"	d
 C16	json/rapidjson/reader.h	386;"	d
 C16	json/rapidjson/reader.h	388;"	d
 CC	logicwalker/makefile	/^CC:=$(ARCH)g++$/;"	m
-CC	makefile	/^CC:=$(ARCH)g++$/;"	m
+CC	makefile	/^CC := $(ARCH)g++$/;"	m
 CC	socket/makefile	/^CC:=$(ARCH)g++$/;"	m
 CFLAGS	logicwalker/makefile	/^CFLAGS:= -g -lm $/;"	m
-CFLAGS	makefile	/^CFLAGS:= -Isocket -Ijson -Ijson\/rapidjson -Icgicc$/;"	m
+CFLAGS	makefile	/^CFLAGS := -Iservice -Isocket -Ijson -Ijson\/rapidjson -Icgicc$/;"	m
 CFLAGS	socket/makefile	/^CFLAGS:= -I.\/ -I..\/$/;"	m
 CGICC_API	cgicc/CgiDefs.h	51;"	d
 CGICC_API	cgicc/CgiDefs.h	53;"	d
 CGICC_API	cgicc/CgiDefs.h	62;"	d
+CM	logicwalker/parser.h	/^     CM = 292,$/;"	e	enum:yytokentype
 COPY	json/rapidjson/encodings.h	147;"	d
 COPY	json/rapidjson/encodings.h	173;"	d
 COPY	json/rapidjson/encodings.h	180;"	d
 COPY	json/rapidjson/encodings.h	199;"	d
+CPP	makefile	/^CPP := $(wildcard json\/*.cpp)$/;"	m
 Cache	logicwalker/cache.h	/^	Cache(const string& name):cachename(name){}$/;"	f	class:Cache
 Cache	logicwalker/cache.h	/^class Cache$/;"	c
 Capacity	json/rapidjson/allocators.h	/^    size_t Capacity() const {$/;"	f	class:MemoryPoolAllocator
@@ -211,14 +213,16 @@ ClearStackOnExit	json/rapidjson/reader.h	/^        explicit ClearStackOnExit(Gen
 ClearStackOnExit	json/rapidjson/reader.h	/^    struct ClearStackOnExit {$/;"	s	class:GenericReader
 CloneTopOperand	json/rapidjson/internal/regex.h	/^    void CloneTopOperand(Stack<Allocator>& operandStack) {$/;"	f	class:internal::GenericRegex
 Close	socket/tcpclient.cpp	/^bool TcpClient::Close(void)$/;"	f	class:TcpClient
-Close	socket/unix-tcp.cpp	/^bool UnixTcp::Close(void)$/;"	f	class:UnixTcp
 Close	socket/unix-udp.cpp	/^bool UnixUdp::Close(void)$/;"	f	class:UnixUdp
+CmdGetValue	service/service.h	/^	CmdGetValue = 1,$/;"	e	enum:__anon16
+CmdNone	service/service.h	/^	CmdNone = 0,$/;"	e	enum:__anon16
+CmdSetValue	service/service.h	/^	CmdSetValue = 2,$/;"	e	enum:__anon16
+CmdType	service/service.h	/^}CmdType;$/;"	t	typeref:enum:__anon16
 Code	json/rapidjson/error/error.h	/^    ParseErrorCode Code() const { return code_; }$/;"	f	struct:ParseResult
 ColonToken	json/rapidjson/reader.h	/^        ColonToken,$/;"	e	enum:GenericReader::Token
 CommaToken	json/rapidjson/reader.h	/^        CommaToken,$/;"	e	enum:GenericReader::Token
 Compare	json/rapidjson/internal/biginteger.h	/^    int Compare(const BigInteger& rhs) const {$/;"	f	class:internal::BigInteger
 Connect	socket/tcpclient.cpp	/^bool TcpClient::Connect(const xstring& ip, int port)$/;"	f	class:TcpClient
-Connect	socket/unix-tcp.cpp	/^bool UnixTcp::Connect(const string& path)$/;"	f	class:UnixTcp
 Connect	socket/unix-udp.cpp	/^bool UnixUdp::Connect(const string& path)$/;"	f	class:UnixUdp
 ConstArray	json/rapidjson/document.h	/^    typedef GenericArray<true, ValueT> ConstArray;$/;"	t	class:GenericArray
 ConstArray	json/rapidjson/document.h	/^    typedef GenericArray<true, ValueType> ConstArray;$/;"	t	class:GenericValue
@@ -259,6 +263,9 @@ CrtAllocator	json/rapidjson/allocators.h	/^class CrtAllocator {$/;"	c
 CurrentContext	json/rapidjson/schema.h	/^    Context& CurrentContext() { return *schemaStack_.template Top<Context>(); }$/;"	f	class:GenericSchemaValidator
 CurrentContext	json/rapidjson/schema.h	/^    const Context& CurrentContext() const { return *schemaStack_.template Top<Context>(); }$/;"	f	class:GenericSchemaValidator
 CurrentSchema	json/rapidjson/schema.h	/^    const SchemaType& CurrentSchema() const { return *schemaStack_.template Top<Context>()->schema; }$/;"	f	class:GenericSchemaValidator
+DATE	logicwalker/parser.h	/^     DATE = 268,$/;"	e	enum:yytokentype
+DATETIME	logicwalker/parser.h	/^     DATETIME = 270,$/;"	e	enum:yytokentype
+DIV	logicwalker/parser.h	/^     DIV = 286,$/;"	e	enum:yytokentype
 Data	json/rapidjson/document.h	/^    union Data {$/;"	u	class:GenericValue
 Decode	json/rapidjson/encodings.h	/^    static RAPIDJSON_FORCEINLINE bool Decode(InputStream& is, unsigned* codepoint) {$/;"	f	struct:AutoUTF
 Decode	json/rapidjson/encodings.h	/^    static bool Decode(InputStream& is, unsigned* codepoint) {$/;"	f	struct:ASCII
@@ -301,6 +308,8 @@ Double	json/rapidjson/writer.h	/^    bool Double(double d)       { Prefix(kNumbe
 EDocumentType	cgicc/HTMLDoctype.h	/^    enum EDocumentType {$/;"	g	class:cgicc::HTMLDoctype
 EDocumentType	cgicc/XHTMLDoctype.h	/^	enum EDocumentType {$/;"	g	class:cgicc::XHTMLDoctype
 EElementType	cgicc/HTMLElement.h	/^    enum EElementType {$/;"	g	class:cgicc::HTMLElement
+ELSE	logicwalker/parser.h	/^     ELSE = 273,$/;"	e	enum:yytokentype
+EQ	logicwalker/parser.h	/^     EQ = 277,$/;"	e	enum:yytokentype
 EffectiveSignificandSize	json/rapidjson/internal/ieee754.h	/^    static int EffectiveSignificandSize(int order) {$/;"	f	class:internal::Double
 Empty	json/rapidjson/document.h	/^    bool Empty() const { RAPIDJSON_ASSERT(IsArray()); return data_.a.size == 0; }$/;"	f	class:GenericValue
 Empty	json/rapidjson/document.h	/^    bool Empty() const { return value_.Empty(); }$/;"	f	class:GenericArray
@@ -422,6 +431,9 @@ FE_valueCompare	cgicc/Cgicc.cpp	/^    inline explicit FE_valueCompare(const std:
 FE_valueCompare	cgicc/Cgicc.cpp	/^  class FE_valueCompare : public std::unary_function<FormEntry, bool>$/;"	c	namespace:cgicc	file:
 FF_compare	cgicc/Cgicc.cpp	/^    inline explicit FF_compare(const std::string& name)$/;"	f	class:cgicc::FF_compare
 FF_compare	cgicc/Cgicc.cpp	/^  class FF_compare : public std::unary_function<FormFile, bool>$/;"	c	namespace:cgicc	file:
+FLEXINT_H	logicwalker/lexer.h	34;"	d
+FLEX_BETA	logicwalker/lexer.h	18;"	d
+FLEX_SCANNER	logicwalker/lexer.h	13;"	d
 FalseToken	json/rapidjson/reader.h	/^        FalseToken,$/;"	e	enum:GenericReader::Token
 FalseType	json/rapidjson/internal/meta.h	/^typedef BoolType<false> FalseType;$/;"	t	namespace:internal
 FastPath	json/rapidjson/internal/strtod.h	/^inline double FastPath(double significand, int exp) {$/;"	f	namespace:internal
@@ -468,6 +480,9 @@ Frag	json/rapidjson/internal/regex.h	/^    struct Frag {$/;"	s	class:internal::G
 Free	json/rapidjson/allocators.h	/^    static void Free(void *ptr) { (void)ptr; } \/\/ Do nothing$/;"	f	class:MemoryPoolAllocator
 Free	json/rapidjson/allocators.h	/^    static void Free(void *ptr) { std::free(ptr); }$/;"	f	class:CrtAllocator
 FreeState	json/rapidjson/schema.h	/^    virtual void FreeState(void* p) {$/;"	f	class:GenericSchemaValidator
+GE	logicwalker/parser.h	/^     GE = 279,$/;"	e	enum:yytokentype
+GOTO	logicwalker/parser.h	/^     GOTO = 294,$/;"	e	enum:yytokentype
+GT	logicwalker/parser.h	/^     GT = 281,$/;"	e	enum:yytokentype
 GenericArray	json/rapidjson/document.h	/^    GenericArray(ValueType& value) : value_(value) {}$/;"	f	class:GenericArray
 GenericArray	json/rapidjson/document.h	/^    GenericArray(const GenericArray& rhs) : value_(rhs.value_) {}$/;"	f	class:GenericArray
 GenericArray	json/rapidjson/document.h	/^class GenericArray {$/;"	c
@@ -583,7 +598,6 @@ GetParseErrorFunc	json/rapidjson/error/error.h	/^typedef const RAPIDJSON_ERROR_C
 GetParseErrorOffset	json/rapidjson/pointer.h	/^    size_t GetParseErrorOffset() const { return parseErrorOffset_; }$/;"	f	class:GenericPointer
 GetParseError_En	json/rapidjson/error/en.h	/^inline const RAPIDJSON_ERROR_CHARTYPE* GetParseError_En(ParseErrorCode parseErrorCode) {$/;"	f
 GetParseResult	json/rapidjson/schema.h	/^    const ParseResult& GetParseResult() const { return parseResult_; }$/;"	f	class:SchemaValidatingReader
-GetPath	socket/unix-tcp.h	/^	const string& GetPath(void)const{return m_path;}$/;"	f	class:UnixTcp
 GetPath	socket/unix-udp.h	/^	const string& GetPath(void)const{return m_path;}$/;"	f	class:UnixUdp
 GetPointer	json/rapidjson/schema.h	/^    PointerType GetPointer(const SchemaType* schema) const {$/;"	f	class:GenericSchemaDocument
 GetRange	json/rapidjson/encodings.h	/^    static unsigned char GetRange(unsigned char c) {$/;"	f	struct:UTF8
@@ -615,6 +629,7 @@ GetUint	json/rapidjson/document.h	/^    unsigned GetUint() const    { RAPIDJSON_
 GetUint64	json/rapidjson/document.h	/^    uint64_t GetUint64() const  { RAPIDJSON_ASSERT(data_.f.flags & kUint64Flag); return data_.n.u64; }$/;"	f	class:GenericValue
 GetValue	logicwalker/token.cpp	/^const double& Token::GetValue(void)$/;"	f	class:Token
 GetValue	logicwalker/variable.cpp	/^double& Variable::GetValue(void)$/;"	f	class:Variable
+GetValue	service/service.cpp	/^bool Service::GetValue(map<xstring,xstring>& cmd)$/;"	f	class:Service
 GetValueByPointer	json/rapidjson/pointer.h	/^const typename T::ValueType* GetValueByPointer(const T& root, const CharType(&source)[N], size_t* unresolvedTokenIndex = 0) {$/;"	f
 GetValueByPointer	json/rapidjson/pointer.h	/^const typename T::ValueType* GetValueByPointer(const T& root, const GenericPointer<typename T::ValueType>& pointer, size_t* unresolvedTokenIndex = 0) {$/;"	f
 GetValueByPointer	json/rapidjson/pointer.h	/^typename T::ValueType* GetValueByPointer(T& root, const CharType (&source)[N], size_t* unresolvedTokenIndex = 0) {$/;"	f
@@ -670,6 +685,7 @@ HAVE_SYS_TYPES_H	cgicc/config.h	65;"	d
 HAVE_SYS_UTSNAME_H	cgicc/config.h	68;"	d
 HAVE_UNAME	cgicc/config.h	71;"	d
 HAVE_UNISTD_H	cgicc/config.h	74;"	d
+HEX	logicwalker/parser.h	/^     HEX = 267,$/;"	e	enum:yytokentype
 HOST	cgicc/CgiDefs.h	56;"	d
 HOST	cgicc/CgiDefs.h	60;"	d
 HOST	cgicc/config.h	80;"	d
@@ -746,17 +762,28 @@ Hasher	json/rapidjson/schema.h	/^class Hasher {$/;"	c	namespace:internal
 HasherType	json/rapidjson/schema.h	/^    typedef internal::Hasher<EncodingType, StateAllocator> HasherType;$/;"	t	class:GenericSchemaValidator
 Host	json/rapidjson/internal/meta.h	/^    struct Host {$/;"	s	struct:internal::IsBaseOfImpl
 I	json/rapidjson/document.h	/^        struct I {$/;"	s	union:GenericValue::Number
+ID	logicwalker/parser.h	/^     ID = 258,$/;"	e	enum:yytokentype
+IDF	logicwalker/parser.h	/^     IDF = 261,$/;"	e	enum:yytokentype
+IDO	logicwalker/parser.h	/^     IDO = 260,$/;"	e	enum:yytokentype
+IDR	logicwalker/parser.h	/^     IDR = 259,$/;"	e	enum:yytokentype
+IDV	logicwalker/parser.h	/^     IDV = 262,$/;"	e	enum:yytokentype
+IF	logicwalker/parser.h	/^     IF = 271,$/;"	e	enum:yytokentype
 IGenericRemoteSchemaDocumentProvider	json/rapidjson/schema.h	/^class IGenericRemoteSchemaDocumentProvider {$/;"	c
+INITIAL	logicwalker/lexer.h	218;"	d
 INT16_C	json/rapidjson/msinttypes/stdint.h	277;"	d
 INT16_C	json/rapidjson/msinttypes/stdint.h	55;"	d
 INT16_C	json/rapidjson/msinttypes/stdint.h	66;"	d
 INT16_MAX	json/rapidjson/msinttypes/stdint.h	181;"	d
+INT16_MAX	logicwalker/lexer.h	76;"	d
 INT16_MIN	json/rapidjson/msinttypes/stdint.h	180;"	d
+INT16_MIN	logicwalker/lexer.h	67;"	d
 INT32_C	json/rapidjson/msinttypes/stdint.h	278;"	d
 INT32_C	json/rapidjson/msinttypes/stdint.h	56;"	d
 INT32_C	json/rapidjson/msinttypes/stdint.h	67;"	d
 INT32_MAX	json/rapidjson/msinttypes/stdint.h	183;"	d
+INT32_MAX	logicwalker/lexer.h	79;"	d
 INT32_MIN	json/rapidjson/msinttypes/stdint.h	182;"	d
+INT32_MIN	logicwalker/lexer.h	70;"	d
 INT64_C	json/rapidjson/msinttypes/stdint.h	279;"	d
 INT64_C	json/rapidjson/msinttypes/stdint.h	57;"	d
 INT64_C	json/rapidjson/msinttypes/stdint.h	68;"	d
@@ -766,7 +793,9 @@ INT8_C	json/rapidjson/msinttypes/stdint.h	276;"	d
 INT8_C	json/rapidjson/msinttypes/stdint.h	54;"	d
 INT8_C	json/rapidjson/msinttypes/stdint.h	65;"	d
 INT8_MAX	json/rapidjson/msinttypes/stdint.h	179;"	d
+INT8_MAX	logicwalker/lexer.h	73;"	d
 INT8_MIN	json/rapidjson/msinttypes/stdint.h	178;"	d
+INT8_MIN	logicwalker/lexer.h	64;"	d
 INTMAX_C	json/rapidjson/msinttypes/stdint.h	290;"	d
 INTMAX_C	json/rapidjson/msinttypes/stdint.h	79;"	d
 INTMAX_MAX	json/rapidjson/msinttypes/stdint.h	232;"	d
@@ -902,11 +931,11 @@ Iterator	json/rapidjson/document.h	/^    typedef const GenericMember<Encoding,Al
 Iterator	logicwalker/cache.h	/^	typedef map<string,Variable>::iterator Iterator;$/;"	t	class:Cache
 Iterator	logicwalker/context.h	/^	typedef map<int,class Statement>::iterator Iterator;$/;"	t	class:Context
 Iterator	logicwalker/statement.h	/^	typedef list<Expression>::iterator Iterator;$/;"	t	class:Statement
-Json	json/json.cpp	/^Json::Json(const char* s):writer(sb)$/;"	f	class:Json
-Json	json/json.cpp	/^Json::Json(const xstring& s):writer(sb)$/;"	f	class:Json
-Json	json/json.cpp	/^Json::Json(void):writer(sb)$/;"	f	class:Json
+Json	json/json.cpp	/^Json::Json(const char* s):writer(sb),parseok(false)$/;"	f	class:Json
+Json	json/json.cpp	/^Json::Json(const xstring& s):writer(sb),parseok(false)$/;"	f	class:Json
+Json	json/json.cpp	/^Json::Json(void):writer(sb),parseok(false)$/;"	f	class:Json
 Json	json/json.h	/^class Json$/;"	c
-JsonValue	json/json.h	/^class JsonValue : public Value$/;"	c
+JsonIterator	json/json.h	/^typedef	Value::MemberIterator JsonIterator;$/;"	t
 KeepAlive	socket/tcpclient.cpp	/^bool TcpClient::KeepAlive(int keep, int idle, int intervel, int count)$/;"	f	class:TcpClient
 Key	json/json.cpp	/^bool Json::Key(const xstring& k)$/;"	f	class:Json
 Key	json/rapidjson/document.h	/^    bool Key(const Ch* str, SizeType length, bool copy) { return String(str, length, copy); }$/;"	f	class:GenericDocument
@@ -920,14 +949,22 @@ Key	json/rapidjson/schema.h	/^    bool Key(const Ch* str, SizeType len, bool cop
 Key	json/rapidjson/writer.h	/^    bool Key(const Ch* const& str) { return Key(str, internal::StrLen(str)); }$/;"	f	class:Writer
 Key	json/rapidjson/writer.h	/^    bool Key(const Ch* str, SizeType length, bool copy = false) { return String(str, length, copy); }$/;"	f	class:Writer
 Key	json/rapidjson/writer.h	/^    bool Key(const std::basic_string<Ch>& str)$/;"	f	class:Writer
+LABEL	logicwalker/parser.h	/^     LABEL = 295$/;"	e	enum:yytokentype
+LB	logicwalker/parser.h	/^     LB = 290,$/;"	e	enum:yytokentype
+LC	logicwalker/parser.h	/^     LC = 263,$/;"	e	enum:yytokentype
+LCF	logicwalker/parser.h	/^     LCF = 265,$/;"	e	enum:yytokentype
+LCO	logicwalker/parser.h	/^     LCO = 264,$/;"	e	enum:yytokentype
+LE	logicwalker/parser.h	/^     LE = 280,$/;"	e	enum:yytokentype
 LEX	logicwalker/makefile	/^LEX:=flex$/;"	m
 LEXIN	logicwalker/makefile	/^LEXIN:= logicwalker.l$/;"	m
 LEXOUT	logicwalker/makefile	/^LEXOUT:= lexer.cpp$/;"	m
 LFLAGS	logicwalker/makefile	/^LFLAGS:= -o $(LEXOUT) --header-file=lexer.h$/;"	m
+LP	logicwalker/parser.h	/^     LP = 288,$/;"	e	enum:yytokentype
+LT	logicwalker/parser.h	/^     LT = 282,$/;"	e	enum:yytokentype
 LT_OBJDIR	cgicc/config.h	84;"	d
 LeftBracketToken	json/rapidjson/reader.h	/^        LeftBracketToken = 0,$/;"	e	enum:GenericReader::Token
 LeftCurlyBracketToken	json/rapidjson/reader.h	/^        LeftCurlyBracketToken,$/;"	e	enum:GenericReader::Token
-LenPos	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon6
+LenPos	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon7
 Length	json/rapidjson/reader.h	/^        size_t Length() const { return length_; }$/;"	f	class:GenericReader::StackStream
 Length	json/rapidjson/reader.h	/^        size_t Length() { return 0; }$/;"	f	class:GenericReader::NumberStream
 Length	json/rapidjson/reader.h	/^        size_t Length() { return stackStream.Length(); }$/;"	f	class:GenericReader::NumberStream
@@ -937,8 +974,11 @@ ListIterator	logicwalker/logicwalker.h	/^	typedef TokenList::iterator ListIterat
 LocalVariable	logicwalker/context.h	/^	Cache LocalVariable;$/;"	m	class:Context
 LogicWalker	logicwalker/logicwalker.h	/^class LogicWalker$/;"	c
 MAX	cgicc/FormEntry.cpp	34;"	d	file:
+MIN	logicwalker/parser.h	/^     MIN = 284,$/;"	e	enum:yytokentype
+MOD	logicwalker/parser.h	/^     MOD = 287,$/;"	e	enum:yytokentype
 MStreamable	cgicc/MStreamable.h	/^    inline MStreamable() $/;"	f	class:cgicc::MStreamable
 MStreamable	cgicc/MStreamable.h	/^  class CGICC_API MStreamable $/;"	c	namespace:cgicc
+MUL	logicwalker/parser.h	/^     MUL = 285,$/;"	e	enum:yytokentype
 MakeContext	logicwalker/logicwalker.cpp	/^void LogicWalker::MakeContext(Context& context)$/;"	f	class:LogicWalker
 Malloc	json/rapidjson/allocators.h	/^    void* Malloc(size_t size) { $/;"	f	class:CrtAllocator
 Malloc	json/rapidjson/allocators.h	/^    void* Malloc(size_t size) {$/;"	f	class:MemoryPoolAllocator
@@ -947,8 +987,8 @@ MapIterator	logicwalker/logicwalker.h	/^	typedef TokenLmap::iterator MapIterator
 Match	json/rapidjson/internal/regex.h	/^    bool Match(InputStream& is) {$/;"	f	class:internal::GenericRegexSearch
 Match	json/rapidjson/internal/regex.h	/^    bool Match(const Ch* s) {$/;"	f	class:internal::GenericRegexSearch
 MatchRange	json/rapidjson/internal/regex.h	/^    bool MatchRange(SizeType rangeIndex, unsigned codepoint) const {$/;"	f	class:internal::GenericRegexSearch
-MaxChars	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon6
-MaxSize	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon6
+MaxChars	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon7
+MaxSize	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon7
 MaybeAddConst	json/rapidjson/internal/meta.h	/^template <bool Constify, typename T> struct MaybeAddConst : SelectIfCond<Constify, const T, T> {};$/;"	s	namespace:internal
 Member	json/rapidjson/document.h	/^    typedef GenericMember<Encoding, Allocator> Member;$/;"	t	class:GenericValue
 MemberBegin	json/rapidjson/document.h	/^    ConstMemberIterator MemberBegin() const { RAPIDJSON_ASSERT(IsObject()); return ConstMemberIterator(GetMembersPointer()); }$/;"	f	class:GenericValue
@@ -979,7 +1019,10 @@ N	json/rapidjson/reader.h	1791;"	d
 N	json/rapidjson/reader.h	1805;"	d
 N16	json/rapidjson/reader.h	1792;"	d
 N16	json/rapidjson/reader.h	1806;"	d
+NE	logicwalker/parser.h	/^     NE = 278,$/;"	e	enum:yytokentype
 NODE	logicwalker/logicwalker.h	27;"	d
+NOT	logicwalker/parser.h	/^     NOT = 276,$/;"	e	enum:yytokentype
+NUM	logicwalker/parser.h	/^     NUM = 266,$/;"	e	enum:yytokentype
 NeedPercentEncode	json/rapidjson/pointer.h	/^    bool NeedPercentEncode(Ch c) const {$/;"	f	class:GenericPointer
 NewRange	json/rapidjson/internal/regex.h	/^    SizeType NewRange(unsigned codepoint) {$/;"	f	class:internal::GenericRegex
 NewState	json/rapidjson/internal/regex.h	/^    SizeType NewState(SizeType out, SizeType out1, unsigned codepoint) {$/;"	f	class:internal::GenericRegex
@@ -1000,6 +1043,7 @@ Null	json/rapidjson/schema.h	/^    bool Null() { return WriteType(kNullType); }$
 Null	json/rapidjson/schema.h	/^    bool Null(Context& context) const { $/;"	f	class:internal::Schema
 Null	json/rapidjson/writer.h	/^    bool Null()                 { Prefix(kNullType);   return EndValue(WriteNull()); }$/;"	f	class:Writer
 NullToken	json/rapidjson/reader.h	/^        NullToken,$/;"	e	enum:GenericReader::Token
+NullValue	json/json.cpp	/^const Value& Json::NullValue(void) const$/;"	f	class:Json
 Number	json/rapidjson/document.h	/^    union Number {$/;"	u	class:GenericValue
 Number	json/rapidjson/schema.h	/^    struct Number {$/;"	s	class:internal::Hasher
 NumberStream	json/rapidjson/reader.h	/^        NumberStream(GenericReader& reader, InputStream& is) : Base(reader, is) {}$/;"	f	class:GenericReader::NumberStream
@@ -1009,6 +1053,8 @@ NumberStream	json/rapidjson/reader.h	/^    class NumberStream<InputStream, false
 NumberStream	json/rapidjson/reader.h	/^    class NumberStream<InputStream, true, false> : public NumberStream<InputStream, false, false> {$/;"	c	class:GenericReader
 NumberStream	json/rapidjson/reader.h	/^    class NumberStream<InputStream, true, true> : public NumberStream<InputStream, true, false> {$/;"	c	class:GenericReader
 NumberToken	json/rapidjson/reader.h	/^        NumberToken,$/;"	e	enum:GenericReader::Token
+OBJ	makefile	/^OBJ := $(patsubst %.c, %.o, $(SRC))$/;"	m
+OR	logicwalker/parser.h	/^     OR = 275,$/;"	e	enum:yytokentype
 OStreamWrapper	json/rapidjson/ostreamwrapper.h	/^typedef BasicOStreamWrapper<std::ostream> OStreamWrapper;$/;"	t
 Object	json/rapidjson/document.h	/^    typedef GenericObject<false, ValueT> Object;$/;"	t	class:GenericObject
 Object	json/rapidjson/document.h	/^    typedef GenericObject<false, ValueType> Object;$/;"	t	class:GenericValue
@@ -1023,7 +1069,6 @@ Offset	json/rapidjson/error/error.h	/^    size_t Offset() const { return offset_
 OnTime	logicwalker/token.cpp	/^const time_t Token::OnTime(void)$/;"	f	class:Token
 OnTime	logicwalker/variable.cpp	/^time_t Variable::OnTime(void)$/;"	f	class:Variable
 Open	socket/tcpclient.cpp	/^bool TcpClient::Open(void)$/;"	f	class:TcpClient
-Open	socket/unix-tcp.cpp	/^bool UnixTcp::Open(void)$/;"	f	class:UnixTcp
 Open	socket/unix-udp.cpp	/^bool UnixUdp::Open(void)$/;"	f	class:UnixUdp
 Operator	json/rapidjson/internal/regex.h	/^    enum Operator {$/;"	g	class:internal::GenericRegex
 OrExpr	json/rapidjson/internal/meta.h	/^template <typename C1, typename C2> struct OrExpr  : OrExprCond<C1::Value, C2::Value>::Type {};$/;"	s	namespace:internal
@@ -1145,6 +1190,7 @@ ParseInsitu	json/rapidjson/document.h	/^    GenericDocument& ParseInsitu(Ch* str
 ParseNull	json/rapidjson/reader.h	/^    void ParseNull(InputStream& is, Handler& handler) {$/;"	f	class:GenericReader
 ParseNumber	json/rapidjson/reader.h	/^    void ParseNumber(InputStream& is, Handler& handler) {$/;"	f	class:GenericReader
 ParseObject	json/rapidjson/reader.h	/^    void ParseObject(InputStream& is, Handler& handler) {$/;"	f	class:GenericReader
+ParseOk	json/json.cpp	/^const bool Json::ParseOk(void)const$/;"	f	class:Json
 ParseRange	json/rapidjson/internal/regex.h	/^    bool ParseRange(DecodedStream<InputStream, Encoding>& ds, SizeType* range) {$/;"	f	class:internal::GenericRegex
 ParseResult	json/rapidjson/error/error.h	/^    ParseResult() : code_(kParseErrorNone), offset_(0) {}$/;"	f	struct:ParseResult
 ParseResult	json/rapidjson/error/error.h	/^    ParseResult(ParseErrorCode code, size_t offset) : code_(code), offset_(offset) {}$/;"	f	struct:ParseResult
@@ -1221,6 +1267,7 @@ PrintInvalidKeyword	json/rapidjson/schema.h	/^inline void PrintInvalidKeyword(co
 PrintInvalidKeyword	json/rapidjson/schema.h	/^inline void PrintInvalidKeyword(const wchar_t* keyword) {$/;"	f	namespace:internal
 PrintValidatorPointers	json/rapidjson/schema.h	/^inline void PrintValidatorPointers(unsigned depth, const char* s, const char* d) {$/;"	f	namespace:internal
 PrintValidatorPointers	json/rapidjson/schema.h	/^inline void PrintValidatorPointers(unsigned depth, const wchar_t* s, const wchar_t* d) {$/;"	f	namespace:internal
+ProcRequest	service/service.cpp	/^bool Service::ProcRequest(const char* data)$/;"	f	class:Service
 Property	json/rapidjson/schema.h	/^        Property() : schema(), dependenciesSchema(), dependenciesValidatorIndex(), dependencies(), required(false) {}$/;"	f	struct:internal::Schema::Property
 Property	json/rapidjson/schema.h	/^    struct Property {$/;"	s	class:internal::Schema
 Push	json/rapidjson/internal/stack.h	/^    RAPIDJSON_FORCEINLINE T* Push(size_t count = 1) {$/;"	f	class:internal::Stack
@@ -1446,6 +1493,8 @@ RAPIDJSON_VERSION_CODE	json/rapidjson/rapidjson.h	495;"	d
 RAPIDJSON_VERSION_STRING	json/rapidjson/rapidjson.h	78;"	d
 RAPIDJSON_WRITER_H_	json/rapidjson/writer.h	16;"	d
 RAPIDJSON_WRITE_DEFAULT_FLAGS	json/rapidjson/writer.h	63;"	d
+RB	logicwalker/parser.h	/^     RB = 291,$/;"	e	enum:yytokentype
+RP	logicwalker/parser.h	/^     RP = 289,$/;"	e	enum:yytokentype
 Range	json/rapidjson/internal/regex.h	/^    struct Range {$/;"	s	class:internal::GenericRegex
 Range	json/rapidjson/internal/regex.h	/^    typedef typename RegexType::Range Range;$/;"	t	class:internal::GenericRegexSearch
 RawNumber	json/rapidjson/document.h	/^    bool RawNumber(const Ch* str, SizeType length, bool copy) { $/;"	f	class:GenericDocument
@@ -1463,7 +1512,6 @@ Realloc	json/rapidjson/allocators.h	/^    void* Realloc(void* originalPtr, size_
 Realloc	json/rapidjson/allocators.h	/^    void* Realloc(void* originalPtr, size_t originalSize, size_t newSize) {$/;"	f	class:MemoryPoolAllocator
 Recv	socket/tcpclient.cpp	/^int  TcpClient::Recv(char *buf, int len)$/;"	f	class:TcpClient
 Recv	socket/unix-udp.cpp	/^int UnixUdp::Recv(char *buf, int len)$/;"	f	class:UnixUdp
-RecvFrom	socket/unix-tcp.cpp	/^int UnixTcp::RecvFrom(string& path, char *buf, int len)$/;"	f	class:UnixTcp
 RecvFrom	socket/unix-udp.cpp	/^int UnixUdp::RecvFrom(string& path, char *buf, int len)$/;"	f	class:UnixUdp
 Reference	json/rapidjson/document.h	/^    typedef typename BaseType::reference       Reference;$/;"	t	class:GenericMemberIterator
 Regex	json/rapidjson/internal/regex.h	/^typedef GenericRegex<UTF8<> > Regex;$/;"	t	namespace:internal
@@ -1493,6 +1541,7 @@ Reset	json/rapidjson/writer.h	/^    void Reset(OutputStream& os) {$/;"	f	class:W
 Resize	json/rapidjson/internal/stack.h	/^    void Resize(size_t newCapacity) {$/;"	f	class:internal::Stack
 RightBracketToken	json/rapidjson/reader.h	/^        RightBracketToken,$/;"	e	enum:GenericReader::Token
 RightCurlyBracketToken	json/rapidjson/reader.h	/^        RightCurlyBracketToken,$/;"	e	enum:GenericReader::Token
+Run	service/service.cpp	/^void Service::Run(void)$/;"	f	class:Service
 Runtime	logicwalker/variable.cpp	/^time_t Variable::Runtime(void)$/;"	f	class:Variable
 SCNX16	json/rapidjson/msinttypes/inttypes.h	221;"	d
 SCNX32	json/rapidjson/msinttypes/inttypes.h	234;"	d
@@ -1584,16 +1633,18 @@ SCNxLEAST8	json/rapidjson/msinttypes/inttypes.h	211;"	d
 SCNxMAX	json/rapidjson/msinttypes/inttypes.h	259;"	d
 SCNxPTR	json/rapidjson/msinttypes/inttypes.h	265;"	d
 SCNxPTR	json/rapidjson/msinttypes/inttypes.h	270;"	d
+SET	logicwalker/parser.h	/^     SET = 293,$/;"	e	enum:yytokentype
 SIG_ATOMIC_MAX	json/rapidjson/msinttypes/stdint.h	246;"	d
 SIG_ATOMIC_MIN	json/rapidjson/msinttypes/stdint.h	245;"	d
 SIZE_MAX	json/rapidjson/msinttypes/stdint.h	250;"	d
 SIZE_MAX	json/rapidjson/msinttypes/stdint.h	252;"	d
 SRC	logicwalker/makefile	/^SRC:= logicwalker.cpp parser.cpp lexer.cpp variable.cpp cache.cpp $/;"	m
-SRC	makefile	/^SRC:= socket\/unix-udp.cpp json\/json.cpp$/;"	m
+SRC	makefile	/^SRC := $(wildcard socket\/*.c)$/;"	m
 SRC	socket/makefile	/^SRC:= unix-udp.cpp $/;"	m
 STATIC_ASSERTION_FAILURE	json/rapidjson/rapidjson.h	/^template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };$/;"	s
 STDC_HEADERS	cgicc/config.h	108;"	d
 STRIP	logicwalker/makefile	/^STRIP:=$(ARCH)strip$/;"	m
+STRIP	makefile	/^STRIP := $(ARCH)strip$/;"	m
 SValue	json/rapidjson/schema.h	/^    typedef GenericValue<EncodingType, AllocatorType> SValue;$/;"	t	class:internal::Schema
 ScanCopyUnescapedString	json/rapidjson/reader.h	/^    static RAPIDJSON_FORCEINLINE void ScanCopyUnescapedString(InputStream&, OutputStream&) {$/;"	f	class:GenericReader
 ScanCopyUnescapedString	json/rapidjson/reader.h	/^    static RAPIDJSON_FORCEINLINE void ScanCopyUnescapedString(InsituStringStream& is, InsituStringStream& os) {$/;"	f	class:GenericReader
@@ -1631,8 +1682,9 @@ SelectIfImpl	json/rapidjson/internal/meta.h	/^template <> struct SelectIfImpl<fa
 SelectIfImpl	json/rapidjson/internal/meta.h	/^template <bool C> struct SelectIfImpl { template <typename T1, typename T2> struct Apply { typedef T1 Type; }; };$/;"	s	namespace:internal
 Send	socket/tcpclient.cpp	/^int  TcpClient::Send(char *buf, int len)$/;"	f	class:TcpClient
 Send	socket/unix-udp.cpp	/^int UnixUdp::Send(const char *buf, int len)$/;"	f	class:UnixUdp
-SendTo	socket/unix-tcp.cpp	/^int UnixTcp::SendTo(const string& path, const char *buf, int len)$/;"	f	class:UnixTcp
 SendTo	socket/unix-udp.cpp	/^int UnixUdp::SendTo(const string& path, const char *buf, int len)$/;"	f	class:UnixUdp
+Service	service/service.cpp	/^Service::Service(void)$/;"	f	class:Service
+Service	service/service.h	/^class Service$/;"	c
 Set	json/rapidjson/document.h	/^    ValueType& Set(const T& data) { return internal::TypeHelper<ValueType, T>::Set(*this, data); }$/;"	f	class:GenericValue
 Set	json/rapidjson/document.h	/^    ValueType& Set(const T& data, AllocatorType& allocator) { return internal::TypeHelper<ValueType, T>::Set(*this, data, allocator); }$/;"	f	class:GenericValue
 Set	json/rapidjson/document.h	/^    static ValueType& Set(ValueType& v, ArrayType data) { return v = data; }$/;"	f	struct:internal::TypeHelper
@@ -1701,6 +1753,7 @@ SetToken	logicwalker/cache.cpp	/^void Cache::SetToken(Token& token)$/;"	f	class:
 SetUint	json/rapidjson/document.h	/^    GenericValue& SetUint(unsigned u)       { this->~GenericValue(); new (this) GenericValue(u);    return *this; }$/;"	f	class:GenericValue
 SetUint64	json/rapidjson/document.h	/^    GenericValue& SetUint64(uint64_t u64)   { this->~GenericValue(); new (this) GenericValue(u64);  return *this; }$/;"	f	class:GenericValue
 SetValue	logicwalker/token.cpp	/^bool Token::SetValue(const double& v)$/;"	f	class:Token
+SetValue	service/service.cpp	/^bool Service::SetValue(map<xstring,xstring>& cmd)$/;"	f	class:Service
 SetValueAuto	logicwalker/token.cpp	/^bool Token::SetValueAuto(const double& v)$/;"	f	class:Token
 SetValueAuto	logicwalker/variable.cpp	/^void Variable::SetValueAuto(double &v)$/;"	f	class:Variable
 SetValueByPointer	json/rapidjson/pointer.h	/^SetValueByPointer(DocumentType& document, const CharType(&source)[N], T2 value) {$/;"	f
@@ -1769,6 +1822,7 @@ StartObject	json/rapidjson/schema.h	/^    bool StartObject() { return true; }$/;
 StartObject	json/rapidjson/schema.h	/^    bool StartObject() {$/;"	f	class:GenericSchemaValidator
 StartObject	json/rapidjson/schema.h	/^    bool StartObject(Context& context) const { $/;"	f	class:internal::Schema
 StartObject	json/rapidjson/writer.h	/^    bool StartObject() {$/;"	f	class:Writer
+StartServer	service/service.cpp	/^bool Service::StartServer(const string& path)$/;"	f	class:Service
 State	json/rapidjson/internal/regex.h	/^    struct State {$/;"	s	class:internal::GenericRegex
 State	json/rapidjson/internal/regex.h	/^    typedef typename RegexType::State State;$/;"	t	class:internal::GenericRegexSearch
 State	socket/tcpclient.cpp	/^int  TcpClient::State(void)$/;"	f	class:TcpClient
@@ -1830,7 +1884,9 @@ TAIL	json/rapidjson/encodings.h	149;"	d
 TAIL	json/rapidjson/encodings.h	175;"	d
 TAIL	json/rapidjson/encodings.h	182;"	d
 TAIL	json/rapidjson/encodings.h	201;"	d
-TARGETS	makefile	/^TARGETS:= unix-udp-client.exe $/;"	m
+TARGETS	makefile	/^TARGETS := bin\/unix-udp-client.exe $/;"	m
+THEN	logicwalker/parser.h	/^     THEN = 272,$/;"	e	enum:yytokentype
+TIME	logicwalker/parser.h	/^     TIME = 269,$/;"	e	enum:yytokentype
 TRANS	json/rapidjson/encodings.h	148;"	d
 TRANS	json/rapidjson/encodings.h	174;"	d
 TRANS	json/rapidjson/encodings.h	181;"	d
@@ -1936,10 +1992,12 @@ UINT16_C	json/rapidjson/msinttypes/stdint.h	282;"	d
 UINT16_C	json/rapidjson/msinttypes/stdint.h	59;"	d
 UINT16_C	json/rapidjson/msinttypes/stdint.h	71;"	d
 UINT16_MAX	json/rapidjson/msinttypes/stdint.h	187;"	d
+UINT16_MAX	logicwalker/lexer.h	85;"	d
 UINT32_C	json/rapidjson/msinttypes/stdint.h	283;"	d
 UINT32_C	json/rapidjson/msinttypes/stdint.h	60;"	d
 UINT32_C	json/rapidjson/msinttypes/stdint.h	72;"	d
 UINT32_MAX	json/rapidjson/msinttypes/stdint.h	188;"	d
+UINT32_MAX	logicwalker/lexer.h	88;"	d
 UINT64_C	json/rapidjson/msinttypes/stdint.h	284;"	d
 UINT64_C	json/rapidjson/msinttypes/stdint.h	61;"	d
 UINT64_C	json/rapidjson/msinttypes/stdint.h	73;"	d
@@ -1948,6 +2006,7 @@ UINT8_C	json/rapidjson/msinttypes/stdint.h	281;"	d
 UINT8_C	json/rapidjson/msinttypes/stdint.h	58;"	d
 UINT8_C	json/rapidjson/msinttypes/stdint.h	70;"	d
 UINT8_MAX	json/rapidjson/msinttypes/stdint.h	186;"	d
+UINT8_MAX	logicwalker/lexer.h	82;"	d
 UINTMAX_C	json/rapidjson/msinttypes/stdint.h	293;"	d
 UINTMAX_C	json/rapidjson/msinttypes/stdint.h	82;"	d
 UINTMAX_MAX	json/rapidjson/msinttypes/stdint.h	233;"	d
@@ -1987,15 +2046,10 @@ Uint64	json/rapidjson/schema.h	/^    bool Uint64(uint64_t u) { RAPIDJSON_SCHEMA_
 Uint64	json/rapidjson/writer.h	/^    bool Uint64(uint64_t u64)   { Prefix(kNumberType); return EndValue(WriteUint64(u64)); }$/;"	f	class:Writer
 Uint64Value	json/rapidjson/internal/ieee754.h	/^    uint64_t Uint64Value() const { return u_; }$/;"	f	class:internal::Double
 Unblock	socket/tcpclient.cpp	/^bool TcpClient::Unblock(void)$/;"	f	class:TcpClient
-Unblock	socket/unix-tcp.cpp	/^bool UnixTcp::Unblock(void)$/;"	f	class:UnixTcp
 Unblock	socket/unix-udp.cpp	/^bool UnixUdp::Unblock(void)$/;"	f	class:UnixUdp
-UnixTcp	socket/unix-tcp.cpp	/^UnixTcp::UnixTcp(const string& path):sock(-1)$/;"	f	class:UnixTcp
-UnixTcp	socket/unix-tcp.cpp	/^UnixTcp::UnixTcp(void):sock(-1)$/;"	f	class:UnixTcp
-UnixTcp	socket/unix-tcp.h	/^class UnixTcp$/;"	c
 UnixUdp	socket/unix-udp.cpp	/^UnixUdp::UnixUdp(const string& path):sock(-1)$/;"	f	class:UnixUdp
 UnixUdp	socket/unix-udp.cpp	/^UnixUdp::UnixUdp(void):sock(-1)$/;"	f	class:UnixUdp
 UnixUdp	socket/unix-udp.h	/^class UnixUdp$/;"	c
-Unlink	socket/unix-tcp.cpp	/^bool UnixTcp::Unlink(const string& path)$/;"	f	class:UnixTcp
 Unlink	socket/unix-udp.cpp	/^bool UnixUdp::Unlink(const string& path)$/;"	f	class:UnixUdp
 Usable	json/rapidjson/document.h	/^        inline static bool Usable(SizeType len) { return                       (MaxSize >= len); }$/;"	f	struct:GenericValue::ShortString
 VERSION	cgicc/CgiDefs.h	57;"	d
@@ -2010,7 +2064,7 @@ Validate	json/rapidjson/encodings.h	/^    static bool Validate(InputStream& is, 
 Value	json/rapidjson/document.h	/^typedef GenericValue<UTF8<> > Value;$/;"	t
 Value	json/rapidjson/fwd.h	/^typedef GenericValue<UTF8<char>, MemoryPoolAllocator<CrtAllocator> > Value;$/;"	t
 Value	json/rapidjson/internal/ieee754.h	/^    double Value() const { return d_; }$/;"	f	class:internal::Double
-Value	json/rapidjson/internal/meta.h	/^    enum { Value = (sizeof(Check(Host(), 0)) == sizeof(Yes)) };$/;"	e	enum:internal::IsBaseOfImpl::__anon8
+Value	json/rapidjson/internal/meta.h	/^    enum { Value = (sizeof(Check(Host(), 0)) == sizeof(Yes)) };$/;"	e	enum:internal::IsBaseOfImpl::__anon9
 Value	json/rapidjson/internal/meta.h	/^    static const bool Value = Cond;$/;"	m	struct:internal::BoolType
 ValueIterator	json/rapidjson/document.h	/^    typedef GenericValue* ValueIterator;            \/\/!< Value iterator for iterating in array.$/;"	t	class:GenericValue
 ValueIterator	json/rapidjson/document.h	/^    typedef ValueType* ValueIterator;  \/\/ This may be const or non-const iterator$/;"	t	class:GenericArray
@@ -2072,6 +2126,34 @@ YACC	logicwalker/makefile	/^YACC:=bison$/;"	m
 YACCIN	logicwalker/makefile	/^YACCIN:= logicwalker.y$/;"	m
 YACCOUT	logicwalker/makefile	/^YACCOUT:= parser.cpp$/;"	m
 YFLAGS	logicwalker/makefile	/^YFLAGS:= -o $(YACCOUT) --defines=parser.h$/;"	m
+YYSTYPE	logicwalker/parser.h	/^typedef union YYSTYPE$/;"	u
+YYSTYPE	logicwalker/parser.h	/^} YYSTYPE;$/;"	t	typeref:union:YYSTYPE
+YYSTYPE_IS_DECLARED	logicwalker/parser.h	103;"	d
+YYSTYPE_IS_TRIVIAL	logicwalker/parser.h	101;"	d
+YYTOKENTYPE	logicwalker/parser.h	36;"	d
+YY_BUFFER_STATE	logicwalker/lexer.h	/^typedef struct yy_buffer_state *YY_BUFFER_STATE;$/;"	t	typeref:struct:yy_buffer_state
+YY_BUF_SIZE	logicwalker/lexer.h	123;"	d
+YY_BUF_SIZE	logicwalker/lexer.h	125;"	d
+YY_DECL	logicwalker/lexer.h	310;"	d
+YY_DECL	logicwalker/lexer.h	324;"	d
+YY_DECL_IS_OURS	logicwalker/lexer.h	306;"	d
+YY_DECL_IS_OURS	logicwalker/lexer.h	323;"	d
+YY_DO_BEFORE_ACTION	logicwalker/lexer.h	320;"	d
+YY_EXTRA_TYPE	logicwalker/lexer.h	231;"	d
+YY_FLEX_MAJOR_VERSION	logicwalker/lexer.h	14;"	d
+YY_FLEX_MINOR_VERSION	logicwalker/lexer.h	15;"	d
+YY_FLEX_SUBMINOR_VERSION	logicwalker/lexer.h	16;"	d
+YY_FLUSH_BUFFER	logicwalker/lexer.h	316;"	d
+YY_INT_ALIGNED	logicwalker/lexer.h	9;"	d
+YY_NEW_FILE	logicwalker/lexer.h	315;"	d
+YY_READ_BUF_SIZE	logicwalker/lexer.h	291;"	d
+YY_READ_BUF_SIZE	logicwalker/lexer.h	293;"	d
+YY_START_STACK_INCR	logicwalker/lexer.h	299;"	d
+YY_STRUCT_YY_BUFFER_STATE	logicwalker/lexer.h	144;"	d
+YY_TYPEDEF_YY_BUFFER_STATE	logicwalker/lexer.h	130;"	d
+YY_TYPEDEF_YY_SIZE_T	logicwalker/lexer.h	139;"	d
+YY_USE_CONST	logicwalker/lexer.h	105;"	d
+YY_USE_CONST	logicwalker/lexer.h	98;"	d
 Yes	json/rapidjson/internal/meta.h	/^    typedef char (&Yes)[1];$/;"	t	struct:internal::IsBaseOfImpl
 Z16	json/rapidjson/reader.h	1000;"	d
 Z16	json/rapidjson/reader.h	992;"	d
@@ -2112,12 +2194,13 @@ __EXPRESSION_H__	logicwalker/expression.h	2;"	d
 __INET_ADDRESS_H__	socket/inet-address.h	2;"	d
 __JSON_H__	json/json.h	2;"	d
 __LOGICWALKER_H__	logicwalker/logicwalker.h	2;"	d
+__SERVICE_H__	service/service.h	2;"	d
 __STATEMENT_H__	logicwalker/statement.h	2;"	d
+__STDC_LIMIT_MACROS	logicwalker/lexer.h	44;"	d
 __TCP_CLIENT_H__	socket/tcpclient.h	2;"	d
 __TCP_SERVER_H__	socket/tcpserver.h	2;"	d
 __TCP_SOCKET_H__	socket/tcp-socket.h	2;"	d
 __TOKEN_H__	logicwalker/token.h	2;"	d
-__UNIX_TCP_H__	socket/unix-tcp.h	2;"	d
 __UNIX_UDP_H__	socket/unix-udp.h	2;"	d
 __VARIABLE_H__	logicwalker/variable.h	2;"	d
 __XSTRING_H__	cgicc/xstring.h	2;"	d
@@ -2147,6 +2230,7 @@ arrayElementIndex	json/rapidjson/schema.h	/^    SizeType arrayElementIndex;$/;"	
 arrayUniqueness	json/rapidjson/schema.h	/^    bool arrayUniqueness;$/;"	m	struct:internal::SchemaValidationContext
 baseAllocator_	json/rapidjson/allocators.h	/^    BaseAllocator* baseAllocator_;  \/\/!< base allocator for allocating memory chunks.$/;"	m	class:MemoryPoolAllocator
 begin	cgicc/cgi.h	/^	query_iterator begin(void)$/;"	f	class:Cgi
+begin	json/json.cpp	/^JsonIterator& Json::begin()$/;"	f	class:Json
 begin	json/rapidjson/document.h	/^    MemberIterator begin() const { return value_.MemberBegin(); }$/;"	f	class:GenericObject
 begin	json/rapidjson/document.h	/^    ValueIterator begin() const { return value_.Begin(); }$/;"	f	class:GenericArray
 begin	json/rapidjson/schema.h	/^        SizeType begin; \/\/ begin index of context.validators$/;"	m	struct:internal::Schema::SchemaArray
@@ -2194,6 +2278,7 @@ chunkHead_	json/rapidjson/allocators.h	/^    ChunkHeader *chunkHead_;    \/\/!< 
 chunk_capacity_	json/rapidjson/allocators.h	/^    size_t chunk_capacity_;     \/\/!< The minimum capacity of chunk when they are allocated.$/;"	m	class:MemoryPoolAllocator
 clone	cgicc/HTMLAtomicElement.h	/^    clone() 					const$/;"	f	class:cgicc::HTMLAtomicElement
 clone	cgicc/HTMLBooleanElement.h	/^    clone() 					const$/;"	f	class:cgicc::HTMLBooleanElement
+cmdmap	service/service.h	/^	map<xstring,CmdType> cmdmap;$/;"	m	class:Service
 code_	json/rapidjson/error/error.h	/^    ParseErrorCode code_;$/;"	m	struct:ParseResult
 codepoint	json/rapidjson/internal/regex.h	/^        unsigned codepoint;$/;"	m	struct:internal::GenericRegex::State
 codepoint_	json/rapidjson/internal/regex.h	/^    unsigned codepoint_;$/;"	m	class:internal::DecodedStream
@@ -2204,9 +2289,9 @@ const_form_iterator	cgicc/Cgicc.h	/^  typedef std::vector<FormEntry>::const_iter
 context	logicwalker/context.h	/^	map<int,class Statement> context;$/;"	m	class:Context
 context	logicwalker/expression.h	/^	Context *context;$/;"	m	class:Expression
 cookie_iterator	cgicc/CgiEnvironment.h	/^  typedef std::vector<HTTPCookie>::iterator 	cookie_iterator;$/;"	t	namespace:cgicc
-copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 0 };$/;"	e	enum:StreamTraits::__anon2
-copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 1 };$/;"	e	enum:StreamTraits::__anon3
+copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 0 };$/;"	e	enum:StreamTraits::__anon3
 copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 1 };$/;"	e	enum:StreamTraits::__anon4
+copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 1 };$/;"	e	enum:StreamTraits::__anon5
 copy_if	cgicc/Cgicc.cpp	/^  copy_if(In first, $/;"	f	namespace:cgicc
 count	json/rapidjson/schema.h	/^        SizeType count;$/;"	m	struct:internal::Schema::SchemaArray
 count_	json/rapidjson/filereadstream.h	/^    size_t count_;  \/\/!< Number of characters read$/;"	m	class:FileReadStream
@@ -2219,7 +2304,7 @@ current_	json/rapidjson/filewritestream.h	/^    char *current_;$/;"	m	class:File
 d	json/rapidjson/document.h	/^        double d;$/;"	m	union:GenericValue::Number
 d	json/rapidjson/schema.h	/^        double d;$/;"	m	struct:internal::Hasher::Number
 d_	json/rapidjson/document.h	/^        GenericDocument& d_;$/;"	m	struct:GenericDocument::ClearStackOnExit
-d_	json/rapidjson/internal/ieee754.h	/^        double d_;$/;"	m	union:internal::Double::__anon7
+d_	json/rapidjson/internal/ieee754.h	/^        double d_;$/;"	m	union:internal::Double::__anon8
 dataSpecified	cgicc/HTMLElement.h	/^    dataSpecified() 				const$/;"	f	class:cgicc::HTMLElement
 data_	json/rapidjson/document.h	/^        : data_() {$/;"	f	class:GenericValue
 data_	json/rapidjson/document.h	/^    Data data_;$/;"	m	class:GenericValue
@@ -2261,6 +2346,7 @@ else_expression	logicwalker/logicwalker.y	/^else_expression:$/;"	l
 emptyString	json/rapidjson/document.h	/^    static const Ch emptyString[];$/;"	m	struct:GenericStringRef
 emptyString	json/rapidjson/document.h	/^const CharType GenericStringRef<CharType>::emptyString[] = { CharType() };$/;"	m	class:GenericStringRef
 end	cgicc/cgi.h	/^	query_iterator end(void)$/;"	f	class:Cgi
+end	json/json.cpp	/^JsonIterator& Json::end()$/;"	f	class:Json
 end	json/rapidjson/document.h	/^    MemberIterator end() const { return value_.MemberEnd(); }$/;"	f	class:GenericObject
 end	json/rapidjson/document.h	/^    ValueIterator end() const { return value_.End(); }$/;"	f	class:GenericArray
 end	json/rapidjson/internal/regex.h	/^        unsigned end;$/;"	m	struct:internal::GenericRegex::Range
@@ -2355,6 +2441,18 @@ factory	json/rapidjson/schema.h	/^    SchemaValidatorFactoryType& factory;$/;"	m
 file_iterator	cgicc/Cgicc.h	/^  typedef std::vector<FormFile>::iterator 	file_iterator;$/;"	t	namespace:cgicc
 findEntries	cgicc/Cgicc.cpp	/^cgicc::Cgicc::findEntries(const std::string& param, $/;"	f	class:cgicc::Cgicc
 flags	json/rapidjson/document.h	/^        uint16_t flags;$/;"	m	struct:GenericValue::Flag
+flex_int16_t	logicwalker/lexer.h	/^typedef int16_t flex_int16_t;$/;"	t
+flex_int16_t	logicwalker/lexer.h	/^typedef short int flex_int16_t;$/;"	t
+flex_int32_t	logicwalker/lexer.h	/^typedef int flex_int32_t;$/;"	t
+flex_int32_t	logicwalker/lexer.h	/^typedef int32_t flex_int32_t;$/;"	t
+flex_int8_t	logicwalker/lexer.h	/^typedef int8_t flex_int8_t;$/;"	t
+flex_int8_t	logicwalker/lexer.h	/^typedef signed char flex_int8_t;$/;"	t
+flex_uint16_t	logicwalker/lexer.h	/^typedef uint16_t flex_uint16_t;$/;"	t
+flex_uint16_t	logicwalker/lexer.h	/^typedef unsigned short int flex_uint16_t;$/;"	t
+flex_uint32_t	logicwalker/lexer.h	/^typedef uint32_t flex_uint32_t;$/;"	t
+flex_uint32_t	logicwalker/lexer.h	/^typedef unsigned int flex_uint32_t;$/;"	t
+flex_uint8_t	logicwalker/lexer.h	/^typedef uint8_t flex_uint8_t;$/;"	t
+flex_uint8_t	logicwalker/lexer.h	/^typedef unsigned char flex_uint8_t; $/;"	t
 form_iterator	cgicc/Cgicc.h	/^  typedef std::vector<FormEntry>::iterator 	form_iterator;$/;"	t	namespace:cgicc
 form_urldecode	cgicc/CgiUtils.cpp	/^cgicc::form_urldecode(const std::string& src)$/;"	f	class:cgicc
 form_urlencode	cgicc/CgiUtils.cpp	/^cgicc::form_urlencode(const std::string& src)$/;"	f	class:cgicc
@@ -2472,7 +2570,7 @@ if_else_expression	logicwalker/logicwalker.y	/^if_else_expression:$/;"	l
 if_expression	logicwalker/logicwalker.y	/^if_expression:$/;"	l
 imaxabs	json/rapidjson/msinttypes/inttypes.h	279;"	d
 imaxdiv	json/rapidjson/msinttypes/inttypes.h	/^imaxdiv_t __cdecl imaxdiv(intmax_t numer, intmax_t denom)$/;"	f
-imaxdiv_t	json/rapidjson/msinttypes/inttypes.h	/^} imaxdiv_t;$/;"	t	typeref:struct:__anon14
+imaxdiv_t	json/rapidjson/msinttypes/inttypes.h	/^} imaxdiv_t;$/;"	t	typeref:struct:__anon15
 inArray	json/rapidjson/schema.h	/^    bool inArray;$/;"	m	struct:internal::SchemaValidationContext
 inArray	json/rapidjson/writer.h	/^        bool inArray;       \/\/!< true if in array, otherwise in object$/;"	m	struct:Writer::Level
 indentCharCount_	json/rapidjson/prettywriter.h	/^    unsigned indentCharCount_;$/;"	m	class:PrettyWriter
@@ -2537,19 +2635,20 @@ is_	json/rapidjson/schema.h	/^    InputStream& is_;$/;"	m	class:SchemaValidating
 itemsList_	json/rapidjson/schema.h	/^    const SchemaType* itemsList_;$/;"	m	class:internal::Schema
 itemsTupleCount_	json/rapidjson/schema.h	/^    SizeType itemsTupleCount_;$/;"	m	class:internal::Schema
 itemsTuple_	json/rapidjson/schema.h	/^    const SchemaType** itemsTuple_;$/;"	m	class:internal::Schema
+iterator	service/service.h	/^	typedef map<xstring,CmdType>::iterator iterator;$/;"	t	class:Service
 kAlternation	json/rapidjson/internal/regex.h	/^        kAlternation,$/;"	e	enum:internal::GenericRegex::Operator
 kAnyCharacterClass	json/rapidjson/internal/regex.h	/^    static const unsigned kAnyCharacterClass = 0xFFFFFFFF;   \/\/!< For '.'$/;"	m	class:internal::GenericRegex
-kArrayFlag	json/rapidjson/document.h	/^        kArrayFlag = kArrayType,$/;"	e	enum:GenericValue::__anon5
+kArrayFlag	json/rapidjson/document.h	/^        kArrayFlag = kArrayType,$/;"	e	enum:GenericValue::__anon6
 kArraySchemaType	json/rapidjson/schema.h	/^        kArraySchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kArrayType	json/rapidjson/rapidjson.h	/^    kArrayType = 4,     \/\/!< array $/;"	e	enum:Type
 kBitCount	json/rapidjson/internal/biginteger.h	/^    static const size_t kBitCount = 3328;  \/\/ 64bit * 54 > 10^1000$/;"	m	class:internal::BigInteger
-kBoolFlag	json/rapidjson/document.h	/^        kBoolFlag       = 0x0008,$/;"	e	enum:GenericValue::__anon5
+kBoolFlag	json/rapidjson/document.h	/^        kBoolFlag       = 0x0008,$/;"	e	enum:GenericValue::__anon6
 kBooleanSchemaType	json/rapidjson/schema.h	/^        kBooleanSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kCapacity	json/rapidjson/internal/biginteger.h	/^    static const size_t kCapacity = kBitCount \/ sizeof(Type);$/;"	m	class:internal::BigInteger
 kConcatenation	json/rapidjson/internal/regex.h	/^        kConcatenation,$/;"	e	enum:internal::GenericRegex::Operator
-kConstStringFlag	json/rapidjson/document.h	/^        kConstStringFlag = kStringType | kStringFlag,$/;"	e	enum:GenericValue::__anon5
-kCopyFlag	json/rapidjson/document.h	/^        kCopyFlag       = 0x0800,$/;"	e	enum:GenericValue::__anon5
-kCopyStringFlag	json/rapidjson/document.h	/^        kCopyStringFlag = kStringType | kStringFlag | kCopyFlag,$/;"	e	enum:GenericValue::__anon5
+kConstStringFlag	json/rapidjson/document.h	/^        kConstStringFlag = kStringType | kStringFlag,$/;"	e	enum:GenericValue::__anon6
+kCopyFlag	json/rapidjson/document.h	/^        kCopyFlag       = 0x0800,$/;"	e	enum:GenericValue::__anon6
+kCopyStringFlag	json/rapidjson/document.h	/^        kCopyStringFlag = kStringType | kStringFlag | kCopyFlag,$/;"	e	enum:GenericValue::__anon6
 kDefaultArrayCapacity	json/rapidjson/document.h	/^    static const SizeType kDefaultArrayCapacity = 16;$/;"	m	class:GenericValue
 kDefaultCapacity	json/rapidjson/memorybuffer.h	/^    static const size_t kDefaultCapacity = 256;$/;"	m	struct:GenericMemoryBuffer
 kDefaultCapacity	json/rapidjson/stringbuffer.h	/^    static const size_t kDefaultCapacity = 256;$/;"	m	class:GenericStringBuffer
@@ -2564,7 +2663,7 @@ kDefaultStackCapacity	json/rapidjson/document.h	/^    static const size_t kDefau
 kDefaultStackCapacity	json/rapidjson/reader.h	/^    static const size_t kDefaultStackCapacity = 256;    \/\/!< Default stack capacity in bytes for storing a single decoded string.$/;"	m	class:GenericReader
 kDenormalExponent	json/rapidjson/internal/ieee754.h	/^    static const int kDenormalExponent = 1 - kExponentBias;$/;"	m	class:internal::Double
 kDiySignificandSize	json/rapidjson/internal/diyfp.h	/^    static const int kDiySignificandSize = 64;$/;"	m	struct:internal::DiyFp
-kDoubleFlag	json/rapidjson/document.h	/^        kDoubleFlag     = 0x0200,$/;"	e	enum:GenericValue::__anon5
+kDoubleFlag	json/rapidjson/document.h	/^        kDoubleFlag     = 0x0200,$/;"	e	enum:GenericValue::__anon6
 kDpDenormalExponent	json/rapidjson/internal/diyfp.h	/^    static const int kDpDenormalExponent = -kDpExponentBias + 1;$/;"	m	struct:internal::DiyFp
 kDpExponentBias	json/rapidjson/internal/diyfp.h	/^    static const int kDpExponentBias = 0x3FF + kDpSignificandSize;$/;"	m	struct:internal::DiyFp
 kDpExponentMask	json/rapidjson/internal/diyfp.h	/^    static const uint64_t kDpExponentMask = RAPIDJSON_UINT64_C2(0x7FF00000, 0x00000000);$/;"	m	struct:internal::DiyFp
@@ -2575,7 +2674,7 @@ kDpSignificandMask	json/rapidjson/internal/diyfp.h	/^    static const uint64_t k
 kDpSignificandSize	json/rapidjson/internal/diyfp.h	/^    static const int kDpSignificandSize = 52;$/;"	m	struct:internal::DiyFp
 kExponentBias	json/rapidjson/internal/ieee754.h	/^    static const int kExponentBias = 0x3FF;$/;"	m	class:internal::Double
 kExponentMask	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kExponentMask = RAPIDJSON_UINT64_C2(0x7FF00000, 0x00000000);$/;"	m	class:internal::Double
-kFalseFlag	json/rapidjson/document.h	/^        kFalseFlag = kFalseType | kBoolFlag,$/;"	e	enum:GenericValue::__anon5
+kFalseFlag	json/rapidjson/document.h	/^        kFalseFlag = kFalseType | kBoolFlag,$/;"	e	enum:GenericValue::__anon6
 kFalseType	json/rapidjson/rapidjson.h	/^    kFalseType = 1,     \/\/!< false$/;"	e	enum:Type
 kFormatDefault	json/rapidjson/prettywriter.h	/^    kFormatDefault = 0,         \/\/!< Default pretty formatting.$/;"	e	enum:PrettyFormatOptions
 kFormatSingleLineArray	json/rapidjson/prettywriter.h	/^    kFormatSingleLineArray = 1  \/\/!< Format arrays on a single line.$/;"	e	enum:PrettyFormatOptions
@@ -2583,26 +2682,26 @@ kHiddenBit	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kHidden
 kInfinityQuantifier	json/rapidjson/internal/regex.h	/^    static const unsigned kInfinityQuantifier = ~0u;$/;"	m	class:internal::GenericRegex
 kInitialSchemaMapSize	json/rapidjson/schema.h	/^    static const size_t kInitialSchemaMapSize = 64;$/;"	m	class:GenericSchemaDocument
 kInitialSchemaRefSize	json/rapidjson/schema.h	/^    static const size_t kInitialSchemaRefSize = 64;$/;"	m	class:GenericSchemaDocument
-kInlineStrFlag	json/rapidjson/document.h	/^        kInlineStrFlag  = 0x1000,$/;"	e	enum:GenericValue::__anon5
-kInt64Flag	json/rapidjson/document.h	/^        kInt64Flag      = 0x0080,$/;"	e	enum:GenericValue::__anon5
-kIntFlag	json/rapidjson/document.h	/^        kIntFlag        = 0x0020,$/;"	e	enum:GenericValue::__anon5
+kInlineStrFlag	json/rapidjson/document.h	/^        kInlineStrFlag  = 0x1000,$/;"	e	enum:GenericValue::__anon6
+kInt64Flag	json/rapidjson/document.h	/^        kInt64Flag      = 0x0080,$/;"	e	enum:GenericValue::__anon6
+kIntFlag	json/rapidjson/document.h	/^        kIntFlag        = 0x0020,$/;"	e	enum:GenericValue::__anon6
 kIntegerSchemaType	json/rapidjson/schema.h	/^        kIntegerSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kLeftParenthesis	json/rapidjson/internal/regex.h	/^        kLeftParenthesis$/;"	e	enum:internal::GenericRegex::Operator
 kNeedFree	json/rapidjson/allocators.h	/^    static const bool kNeedFree = false;    \/\/!< Tell users that no need to call Free() with this allocator. (concept Allocator)$/;"	m	class:MemoryPoolAllocator
 kNeedFree	json/rapidjson/allocators.h	/^    static const bool kNeedFree = true;$/;"	m	class:CrtAllocator
-kNullFlag	json/rapidjson/document.h	/^        kNullFlag = kNullType,$/;"	e	enum:GenericValue::__anon5
+kNullFlag	json/rapidjson/document.h	/^        kNullFlag = kNullType,$/;"	e	enum:GenericValue::__anon6
 kNullSchemaType	json/rapidjson/schema.h	/^        kNullSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kNullType	json/rapidjson/rapidjson.h	/^    kNullType = 0,      \/\/!< null$/;"	e	enum:Type
-kNumberAnyFlag	json/rapidjson/document.h	/^        kNumberAnyFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag | kUintFlag | kUint64Flag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon5
-kNumberDoubleFlag	json/rapidjson/document.h	/^        kNumberDoubleFlag = kNumberType | kNumberFlag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon5
-kNumberFlag	json/rapidjson/document.h	/^        kNumberFlag     = 0x0010,$/;"	e	enum:GenericValue::__anon5
-kNumberInt64Flag	json/rapidjson/document.h	/^        kNumberInt64Flag = kNumberType | kNumberFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon5
-kNumberIntFlag	json/rapidjson/document.h	/^        kNumberIntFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon5
+kNumberAnyFlag	json/rapidjson/document.h	/^        kNumberAnyFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag | kUintFlag | kUint64Flag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon6
+kNumberDoubleFlag	json/rapidjson/document.h	/^        kNumberDoubleFlag = kNumberType | kNumberFlag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon6
+kNumberFlag	json/rapidjson/document.h	/^        kNumberFlag     = 0x0010,$/;"	e	enum:GenericValue::__anon6
+kNumberInt64Flag	json/rapidjson/document.h	/^        kNumberInt64Flag = kNumberType | kNumberFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon6
+kNumberIntFlag	json/rapidjson/document.h	/^        kNumberIntFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon6
 kNumberSchemaType	json/rapidjson/schema.h	/^        kNumberSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kNumberType	json/rapidjson/rapidjson.h	/^    kNumberType = 6     \/\/!< number$/;"	e	enum:Type
-kNumberUint64Flag	json/rapidjson/document.h	/^        kNumberUint64Flag = kNumberType | kNumberFlag | kUint64Flag,$/;"	e	enum:GenericValue::__anon5
-kNumberUintFlag	json/rapidjson/document.h	/^        kNumberUintFlag = kNumberType | kNumberFlag | kUintFlag | kUint64Flag | kInt64Flag,$/;"	e	enum:GenericValue::__anon5
-kObjectFlag	json/rapidjson/document.h	/^        kObjectFlag = kObjectType,$/;"	e	enum:GenericValue::__anon5
+kNumberUint64Flag	json/rapidjson/document.h	/^        kNumberUint64Flag = kNumberType | kNumberFlag | kUint64Flag,$/;"	e	enum:GenericValue::__anon6
+kNumberUintFlag	json/rapidjson/document.h	/^        kNumberUintFlag = kNumberType | kNumberFlag | kUintFlag | kUint64Flag | kInt64Flag,$/;"	e	enum:GenericValue::__anon6
+kObjectFlag	json/rapidjson/document.h	/^        kObjectFlag = kObjectType,$/;"	e	enum:GenericValue::__anon6
 kObjectSchemaType	json/rapidjson/schema.h	/^        kObjectSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kObjectType	json/rapidjson/rapidjson.h	/^    kObjectType = 3,    \/\/!< object$/;"	e	enum:Type
 kOneOrMore	json/rapidjson/internal/regex.h	/^        kOneOrMore,$/;"	e	enum:internal::GenericRegex::Operator
@@ -2648,26 +2747,26 @@ kRangeCharacterClass	json/rapidjson/internal/regex.h	/^    static const unsigned
 kRangeNegationFlag	json/rapidjson/internal/regex.h	/^    static const unsigned kRangeNegationFlag = 0x80000000;$/;"	m	class:internal::GenericRegex
 kRegexInvalidRange	json/rapidjson/internal/regex.h	/^static const SizeType kRegexInvalidRange = ~SizeType(0);$/;"	m	namespace:internal
 kRegexInvalidState	json/rapidjson/internal/regex.h	/^static const SizeType kRegexInvalidState = ~SizeType(0);  \/\/!< Represents an invalid index in GenericRegex::State::out, out1$/;"	m	namespace:internal
-kShortStringFlag	json/rapidjson/document.h	/^        kShortStringFlag = kStringType | kStringFlag | kCopyFlag | kInlineStrFlag,$/;"	e	enum:GenericValue::__anon5
+kShortStringFlag	json/rapidjson/document.h	/^        kShortStringFlag = kStringType | kStringFlag | kCopyFlag | kInlineStrFlag,$/;"	e	enum:GenericValue::__anon6
 kSignMask	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kSignMask = RAPIDJSON_UINT64_C2(0x80000000, 0x00000000);$/;"	m	class:internal::Double
 kSignificandMask	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kSignificandMask = RAPIDJSON_UINT64_C2(0x000FFFFF, 0xFFFFFFFF);$/;"	m	class:internal::Double
 kSignificandSize	json/rapidjson/internal/ieee754.h	/^    static const int kSignificandSize = 52;$/;"	m	class:internal::Double
-kStringFlag	json/rapidjson/document.h	/^        kStringFlag     = 0x0400,$/;"	e	enum:GenericValue::__anon5
+kStringFlag	json/rapidjson/document.h	/^        kStringFlag     = 0x0400,$/;"	e	enum:GenericValue::__anon6
 kStringSchemaType	json/rapidjson/schema.h	/^        kStringSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kStringType	json/rapidjson/rapidjson.h	/^    kStringType = 5,    \/\/!< string$/;"	e	enum:Type
 kTokenCount	json/rapidjson/reader.h	/^        kTokenCount$/;"	e	enum:GenericReader::Token
 kTotalSchemaType	json/rapidjson/schema.h	/^        kTotalSchemaType$/;"	e	enum:internal::Schema::SchemaValueType
-kTrueFlag	json/rapidjson/document.h	/^        kTrueFlag = kTrueType | kBoolFlag,$/;"	e	enum:GenericValue::__anon5
+kTrueFlag	json/rapidjson/document.h	/^        kTrueFlag = kTrueType | kBoolFlag,$/;"	e	enum:GenericValue::__anon6
 kTrueType	json/rapidjson/rapidjson.h	/^    kTrueType = 2,      \/\/!< true$/;"	e	enum:Type
 kTypeBit	json/rapidjson/internal/biginteger.h	/^    static const size_t kTypeBit = sizeof(Type) * 8;$/;"	m	class:internal::BigInteger
-kTypeMask	json/rapidjson/document.h	/^        kTypeMask = 0x07$/;"	e	enum:GenericValue::__anon5
+kTypeMask	json/rapidjson/document.h	/^        kTypeMask = 0x07$/;"	e	enum:GenericValue::__anon6
 kUTF16BE	json/rapidjson/encodings.h	/^    kUTF16BE = 2,   \/\/!< UTF-16 big endian.$/;"	e	enum:UTFType
 kUTF16LE	json/rapidjson/encodings.h	/^    kUTF16LE = 1,   \/\/!< UTF-16 little endian.$/;"	e	enum:UTFType
 kUTF32BE	json/rapidjson/encodings.h	/^    kUTF32BE = 4    \/\/!< UTF-32 big endian.$/;"	e	enum:UTFType
 kUTF32LE	json/rapidjson/encodings.h	/^    kUTF32LE = 3,   \/\/!< UTF-32 little endian.$/;"	e	enum:UTFType
 kUTF8	json/rapidjson/encodings.h	/^    kUTF8 = 0,      \/\/!< UTF-8.$/;"	e	enum:UTFType
-kUint64Flag	json/rapidjson/document.h	/^        kUint64Flag     = 0x0100,$/;"	e	enum:GenericValue::__anon5
-kUintFlag	json/rapidjson/document.h	/^        kUintFlag       = 0x0040,$/;"	e	enum:GenericValue::__anon5
+kUint64Flag	json/rapidjson/document.h	/^        kUint64Flag     = 0x0100,$/;"	e	enum:GenericValue::__anon6
+kUintFlag	json/rapidjson/document.h	/^        kUintFlag       = 0x0040,$/;"	e	enum:GenericValue::__anon6
 kWriteDefaultFlags	json/rapidjson/writer.h	/^    kWriteDefaultFlags = RAPIDJSON_WRITE_DEFAULT_FLAGS  \/\/!< Default write flags. Can be customized by defining RAPIDJSON_WRITE_DEFAULT_FLAGS$/;"	e	enum:WriteFlag
 kWriteNanAndInfFlag	json/rapidjson/writer.h	/^    kWriteNanAndInfFlag = 2,        \/\/!< Allow writing of Infinity, -Infinity and NaN.$/;"	e	enum:WriteFlag
 kWriteNoFlags	json/rapidjson/writer.h	/^    kWriteNoFlags = 0,              \/\/!< No flags are set.$/;"	e	enum:WriteFlag
@@ -2685,12 +2784,12 @@ length_	json/rapidjson/reader.h	/^        SizeType length_;$/;"	m	class:GenericR
 level_stack_	json/rapidjson/writer.h	/^    internal::Stack<StackAllocator> level_stack_;$/;"	m	class:Writer
 line_expression	logicwalker/logicwalker.y	/^line_expression:$/;"	l
 logicwalker	logicwalker/logicwalker.y	/^logicwalker:$/;"	l
-m_path	socket/unix-tcp.h	/^	string m_path;$/;"	m	class:UnixTcp
 m_path	socket/unix-udp.h	/^	string m_path;$/;"	m	class:UnixUdp
 main	cgicc/test.c++	/^int main(int argc, char **argv)$/;"	f
 main	cgicc/test/test.cpp	/^int main(void)$/;"	f
 main	json/json.cpp	/^int main(void)$/;"	f
 main	test/json.cpp	/^int main(int argc, char **argv)$/;"	f
+main	test/service.cpp	/^int main(void)$/;"	f
 main	test/unix-udp-client.cpp	/^int main(int argc, char **argv)$/;"	f
 main	test/unix-udp-connect.cpp	/^int main(int argc, char **argv)$/;"	f
 main	test/unix-udp-server.cpp	/^int main(void)$/;"	f
@@ -2722,6 +2821,7 @@ next	json/rapidjson/internal/regex.h	/^        SizeType next;$/;"	m	struct:inter
 notValidatorIndex_	json/rapidjson/schema.h	/^    SizeType notValidatorIndex_;$/;"	m	class:internal::Schema
 not_	json/rapidjson/schema.h	/^    const SchemaType* not_;$/;"	m	class:internal::Schema
 nullTag	cgicc/HTMLClasses.h	/^  class nullTag$/;"	c	namespace:cgicc
+nullnode	json/json.h	/^	JsonIterator nullnode;$/;"	m	class:Json
 nullvalue	cgicc/cgi.h	/^	const xstring nullvalue;$/;"	m	class:Cgi
 nullvalue	json/json.h	/^	Value nullvalue;$/;"	m	class:Json
 o	json/rapidjson/document.h	/^        ObjectData o;$/;"	m	union:GenericValue::Data
@@ -2881,6 +2981,7 @@ parseResult_	json/rapidjson/document.h	/^          parseResult_(rhs.parseResult_
 parseResult_	json/rapidjson/document.h	/^    ParseResult parseResult_;$/;"	m	class:GenericDocument
 parseResult_	json/rapidjson/reader.h	/^    ParseResult parseResult_;$/;"	m	class:GenericReader
 parseResult_	json/rapidjson/schema.h	/^    ParseResult parseResult_;$/;"	m	class:SchemaValidatingReader
+parseok	json/json.h	/^	bool parseok;$/;"	m	class:Json
 pattern	json/rapidjson/schema.h	/^        RegexType* pattern;$/;"	m	struct:internal::Schema::PatternProperty
 patternPropertiesSchemaCount	json/rapidjson/schema.h	/^    SizeType patternPropertiesSchemaCount;$/;"	m	struct:internal::SchemaValidationContext
 patternPropertiesSchemas	json/rapidjson/schema.h	/^    const SchemaType** patternPropertiesSchemas;$/;"	m	struct:internal::SchemaValidationContext
@@ -2900,7 +3001,7 @@ putFunc_	json/rapidjson/encodedstream.h	/^    PutFunc putFunc_;$/;"	m	class:Auto
 queryCheckbox	cgicc/Cgicc.cpp	/^cgicc::Cgicc::queryCheckbox(const std::string& elementName) 	const$/;"	f	class:cgicc::Cgicc
 query_iterator	cgicc/cgi.h	/^	typedef map<xstring, xstring>::iterator query_iterator;$/;"	t	class:Cgi
 querymap	cgicc/cgi.h	/^	map<xstring, xstring> querymap;$/;"	m	class:Cgi
-quot	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t quot;$/;"	m	struct:__anon14
+quot	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t quot;$/;"	m	struct:__anon15
 r_	json/rapidjson/reader.h	/^        GenericReader& r_;$/;"	m	struct:GenericReader::ClearStackOnExit
 rangeCount_	json/rapidjson/internal/regex.h	/^    SizeType rangeCount_;$/;"	m	class:internal::GenericRegex
 rangeStart	json/rapidjson/internal/regex.h	/^        SizeType rangeStart;$/;"	m	struct:internal::GenericRegex::State
@@ -2912,7 +3013,7 @@ readEnvironmentVariables	cgicc/CgiEnvironment.cpp	/^cgicc::CgiEnvironment::readE
 readLong	cgicc/CgiUtils.cpp	/^cgicc::readLong(std::istream& in)$/;"	f	class:cgicc
 readString	cgicc/CgiUtils.cpp	/^cgicc::readString(std::istream& in)$/;"	f	class:cgicc
 regex_	json/rapidjson/internal/regex.h	/^    const RegexType& regex_;$/;"	m	class:internal::GenericRegexSearch
-rem	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t rem;$/;"	m	struct:__anon14
+rem	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t rem;$/;"	m	struct:__anon15
 remoteProvider_	json/rapidjson/schema.h	/^    IRemoteSchemaDocumentProviderType* remoteProvider_;$/;"	m	class:GenericSchemaDocument
 remove	cgicc/HTTPCookie.h	/^    remove()$/;"	f	class:cgicc::HTTPCookie
 render	cgicc/HTMLAttribute.cpp	/^cgicc::HTMLAttribute::render(std::ostream& out) 		const$/;"	f	class:cgicc::HTMLAttribute
@@ -2956,6 +3057,7 @@ schemaRef_	json/rapidjson/schema.h	/^    internal::Stack<Allocator> schemaRef_; 
 schemaStack_	json/rapidjson/schema.h	/^    internal::Stack<StateAllocator> schemaStack_;    \/\/!< stack to store the current path of schema (BaseSchemaType *)$/;"	m	class:GenericSchemaValidator
 schemas	json/rapidjson/schema.h	/^        const SchemaType** schemas;$/;"	m	struct:internal::Schema::SchemaArray
 sd_	json/rapidjson/schema.h	/^    const SchemaDocumentType& sd_;$/;"	m	class:SchemaValidatingReader
+server	service/service.h	/^	UnixUdp server;$/;"	m	class:Service
 set	cgicc/HTMLAttributeList.cpp	/^cgicc::HTMLAttributeList::set(const std::string& name)$/;"	f	class:cgicc::HTMLAttributeList
 set	cgicc/HTMLAttributeList.cpp	/^cgicc::HTMLAttributeList::set(const std::string& name, $/;"	f	class:cgicc::HTMLAttributeList
 set	cgicc/HTMLAttributeList.h	/^  set(const std::string& name)$/;"	f	namespace:cgicc
@@ -2985,7 +3087,6 @@ size	json/rapidjson/allocators.h	/^        size_t size;        \/\/!< Current si
 size	json/rapidjson/document.h	/^        SizeType size;$/;"	m	struct:GenericValue::ArrayData
 size	json/rapidjson/document.h	/^        SizeType size;$/;"	m	struct:GenericValue::ObjectData
 size_	json/rapidjson/memorystream.h	/^    size_t size_;       \/\/!< Size of the stream.$/;"	m	struct:MemoryStream
-sock	socket/unix-tcp.h	/^	int sock;$/;"	m	class:UnixTcp
 sock	socket/unix-udp.h	/^	int sock;$/;"	m	class:UnixUdp
 socket	socket/tcpclient.h	/^	int socket;$/;"	m	class:TcpClient
 socket	socket/tcpserver.h	/^	int socket;$/;"	m	class:TcpServer
@@ -3024,13 +3125,15 @@ stream_	json/rapidjson/ostreamwrapper.h	/^    StreamType& stream_;$/;"	m	class:B
 stringsAreEqual	cgicc/CgiUtils.cpp	/^cgicc::stringsAreEqual(const std::string& s1, $/;"	f	class:cgicc
 strtoimax	json/rapidjson/msinttypes/inttypes.h	307;"	d
 strtoumax	json/rapidjson/msinttypes/inttypes.h	308;"	d
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 0 };$/;"	e	enum:ASCII::__anon12
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:AutoUTF::__anon13
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF16::__anon10
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF32::__anon11
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF8::__anon9
+sudovar	logicwalker/cache.h	/^	Variable sudovar;$/;"	m	class:Cache
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 0 };$/;"	e	enum:ASCII::__anon13
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:AutoUTF::__anon14
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF16::__anon11
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF32::__anon12
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF8::__anon10
 swapState	cgicc/HTMLBooleanElement.h	/^    swapState() 					const$/;"	f	class:cgicc::HTMLBooleanElement
 swapState	cgicc/HTMLElement.h	/^    swapState() 				const$/;"	f	class:cgicc::HTMLElement
+t	logicwalker/parser.h	/^		char t[128];$/;"	m	struct:YYSTYPE::__anon1
 takeFunc_	json/rapidjson/encodedstream.h	/^    TakeFunc takeFunc_;$/;"	m	class:AutoUTFInputStream
 target	json/rapidjson/schema.h	/^        PointerType target;$/;"	m	struct:GenericSchemaDocument::SchemaRefEntry
 tcp_accept	socket/tcp-socket.c	/^int tcp_accept(int socket)$/;"	f
@@ -3072,7 +3175,7 @@ u	json/rapidjson/schema.h	/^        }u;$/;"	m	struct:internal::Hasher::Number	ty
 u32toa	json/rapidjson/internal/itoa.h	/^inline char* u32toa(uint32_t value, char* buffer) {$/;"	f	namespace:internal
 u64	json/rapidjson/document.h	/^        uint64_t u64;$/;"	m	union:GenericValue::Number
 u64toa	json/rapidjson/internal/itoa.h	/^inline char* u64toa(uint64_t value, char* buffer) {$/;"	f	namespace:internal
-u_	json/rapidjson/internal/ieee754.h	/^        uint64_t u_;$/;"	m	union:internal::Double::__anon7
+u_	json/rapidjson/internal/ieee754.h	/^        uint64_t u_;$/;"	m	union:internal::Double::__anon8
 uint16_t	json/rapidjson/msinttypes/stdint.h	/^   typedef unsigned __int16  uint16_t;$/;"	t
 uint16_t	json/rapidjson/msinttypes/stdint.h	/^   typedef unsigned short    uint16_t;$/;"	t
 uint32_t	json/rapidjson/msinttypes/stdint.h	/^   typedef unsigned __int32  uint32_t;$/;"	t
@@ -3095,13 +3198,14 @@ uniqueItems_	json/rapidjson/schema.h	/^    bool uniqueItems_;$/;"	m	class:intern
 update	logicwalker/variable.h	/^	time_t update;$/;"	m	class:Variable
 userBuffer_	json/rapidjson/allocators.h	/^    void *userBuffer_;          \/\/!< User supplied buffer.$/;"	m	class:MemoryPoolAllocator
 usingHTTPS	cgicc/CgiEnvironment.h	/^    usingHTTPS() 				const$/;"	f	class:cgicc::CgiEnvironment
+v	logicwalker/parser.h	/^		double v;$/;"	m	struct:YYSTYPE::__anon1
 valid_	json/rapidjson/pointer.h	/^        bool valid_;        \/\/!< Whether the parsing is valid.$/;"	m	class:GenericPointer::PercentDecodeStream
 valid_	json/rapidjson/schema.h	/^    bool valid_;$/;"	m	class:GenericSchemaValidator
 validatorCount	json/rapidjson/schema.h	/^    SizeType validatorCount;$/;"	m	struct:internal::SchemaValidationContext
 validatorCount_	json/rapidjson/schema.h	/^    SizeType validatorCount_;$/;"	m	class:internal::Schema
 validators	json/rapidjson/schema.h	/^    ISchemaValidator** validators;$/;"	m	struct:internal::SchemaValidationContext
 value	json/rapidjson/document.h	/^    GenericValue<Encoding, Allocator> value;    \/\/!< value of member.$/;"	m	struct:GenericMember
-value	json/rapidjson/rapidjson.h	/^template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };$/;"	e	enum:STATIC_ASSERTION_FAILURE::__anon1
+value	json/rapidjson/rapidjson.h	/^template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };$/;"	e	enum:STATIC_ASSERTION_FAILURE::__anon2
 value	logicwalker/token.h	/^	double value;$/;"	m	class:Token
 value	logicwalker/variable.h	/^	double value;$/;"	m	class:Variable
 valueCount	json/rapidjson/writer.h	/^        size_t valueCount;  \/\/!< number of values in this level$/;"	m	struct:Writer::Level
@@ -3131,6 +3235,31 @@ xstring	cgicc/xstring.h	/^	xstring(const string& s){ (*this) = s; }$/;"	f	class:
 xstring	cgicc/xstring.h	/^	xstring(void){}$/;"	f	class:xstring
 xstring	cgicc/xstring.h	/^class xstring : public std::string$/;"	c
 xtoint	cgicc/xstring.h	/^	const int xtoint(void) const$/;"	f	class:xstring
+yyHEADER_H	logicwalker/lexer.h	2;"	d
+yyIN_HEADER	logicwalker/lexer.h	331;"	d
+yyIN_HEADER	logicwalker/lexer.h	3;"	d
+yy_at_bol	logicwalker/lexer.h	/^	int yy_at_bol;$/;"	m	struct:yy_buffer_state
+yy_bs_column	logicwalker/lexer.h	/^    int yy_bs_column; \/**< The column count. *\/$/;"	m	struct:yy_buffer_state
+yy_bs_lineno	logicwalker/lexer.h	/^    int yy_bs_lineno; \/**< The line count. *\/$/;"	m	struct:yy_buffer_state
+yy_buf_pos	logicwalker/lexer.h	/^	char *yy_buf_pos;		\/* current position in input buffer *\/$/;"	m	struct:yy_buffer_state
+yy_buf_size	logicwalker/lexer.h	/^	yy_size_t yy_buf_size;$/;"	m	struct:yy_buffer_state
+yy_buffer_state	logicwalker/lexer.h	/^struct yy_buffer_state$/;"	s
+yy_buffer_status	logicwalker/lexer.h	/^	int yy_buffer_status;$/;"	m	struct:yy_buffer_state
+yy_ch_buf	logicwalker/lexer.h	/^	char *yy_ch_buf;		\/* input buffer *\/$/;"	m	struct:yy_buffer_state
+yy_fill_buffer	logicwalker/lexer.h	/^	int yy_fill_buffer;$/;"	m	struct:yy_buffer_state
+yy_input_file	logicwalker/lexer.h	/^	FILE *yy_input_file;$/;"	m	struct:yy_buffer_state
+yy_is_interactive	logicwalker/lexer.h	/^	int yy_is_interactive;$/;"	m	struct:yy_buffer_state
+yy_is_our_buffer	logicwalker/lexer.h	/^	int yy_is_our_buffer;$/;"	m	struct:yy_buffer_state
+yy_n_chars	logicwalker/lexer.h	/^	int yy_n_chars;$/;"	m	struct:yy_buffer_state
+yy_new_buffer	logicwalker/lexer.h	318;"	d
+yy_set_bol	logicwalker/lexer.h	317;"	d
+yy_set_interactive	logicwalker/lexer.h	319;"	d
+yy_size_t	logicwalker/lexer.h	/^typedef size_t yy_size_t;$/;"	t
+yyconst	logicwalker/lexer.h	111;"	d
+yyconst	logicwalker/lexer.h	113;"	d
+yystype	logicwalker/parser.h	102;"	d
+yytext_ptr	logicwalker/lexer.h	215;"	d
+yytokentype	logicwalker/parser.h	/^   enum yytokentype {$/;"	g
 ~CgiEnvironment	cgicc/CgiEnvironment.cpp	/^cgicc::CgiEnvironment::~CgiEnvironment()$/;"	f	class:cgicc::CgiEnvironment
 ~CgiInput	cgicc/CgiInput.cpp	/^cgicc::CgiInput::~CgiInput()$/;"	f	class:cgicc::CgiInput
 ~Cgicc	cgicc/Cgicc.cpp	/^cgicc::Cgicc::~Cgicc()$/;"	f	class:cgicc::Cgicc
@@ -3178,7 +3307,6 @@ xtoint	cgicc/xstring.h	/^	const int xtoint(void) const$/;"	f	class:xstring
 ~SchemaValidationContext	json/rapidjson/schema.h	/^    ~SchemaValidationContext() {$/;"	f	struct:internal::SchemaValidationContext
 ~Stack	json/rapidjson/internal/stack.h	/^    ~Stack() {$/;"	f	class:internal::Stack
 ~StreamLocalCopy	json/rapidjson/reader.h	/^    ~StreamLocalCopy() { original_ = s; }$/;"	f	class:internal::StreamLocalCopy
-~UnixTcp	socket/unix-tcp.cpp	/^UnixTcp::~UnixTcp(void)$/;"	f	class:UnixTcp
 ~UnixUdp	socket/unix-udp.cpp	/^UnixUdp::~UnixUdp(void)$/;"	f	class:UnixUdp
 ~XHTMLDoctype	cgicc/XHTMLDoctype.cpp	/^cgicc::XHTMLDoctype::~XHTMLDoctype() {}$/;"	f	class:cgicc::XHTMLDoctype
 ~XMLDeclaration	cgicc/XMLDeclaration.h	/^	 virtual ~XMLDeclaration(){};$/;"	f	class:cgicc::XMLDeclaration
