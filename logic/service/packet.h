@@ -1,29 +1,41 @@
 #ifndef __PACKET_H__
 #define __PACKET_H__
 
-/*---[type][double][name]---*/
+/*
+ *[type][cmd][auto][double][name]
+ */
 
 typedef enum
 {
-	CmdSetValue=0,
-	CmdGetValue=1,
-}CmdType;
+	CmdValueSet  = 0,
+	CmdValueGet  = 1,
+	CmdBasicRun  = 2,
+	CmdBasicLoad = 3,
+	CmdBasicDebug= 4,
+}CmdEnumDef;
 
 typedef enum
 {
-	TypeIndex=0,
-	ValueIndex0 = 1,
-	ValueIndex1 = 2,
-	ValueIndex2 = 3,
-	ValueIndex3 = 4,
-	ValueIndex4 = 5,
-	ValueIndex5 = 6,
-	ValueIndex6 = 7,
-	ValueIndex7 = 8,
-	LengthIndex = 9,
-	NameIndex	= 10,
+	Auto   = 0,
+	Manual = 1,
+}AutoEnumDef;
+
+typedef enum
+{
+	TypeIndex   = 0,
+	AutoIndex   = 1,
+	ValueIndex0 = 2,
+	ValueIndex1 = 3,
+	ValueIndex2 = 4,
+	ValueIndex3 = 5,
+	ValueIndex4 = 6,
+	ValueIndex5 = 7,
+	ValueIndex6 = 8,
+	ValueIndex7 = 9,
+	LengthIndex = 10,
+	NameIndex	= 11,
 	MaxIndex	= 127,
-}IndexType;
+}IndexEnumDef;
 
 class Packet
 {
@@ -34,17 +46,19 @@ public:
 	Packet(void);
 
 public:
-	unsigned char*  data(void);
-	unsigned int    size(void);
+	unsigned char* data(void);
+	unsigned int   size(void);
 
 public:
-	unsigned char	type(void);
-	const double	value(void);
-	unsigned int	length(void);
-	const char*		name(void);
+	unsigned char type(void);
+	unsigned char autx(void);
+	const double  value(void);
+	unsigned int  length(void);
+	const char*	  name(void);
 
 public:
 	void type(unsigned char t);
+	void autx(unsigned char a);
 	void value(const double &v);
 	bool name(const char *buf);
 };

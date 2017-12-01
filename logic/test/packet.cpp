@@ -5,10 +5,13 @@ int main(void)
 {
 	Packet packet;
 
-	packet.type(CmdGetValue);
+	packet.type(CmdValueGet);
+	packet.autx(Manual);
 	packet.value(3.14159);
 	packet.name("pi");
+
 	printf("type=%d\n", packet.type());
+	printf("audo=%d\n", packet.autx());
 	printf("value=%f\n", packet.value());
 	printf("name=%s\n", packet.name());
 

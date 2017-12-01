@@ -1,12 +1,14 @@
 ARCH := /usr/bin/
+ARCH := arm-linux-
 CC := $(ARCH)g++
 STRIP := $(ARCH)strip
 CFLAGS := -Iservice -Isocket -Ijson -Ijson/rapidjson -Icgicc
+CFLAGS += -Ibasic
 SRC := $(wildcard socket/*.c)
 CPP := $(wildcard json/*.cpp)
 CPP += $(wildcard socket/*.cpp)
 CPP += $(wildcard service/*.cpp)
-CPP += $(wildcard logicwalker/*.cpp)
+CPP += $(wildcard basic/*.cpp)
 OBJ := $(patsubst %.c, %.o, $(SRC))
 OBJ += $(patsubst %.cpp, %.o, $(CPP))
 TARGETS := bin/unix-udp-client.exe 
@@ -14,12 +16,16 @@ TARGETS += bin/unix-udp-server.exe
 TARGETS += bin/unix-udp-connect.exe
 TARGETS += bin/service.exe
 TARGETS += bin/json.exe
+TARGETS += bin/packet.exe
+TARGETS += bin/basic.exe
 
 target: $(TARGETS)
 	@$(STRIP) $(TARGETS)
 	@ls -lhs $(TARGETS)
 
-packet.exe: $(OBJ) test/packet.o
+bin/basic.exe: $(OBJ) test/basic.o
+	@$(CC) $+ -o $@
+bin/packet.exe: $(OBJ) test/packet.o
 	@$(CC) $+ -o $@
 bin/service.exe: $(OBJ) test/service.o
 	@$(CC)  $+ -o $@

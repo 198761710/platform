@@ -17,6 +17,10 @@ unsigned char Packet::type(void)
 {
 	return buffer[TypeIndex];
 }
+unsigned char Packet::autx(void)
+{
+	return buffer[AutoIndex];
+}
 const double Packet::value(void)
 {
 	union{
@@ -68,6 +72,10 @@ const char* Packet::name(void)
 void Packet::type(unsigned char t)
 {
 	buffer[TypeIndex] = t;
+}
+void Packet::autx(unsigned char a)
+{
+	buffer[AutoIndex] = a;
 }
 void Packet::value(const double &v)
 {
@@ -124,4 +132,3 @@ bool Packet::name(const char *buf)
 	memcpy(buffer+NameIndex, buf, len);
 	return true;
 }
-
