@@ -7,12 +7,12 @@ int main(void)
 
 	packet.type(CmdValueGet);
 	packet.autx(Manual);
-	packet.value(3.14159);
+	packet.dvalue(3.14159);
 	packet.name("pi");
 
 	printf("type=%d\n", packet.type());
 	printf("audo=%d\n", packet.autx());
-	printf("value=%f\n", packet.value());
+	printf("value=%f\n", packet.dvalue());
 	printf("name=%s\n", packet.name());
 
 	for(int i = 0; i< NameIndex+3; i++)

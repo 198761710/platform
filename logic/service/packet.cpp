@@ -21,7 +21,7 @@ unsigned char Packet::autx(void)
 {
 	return buffer[AutoIndex];
 }
-const double Packet::value(void)
+const double Packet::dvalue(void)
 {
 	union{
 		unsigned short s;
@@ -59,6 +59,36 @@ const double Packet::value(void)
 
 	return value.db;
 }
+unsigned int Packet::uvalue(void)
+{
+	union{
+		unsigned short s;
+		unsigned char c[2];
+	}endian;
+	union{
+		unsigned int  u;
+		unsigned char c[sizeof(double)];
+	}value;
+
+	endian.s = 0xaabb;
+
+	if( 0xaa == endian.c[0] )
+	{
+		value.c[ 0 ] = buffer[ ValueIndex0 ];
+		value.c[ 1 ] = buffer[ ValueIndex1 ];
+		value.c[ 2 ] = buffer[ ValueIndex2 ];
+		value.c[ 3 ] = buffer[ ValueIndex3 ];
+	}
+	else
+	{
+		value.c[ 3 ] = buffer[ ValueIndex0 ];
+		value.c[ 2 ] = buffer[ ValueIndex1 ];
+		value.c[ 1 ] = buffer[ ValueIndex2 ];
+		value.c[ 0 ] = buffer[ ValueIndex3 ];
+	}
+
+	return value.u;
+}
 unsigned int Packet::length(void)
 {
 	return (unsigned int)buffer[LengthIndex];
@@ -77,7 +107,7 @@ void Packet::autx(unsigned char a)
 {
 	buffer[AutoIndex] = a;
 }
-void Packet::value(const double &v)
+void Packet::dvalue(const double &v)
 {
 	union{
 		unsigned short s;
@@ -111,6 +141,34 @@ void Packet::value(const double &v)
 		buffer[ ValueIndex5 ] = value.c[ 2 ];
 		buffer[ ValueIndex6 ] = value.c[ 1 ];
 		buffer[ ValueIndex7 ] = value.c[ 0 ];
+	}
+}
+void Packet::uvalue(unsigned int v)
+{
+	union{
+		unsigned short s;
+		unsigned char c[2];
+	}endian;
+	union{
+		unsigned int u;
+		unsigned char c[sizeof(double)];
+	}value;
+
+	value.u = v;
+	endian.s = 0xaabb;	
+	if( 0xaa == endian.c[0] )
+	{
+		buffer[ ValueIndex0 ] = value.c[ 0 ];
+		buffer[ ValueIndex1 ] = value.c[ 1 ];
+		buffer[ ValueIndex2 ] = value.c[ 2 ];
+		buffer[ ValueIndex3 ] = value.c[ 3 ];
+	}
+	else
+	{
+		buffer[ ValueIndex0 ] = value.c[ 3 ];
+		buffer[ ValueIndex1 ] = value.c[ 2 ];
+		buffer[ ValueIndex2 ] = value.c[ 1 ];
+		buffer[ ValueIndex3 ] = value.c[ 0 ];
 	}
 }
 bool Packet::name(const char *buf)

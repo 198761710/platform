@@ -17,6 +17,16 @@ void Service::Run(void)
 		ProcPacket(packet);
 	}
 }
+void Service::RunBasic(void)
+{
+	for(map<string,Basic>::iterator i = basicmap.begin(); i != basicmap.end(); i++)
+	{
+		if( i->second.run() )
+		{
+			i->second.execute();
+		}
+	}
+}
 bool Service::StartServer(const string& path)
 {
 	if( server.Open() == false )
@@ -76,18 +86,57 @@ bool Service::GetValue(Packet& packet)
 {
 	string name = packet.name();
 	Variable &v = GlobalVariable.GetVariable( name );
-	packet.value( v.GetValue() );
+	packet.dvalue( v.GetValue() );
 	return server.SendTo(peer, (char*)packet.data(), packet.size());
 }
 bool Service::BasicRun(Packet& packet)
 {
+	string name = packet.name();
+	map<string,Basic>::iterator i;
+	
+	if( name.empty() )
+	{
+		return false;
+	}
+	i = basicmap.find(name);
+	if(basicmap.end() == i )
+	{
+		return false;
+	}
+	i->second.run( packet.uvalue() );
 	return true;
 }
 bool Service::BasicLoad(Packet& packet)
 {
-	return true;
+	string name = packet.name();
+	map<string,Basic>::iterator i;
+	
+	if( name.empty() )
+	{
+		return false;
+	}
+	i = basicmap.find(name);
+	if(basicmap.end() == i )
+	{
+		return false;
+	}
+	i->second.name( packet.name() );
+	return i->second.load();
 }
 bool Service::BasicDebug(Packet& packet)
 {
+	string name = packet.name();
+	map<string,Basic>::iterator i;
+	
+	if( name.empty() )
+	{
+		return false;
+	}
+	i = basicmap.find(name);
+	if(basicmap.end() == i )
+	{
+		return false;
+	}
+	i->second.debug( packet.uvalue() );
 	return true;
 }

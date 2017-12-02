@@ -52,14 +52,16 @@ public:
 public:
 	unsigned char type(void);
 	unsigned char autx(void);
-	const double  value(void);
+	const double  dvalue(void);
+	unsigned int  uvalue(void);
 	unsigned int  length(void);
 	const char*	  name(void);
 
 public:
 	void type(unsigned char t);
 	void autx(unsigned char a);
-	void value(const double &v);
+	void dvalue(const double &v);
+	void uvalue(unsigned int v);
 	bool name(const char *buf);
 };
 
