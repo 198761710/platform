@@ -2,41 +2,77 @@ ARCH := /usr/bin/
 ARCH := arm-linux-
 CC := $(ARCH)g++
 STRIP := $(ARCH)strip
-CFLAGS := -Iservice -Isocket -Ijson -Ijson/rapidjson -Icgicc
+CFLAGS := -Ijson
+CFLAGS += -Icgicc
 CFLAGS += -Ibasic
-SRC := $(wildcard socket/*.c)
-CPP := $(wildcard json/*.cpp)
-CPP += $(wildcard socket/*.cpp)
-CPP += $(wildcard service/*.cpp)
-CPP += $(wildcard basic/*.cpp)
-OBJ := $(patsubst %.c, %.o, $(SRC))
-OBJ += $(patsubst %.cpp, %.o, $(CPP))
-TARGETS := bin/unix-udp-client.exe 
-TARGETS += bin/unix-udp-server.exe
-TARGETS += bin/unix-udp-connect.exe
-TARGETS += bin/service.exe
-TARGETS += bin/json.exe
-TARGETS += bin/packet.exe
-TARGETS += bin/basic.exe
+CFLAGS += -Isocket
+CFLAGS += -Iservice 
+CFLAGS += -Ijson/rapidjson
 
-target: $(TARGETS)
-	@$(STRIP) $(TARGETS)
-	@ls -lhs $(TARGETS)
+JSON_CPP    := $(wildcard json/*.cpp)
+CGICC_CPP   := $(wildcard cgicc/*.cpp)
+BASIC_CPP   := $(wildcard basic/*.cpp)
+SOCKET_SRC  := $(wildcard socket/*.c)
+SOCKET_CPP  := $(wildcard socket/*.cpp)
+SERVICE_CPP := $(wildcard service/*.cpp)
 
-bin/basic.exe: $(OBJ) test/basic.o
+JSON_OBJ	:= $(patsubst %.cpp, %.o, $(JSON_CPP))
+CGICC_OBJ	:= $(patsubst %.cpp, %.o, $(CGICC_CPP))
+BASIC_OBJ   := $(patsubst %.cpp, %.o, $(BASIC_CPP))
+SOCKET_OBJ  := $(patsubst %.c  , %.o, $(SOCKET_SRC))
+SOCKET_OBJ  += $(patsubst %.cpp, %.o, $(SOCKET_CPP))
+SERVICE_OBJ := $(patsubst %.cpp, %.o, $(SERVICE_CPP))
+
+OBJ := $(JSON_OBJ)
+OBJ += $(CGICC_OBJ)
+OBJ += $(BASIC_OBJ)
+OBJ += $(SOCKET_OBJ)
+OBJ += $(SERVICE_OBJ)
+
+lTARGETS := service/service.a
+lTARGETS += json/json.a
+lTARGETS += cgicc/cgicc.a
+lTARGETS += basic/basic.a
+lTARGETS += socket/socket.a
+
+xTARGETS := bin/unix-udp-client.exe 
+xTARGETS += bin/unix-udp-server.exe
+xTARGETS += bin/unix-udp-connect.exe
+xTARGETS += bin/service.exe
+xTARGETS += bin/json.exe
+xTARGETS += bin/packet.exe
+xTARGETS += bin/basic.exe
+
+target:  $(xTARGETS)
+	@$(STRIP) $+
+	@ls -shv $(xTARGETS)
+
+bin/basic.exe: test/basic.o $(lTARGETS)
+	@$(CC) $+ -o $@ 
+bin/packet.exe: test/packet.o $(lTARGETS)
+	@$(CC) $+ -o $@ 
+bin/service.exe: test/service.o $(lTARGETS)
+	$(CC) $+ -o $@ 
+bin/unix-udp-client.exe: test/unix-udp-client.o $(lTARGETS)
+	@$(CC) $+ -o $@ 
+bin/unix-udp-connect.exe: test/unix-udp-connect.o $(lTARGETS)
+	@$(CC) $+ -o $@ 
+bin/unix-udp-server.exe: test/unix-udp-server.o $(lTARGETS)
 	@$(CC) $+ -o $@
-bin/packet.exe: $(OBJ) test/packet.o
+bin/json.exe: test/json.o $(lTARGETS)
 	@$(CC) $+ -o $@
-bin/service.exe: $(OBJ) test/service.o
-	@$(CC)  $+ -o $@
-bin/unix-udp-client.exe: $(OBJ) test/unix-udp-client.o
-	@$(CC)  $+ -o $@
-bin/unix-udp-connect.exe: $(OBJ) test/unix-udp-connect.o
-	@$(CC)  $+ -o $@
-bin/unix-udp-server.exe: $(OBJ) test/unix-udp-server.o
-	@$(CC)  $+ -o $@
-bin/json.exe: $(OBJ) test/json.o
-	@$(CC) $+ -o $@
+
+json/json.a: $(JSON_OBJ)
+	@$(AR) -rc $@ $+
+cgicc/cgicc.a: $(CGICC_OBJ)
+	@$(AR) -rc $@ $+
+basic/basic.a: $(BASIC_OBJ)
+	@$(AR) -rc $@ $+
+socket/socket.a: $(SOCKET_OBJ)
+	@$(AR) -rc $@ $+
+service/service.a: $(SERVICE_OBJ)
+	@$(AR) -rc $@ $+
+
 .c.o:
 	@echo $(CC) $*.c -o $*.o
 	@$(CC) $(CFLAGS) $*.c -c -o $*.o
