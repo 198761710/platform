@@ -9,9 +9,11 @@ typedef enum
 {
 	CmdValueSet  = 0,
 	CmdValueGet  = 1,
-	CmdBasicRun  = 2,
-	CmdBasicLoad = 3,
-	CmdBasicDebug= 4,
+	CmdSetBasicRun  = 2,
+	CmdSetBasicLoad = 3,
+	CmdSetBasicDebug= 4,
+	CmdGetBasicRun  = 5,
+	CmdGetBasicDebug= 6,
 }CmdEnumDef;
 
 typedef enum

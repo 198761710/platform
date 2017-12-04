@@ -54,15 +54,22 @@ bool Service::ProcPacket(Packet& packet)
 	case CmdValueGet:
 		GetValue(packet);
 		break;
-	case CmdBasicRun:
-		BasicRun(packet);
+	case CmdSetBasicRun:
+		SetBasicRun(packet);
 		break;
-	case CmdBasicLoad:
-		BasicLoad(packet);
+	case CmdSetBasicLoad:
+		SetBasicLoad(packet);
 		break;
-	case CmdBasicDebug:
-		BasicDebug(packet);
+	case CmdSetBasicDebug:
+		SetBasicDebug(packet);
 		break;
+	case CmdGetBasicRun:
+		GetBasicRun(packet);
+		break;
+	case CmdGetBasicDebug:
+		GetBasicDebug(packet);
+		break;
+
 	}
 }
 bool Service::SetValue(Packet& packet)
@@ -89,7 +96,7 @@ bool Service::GetValue(Packet& packet)
 	packet.dvalue( v.GetValue() );
 	return server.SendTo(peer, (char*)packet.data(), packet.size());
 }
-bool Service::BasicRun(Packet& packet)
+bool Service::SetBasicRun(Packet& packet)
 {
 	string name = packet.name();
 	map<string,Basic>::iterator i;
@@ -106,7 +113,7 @@ bool Service::BasicRun(Packet& packet)
 	i->second.run( packet.uvalue() );
 	return true;
 }
-bool Service::BasicLoad(Packet& packet)
+bool Service::SetBasicLoad(Packet& packet)
 {
 	string name = packet.name();
 	map<string,Basic>::iterator i;
@@ -123,7 +130,7 @@ bool Service::BasicLoad(Packet& packet)
 	i->second.name( packet.name() );
 	return i->second.load();
 }
-bool Service::BasicDebug(Packet& packet)
+bool Service::SetBasicDebug(Packet& packet)
 {
 	string name = packet.name();
 	map<string,Basic>::iterator i;
@@ -139,4 +146,38 @@ bool Service::BasicDebug(Packet& packet)
 	}
 	i->second.debug( packet.uvalue() );
 	return true;
+}
+bool Service::GetBasicRun(Packet& packet)
+{
+	string name = packet.name();
+	map<string,Basic>::iterator i;
+	
+	if( name.empty() )
+	{
+		return false;
+	}
+	i = basicmap.find(name);
+	if(basicmap.end() == i )
+	{
+		return false;
+	}
+	packet.uvalue( i->second.run() );
+	return server.SendTo(peer, (char*)packet.data(), packet.length());
+}
+bool Service::GetBasicDebug(Packet& packet)
+{
+	string name = packet.name();
+	map<string,Basic>::iterator i;
+	
+	if( name.empty() )
+	{
+		return false;
+	}
+	i = basicmap.find(name);
+	if(basicmap.end() == i )
+	{
+		return false;
+	}
+	packet.uvalue( i->second.debug() );
+	return server.SendTo(peer, (char*)packet.data(), packet.length());
 }

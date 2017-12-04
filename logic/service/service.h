@@ -24,9 +24,12 @@ public:
 	bool ProcPacket(Packet& packet);
 	bool SetValue(Packet& packet);
 	bool GetValue(Packet& packet);
-	bool BasicRun(Packet& packet);
-	bool BasicLoad(Packet& packet);
-	bool BasicDebug(Packet& packet);
+	bool SetBasicRun(Packet& packet);
+	bool SetBasicLoad(Packet& packet);
+	bool SetBasicDebug(Packet& packet);
+	bool GetBasicRun(Packet& packet);
+	bool GetBasicLoad(Packet& packet);
+	bool GetBasicDebug(Packet& packet);
 };
 
 #endif//__SERVICE_H__

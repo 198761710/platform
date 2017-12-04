@@ -11,6 +11,7 @@ AND	basic/parser.h	/^     AND = 274,$/;"	e	enum:yytokentype
 ARCH	basic/makefile	/^ARCH:=\/usr\/bin\/$/;"	m
 ARCH	basic/makefile	/^ARCH:=arm-linux-$/;"	m
 ARCH	makefile	/^ARCH := \/usr\/bin\/$/;"	m
+ARCH	makefile	/^ARCH := arm-linux-$/;"	m
 ARCH	socket/makefile	/^ARCH:=\/usr\/bin\/$/;"	m
 ASCII	json/rapidjson/encodings.h	/^struct ASCII {$/;"	s
 ATOMIC_ELEMENT	cgicc/HTMLClasses.h	60;"	d
@@ -94,13 +95,10 @@ BaseType	json/rapidjson/document.h	/^    typedef std::iterator<std::random_acces
 Basic	basic/basic.cpp	/^Basic::Basic(void):m_run(0),m_debug(0)$/;"	f	class:Basic
 Basic	basic/basic.h	/^class Basic$/;"	c
 BasicCC	basic/basiccc.h	/^class BasicCC$/;"	c
-BasicDebug	service/service.cpp	/^bool Service::BasicDebug(Packet& packet)$/;"	f	class:Service
 BasicIStreamWrapper	json/rapidjson/istreamwrapper.h	/^    BasicIStreamWrapper(StreamType& stream) : stream_(stream), count_(), peekBuffer_() {}$/;"	f	class:BasicIStreamWrapper
 BasicIStreamWrapper	json/rapidjson/istreamwrapper.h	/^class BasicIStreamWrapper {$/;"	c
-BasicLoad	service/service.cpp	/^bool Service::BasicLoad(Packet& packet)$/;"	f	class:Service
 BasicOStreamWrapper	json/rapidjson/ostreamwrapper.h	/^    BasicOStreamWrapper(StreamType& stream) : stream_(stream) {}$/;"	f	class:BasicOStreamWrapper
 BasicOStreamWrapper	json/rapidjson/ostreamwrapper.h	/^class BasicOStreamWrapper {$/;"	c
-BasicRun	service/service.cpp	/^bool Service::BasicRun(Packet& packet)$/;"	f	class:Service
 Begin	basic/example.bas	/^Begin:$/;"	l
 Begin	json/rapidjson/document.h	/^    ConstValueIterator Begin() const$/;"	f	class:GenericValue
 Begin	json/rapidjson/document.h	/^    ValueIterator Begin() const$/;"	f	class:GenericArray
@@ -229,10 +227,13 @@ ClearStackOnExit	json/rapidjson/reader.h	/^    struct ClearStackOnExit {$/;"	s	c
 CloneTopOperand	json/rapidjson/internal/regex.h	/^    void CloneTopOperand(Stack<Allocator>& operandStack) {$/;"	f	class:internal::GenericRegex
 Close	socket/tcpclient.cpp	/^bool TcpClient::Close(void)$/;"	f	class:TcpClient
 Close	socket/unix-udp.cpp	/^bool UnixUdp::Close(void)$/;"	f	class:UnixUdp
-CmdBasicDebug	service/packet.h	/^	CmdBasicDebug= 4,$/;"	e	enum:__anon17
-CmdBasicLoad	service/packet.h	/^	CmdBasicLoad = 3,$/;"	e	enum:__anon17
-CmdBasicRun	service/packet.h	/^	CmdBasicRun  = 2,$/;"	e	enum:__anon17
 CmdEnumDef	service/packet.h	/^}CmdEnumDef;$/;"	t	typeref:enum:__anon17
+CmdGetBasicDebug	service/packet.h	/^	CmdGetBasicDebug= 7,$/;"	e	enum:__anon17
+CmdGetBasicLoad	service/packet.h	/^	CmdGetBasicLoad = 6,$/;"	e	enum:__anon17
+CmdGetBasicRun	service/packet.h	/^	CmdGetBasicRun  = 5,$/;"	e	enum:__anon17
+CmdSetBasicDebug	service/packet.h	/^	CmdSetBasicDebug= 4,$/;"	e	enum:__anon17
+CmdSetBasicLoad	service/packet.h	/^	CmdSetBasicLoad = 3,$/;"	e	enum:__anon17
+CmdSetBasicRun	service/packet.h	/^	CmdSetBasicRun  = 2,$/;"	e	enum:__anon17
 CmdValueGet	service/packet.h	/^	CmdValueGet  = 1,$/;"	e	enum:__anon17
 CmdValueSet	service/packet.h	/^	CmdValueSet  = 0,$/;"	e	enum:__anon17
 Code	json/rapidjson/error/error.h	/^    ParseErrorCode Code() const { return code_; }$/;"	f	struct:ParseResult
@@ -594,6 +595,8 @@ GetAllocator	json/rapidjson/internal/stack.h	/^    Allocator& GetAllocator() {$/
 GetAllocator	json/rapidjson/pointer.h	/^    Allocator& GetAllocator() { return *allocator_; }$/;"	f	class:GenericPointer
 GetArray	json/rapidjson/document.h	/^    Array GetArray()$/;"	f	class:GenericValue
 GetArray	json/rapidjson/document.h	/^    ConstArray GetArray() const$/;"	f	class:GenericValue
+GetBasicDebug	service/service.cpp	/^bool Service::GetBasicDebug(Packet& packet)$/;"	f	class:Service
+GetBasicRun	service/service.cpp	/^bool Service::GetBasicRun(Packet& packet)$/;"	f	class:Service
 GetBool	json/rapidjson/document.h	/^    bool GetBool() const$/;"	f	class:GenericValue
 GetBuffer	json/rapidjson/memorybuffer.h	/^    const Ch* GetBuffer() const {$/;"	f	struct:GenericMemoryBuffer
 GetCachedPower	json/rapidjson/internal/diyfp.h	/^inline DiyFp GetCachedPower(int e, int* K) {$/;"	f	namespace:internal
@@ -1610,6 +1613,7 @@ Resize	json/rapidjson/internal/stack.h	/^    void Resize(size_t newCapacity) {$/
 RightBracketToken	json/rapidjson/reader.h	/^        RightBracketToken,$/;"	e	enum:GenericReader::Token
 RightCurlyBracketToken	json/rapidjson/reader.h	/^        RightCurlyBracketToken,$/;"	e	enum:GenericReader::Token
 Run	service/service.cpp	/^void Service::Run(void)$/;"	f	class:Service
+RunBasic	service/service.cpp	/^void Service::RunBasic(void)$/;"	f	class:Service
 Runtime	basic/variable.cpp	/^time_t Variable::Runtime(void)$/;"	f	class:Variable
 SCNX16	json/rapidjson/msinttypes/inttypes.h	221;"	d
 SCNX32	json/rapidjson/msinttypes/inttypes.h	234;"	d
@@ -1790,6 +1794,9 @@ Set	json/rapidjson/pointer.h	/^    ValueType& Set(ValueType& root, const ValueTy
 Set	json/rapidjson/pointer.h	/^    ValueType& Set(ValueType& root, const std::basic_string<Ch>& value, typename ValueType::AllocatorType& allocator) const {$/;"	f	class:GenericPointer
 SetArray	json/rapidjson/document.h	/^    GenericValue& SetArray()$/;"	f	class:GenericValue
 SetArrayRaw	json/rapidjson/document.h	/^    void SetArrayRaw(GenericValue* values, SizeType count, Allocator& allocator)$/;"	f	class:GenericValue
+SetBasicDebug	service/service.cpp	/^bool Service::SetBasicDebug(Packet& packet)$/;"	f	class:Service
+SetBasicLoad	service/service.cpp	/^bool Service::SetBasicLoad(Packet& packet)$/;"	f	class:Service
+SetBasicRun	service/service.cpp	/^bool Service::SetBasicRun(Packet& packet)$/;"	f	class:Service
 SetBool	json/rapidjson/document.h	/^    GenericValue& SetBool(bool b)$/;"	f	class:GenericValue
 SetContext	basic/expression.cpp	/^void Expression::SetContext(Context& c)$/;"	f	class:Expression
 SetContext	basic/statement.cpp	/^void Statement::SetContext(Context& context)$/;"	f	class:Statement
@@ -2449,6 +2456,7 @@ arrayUniqueness	json/rapidjson/schema.h	/^    bool arrayUniqueness;$/;"	m	struct
 autx	service/packet.cpp	/^unsigned char Packet::autx(void)$/;"	f	class:Packet
 autx	service/packet.cpp	/^void Packet::autx(unsigned char a)$/;"	f	class:Packet
 baseAllocator_	json/rapidjson/allocators.h	/^    BaseAllocator* baseAllocator_;  \/\/!< base allocator for allocating memory chunks.$/;"	m	class:MemoryPoolAllocator
+basicmap	service/service.h	/^	map<string,Basic> basicmap;$/;"	m	class:Service
 begin	cgicc/cgi.h	/^	query_iterator begin(void)$/;"	f	class:Cgi
 begin	json/json.cpp	/^JsonIterator Json::begin()$/;"	f	class:Json
 begin	json/rapidjson/document.h	/^    MemberIterator begin() const$/;"	f	class:GenericObject
@@ -2543,6 +2551,8 @@ doc	json/json.h	/^	Document doc;$/;"	m	class:Json
 documentStack_	json/rapidjson/schema.h	/^    internal::Stack<StateAllocator> documentStack_;  \/\/!< stack to store the current path of validating document (Ch)$/;"	m	class:GenericSchemaValidator
 dst_	json/rapidjson/stream.h	/^    Ch* dst_;$/;"	m	struct:GenericInsituStringStream
 dtoa	json/rapidjson/internal/dtoa.h	/^inline char* dtoa(double value, char* buffer, int maxDecimalPlaces = 324) {$/;"	f	namespace:internal
+dvalue	service/packet.cpp	/^const double Packet::dvalue(void)$/;"	f	class:Packet
+dvalue	service/packet.cpp	/^void Packet::dvalue(const double &v)$/;"	f	class:Packet
 e	json/rapidjson/internal/diyfp.h	/^    int e;$/;"	m	struct:internal::DiyFp
 eAtomic	cgicc/HTMLElement.h	/^      eAtomic,$/;"	e	enum:cgicc::HTMLElement::EElementType
 eBoolean	cgicc/HTMLElement.h	/^      eBoolean$/;"	e	enum:cgicc::HTMLElement::EElementType
@@ -3328,6 +3338,7 @@ setValue	cgicc/HTMLAttribute.h	/^    setValue(const std::string& value)$/;"	f	cl
 setValue	cgicc/HTTPCookie.h	/^    setValue(const std::string& value)$/;"	f	class:cgicc::HTTPCookie
 set_expression	basic/basic.y	/^set_expression:$/;"	l
 short	basic/parser.cpp	182;"	d	file:
+show	basic/basic.cpp	/^void Basic::show(void)$/;"	f	class:Basic
 size	json/rapidjson/allocators.h	/^        size_t size;        \/\/!< Current size of allocated memory in bytes.$/;"	m	struct:MemoryPoolAllocator::ChunkHeader
 size	json/rapidjson/document.h	/^        SizeType size;$/;"	m	struct:GenericValue::ArrayData
 size	json/rapidjson/document.h	/^        SizeType size;$/;"	m	struct:GenericValue::ObjectData
@@ -3448,6 +3459,8 @@ unput	basic/lexer.cpp	189;"	d	file:
 update	basic/variable.h	/^	time_t update;$/;"	m	class:Variable
 userBuffer_	json/rapidjson/allocators.h	/^    void *userBuffer_;          \/\/!< User supplied buffer.$/;"	m	class:MemoryPoolAllocator
 usingHTTPS	cgicc/CgiEnvironment.h	/^    usingHTTPS() 				const$/;"	f	class:cgicc::CgiEnvironment
+uvalue	service/packet.cpp	/^unsigned int Packet::uvalue(void)$/;"	f	class:Packet
+uvalue	service/packet.cpp	/^void Packet::uvalue(unsigned int v)$/;"	f	class:Packet
 v	basic/parser.cpp	/^		double v;$/;"	m	struct:YYSTYPE::__anon2	file:
 v	basic/parser.h	/^		double v;$/;"	m	struct:YYSTYPE::__anon1
 valid_	json/rapidjson/pointer.h	/^        bool valid_;        \/\/!< Whether the parsing is valid.$/;"	m	class:GenericPointer::PercentDecodeStream
@@ -3459,8 +3472,6 @@ value	basic/token.h	/^	double value;$/;"	m	class:Token
 value	basic/variable.h	/^	double value;$/;"	m	class:Variable
 value	json/rapidjson/document.h	/^    GenericValue<Encoding, Allocator> value;    \/\/!< value of member.$/;"	m	struct:GenericMember
 value	json/rapidjson/rapidjson.h	/^template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };$/;"	e	enum:STATIC_ASSERTION_FAILURE::__anon3
-value	service/packet.cpp	/^const double Packet::value(void)$/;"	f	class:Packet
-value	service/packet.cpp	/^void Packet::value(const double &v)$/;"	f	class:Packet
 valueCount	json/rapidjson/writer.h	/^        size_t valueCount;  \/\/!< number of values in this level$/;"	m	struct:Writer::Level
 valuePatternValidatorType	json/rapidjson/schema.h	/^    PatternValidatorType valuePatternValidatorType;$/;"	m	struct:internal::SchemaValidationContext
 valueSchema	json/rapidjson/schema.h	/^    const SchemaType* valueSchema;$/;"	m	struct:internal::SchemaValidationContext
@@ -3701,6 +3712,7 @@ yywrap	basic/lexer.cpp	/^int yywrap(void)$/;"	f
 ~SchemaValidationContext	json/rapidjson/schema.h	/^    ~SchemaValidationContext() {$/;"	f	struct:internal::SchemaValidationContext
 ~Stack	json/rapidjson/internal/stack.h	/^    ~Stack() {$/;"	f	class:internal::Stack
 ~StreamLocalCopy	json/rapidjson/reader.h	/^    ~StreamLocalCopy() { original_ = s; }$/;"	f	class:internal::StreamLocalCopy
+~Token	basic/token.cpp	/^Token::~Token(void)$/;"	f	class:Token
 ~UnixUdp	socket/unix-udp.cpp	/^UnixUdp::~UnixUdp(void)$/;"	f	class:UnixUdp
 ~XHTMLDoctype	cgicc/XHTMLDoctype.cpp	/^cgicc::XHTMLDoctype::~XHTMLDoctype() {}$/;"	f	class:cgicc::XHTMLDoctype
 ~XMLDeclaration	cgicc/XMLDeclaration.h	/^	 virtual ~XMLDeclaration(){};$/;"	f	class:cgicc::XMLDeclaration
