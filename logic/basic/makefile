@@ -13,6 +13,7 @@ YFLAGS:= -o $(YACCOUT) --defines=parser.h
 CFLAGS:= -g -lm 
 SRC:= basiccc.cpp parser.cpp lexer.cpp variable.cpp cache.cpp 
 SRC+= token.cpp expression.cpp statement.cpp context.cpp
+SRC+= timeoperator.cpp
 
 all: parser.exe
 	$(STRIP) $+

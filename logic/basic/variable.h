@@ -1,26 +1,45 @@
 #ifndef __VARIABLE_H__
 #define __VARIABLE_H__
+#include <list>
+#include <string>
 #include <time.h>
+#include "timeoperator.h"
+using namespace std;
+
+typedef enum
+{
+	VarValue,
+	VarInput,
+	VarOutput,
+}VariableType;
 
 class Variable
 {
 public:
+	bool inited;
 	bool manual;
+	bool output;
 	double value;
-	time_t ontime;
-	time_t offtime;
-	time_t runtime;
-	time_t update;
+	double outvalue;
+	double threshold;
+	double runtime;
+	VariableType type;
+	TimeOperator ontime;
+	TimeOperator offtime;
+	TimeOperator outtime;
+	list<string> waitqueue;
 public:
 	Variable(void);
 public:
-	double& GetValue(void);
-	void SetValueAuto(double &v);
-	void SetValueManual(double &v);
-	time_t OnTime(void);
-	time_t OffTime(void);
-	time_t Runtime(void);
-	void SetRuntime(time_t t);
+	const double Value(void);
+	const double OnTime(void);
+	const double OffTime(void);
+	const double Runtime(void);
+	const double GetValue(void);
+	void SetRuntime(const double &t);
+	void SoftSetValue(const double &v);
+	void HardSetValue(const double &v);
+public:
 };
 
 #endif//__VARIABLE_H__

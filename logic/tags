@@ -4,10 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ADD	basic/parser.cpp	/^     ADD = 283,$/;"	e	enum:yytokentype	file:
-ADD	basic/parser.h	/^     ADD = 283,$/;"	e	enum:yytokentype
-AND	basic/parser.cpp	/^     AND = 274,$/;"	e	enum:yytokentype	file:
-AND	basic/parser.h	/^     AND = 274,$/;"	e	enum:yytokentype
 ARCH	basic/makefile	/^ARCH:=\/usr\/bin\/$/;"	m
 ARCH	basic/makefile	/^ARCH:=arm-linux-$/;"	m
 ARCH	makefile	/^ARCH := \/usr\/bin\/$/;"	m
@@ -77,15 +73,16 @@ ArrayType	json/rapidjson/document.h	/^    typedef typename ValueType::ConstArray
 AssignIfExist	json/rapidjson/schema.h	/^    static void AssignIfExist(SizeType& out, const ValueType& value, const ValueType& name) {$/;"	f	class:internal::Schema
 AssignIfExist	json/rapidjson/schema.h	/^    static void AssignIfExist(bool& out, const ValueType& value, const ValueType& name) {$/;"	f	class:internal::Schema
 AssignIfExist	json/rapidjson/schema.h	/^    void AssignIfExist(SchemaArray& out, SchemaDocumentType& schemaDocument, const PointerType& p, const ValueType& value, const ValueType& name, const ValueType& document) {$/;"	f	class:internal::Schema
-Auto	service/packet.h	/^	Auto   = 0,$/;"	e	enum:__anon18
-AutoEnumDef	service/packet.h	/^}AutoEnumDef;$/;"	t	typeref:enum:__anon18
-AutoIndex	service/packet.h	/^	AutoIndex   = 1,$/;"	e	enum:__anon19
+Auto	service/packet.h	/^	Auto   = 0,$/;"	e	enum:__anon16
+AutoEnumDef	service/packet.h	/^}AutoEnumDef;$/;"	t	typeref:enum:__anon16
+AutoIndex	service/packet.h	/^	AutoIndex   = 1,$/;"	e	enum:__anon17
 AutoUTF	json/rapidjson/encodings.h	/^struct AutoUTF {$/;"	s
 AutoUTFInputStream	json/rapidjson/encodedstream.h	/^    AutoUTFInputStream(InputByteStream& is, UTFType type = kUTF8) : is_(&is), type_(type), hasBOM_(false) {$/;"	f	class:AutoUTFInputStream
 AutoUTFInputStream	json/rapidjson/encodedstream.h	/^class AutoUTFInputStream {$/;"	c
 AutoUTFOutputStream	json/rapidjson/encodedstream.h	/^    AutoUTFOutputStream(OutputByteStream& os, UTFType type, bool putBOM) : os_(&os), type_(type) {$/;"	f	class:AutoUTFOutputStream
 AutoUTFOutputStream	json/rapidjson/encodedstream.h	/^class AutoUTFOutputStream {$/;"	c
-BEGIN	basic/lexer.cpp	126;"	d	file:
+BASIC_CPP	makefile	/^BASIC_CPP   := $(wildcard basic\/*.cpp)$/;"	m
+BASIC_OBJ	makefile	/^BASIC_OBJ   := $(patsubst %.cpp, %.o, $(BASIC_CPP))$/;"	m
 BOOLEAN_ELEMENT	cgicc/HTMLClasses.h	72;"	d
 Base	json/rapidjson/prettywriter.h	/^    typedef Writer<OutputStream, SourceEncoding, TargetEncoding, StackAllocator, writeFlags> Base;$/;"	t	class:PrettyWriter
 Base	json/rapidjson/reader.h	/^        typedef NumberStream<InputStream, false, false> Base;$/;"	t	class:GenericReader::NumberStream
@@ -132,18 +129,17 @@ CC	basic/makefile	/^CC:=$(ARCH)g++$/;"	m
 CC	makefile	/^CC := $(ARCH)g++$/;"	m
 CC	socket/makefile	/^CC:=$(ARCH)g++$/;"	m
 CFLAGS	basic/makefile	/^CFLAGS:= -g -lm $/;"	m
-CFLAGS	makefile	/^CFLAGS := -Iservice -Isocket -Ijson -Ijson\/rapidjson -Icgicc$/;"	m
+CFLAGS	makefile	/^CFLAGS := -Ijson$/;"	m
 CFLAGS	socket/makefile	/^CFLAGS:= -I.\/ -I..\/$/;"	m
 CGICC_API	cgicc/CgiDefs.h	51;"	d
 CGICC_API	cgicc/CgiDefs.h	53;"	d
 CGICC_API	cgicc/CgiDefs.h	62;"	d
-CM	basic/parser.cpp	/^     CM = 292,$/;"	e	enum:yytokentype	file:
-CM	basic/parser.h	/^     CM = 292,$/;"	e	enum:yytokentype
+CGICC_CPP	makefile	/^CGICC_CPP   := $(wildcard cgicc\/*.cpp)$/;"	m
+CGICC_OBJ	makefile	/^CGICC_OBJ	:= $(patsubst %.cpp, %.o, $(CGICC_CPP))$/;"	m
 COPY	json/rapidjson/encodings.h	147;"	d
 COPY	json/rapidjson/encodings.h	173;"	d
 COPY	json/rapidjson/encodings.h	180;"	d
 COPY	json/rapidjson/encodings.h	199;"	d
-CPP	makefile	/^CPP := $(wildcard json\/*.cpp)$/;"	m
 Cache	basic/cache.h	/^	Cache(const string& name):cachename(name){}$/;"	f	class:Cache
 Cache	basic/cache.h	/^class Cache$/;"	c
 Capacity	json/rapidjson/allocators.h	/^    size_t Capacity() const {$/;"	f	class:MemoryPoolAllocator
@@ -227,15 +223,14 @@ ClearStackOnExit	json/rapidjson/reader.h	/^    struct ClearStackOnExit {$/;"	s	c
 CloneTopOperand	json/rapidjson/internal/regex.h	/^    void CloneTopOperand(Stack<Allocator>& operandStack) {$/;"	f	class:internal::GenericRegex
 Close	socket/tcpclient.cpp	/^bool TcpClient::Close(void)$/;"	f	class:TcpClient
 Close	socket/unix-udp.cpp	/^bool UnixUdp::Close(void)$/;"	f	class:UnixUdp
-CmdEnumDef	service/packet.h	/^}CmdEnumDef;$/;"	t	typeref:enum:__anon17
-CmdGetBasicDebug	service/packet.h	/^	CmdGetBasicDebug= 7,$/;"	e	enum:__anon17
-CmdGetBasicLoad	service/packet.h	/^	CmdGetBasicLoad = 6,$/;"	e	enum:__anon17
-CmdGetBasicRun	service/packet.h	/^	CmdGetBasicRun  = 5,$/;"	e	enum:__anon17
-CmdSetBasicDebug	service/packet.h	/^	CmdSetBasicDebug= 4,$/;"	e	enum:__anon17
-CmdSetBasicLoad	service/packet.h	/^	CmdSetBasicLoad = 3,$/;"	e	enum:__anon17
-CmdSetBasicRun	service/packet.h	/^	CmdSetBasicRun  = 2,$/;"	e	enum:__anon17
-CmdValueGet	service/packet.h	/^	CmdValueGet  = 1,$/;"	e	enum:__anon17
-CmdValueSet	service/packet.h	/^	CmdValueSet  = 0,$/;"	e	enum:__anon17
+CmdEnumDef	service/packet.h	/^}CmdEnumDef;$/;"	t	typeref:enum:__anon15
+CmdGetBasicDebug	service/packet.h	/^	CmdGetBasicDebug= 6,$/;"	e	enum:__anon15
+CmdGetBasicRun	service/packet.h	/^	CmdGetBasicRun  = 5,$/;"	e	enum:__anon15
+CmdSetBasicDebug	service/packet.h	/^	CmdSetBasicDebug= 4,$/;"	e	enum:__anon15
+CmdSetBasicLoad	service/packet.h	/^	CmdSetBasicLoad = 3,$/;"	e	enum:__anon15
+CmdSetBasicRun	service/packet.h	/^	CmdSetBasicRun  = 2,$/;"	e	enum:__anon15
+CmdValueGet	service/packet.h	/^	CmdValueGet  = 1,$/;"	e	enum:__anon15
+CmdValueSet	service/packet.h	/^	CmdValueSet  = 0,$/;"	e	enum:__anon15
 Code	json/rapidjson/error/error.h	/^    ParseErrorCode Code() const { return code_; }$/;"	f	struct:ParseResult
 ColonToken	json/rapidjson/reader.h	/^        ColonToken,$/;"	e	enum:GenericReader::Token
 CommaToken	json/rapidjson/reader.h	/^        CommaToken,$/;"	e	enum:GenericReader::Token
@@ -258,7 +253,6 @@ Context	json/rapidjson/schema.h	/^    typedef SchemaValidationContext<SchemaDocu
 Context	json/rapidjson/schema.h	/^    typedef typename SchemaType::Context Context;$/;"	t	class:GenericSchemaValidator
 CopyFrom	json/rapidjson/document.h	/^    GenericValue& CopyFrom(const GenericValue<Encoding, SourceAllocator>& rhs, Allocator& allocator, bool copyConstStrings = false)$/;"	f	class:GenericValue
 CopyFromRaw	json/rapidjson/pointer.h	/^    Ch* CopyFromRaw(const GenericPointer& rhs, size_t extraToken = 0, size_t extraNameBufferSize = 0) {$/;"	f	class:GenericPointer
-CopyText	basic/lexer.cpp	613;"	d	file:
 CountDecimalDigit32	json/rapidjson/internal/dtoa.h	/^inline int CountDecimalDigit32(uint32_t n) {$/;"	f	namespace:internal
 CountStringCodePoint	json/rapidjson/internal/strfunc.h	/^bool CountStringCodePoint(const typename Encoding::Ch* s, SizeType length, SizeType* outCount) {$/;"	f	namespace:internal
 Create	json/rapidjson/pointer.h	/^    ValueType& Create(GenericDocument<EncodingType, typename ValueType::AllocatorType, stackAllocator>& document, bool* alreadyExist = 0) const {$/;"	f	class:GenericPointer
@@ -282,12 +276,6 @@ CrtAllocator	json/rapidjson/allocators.h	/^class CrtAllocator {$/;"	c
 CurrentContext	json/rapidjson/schema.h	/^    Context& CurrentContext() { return *schemaStack_.template Top<Context>(); }$/;"	f	class:GenericSchemaValidator
 CurrentContext	json/rapidjson/schema.h	/^    const Context& CurrentContext() const { return *schemaStack_.template Top<Context>(); }$/;"	f	class:GenericSchemaValidator
 CurrentSchema	json/rapidjson/schema.h	/^    const SchemaType& CurrentSchema() const { return *schemaStack_.template Top<Context>()->schema; }$/;"	f	class:GenericSchemaValidator
-DATE	basic/parser.cpp	/^     DATE = 268,$/;"	e	enum:yytokentype	file:
-DATE	basic/parser.h	/^     DATE = 268,$/;"	e	enum:yytokentype
-DATETIME	basic/parser.cpp	/^     DATETIME = 270,$/;"	e	enum:yytokentype	file:
-DATETIME	basic/parser.h	/^     DATETIME = 270,$/;"	e	enum:yytokentype
-DIV	basic/parser.cpp	/^     DIV = 286,$/;"	e	enum:yytokentype	file:
-DIV	basic/parser.h	/^     DIV = 286,$/;"	e	enum:yytokentype
 Data	json/rapidjson/document.h	/^    union Data$/;"	u	class:GenericValue
 Decode	json/rapidjson/encodings.h	/^    static RAPIDJSON_FORCEINLINE bool Decode(InputStream& is, unsigned* codepoint) {$/;"	f	struct:AutoUTF
 Decode	json/rapidjson/encodings.h	/^    static bool Decode(InputStream& is, unsigned* codepoint) {$/;"	f	struct:ASCII
@@ -327,19 +315,9 @@ Double	json/rapidjson/schema.h	/^    bool Double(Context& context, double d) con
 Double	json/rapidjson/schema.h	/^    bool Double(double d)   { RAPIDJSON_SCHEMA_HANDLE_VALUE_(Double, (CurrentContext(), d), (d)); }$/;"	f	class:GenericSchemaValidator
 Double	json/rapidjson/schema.h	/^    bool Double(double d) { $/;"	f	class:internal::Hasher
 Double	json/rapidjson/writer.h	/^    bool Double(double d)       { Prefix(kNumberType); return EndValue(WriteDouble(d)); }$/;"	f	class:Writer
-ECHO	basic/lexer.cpp	708;"	d	file:
 EDocumentType	cgicc/HTMLDoctype.h	/^    enum EDocumentType {$/;"	g	class:cgicc::HTMLDoctype
 EDocumentType	cgicc/XHTMLDoctype.h	/^	enum EDocumentType {$/;"	g	class:cgicc::XHTMLDoctype
 EElementType	cgicc/HTMLElement.h	/^    enum EElementType {$/;"	g	class:cgicc::HTMLElement
-ELSE	basic/parser.cpp	/^     ELSE = 273,$/;"	e	enum:yytokentype	file:
-ELSE	basic/parser.h	/^     ELSE = 273,$/;"	e	enum:yytokentype
-EOB_ACT_CONTINUE_SCAN	basic/lexer.cpp	169;"	d	file:
-EOB_ACT_END_OF_FILE	basic/lexer.cpp	170;"	d	file:
-EOB_ACT_LAST_MATCH	basic/lexer.cpp	171;"	d	file:
-EQ	basic/parser.cpp	/^     EQ = 277,$/;"	e	enum:yytokentype	file:
-EQ	basic/parser.h	/^     EQ = 277,$/;"	e	enum:yytokentype
-EXIT_SUCCESS	basic/parser.cpp	286;"	d	file:
-EXIT_SUCCESS	basic/parser.cpp	314;"	d	file:
 EffectiveSignificandSize	json/rapidjson/internal/ieee754.h	/^    static int EffectiveSignificandSize(int order) {$/;"	f	class:internal::Double
 Empty	json/rapidjson/document.h	/^    bool Empty() const$/;"	f	class:GenericArray
 Empty	json/rapidjson/document.h	/^    bool Empty() const$/;"	f	class:GenericValue
@@ -462,12 +440,6 @@ FE_valueCompare	cgicc/Cgicc.cpp	/^    inline explicit FE_valueCompare(const std:
 FE_valueCompare	cgicc/Cgicc.cpp	/^  class FE_valueCompare : public std::unary_function<FormEntry, bool>$/;"	c	namespace:cgicc	file:
 FF_compare	cgicc/Cgicc.cpp	/^    inline explicit FF_compare(const std::string& name)$/;"	f	class:cgicc::FF_compare
 FF_compare	cgicc/Cgicc.cpp	/^  class FF_compare : public std::unary_function<FormFile, bool>$/;"	c	namespace:cgicc	file:
-FLEXINT_H	basic/lexer.cpp	30;"	d	file:
-FLEXINT_H	basic/lexer.h	34;"	d
-FLEX_BETA	basic/lexer.cpp	14;"	d	file:
-FLEX_BETA	basic/lexer.h	18;"	d
-FLEX_SCANNER	basic/lexer.cpp	9;"	d	file:
-FLEX_SCANNER	basic/lexer.h	13;"	d
 FalseToken	json/rapidjson/reader.h	/^        FalseToken,$/;"	e	enum:GenericReader::Token
 FalseType	json/rapidjson/internal/meta.h	/^typedef BoolType<false> FalseType;$/;"	t	namespace:internal
 FanStart	basic/example.bas	/^FanStart:$/;"	l
@@ -516,12 +488,6 @@ Frag	json/rapidjson/internal/regex.h	/^    struct Frag {$/;"	s	class:internal::G
 Free	json/rapidjson/allocators.h	/^    static void Free(void *ptr) { (void)ptr; } \/\/ Do nothing$/;"	f	class:MemoryPoolAllocator
 Free	json/rapidjson/allocators.h	/^    static void Free(void *ptr) { std::free(ptr); }$/;"	f	class:CrtAllocator
 FreeState	json/rapidjson/schema.h	/^    virtual void FreeState(void* p) {$/;"	f	class:GenericSchemaValidator
-GE	basic/parser.cpp	/^     GE = 279,$/;"	e	enum:yytokentype	file:
-GE	basic/parser.h	/^     GE = 279,$/;"	e	enum:yytokentype
-GOTO	basic/parser.cpp	/^     GOTO = 294,$/;"	e	enum:yytokentype	file:
-GOTO	basic/parser.h	/^     GOTO = 294,$/;"	e	enum:yytokentype
-GT	basic/parser.cpp	/^     GT = 281,$/;"	e	enum:yytokentype	file:
-GT	basic/parser.h	/^     GT = 281,$/;"	e	enum:yytokentype
 GenericArray	json/rapidjson/document.h	/^    GenericArray(ValueType& value) : value_(value) {}$/;"	f	class:GenericArray
 GenericArray	json/rapidjson/document.h	/^    GenericArray(const GenericArray& rhs) : value_(rhs.value_) {}$/;"	f	class:GenericArray
 GenericArray	json/rapidjson/document.h	/^class GenericArray$/;"	c
@@ -644,7 +610,6 @@ GetRange	json/rapidjson/encodings.h	/^    static unsigned char GetRange(unsigned
 GetRange	json/rapidjson/internal/regex.h	/^    Range& GetRange(SizeType index) {$/;"	f	class:internal::GenericRegex
 GetRange	json/rapidjson/internal/regex.h	/^    const Range& GetRange(SizeType index) const {$/;"	f	class:internal::GenericRegex
 GetRoot	json/rapidjson/schema.h	/^    const SchemaType& GetRoot() const { return *root_; }$/;"	f	class:GenericSchemaDocument
-GetRuntime	basic/token.cpp	/^const time_t Token::GetRuntime(void)$/;"	f	class:Token
 GetSchema	json/rapidjson/schema.h	/^    const SchemaType* GetSchema(const PointerType& pointer) const {$/;"	f	class:GenericSchemaDocument
 GetSize	json/rapidjson/internal/stack.h	/^    size_t GetSize() const { return static_cast<size_t>(stackTop_ - stack_); }$/;"	f	class:internal::Stack
 GetSize	json/rapidjson/memorybuffer.h	/^    size_t GetSize() const { return stack_.GetSize(); }$/;"	f	struct:GenericMemoryBuffer
@@ -667,8 +632,8 @@ GetType	json/rapidjson/encodedstream.h	/^    UTFType GetType() const { return ty
 GetTypeless	json/rapidjson/schema.h	/^    const SchemaType* GetTypeless() const { return typeless_; }$/;"	f	class:GenericSchemaDocument
 GetUint	json/rapidjson/document.h	/^    unsigned GetUint() const$/;"	f	class:GenericValue
 GetUint64	json/rapidjson/document.h	/^    uint64_t GetUint64() const$/;"	f	class:GenericValue
-GetValue	basic/token.cpp	/^const double& Token::GetValue(void)$/;"	f	class:Token
-GetValue	basic/variable.cpp	/^double& Variable::GetValue(void)$/;"	f	class:Variable
+GetValue	basic/token.cpp	/^const double Token::GetValue(void)$/;"	f	class:Token
+GetValue	basic/variable.cpp	/^const double Variable::GetValue(void)$/;"	f	class:Variable
 GetValue	service/service.cpp	/^bool Service::GetValue(Packet& packet)$/;"	f	class:Service
 GetValueByPointer	json/rapidjson/pointer.h	/^const typename T::ValueType* GetValueByPointer(const T& root, const CharType(&source)[N], size_t* unresolvedTokenIndex = 0) {$/;"	f
 GetValueByPointer	json/rapidjson/pointer.h	/^const typename T::ValueType* GetValueByPointer(const T& root, const GenericPointer<typename T::ValueType>& pointer, size_t* unresolvedTokenIndex = 0) {$/;"	f
@@ -726,8 +691,6 @@ HAVE_SYS_TYPES_H	cgicc/config.h	65;"	d
 HAVE_SYS_UTSNAME_H	cgicc/config.h	68;"	d
 HAVE_UNAME	cgicc/config.h	71;"	d
 HAVE_UNISTD_H	cgicc/config.h	74;"	d
-HEX	basic/parser.cpp	/^     HEX = 267,$/;"	e	enum:yytokentype	file:
-HEX	basic/parser.h	/^     HEX = 267,$/;"	e	enum:yytokentype
 HOST	cgicc/CgiDefs.h	56;"	d
 HOST	cgicc/CgiDefs.h	60;"	d
 HOST	cgicc/config.h	80;"	d
@@ -787,6 +750,7 @@ HTTPXHTMLHeader	cgicc/HTTPXHTMLHeader.cpp	/^cgicc::HTTPXHTMLHeader::HTTPXHTMLHea
 HTTPXHTMLHeader	cgicc/HTTPXHTMLHeader.h	/^class CGICC_API HTTPXHTMLHeader : public HTTPContentHeader {$/;"	c	namespace:cgicc
 HandleError	json/rapidjson/reader.h	/^    void HandleError(IterativeParsingState src, InputStream& is) {$/;"	f	class:GenericReader
 HandleRefSchema	json/rapidjson/schema.h	/^    bool HandleRefSchema(const PointerType& source, const SchemaType** schema, const ValueType& v, const ValueType& document) {$/;"	f	class:GenericSchemaDocument
+HardSetValue	basic/variable.cpp	/^void Variable::HardSetValue(const double &v)$/;"	f	class:Variable
 HasAllocator	json/rapidjson/internal/stack.h	/^    bool HasAllocator() const {$/;"	f	class:internal::Stack
 HasBOM	json/rapidjson/encodedstream.h	/^    bool HasBOM() const { return hasBOM_; }$/;"	f	class:AutoUTFInputStream
 HasMember	json/rapidjson/document.h	/^    bool HasMember(const Ch* name) const$/;"	f	class:GenericObject
@@ -804,38 +768,16 @@ Hasher	json/rapidjson/schema.h	/^class Hasher {$/;"	c	namespace:internal
 HasherType	json/rapidjson/schema.h	/^    typedef internal::Hasher<EncodingType, StateAllocator> HasherType;$/;"	t	class:GenericSchemaValidator
 Host	json/rapidjson/internal/meta.h	/^    struct Host {$/;"	s	struct:internal::IsBaseOfImpl
 I	json/rapidjson/document.h	/^        struct I$/;"	s	union:GenericValue::Number
-ID	basic/parser.cpp	/^     ID = 258,$/;"	e	enum:yytokentype	file:
-ID	basic/parser.h	/^     ID = 258,$/;"	e	enum:yytokentype
-IDF	basic/parser.cpp	/^     IDF = 261,$/;"	e	enum:yytokentype	file:
-IDF	basic/parser.h	/^     IDF = 261,$/;"	e	enum:yytokentype
-IDO	basic/parser.cpp	/^     IDO = 260,$/;"	e	enum:yytokentype	file:
-IDO	basic/parser.h	/^     IDO = 260,$/;"	e	enum:yytokentype
-IDR	basic/parser.cpp	/^     IDR = 259,$/;"	e	enum:yytokentype	file:
-IDR	basic/parser.h	/^     IDR = 259,$/;"	e	enum:yytokentype
-IDV	basic/parser.cpp	/^     IDV = 262,$/;"	e	enum:yytokentype	file:
-IDV	basic/parser.h	/^     IDV = 262,$/;"	e	enum:yytokentype
-IF	basic/parser.cpp	/^     IF = 271,$/;"	e	enum:yytokentype	file:
-IF	basic/parser.h	/^     IF = 271,$/;"	e	enum:yytokentype
 IGenericRemoteSchemaDocumentProvider	json/rapidjson/schema.h	/^class IGenericRemoteSchemaDocumentProvider {$/;"	c
-INITIAL	basic/lexer.cpp	616;"	d	file:
-INITIAL	basic/lexer.h	218;"	d
 INT16_C	json/rapidjson/msinttypes/stdint.h	277;"	d
 INT16_C	json/rapidjson/msinttypes/stdint.h	55;"	d
 INT16_C	json/rapidjson/msinttypes/stdint.h	66;"	d
-INT16_MAX	basic/lexer.cpp	72;"	d	file:
-INT16_MAX	basic/lexer.h	76;"	d
 INT16_MAX	json/rapidjson/msinttypes/stdint.h	181;"	d
-INT16_MIN	basic/lexer.cpp	63;"	d	file:
-INT16_MIN	basic/lexer.h	67;"	d
 INT16_MIN	json/rapidjson/msinttypes/stdint.h	180;"	d
 INT32_C	json/rapidjson/msinttypes/stdint.h	278;"	d
 INT32_C	json/rapidjson/msinttypes/stdint.h	56;"	d
 INT32_C	json/rapidjson/msinttypes/stdint.h	67;"	d
-INT32_MAX	basic/lexer.cpp	75;"	d	file:
-INT32_MAX	basic/lexer.h	79;"	d
 INT32_MAX	json/rapidjson/msinttypes/stdint.h	183;"	d
-INT32_MIN	basic/lexer.cpp	66;"	d	file:
-INT32_MIN	basic/lexer.h	70;"	d
 INT32_MIN	json/rapidjson/msinttypes/stdint.h	182;"	d
 INT64_C	json/rapidjson/msinttypes/stdint.h	279;"	d
 INT64_C	json/rapidjson/msinttypes/stdint.h	57;"	d
@@ -845,11 +787,7 @@ INT64_MIN	json/rapidjson/msinttypes/stdint.h	184;"	d
 INT8_C	json/rapidjson/msinttypes/stdint.h	276;"	d
 INT8_C	json/rapidjson/msinttypes/stdint.h	54;"	d
 INT8_C	json/rapidjson/msinttypes/stdint.h	65;"	d
-INT8_MAX	basic/lexer.cpp	69;"	d	file:
-INT8_MAX	basic/lexer.h	73;"	d
 INT8_MAX	json/rapidjson/msinttypes/stdint.h	179;"	d
-INT8_MIN	basic/lexer.cpp	60;"	d	file:
-INT8_MIN	basic/lexer.h	64;"	d
 INT8_MIN	json/rapidjson/msinttypes/stdint.h	178;"	d
 INTMAX_C	json/rapidjson/msinttypes/stdint.h	290;"	d
 INTMAX_C	json/rapidjson/msinttypes/stdint.h	79;"	d
@@ -882,7 +820,7 @@ ISchemaStateFactory	json/rapidjson/schema.h	/^class ISchemaStateFactory {$/;"	c	
 ISchemaValidator	json/rapidjson/schema.h	/^class ISchemaValidator {$/;"	c	namespace:internal
 IStreamWrapper	json/rapidjson/istreamwrapper.h	/^typedef BasicIStreamWrapper<std::istream> IStreamWrapper;$/;"	t
 ImplicitConcatenation	json/rapidjson/internal/regex.h	/^    void ImplicitConcatenation(Stack<Allocator>& atomCountStack, Stack<Allocator>& operatorStack) {$/;"	f	class:internal::GenericRegex
-IndexEnumDef	service/packet.h	/^}IndexEnumDef;$/;"	t	typeref:enum:__anon19
+IndexEnumDef	service/packet.h	/^}IndexEnumDef;$/;"	t	typeref:enum:__anon17
 InorderTraversal	basic/expression.cpp	/^void Expression::InorderTraversal(void)$/;"	f	class:Expression
 InsituStringStream	json/rapidjson/fwd.h	/^typedef GenericInsituStringStream<UTF8<char> > InsituStringStream;$/;"	t
 InsituStringStream	json/rapidjson/stream.h	/^typedef GenericInsituStringStream<UTF8<> > InsituStringStream;$/;"	t
@@ -978,6 +916,8 @@ Iterator	basic/statement.h	/^	typedef list<Expression>::iterator Iterator;$/;"	t
 Iterator	json/rapidjson/document.h	/^    typedef GenericMember<Encoding,Allocator>* Iterator;$/;"	t	struct:GenericMemberIterator
 Iterator	json/rapidjson/document.h	/^    typedef GenericMemberIterator Iterator;$/;"	t	class:GenericMemberIterator
 Iterator	json/rapidjson/document.h	/^    typedef const GenericMember<Encoding,Allocator>* Iterator;$/;"	t	struct:GenericMemberIterator
+JSON_CPP	makefile	/^JSON_CPP    := $(wildcard json\/*.cpp)$/;"	m
+JSON_OBJ	makefile	/^JSON_OBJ	:= $(patsubst %.cpp, %.o, $(JSON_CPP))$/;"	m
 Json	json/json.cpp	/^Json::Json(const char* s):writer(sb),parseok(false)$/;"	f	class:Json
 Json	json/json.cpp	/^Json::Json(const xstring& s):writer(sb),parseok(false)$/;"	f	class:Json
 Json	json/json.cpp	/^Json::Json(void):writer(sb),parseok(false)$/;"	f	class:Json
@@ -996,59 +936,37 @@ Key	json/rapidjson/schema.h	/^    bool Key(const Ch* str, SizeType len, bool cop
 Key	json/rapidjson/writer.h	/^    bool Key(const Ch* const& str) { return Key(str, internal::StrLen(str)); }$/;"	f	class:Writer
 Key	json/rapidjson/writer.h	/^    bool Key(const Ch* str, SizeType length, bool copy = false) { return String(str, length, copy); }$/;"	f	class:Writer
 Key	json/rapidjson/writer.h	/^    bool Key(const std::basic_string<Ch>& str)$/;"	f	class:Writer
-LABEL	basic/parser.cpp	/^     LABEL = 295$/;"	e	enum:yytokentype	file:
-LABEL	basic/parser.h	/^     LABEL = 295$/;"	e	enum:yytokentype
-LB	basic/parser.cpp	/^     LB = 290,$/;"	e	enum:yytokentype	file:
-LB	basic/parser.h	/^     LB = 290,$/;"	e	enum:yytokentype
-LC	basic/parser.cpp	/^     LC = 263,$/;"	e	enum:yytokentype	file:
-LC	basic/parser.h	/^     LC = 263,$/;"	e	enum:yytokentype
-LCF	basic/parser.cpp	/^     LCF = 265,$/;"	e	enum:yytokentype	file:
-LCF	basic/parser.h	/^     LCF = 265,$/;"	e	enum:yytokentype
-LCO	basic/parser.cpp	/^     LCO = 264,$/;"	e	enum:yytokentype	file:
-LCO	basic/parser.h	/^     LCO = 264,$/;"	e	enum:yytokentype
-LE	basic/parser.cpp	/^     LE = 280,$/;"	e	enum:yytokentype	file:
-LE	basic/parser.h	/^     LE = 280,$/;"	e	enum:yytokentype
 LEX	basic/makefile	/^LEX:=flex$/;"	m
 LEXIN	basic/makefile	/^LEXIN:= basic.l$/;"	m
 LEXOUT	basic/makefile	/^LEXOUT:= lexer.cpp$/;"	m
 LFLAGS	basic/makefile	/^LFLAGS:= -o $(LEXOUT) --header-file=lexer.h$/;"	m
-LP	basic/parser.cpp	/^     LP = 288,$/;"	e	enum:yytokentype	file:
-LP	basic/parser.h	/^     LP = 288,$/;"	e	enum:yytokentype
-LT	basic/parser.cpp	/^     LT = 282,$/;"	e	enum:yytokentype	file:
-LT	basic/parser.h	/^     LT = 282,$/;"	e	enum:yytokentype
 LT_OBJDIR	cgicc/config.h	84;"	d
 LeftBracketToken	json/rapidjson/reader.h	/^        LeftBracketToken = 0,$/;"	e	enum:GenericReader::Token
 LeftCurlyBracketToken	json/rapidjson/reader.h	/^        LeftCurlyBracketToken,$/;"	e	enum:GenericReader::Token
-LenPos	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon8
+LenPos	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon6
 Length	json/rapidjson/reader.h	/^        size_t Length() const { return length_; }$/;"	f	class:GenericReader::StackStream
 Length	json/rapidjson/reader.h	/^        size_t Length() { return 0; }$/;"	f	class:GenericReader::NumberStream
 Length	json/rapidjson/reader.h	/^        size_t Length() { return stackStream.Length(); }$/;"	f	class:GenericReader::NumberStream
-LengthIndex	service/packet.h	/^	LengthIndex = 10,$/;"	e	enum:__anon19
+LengthIndex	service/packet.h	/^	LengthIndex = 10,$/;"	e	enum:__anon17
 Level	json/rapidjson/writer.h	/^        Level(bool inArray_) : valueCount(0), inArray(inArray_) {}$/;"	f	struct:Writer::Level
 Level	json/rapidjson/writer.h	/^    struct Level {$/;"	s	class:Writer
 ListIterator	basic/basiccc.h	/^	typedef TokenList::iterator ListIterator;$/;"	t	class:BasicCC
 LocalVariable	basic/context.h	/^	Cache LocalVariable;$/;"	m	class:Context
 MAX	cgicc/FormEntry.cpp	34;"	d	file:
-MIN	basic/parser.cpp	/^     MIN = 284,$/;"	e	enum:yytokentype	file:
-MIN	basic/parser.h	/^     MIN = 284,$/;"	e	enum:yytokentype
-MOD	basic/parser.cpp	/^     MOD = 287,$/;"	e	enum:yytokentype	file:
-MOD	basic/parser.h	/^     MOD = 287,$/;"	e	enum:yytokentype
 MStreamable	cgicc/MStreamable.h	/^    inline MStreamable() $/;"	f	class:cgicc::MStreamable
 MStreamable	cgicc/MStreamable.h	/^  class CGICC_API MStreamable $/;"	c	namespace:cgicc
-MUL	basic/parser.cpp	/^     MUL = 285,$/;"	e	enum:yytokentype	file:
-MUL	basic/parser.h	/^     MUL = 285,$/;"	e	enum:yytokentype
 MakeContext	basic/basiccc.cpp	/^bool BasicCC::MakeContext(Context& context)$/;"	f	class:BasicCC
 Malloc	json/rapidjson/allocators.h	/^    void* Malloc(size_t size) { $/;"	f	class:CrtAllocator
 Malloc	json/rapidjson/allocators.h	/^    void* Malloc(size_t size) {$/;"	f	class:MemoryPoolAllocator
 MallocState	json/rapidjson/schema.h	/^    virtual void* MallocState(size_t size) {$/;"	f	class:GenericSchemaValidator
-Manual	service/packet.h	/^	Manual = 1,$/;"	e	enum:__anon18
+Manual	service/packet.h	/^	Manual = 1,$/;"	e	enum:__anon16
 MapIterator	basic/basiccc.h	/^	typedef TokenLmap::iterator MapIterator;$/;"	t	class:BasicCC
 Match	json/rapidjson/internal/regex.h	/^    bool Match(InputStream& is) {$/;"	f	class:internal::GenericRegexSearch
 Match	json/rapidjson/internal/regex.h	/^    bool Match(const Ch* s) {$/;"	f	class:internal::GenericRegexSearch
 MatchRange	json/rapidjson/internal/regex.h	/^    bool MatchRange(SizeType rangeIndex, unsigned codepoint) const {$/;"	f	class:internal::GenericRegexSearch
-MaxChars	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon8
-MaxIndex	service/packet.h	/^	MaxIndex	= 127,$/;"	e	enum:__anon19
-MaxSize	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon8
+MaxChars	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon6
+MaxIndex	service/packet.h	/^	MaxIndex	= 127,$/;"	e	enum:__anon17
+MaxSize	json/rapidjson/document.h	/^        enum { MaxChars = sizeof(static_cast<Flag*>(0)->payload) \/ sizeof(Ch), MaxSize = MaxChars - 1, LenPos = MaxSize };$/;"	e	enum:GenericValue::ShortString::__anon6
 MaybeAddConst	json/rapidjson/internal/meta.h	/^template <bool Constify, typename T> struct MaybeAddConst : SelectIfCond<Constify, const T, T> {};$/;"	s	namespace:internal
 Member	json/rapidjson/document.h	/^    typedef GenericMember<Encoding, Allocator> Member;$/;"	t	class:GenericValue
 MemberBegin	json/rapidjson/document.h	/^    ConstMemberIterator MemberBegin() const$/;"	f	class:GenericValue
@@ -1079,14 +997,8 @@ N	json/rapidjson/reader.h	1791;"	d
 N	json/rapidjson/reader.h	1805;"	d
 N16	json/rapidjson/reader.h	1792;"	d
 N16	json/rapidjson/reader.h	1806;"	d
-NE	basic/parser.cpp	/^     NE = 278,$/;"	e	enum:yytokentype	file:
-NE	basic/parser.h	/^     NE = 278,$/;"	e	enum:yytokentype
 NODE	basic/basiccc.h	27;"	d
-NOT	basic/parser.cpp	/^     NOT = 276,$/;"	e	enum:yytokentype	file:
-NOT	basic/parser.h	/^     NOT = 276,$/;"	e	enum:yytokentype
-NUM	basic/parser.cpp	/^     NUM = 266,$/;"	e	enum:yytokentype	file:
-NUM	basic/parser.h	/^     NUM = 266,$/;"	e	enum:yytokentype
-NameIndex	service/packet.h	/^	NameIndex	= 11,$/;"	e	enum:__anon19
+NameIndex	service/packet.h	/^	NameIndex	= 11,$/;"	e	enum:__anon17
 NeedPercentEncode	json/rapidjson/pointer.h	/^    bool NeedPercentEncode(Ch c) const {$/;"	f	class:GenericPointer
 NewRange	json/rapidjson/internal/regex.h	/^    SizeType NewRange(unsigned codepoint) {$/;"	f	class:internal::GenericRegex
 NewState	json/rapidjson/internal/regex.h	/^    SizeType NewState(SizeType out, SizeType out1, unsigned codepoint) {$/;"	f	class:internal::GenericRegex
@@ -1118,9 +1030,7 @@ NumberStream	json/rapidjson/reader.h	/^    class NumberStream<InputStream, false
 NumberStream	json/rapidjson/reader.h	/^    class NumberStream<InputStream, true, false> : public NumberStream<InputStream, false, false> {$/;"	c	class:GenericReader
 NumberStream	json/rapidjson/reader.h	/^    class NumberStream<InputStream, true, true> : public NumberStream<InputStream, true, false> {$/;"	c	class:GenericReader
 NumberToken	json/rapidjson/reader.h	/^        NumberToken,$/;"	e	enum:GenericReader::Token
-OBJ	makefile	/^OBJ := $(patsubst %.c, %.o, $(SRC))$/;"	m
-OR	basic/parser.cpp	/^     OR = 275,$/;"	e	enum:yytokentype	file:
-OR	basic/parser.h	/^     OR = 275,$/;"	e	enum:yytokentype
+OBJ	makefile	/^OBJ := $(JSON_OBJ)$/;"	m
 OStreamWrapper	json/rapidjson/ostreamwrapper.h	/^typedef BasicOStreamWrapper<std::ostream> OStreamWrapper;$/;"	t
 Object	json/rapidjson/document.h	/^    typedef GenericObject<false, ValueT> Object;$/;"	t	class:GenericObject
 Object	json/rapidjson/document.h	/^    typedef GenericObject<false, ValueType> Object;$/;"	t	class:GenericValue
@@ -1129,11 +1039,11 @@ ObjectEmpty	json/rapidjson/document.h	/^    bool ObjectEmpty() const$/;"	f	class
 ObjectEmpty	json/rapidjson/document.h	/^    bool ObjectEmpty() const$/;"	f	class:GenericValue
 ObjectType	json/rapidjson/document.h	/^    typedef typename ValueType::ConstObject ObjectType;$/;"	t	struct:internal::TypeHelper
 ObjectType	json/rapidjson/document.h	/^    typedef typename ValueType::Object ObjectType;$/;"	t	struct:internal::TypeHelper
-OffTime	basic/token.cpp	/^const time_t Token::OffTime(void)$/;"	f	class:Token
-OffTime	basic/variable.cpp	/^time_t Variable::OffTime(void)$/;"	f	class:Variable
+OffTime	basic/token.cpp	/^const double Token::OffTime(void)$/;"	f	class:Token
+OffTime	basic/variable.cpp	/^const double Variable::OffTime(void)$/;"	f	class:Variable
 Offset	json/rapidjson/error/error.h	/^    size_t Offset() const { return offset_; }$/;"	f	struct:ParseResult
-OnTime	basic/token.cpp	/^const time_t Token::OnTime(void)$/;"	f	class:Token
-OnTime	basic/variable.cpp	/^time_t Variable::OnTime(void)$/;"	f	class:Variable
+OnTime	basic/token.cpp	/^const double Token::OnTime(void)$/;"	f	class:Token
+OnTime	basic/variable.cpp	/^const double Variable::OnTime(void)$/;"	f	class:Variable
 Open	socket/tcpclient.cpp	/^bool TcpClient::Open(void)$/;"	f	class:TcpClient
 Open	socket/unix-udp.cpp	/^bool UnixUdp::Open(void)$/;"	f	class:UnixUdp
 Operator	json/rapidjson/internal/regex.h	/^    enum Operator {$/;"	g	class:internal::GenericRegex
@@ -1561,11 +1471,6 @@ RAPIDJSON_VERSION_CODE	json/rapidjson/rapidjson.h	495;"	d
 RAPIDJSON_VERSION_STRING	json/rapidjson/rapidjson.h	78;"	d
 RAPIDJSON_WRITER_H_	json/rapidjson/writer.h	16;"	d
 RAPIDJSON_WRITE_DEFAULT_FLAGS	json/rapidjson/writer.h	63;"	d
-RB	basic/parser.cpp	/^     RB = 291,$/;"	e	enum:yytokentype	file:
-RB	basic/parser.h	/^     RB = 291,$/;"	e	enum:yytokentype
-REJECT	basic/lexer.cpp	598;"	d	file:
-RP	basic/parser.cpp	/^     RP = 289,$/;"	e	enum:yytokentype	file:
-RP	basic/parser.h	/^     RP = 289,$/;"	e	enum:yytokentype
 Range	json/rapidjson/internal/regex.h	/^    struct Range {$/;"	s	class:internal::GenericRegex
 Range	json/rapidjson/internal/regex.h	/^    typedef typename RegexType::Range Range;$/;"	t	class:internal::GenericRegexSearch
 RawNumber	json/rapidjson/document.h	/^    bool RawNumber(const Ch* str, SizeType length, bool copy)$/;"	f	class:GenericDocument
@@ -1614,7 +1519,8 @@ RightBracketToken	json/rapidjson/reader.h	/^        RightBracketToken,$/;"	e	enu
 RightCurlyBracketToken	json/rapidjson/reader.h	/^        RightCurlyBracketToken,$/;"	e	enum:GenericReader::Token
 Run	service/service.cpp	/^void Service::Run(void)$/;"	f	class:Service
 RunBasic	service/service.cpp	/^void Service::RunBasic(void)$/;"	f	class:Service
-Runtime	basic/variable.cpp	/^time_t Variable::Runtime(void)$/;"	f	class:Variable
+Runtime	basic/token.cpp	/^const double Token::Runtime(void)$/;"	f	class:Token
+Runtime	basic/variable.cpp	/^const double Variable::Runtime(void)$/;"	f	class:Variable
 SCNX16	json/rapidjson/msinttypes/inttypes.h	221;"	d
 SCNX32	json/rapidjson/msinttypes/inttypes.h	234;"	d
 SCNX64	json/rapidjson/msinttypes/inttypes.h	247;"	d
@@ -1705,14 +1611,16 @@ SCNxLEAST8	json/rapidjson/msinttypes/inttypes.h	211;"	d
 SCNxMAX	json/rapidjson/msinttypes/inttypes.h	259;"	d
 SCNxPTR	json/rapidjson/msinttypes/inttypes.h	265;"	d
 SCNxPTR	json/rapidjson/msinttypes/inttypes.h	270;"	d
-SET	basic/parser.cpp	/^     SET = 293,$/;"	e	enum:yytokentype	file:
-SET	basic/parser.h	/^     SET = 293,$/;"	e	enum:yytokentype
+SERVICE_CPP	makefile	/^SERVICE_CPP := $(wildcard service\/*.cpp)$/;"	m
+SERVICE_OBJ	makefile	/^SERVICE_OBJ := $(patsubst %.cpp, %.o, $(SERVICE_CPP))$/;"	m
 SIG_ATOMIC_MAX	json/rapidjson/msinttypes/stdint.h	246;"	d
 SIG_ATOMIC_MIN	json/rapidjson/msinttypes/stdint.h	245;"	d
 SIZE_MAX	json/rapidjson/msinttypes/stdint.h	250;"	d
 SIZE_MAX	json/rapidjson/msinttypes/stdint.h	252;"	d
+SOCKET_CPP	makefile	/^SOCKET_CPP  := $(wildcard socket\/*.cpp)$/;"	m
+SOCKET_OBJ	makefile	/^SOCKET_OBJ  := $(patsubst %.c  , %.o, $(SOCKET_SRC))$/;"	m
+SOCKET_SRC	makefile	/^SOCKET_SRC  := $(wildcard socket\/*.c)$/;"	m
 SRC	basic/makefile	/^SRC:= basiccc.cpp parser.cpp lexer.cpp variable.cpp cache.cpp $/;"	m
-SRC	makefile	/^SRC := $(wildcard socket\/*.c)$/;"	m
 SRC	socket/makefile	/^SRC:= unix-udp.cpp $/;"	m
 STATIC_ASSERTION_FAILURE	json/rapidjson/rapidjson.h	/^template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };$/;"	s
 STDC_HEADERS	cgicc/config.h	108;"	d
@@ -1815,8 +1723,7 @@ SetNull	json/rapidjson/document.h	/^    GenericValue& SetNull()$/;"	f	class:Gene
 SetObject	json/rapidjson/document.h	/^    GenericValue& SetObject()$/;"	f	class:GenericValue
 SetObjectRaw	json/rapidjson/document.h	/^    void SetObjectRaw(Member* members, SizeType count, Allocator& allocator)$/;"	f	class:GenericValue
 SetParseError	json/rapidjson/reader.h	/^    void SetParseError(ParseErrorCode code, size_t offset) { parseResult_.Set(code, offset); }$/;"	f	class:GenericReader
-SetRuntime	basic/token.cpp	/^void Token::SetRuntime(const time_t t)$/;"	f	class:Token
-SetRuntime	basic/variable.cpp	/^void Variable::SetRuntime(time_t t)$/;"	f	class:Variable
+SetRuntime	basic/variable.cpp	/^void Variable::SetRuntime(const double &t)$/;"	f	class:Variable
 SetString	json/rapidjson/document.h	/^    GenericValue& SetString(StringRefType s)$/;"	f	class:GenericValue
 SetString	json/rapidjson/document.h	/^    GenericValue& SetString(StringRefType s, Allocator& allocator)$/;"	f	class:GenericValue
 SetString	json/rapidjson/document.h	/^    GenericValue& SetString(const Ch* s, Allocator& allocator)$/;"	f	class:GenericValue
@@ -1830,8 +1737,6 @@ SetUint	json/rapidjson/document.h	/^    GenericValue& SetUint(unsigned u)$/;"	f	
 SetUint64	json/rapidjson/document.h	/^    GenericValue& SetUint64(uint64_t u64)$/;"	f	class:GenericValue
 SetValue	basic/token.cpp	/^bool Token::SetValue(const double& v)$/;"	f	class:Token
 SetValue	service/service.cpp	/^bool Service::SetValue(Packet& packet)$/;"	f	class:Service
-SetValueAuto	basic/token.cpp	/^bool Token::SetValueAuto(const double& v)$/;"	f	class:Token
-SetValueAuto	basic/variable.cpp	/^void Variable::SetValueAuto(double &v)$/;"	f	class:Variable
 SetValueByPointer	json/rapidjson/pointer.h	/^SetValueByPointer(DocumentType& document, const CharType(&source)[N], T2 value) {$/;"	f
 SetValueByPointer	json/rapidjson/pointer.h	/^SetValueByPointer(DocumentType& document, const GenericPointer<typename DocumentType::ValueType>& pointer, T2 value) {$/;"	f
 SetValueByPointer	json/rapidjson/pointer.h	/^SetValueByPointer(T& root, const CharType(&source)[N], T2 value, typename T::AllocatorType& a) {$/;"	f
@@ -1852,8 +1757,6 @@ SetValueByPointer	json/rapidjson/pointer.h	/^typename T::ValueType& SetValueByPo
 SetValueByPointer	json/rapidjson/pointer.h	/^typename T::ValueType& SetValueByPointer(T& root, const GenericPointer<typename T::ValueType>& pointer, const typename T::Ch* value, typename T::AllocatorType& a) {$/;"	f
 SetValueByPointer	json/rapidjson/pointer.h	/^typename T::ValueType& SetValueByPointer(T& root, const GenericPointer<typename T::ValueType>& pointer, const typename T::ValueType& value, typename T::AllocatorType& a) {$/;"	f
 SetValueByPointer	json/rapidjson/pointer.h	/^typename T::ValueType& SetValueByPointer(T& root, const GenericPointer<typename T::ValueType>& pointer, typename T::ValueType& value, typename T::AllocatorType& a) {$/;"	f
-SetValueManual	basic/token.cpp	/^bool Token::SetValueManual(const double& v)$/;"	f	class:Token
-SetValueManual	basic/variable.cpp	/^void Variable::SetValueManual(double &v)$/;"	f	class:Variable
 SetVariable	basic/token.cpp	/^void Token::SetVariable(Variable& variable)$/;"	f	class:Token
 SfinaeTag	json/rapidjson/internal/meta.h	/^struct SfinaeTag {};$/;"	s	namespace:internal
 ShortString	json/rapidjson/document.h	/^    struct ShortString$/;"	s	class:GenericValue
@@ -1877,6 +1780,7 @@ SkipWhitespace	json/rapidjson/reader.h	/^void SkipWhitespace(InputStream& is) {$
 SkipWhitespaceAndComments	json/rapidjson/reader.h	/^    void SkipWhitespaceAndComments(InputStream& is) {$/;"	f	class:GenericReader
 SkipWhitespace_SIMD	json/rapidjson/reader.h	/^inline const char *SkipWhitespace_SIMD(const char* p) {$/;"	f
 SkipWhitespace_SIMD	json/rapidjson/reader.h	/^inline const char *SkipWhitespace_SIMD(const char* p, const char* end) {$/;"	f
+SoftSetValue	basic/variable.cpp	/^void Variable::SoftSetValue(const double &v)$/;"	f	class:Variable
 Stack	json/rapidjson/internal/stack.h	/^    Stack(Allocator* allocator, size_t stackCapacity) : allocator_(allocator), ownAllocator_(0), stack_(0), stackTop_(0), stackEnd_(0), initialCapacity_(stackCapacity) {$/;"	f	class:internal::Stack
 Stack	json/rapidjson/internal/stack.h	/^    Stack(Stack&& rhs)$/;"	f	class:internal::Stack
 Stack	json/rapidjson/internal/stack.h	/^class Stack {$/;"	c	namespace:internal
@@ -1960,11 +1864,6 @@ TAIL	json/rapidjson/encodings.h	149;"	d
 TAIL	json/rapidjson/encodings.h	175;"	d
 TAIL	json/rapidjson/encodings.h	182;"	d
 TAIL	json/rapidjson/encodings.h	201;"	d
-TARGETS	makefile	/^TARGETS := bin\/unix-udp-client.exe $/;"	m
-THEN	basic/parser.cpp	/^     THEN = 272,$/;"	e	enum:yytokentype	file:
-THEN	basic/parser.h	/^     THEN = 272,$/;"	e	enum:yytokentype
-TIME	basic/parser.cpp	/^     TIME = 269,$/;"	e	enum:yytokentype	file:
-TIME	basic/parser.h	/^     TIME = 269,$/;"	e	enum:yytokentype
 TRANS	json/rapidjson/encodings.h	148;"	d
 TRANS	json/rapidjson/encodings.h	174;"	d
 TRANS	json/rapidjson/encodings.h	181;"	d
@@ -2016,6 +1915,8 @@ Tell	json/rapidjson/pointer.h	/^        size_t Tell() const { return static_cast
 Tell	json/rapidjson/reader.h	/^        size_t Tell() { return is.Tell(); }$/;"	f	class:GenericReader::NumberStream
 Tell	json/rapidjson/stream.h	/^    size_t Tell() const { return static_cast<size_t>(src_ - head_); }$/;"	f	struct:GenericStringStream
 Tell	json/rapidjson/stream.h	/^    size_t Tell() { return static_cast<size_t>(src_ - head_); }$/;"	f	struct:GenericInsituStringStream
+TimeOperator	basic/timeoperator.cpp	/^TimeOperator::TimeOperator(void)$/;"	f	class:TimeOperator
+TimeOperator	basic/timeoperator.h	/^class TimeOperator$/;"	c
 ToBias	json/rapidjson/internal/ieee754.h	/^    uint64_t ToBias() const { return (u_ & kSignMask) ? ~u_ + 1 : u_ | kSignMask; }$/;"	f	class:internal::Double
 ToDouble	json/rapidjson/internal/diyfp.h	/^    double ToDouble() const {$/;"	f	struct:internal::DiyFp
 Token	basic/token.cpp	/^Token::Token(signed t, const string& n)$/;"	f	class:Token
@@ -2064,20 +1965,16 @@ TypeHelper	json/rapidjson/document.h	/^struct TypeHelper<ValueType, typename Val
 TypeHelper	json/rapidjson/document.h	/^struct TypeHelper<ValueType, typename ValueType::Object>$/;"	s	namespace:internal
 TypeHelper	json/rapidjson/document.h	/^struct TypeHelper<ValueType, uint64_t>$/;"	s	namespace:internal
 TypeHelper	json/rapidjson/document.h	/^struct TypeHelper<ValueType, unsigned>$/;"	s	namespace:internal
-TypeIndex	service/packet.h	/^	TypeIndex   = 0,$/;"	e	enum:__anon19
+TypeIndex	service/packet.h	/^	TypeIndex   = 0,$/;"	e	enum:__anon17
 U	json/rapidjson/document.h	/^        struct U$/;"	s	union:GenericValue::Number
 U	json/rapidjson/schema.h	/^        union U {$/;"	u	struct:internal::Hasher::Number
 UINT16_C	json/rapidjson/msinttypes/stdint.h	282;"	d
 UINT16_C	json/rapidjson/msinttypes/stdint.h	59;"	d
 UINT16_C	json/rapidjson/msinttypes/stdint.h	71;"	d
-UINT16_MAX	basic/lexer.cpp	81;"	d	file:
-UINT16_MAX	basic/lexer.h	85;"	d
 UINT16_MAX	json/rapidjson/msinttypes/stdint.h	187;"	d
 UINT32_C	json/rapidjson/msinttypes/stdint.h	283;"	d
 UINT32_C	json/rapidjson/msinttypes/stdint.h	60;"	d
 UINT32_C	json/rapidjson/msinttypes/stdint.h	72;"	d
-UINT32_MAX	basic/lexer.cpp	84;"	d	file:
-UINT32_MAX	basic/lexer.h	88;"	d
 UINT32_MAX	json/rapidjson/msinttypes/stdint.h	188;"	d
 UINT64_C	json/rapidjson/msinttypes/stdint.h	284;"	d
 UINT64_C	json/rapidjson/msinttypes/stdint.h	61;"	d
@@ -2086,8 +1983,6 @@ UINT64_MAX	json/rapidjson/msinttypes/stdint.h	189;"	d
 UINT8_C	json/rapidjson/msinttypes/stdint.h	281;"	d
 UINT8_C	json/rapidjson/msinttypes/stdint.h	58;"	d
 UINT8_C	json/rapidjson/msinttypes/stdint.h	70;"	d
-UINT8_MAX	basic/lexer.cpp	78;"	d	file:
-UINT8_MAX	basic/lexer.h	82;"	d
 UINT8_MAX	json/rapidjson/msinttypes/stdint.h	186;"	d
 UINTMAX_C	json/rapidjson/msinttypes/stdint.h	293;"	d
 UINTMAX_C	json/rapidjson/msinttypes/stdint.h	82;"	d
@@ -2146,16 +2041,16 @@ Validate	json/rapidjson/encodings.h	/^    static bool Validate(InputStream& is, 
 Value	json/rapidjson/document.h	/^typedef GenericValue<UTF8<> > Value;$/;"	t
 Value	json/rapidjson/fwd.h	/^typedef GenericValue<UTF8<char>, MemoryPoolAllocator<CrtAllocator> > Value;$/;"	t
 Value	json/rapidjson/internal/ieee754.h	/^    double Value() const { return d_; }$/;"	f	class:internal::Double
-Value	json/rapidjson/internal/meta.h	/^    enum { Value = (sizeof(Check(Host(), 0)) == sizeof(Yes)) };$/;"	e	enum:internal::IsBaseOfImpl::__anon10
+Value	json/rapidjson/internal/meta.h	/^    enum { Value = (sizeof(Check(Host(), 0)) == sizeof(Yes)) };$/;"	e	enum:internal::IsBaseOfImpl::__anon8
 Value	json/rapidjson/internal/meta.h	/^    static const bool Value = Cond;$/;"	m	struct:internal::BoolType
-ValueIndex0	service/packet.h	/^	ValueIndex0 = 2,$/;"	e	enum:__anon19
-ValueIndex1	service/packet.h	/^	ValueIndex1 = 3,$/;"	e	enum:__anon19
-ValueIndex2	service/packet.h	/^	ValueIndex2 = 4,$/;"	e	enum:__anon19
-ValueIndex3	service/packet.h	/^	ValueIndex3 = 5,$/;"	e	enum:__anon19
-ValueIndex4	service/packet.h	/^	ValueIndex4 = 6,$/;"	e	enum:__anon19
-ValueIndex5	service/packet.h	/^	ValueIndex5 = 7,$/;"	e	enum:__anon19
-ValueIndex6	service/packet.h	/^	ValueIndex6 = 8,$/;"	e	enum:__anon19
-ValueIndex7	service/packet.h	/^	ValueIndex7 = 9,$/;"	e	enum:__anon19
+ValueIndex0	service/packet.h	/^	ValueIndex0 = 2,$/;"	e	enum:__anon17
+ValueIndex1	service/packet.h	/^	ValueIndex1 = 3,$/;"	e	enum:__anon17
+ValueIndex2	service/packet.h	/^	ValueIndex2 = 4,$/;"	e	enum:__anon17
+ValueIndex3	service/packet.h	/^	ValueIndex3 = 5,$/;"	e	enum:__anon17
+ValueIndex4	service/packet.h	/^	ValueIndex4 = 6,$/;"	e	enum:__anon17
+ValueIndex5	service/packet.h	/^	ValueIndex5 = 7,$/;"	e	enum:__anon17
+ValueIndex6	service/packet.h	/^	ValueIndex6 = 8,$/;"	e	enum:__anon17
+ValueIndex7	service/packet.h	/^	ValueIndex7 = 9,$/;"	e	enum:__anon17
 ValueIterator	json/rapidjson/document.h	/^    typedef GenericValue* ValueIterator;            \/\/!< Value iterator for iterating in array.$/;"	t	class:GenericValue
 ValueIterator	json/rapidjson/document.h	/^    typedef ValueType* ValueIterator;  \/\/ This may be const or non-const iterator$/;"	t	class:GenericArray
 ValueType	json/rapidjson/document.h	/^    typedef GenericValue<Encoding, Allocator> ValueType;    \/\/!< Value type of itself.$/;"	t	class:GenericValue
@@ -2216,165 +2111,6 @@ YACC	basic/makefile	/^YACC:=bison$/;"	m
 YACCIN	basic/makefile	/^YACCIN:= basic.y$/;"	m
 YACCOUT	basic/makefile	/^YACCOUT:= parser.cpp$/;"	m
 YFLAGS	basic/makefile	/^YFLAGS:= -o $(YACCOUT) --defines=parser.h$/;"	m
-YYABORT	basic/parser.cpp	650;"	d	file:
-YYACCEPT	basic/parser.cpp	649;"	d	file:
-YYBACKUP	basic/parser.cpp	671;"	d	file:
-YYBISON	basic/parser.cpp	44;"	d	file:
-YYBISON_VERSION	basic/parser.cpp	47;"	d	file:
-YYCASE_	basic/parser.cpp	1103;"	d	file:
-YYCASE_	basic/parser.cpp	1113;"	d	file:
-YYCOPY	basic/parser.cpp	380;"	d	file:
-YYCOPY	basic/parser.cpp	383;"	d	file:
-YYCOPY_NEEDED	basic/parser.cpp	355;"	d	file:
-YYDEBUG	basic/parser.cpp	85;"	d	file:
-YYDPRINTF	basic/parser.cpp	741;"	d	file:
-YYDPRINTF	basic/parser.cpp	890;"	d	file:
-YYEMPTY	basic/parser.cpp	646;"	d	file:
-YYEOF	basic/parser.cpp	647;"	d	file:
-YYERRCODE	basic/parser.cpp	689;"	d	file:
-YYERROR	basic/parser.cpp	651;"	d	file:
-YYERROR_VERBOSE	basic/parser.cpp	90;"	d	file:
-YYERROR_VERBOSE	basic/parser.cpp	91;"	d	file:
-YYERROR_VERBOSE	basic/parser.cpp	93;"	d	file:
-YYFAIL	basic/parser.cpp	661;"	d	file:
-YYFINAL	basic/parser.cpp	396;"	d	file:
-YYFPRINTF	basic/parser.cpp	738;"	d	file:
-YYFREE	basic/parser.cpp	325;"	d	file:
-YYID	basic/parser.cpp	/^YYID (int yyi)$/;"	f	file:
-YYID	basic/parser.cpp	249;"	d	file:
-YYINITDEPTH	basic/parser.cpp	899;"	d	file:
-YYLAST	basic/parser.cpp	398;"	d	file:
-YYLEX	basic/parser.cpp	728;"	d	file:
-YYLEX	basic/parser.cpp	730;"	d	file:
-YYLLOC_DEFAULT	basic/parser.cpp	698;"	d	file:
-YYLSP_NEEDED	basic/parser.cpp	62;"	d	file:
-YYMALLOC	basic/parser.cpp	318;"	d	file:
-YYMAXDEPTH	basic/parser.cpp	910;"	d	file:
-YYMAXUTOK	basic/parser.cpp	411;"	d	file:
-YYNNTS	basic/parser.cpp	403;"	d	file:
-YYNRULES	basic/parser.cpp	405;"	d	file:
-YYNSTATES	basic/parser.cpp	407;"	d	file:
-YYNTOKENS	basic/parser.cpp	401;"	d	file:
-YYPACT_NINF	basic/parser.cpp	566;"	d	file:
-YYPOPSTACK	basic/parser.cpp	1274;"	d	file:
-YYPULL	basic/parser.cpp	59;"	d	file:
-YYPURE	basic/parser.cpp	53;"	d	file:
-YYPUSH	basic/parser.cpp	56;"	d	file:
-YYRECOVERING	basic/parser.cpp	669;"	d	file:
-YYRHSLOC	basic/parser.cpp	696;"	d	file:
-YYSIZE_MAXIMUM	basic/parser.cpp	226;"	d	file:
-YYSIZE_T	basic/parser.cpp	214;"	d	file:
-YYSIZE_T	basic/parser.cpp	216;"	d	file:
-YYSIZE_T	basic/parser.cpp	220;"	d	file:
-YYSIZE_T	basic/parser.cpp	222;"	d	file:
-YYSKELETON_NAME	basic/parser.cpp	50;"	d	file:
-YYSTACK_ALLOC	basic/parser.cpp	272;"	d	file:
-YYSTACK_ALLOC	basic/parser.cpp	276;"	d	file:
-YYSTACK_ALLOC	basic/parser.cpp	281;"	d	file:
-YYSTACK_ALLOC	basic/parser.cpp	304;"	d	file:
-YYSTACK_ALLOC_MAXIMUM	basic/parser.cpp	301;"	d	file:
-YYSTACK_ALLOC_MAXIMUM	basic/parser.cpp	307;"	d	file:
-YYSTACK_BYTES	basic/parser.cpp	351;"	d	file:
-YYSTACK_FREE	basic/parser.cpp	295;"	d	file:
-YYSTACK_FREE	basic/parser.cpp	305;"	d	file:
-YYSTACK_GAP_MAXIMUM	basic/parser.cpp	347;"	d	file:
-YYSTACK_RELOCATE	basic/parser.cpp	362;"	d	file:
-YYSTATE	basic/lexer.cpp	133;"	d	file:
-YYSTYPE	basic/parser.cpp	/^typedef union YYSTYPE$/;"	u	file:
-YYSTYPE	basic/parser.cpp	/^} YYSTYPE;$/;"	t	typeref:union:YYSTYPE	file:
-YYSTYPE	basic/parser.h	/^typedef union YYSTYPE$/;"	u
-YYSTYPE	basic/parser.h	/^} YYSTYPE;$/;"	t	typeref:union:YYSTYPE
-YYSTYPE_IS_DECLARED	basic/parser.cpp	171;"	d	file:
-YYSTYPE_IS_DECLARED	basic/parser.h	103;"	d
-YYSTYPE_IS_TRIVIAL	basic/parser.cpp	169;"	d	file:
-YYSTYPE_IS_TRIVIAL	basic/parser.h	101;"	d
-YYTABLES_NAME	basic/lexer.cpp	2104;"	d	file:
-YYTABLE_NINF	basic/parser.cpp	589;"	d	file:
-YYTERROR	basic/parser.cpp	688;"	d	file:
-YYTOKENTYPE	basic/parser.cpp	104;"	d	file:
-YYTOKENTYPE	basic/parser.h	36;"	d
-YYTOKEN_TABLE	basic/parser.cpp	98;"	d	file:
-YYTRANSLATE	basic/parser.cpp	413;"	d	file:
-YYUNDEFTOK	basic/parser.cpp	410;"	d	file:
-YYUSE	basic/parser.cpp	242;"	d	file:
-YYUSE	basic/parser.cpp	244;"	d	file:
-YY_	basic/parser.cpp	232;"	d	file:
-YY_	basic/parser.cpp	236;"	d	file:
-YY_AT_BOL	basic/lexer.cpp	340;"	d	file:
-YY_BREAK	basic/lexer.cpp	787;"	d	file:
-YY_BUFFER_EOF_PENDING	basic/lexer.cpp	256;"	d	file:
-YY_BUFFER_NEW	basic/lexer.cpp	244;"	d	file:
-YY_BUFFER_NORMAL	basic/lexer.cpp	245;"	d	file:
-YY_BUFFER_STATE	basic/lexer.cpp	/^typedef struct yy_buffer_state *YY_BUFFER_STATE;$/;"	t	typeref:struct:yy_buffer_state	file:
-YY_BUFFER_STATE	basic/lexer.h	/^typedef struct yy_buffer_state *YY_BUFFER_STATE;$/;"	t	typeref:struct:yy_buffer_state
-YY_BUF_SIZE	basic/lexer.cpp	150;"	d	file:
-YY_BUF_SIZE	basic/lexer.cpp	152;"	d	file:
-YY_BUF_SIZE	basic/lexer.h	123;"	d
-YY_BUF_SIZE	basic/lexer.h	125;"	d
-YY_CHAR	basic/lexer.cpp	/^typedef unsigned char YY_CHAR;$/;"	t	file:
-YY_CURRENT_BUFFER	basic/lexer.cpp	272;"	d	file:
-YY_CURRENT_BUFFER_LVALUE	basic/lexer.cpp	279;"	d	file:
-YY_DECL	basic/lexer.cpp	775;"	d	file:
-YY_DECL	basic/lexer.h	310;"	d
-YY_DECL	basic/lexer.h	324;"	d
-YY_DECL_IS_OURS	basic/lexer.cpp	771;"	d	file:
-YY_DECL_IS_OURS	basic/lexer.h	306;"	d
-YY_DECL_IS_OURS	basic/lexer.h	323;"	d
-YY_DO_BEFORE_ACTION	basic/lexer.cpp	365;"	d	file:
-YY_DO_BEFORE_ACTION	basic/lexer.h	320;"	d
-YY_END_OF_BUFFER	basic/lexer.cpp	373;"	d	file:
-YY_END_OF_BUFFER_CHAR	basic/lexer.cpp	141;"	d	file:
-YY_EXIT_FAILURE	basic/lexer.cpp	1902;"	d	file:
-YY_EXTRA_TYPE	basic/lexer.cpp	627;"	d	file:
-YY_EXTRA_TYPE	basic/lexer.h	231;"	d
-YY_FATAL_ERROR	basic/lexer.cpp	762;"	d	file:
-YY_FLEX_MAJOR_VERSION	basic/lexer.cpp	10;"	d	file:
-YY_FLEX_MAJOR_VERSION	basic/lexer.h	14;"	d
-YY_FLEX_MINOR_VERSION	basic/lexer.cpp	11;"	d	file:
-YY_FLEX_MINOR_VERSION	basic/lexer.h	15;"	d
-YY_FLEX_SUBMINOR_VERSION	basic/lexer.cpp	12;"	d	file:
-YY_FLEX_SUBMINOR_VERSION	basic/lexer.h	16;"	d
-YY_FLUSH_BUFFER	basic/lexer.cpp	308;"	d	file:
-YY_FLUSH_BUFFER	basic/lexer.h	316;"	d
-YY_INPUT	basic/lexer.cpp	715;"	d	file:
-YY_INT_ALIGNED	basic/lexer.cpp	5;"	d	file:
-YY_INT_ALIGNED	basic/lexer.h	9;"	d
-YY_LESS_LINENO	basic/lexer.cpp	173;"	d	file:
-YY_LOCATION_PRINT	basic/parser.cpp	721;"	d	file:
-YY_MORE_ADJ	basic/lexer.cpp	600;"	d	file:
-YY_NEW_FILE	basic/lexer.cpp	139;"	d	file:
-YY_NEW_FILE	basic/lexer.h	315;"	d
-YY_NULL	basic/lexer.cpp	113;"	d	file:
-YY_NUM_RULES	basic/lexer.cpp	372;"	d	file:
-YY_READ_BUF_SIZE	basic/lexer.cpp	697;"	d	file:
-YY_READ_BUF_SIZE	basic/lexer.cpp	699;"	d	file:
-YY_READ_BUF_SIZE	basic/lexer.h	291;"	d
-YY_READ_BUF_SIZE	basic/lexer.h	293;"	d
-YY_REDUCE_PRINT	basic/parser.cpp	880;"	d	file:
-YY_REDUCE_PRINT	basic/parser.cpp	893;"	d	file:
-YY_RESTORE_YY_MORE_OFFSET	basic/lexer.cpp	601;"	d	file:
-YY_RULE_SETUP	basic/lexer.cpp	790;"	d	file:
-YY_SC_TO_UI	basic/lexer.cpp	120;"	d	file:
-YY_STACK_PRINT	basic/parser.cpp	842;"	d	file:
-YY_STACK_PRINT	basic/parser.cpp	892;"	d	file:
-YY_START	basic/lexer.cpp	132;"	d	file:
-YY_START_STACK_INCR	basic/lexer.cpp	757;"	d	file:
-YY_START_STACK_INCR	basic/lexer.h	299;"	d
-YY_STATE_BUF_SIZE	basic/lexer.cpp	158;"	d	file:
-YY_STATE_EOF	basic/lexer.cpp	136;"	d	file:
-YY_STRUCT_YY_BUFFER_STATE	basic/lexer.cpp	197;"	d	file:
-YY_STRUCT_YY_BUFFER_STATE	basic/lexer.h	144;"	d
-YY_SYMBOL_PRINT	basic/parser.cpp	747;"	d	file:
-YY_SYMBOL_PRINT	basic/parser.cpp	891;"	d	file:
-YY_TYPEDEF_YY_BUFFER_STATE	basic/lexer.cpp	161;"	d	file:
-YY_TYPEDEF_YY_BUFFER_STATE	basic/lexer.h	130;"	d
-YY_TYPEDEF_YY_SIZE_T	basic/lexer.cpp	192;"	d	file:
-YY_TYPEDEF_YY_SIZE_T	basic/lexer.h	139;"	d
-YY_USER_ACTION	basic/lexer.cpp	782;"	d	file:
-YY_USE_CONST	basic/lexer.cpp	101;"	d	file:
-YY_USE_CONST	basic/lexer.cpp	94;"	d	file:
-YY_USE_CONST	basic/lexer.h	105;"	d
-YY_USE_CONST	basic/lexer.h	98;"	d
 Yes	json/rapidjson/internal/meta.h	/^    typedef char (&Yes)[1];$/;"	t	struct:internal::IsBaseOfImpl
 Z16	json/rapidjson/reader.h	1000;"	d
 Z16	json/rapidjson/reader.h	992;"	d
@@ -2419,11 +2155,10 @@ __JSON_H__	json/json.h	2;"	d
 __PACKET_H__	service/packet.h	2;"	d
 __SERVICE_H__	service/service.h	2;"	d
 __STATEMENT_H__	basic/statement.h	2;"	d
-__STDC_LIMIT_MACROS	basic/lexer.cpp	40;"	d	file:
-__STDC_LIMIT_MACROS	basic/lexer.h	44;"	d
 __TCP_CLIENT_H__	socket/tcpclient.h	2;"	d
 __TCP_SERVER_H__	socket/tcpserver.h	2;"	d
 __TCP_SOCKET_H__	socket/tcp-socket.h	2;"	d
+__TIME_OPERATOR_H__	basic/timeoperator.h	2;"	d
 __TOKEN_H__	basic/token.h	2;"	d
 __UNIX_UDP_H__	socket/unix-udp.h	2;"	d
 __VARIABLE_H__	basic/variable.h	2;"	d
@@ -2440,7 +2175,6 @@ additionalItems_	json/rapidjson/schema.h	/^    bool additionalItems_;$/;"	m	clas
 additionalPropertiesSchema_	json/rapidjson/schema.h	/^    const SchemaType* additionalPropertiesSchema_;$/;"	m	class:internal::Schema
 additionalProperties_	json/rapidjson/schema.h	/^    bool additionalProperties_;$/;"	m	class:internal::Schema
 allOf_	json/rapidjson/schema.h	/^    SchemaArray allOf_;$/;"	m	class:internal::Schema
-alloca	basic/parser.cpp	279;"	d	file:
 allocator_	json/rapidjson/document.h	/^    Allocator* allocator_;$/;"	m	class:GenericDocument
 allocator_	json/rapidjson/internal/regex.h	/^    Allocator* allocator_;$/;"	m	class:internal::GenericRegexSearch
 allocator_	json/rapidjson/internal/stack.h	/^    Allocator* allocator_;$/;"	m	class:internal::Stack
@@ -2502,6 +2236,8 @@ cgicc	cgicc/MStreamable.h	/^namespace cgicc {$/;"	n
 cgicc	cgicc/XHTMLDoctype.h	/^namespace cgicc {$/;"	n
 cgicc	cgicc/XMLDeclaration.h	/^namespace cgicc{$/;"	n
 cgicc	cgicc/XMLPI.h	/^namespace cgicc {$/;"	n
+change	basic/variable.h	/^	bool change;$/;"	m	class:Variable
+changetime	basic/variable.h	/^	TimeOperator changetime;$/;"	m	class:Variable
 charToHex	cgicc/CgiUtils.cpp	/^cgicc::charToHex(char c)$/;"	f	class:cgicc
 chunkHead_	json/rapidjson/allocators.h	/^    ChunkHeader *chunkHead_;    \/\/!< Head of the chunk linked-list. Only the head chunk serves allocation.$/;"	m	class:MemoryPoolAllocator
 chunk_capacity_	json/rapidjson/allocators.h	/^    size_t chunk_capacity_;     \/\/!< The minimum capacity of chunk when they are allocated.$/;"	m	class:MemoryPoolAllocator
@@ -2517,9 +2253,9 @@ const_form_iterator	cgicc/Cgicc.h	/^  typedef std::vector<FormEntry>::const_iter
 context	basic/context.h	/^	map<int,class Statement> context;$/;"	m	class:Context
 context	basic/expression.h	/^	Context *context;$/;"	m	class:Expression
 cookie_iterator	cgicc/CgiEnvironment.h	/^  typedef std::vector<HTTPCookie>::iterator 	cookie_iterator;$/;"	t	namespace:cgicc
-copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 0 };$/;"	e	enum:StreamTraits::__anon4
-copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 1 };$/;"	e	enum:StreamTraits::__anon5
-copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 1 };$/;"	e	enum:StreamTraits::__anon6
+copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 0 };$/;"	e	enum:StreamTraits::__anon2
+copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 1 };$/;"	e	enum:StreamTraits::__anon3
+copyOptimization	json/rapidjson/stream.h	/^    enum { copyOptimization = 1 };$/;"	e	enum:StreamTraits::__anon4
 copy_if	cgicc/Cgicc.cpp	/^  copy_if(In first, $/;"	f	namespace:cgicc
 count	json/rapidjson/schema.h	/^        SizeType count;$/;"	m	struct:internal::Schema::SchemaArray
 count_	json/rapidjson/filereadstream.h	/^    size_t count_;  \/\/!< Number of characters read$/;"	m	class:FileReadStream
@@ -2532,7 +2268,7 @@ current_	json/rapidjson/filewritestream.h	/^    char *current_;$/;"	m	class:File
 d	json/rapidjson/document.h	/^        double d;$/;"	m	union:GenericValue::Number
 d	json/rapidjson/schema.h	/^        double d;$/;"	m	struct:internal::Hasher::Number
 d_	json/rapidjson/document.h	/^        GenericDocument& d_;$/;"	m	struct:GenericDocument::ClearStackOnExit
-d_	json/rapidjson/internal/ieee754.h	/^        double d_;$/;"	m	union:internal::Double::__anon9
+d_	json/rapidjson/internal/ieee754.h	/^        double d_;$/;"	m	union:internal::Double::__anon7
 data	service/packet.cpp	/^unsigned char* Packet::data(void)$/;"	f	class:Packet
 dataSpecified	cgicc/HTMLElement.h	/^    dataSpecified() 				const$/;"	f	class:cgicc::HTMLElement
 data_	json/rapidjson/document.h	/^    Data data_;$/;"	m	class:GenericValue
@@ -2665,30 +2401,6 @@ factory	json/rapidjson/schema.h	/^    SchemaValidatorFactoryType& factory;$/;"	m
 file_iterator	cgicc/Cgicc.h	/^  typedef std::vector<FormFile>::iterator 	file_iterator;$/;"	t	namespace:cgicc
 findEntries	cgicc/Cgicc.cpp	/^cgicc::Cgicc::findEntries(const std::string& param, $/;"	f	class:cgicc::Cgicc
 flags	json/rapidjson/document.h	/^        uint16_t flags;$/;"	m	struct:GenericValue::Flag
-flex_int16_t	basic/lexer.cpp	/^typedef int16_t flex_int16_t;$/;"	t	file:
-flex_int16_t	basic/lexer.cpp	/^typedef short int flex_int16_t;$/;"	t	file:
-flex_int16_t	basic/lexer.h	/^typedef int16_t flex_int16_t;$/;"	t
-flex_int16_t	basic/lexer.h	/^typedef short int flex_int16_t;$/;"	t
-flex_int32_t	basic/lexer.cpp	/^typedef int flex_int32_t;$/;"	t	file:
-flex_int32_t	basic/lexer.cpp	/^typedef int32_t flex_int32_t;$/;"	t	file:
-flex_int32_t	basic/lexer.h	/^typedef int flex_int32_t;$/;"	t
-flex_int32_t	basic/lexer.h	/^typedef int32_t flex_int32_t;$/;"	t
-flex_int8_t	basic/lexer.cpp	/^typedef int8_t flex_int8_t;$/;"	t	file:
-flex_int8_t	basic/lexer.cpp	/^typedef signed char flex_int8_t;$/;"	t	file:
-flex_int8_t	basic/lexer.h	/^typedef int8_t flex_int8_t;$/;"	t
-flex_int8_t	basic/lexer.h	/^typedef signed char flex_int8_t;$/;"	t
-flex_uint16_t	basic/lexer.cpp	/^typedef uint16_t flex_uint16_t;$/;"	t	file:
-flex_uint16_t	basic/lexer.cpp	/^typedef unsigned short int flex_uint16_t;$/;"	t	file:
-flex_uint16_t	basic/lexer.h	/^typedef uint16_t flex_uint16_t;$/;"	t
-flex_uint16_t	basic/lexer.h	/^typedef unsigned short int flex_uint16_t;$/;"	t
-flex_uint32_t	basic/lexer.cpp	/^typedef uint32_t flex_uint32_t;$/;"	t	file:
-flex_uint32_t	basic/lexer.cpp	/^typedef unsigned int flex_uint32_t;$/;"	t	file:
-flex_uint32_t	basic/lexer.h	/^typedef uint32_t flex_uint32_t;$/;"	t
-flex_uint32_t	basic/lexer.h	/^typedef unsigned int flex_uint32_t;$/;"	t
-flex_uint8_t	basic/lexer.cpp	/^typedef uint8_t flex_uint8_t;$/;"	t	file:
-flex_uint8_t	basic/lexer.cpp	/^typedef unsigned char flex_uint8_t; $/;"	t	file:
-flex_uint8_t	basic/lexer.h	/^typedef uint8_t flex_uint8_t;$/;"	t
-flex_uint8_t	basic/lexer.h	/^typedef unsigned char flex_uint8_t; $/;"	t
 form_iterator	cgicc/Cgicc.h	/^  typedef std::vector<FormEntry>::iterator 	form_iterator;$/;"	t	namespace:cgicc
 form_urldecode	cgicc/CgiUtils.cpp	/^cgicc::form_urldecode(const std::string& src)$/;"	f	class:cgicc
 form_urlencode	cgicc/CgiUtils.cpp	/^cgicc::form_urlencode(const std::string& src)$/;"	f	class:cgicc
@@ -2806,7 +2518,7 @@ if_else_expression	basic/basic.y	/^if_else_expression:$/;"	l
 if_expression	basic/basic.y	/^if_expression:$/;"	l
 imaxabs	json/rapidjson/msinttypes/inttypes.h	279;"	d
 imaxdiv	json/rapidjson/msinttypes/inttypes.h	/^imaxdiv_t __cdecl imaxdiv(intmax_t numer, intmax_t denom)$/;"	f
-imaxdiv_t	json/rapidjson/msinttypes/inttypes.h	/^} imaxdiv_t;$/;"	t	typeref:struct:__anon16
+imaxdiv_t	json/rapidjson/msinttypes/inttypes.h	/^} imaxdiv_t;$/;"	t	typeref:struct:__anon14
 inArray	json/rapidjson/schema.h	/^    bool inArray;$/;"	m	struct:internal::SchemaValidationContext
 inArray	json/rapidjson/writer.h	/^        bool inArray;       \/\/!< true if in array, otherwise in object$/;"	m	struct:Writer::Level
 indentCharCount_	json/rapidjson/prettywriter.h	/^    unsigned indentCharCount_;$/;"	m	class:PrettyWriter
@@ -2821,6 +2533,8 @@ inet_set_family	socket/inet-address.c	/^int inet_set_family(struct sockaddr_in *
 inet_set_ip	socket/inet-address.c	/^int inet_set_ip(struct sockaddr_in *address, int ip)$/;"	f
 inet_set_ipstring	socket/inet-address.c	/^int inet_set_ipstring(struct sockaddr_in *address, const char *ip)$/;"	f
 inet_set_port	socket/inet-address.c	/^int inet_set_port(struct sockaddr_in *address, int port)$/;"	f
+init	basic/timeoperator.cpp	/^int TimeOperator::init(void)$/;"	f	class:TimeOperator
+inited	basic/variable.h	/^	bool inited;$/;"	m	class:Variable
 initialCapacity_	json/rapidjson/internal/stack.h	/^    size_t initialCapacity_;$/;"	m	class:internal::Stack
 int16_t	json/rapidjson/msinttypes/stdint.h	/^   typedef signed __int16    int16_t;$/;"	t
 int16_t	json/rapidjson/msinttypes/stdint.h	/^   typedef signed short      int16_t;$/;"	t
@@ -2873,17 +2587,17 @@ itemsTupleCount_	json/rapidjson/schema.h	/^    SizeType itemsTupleCount_;$/;"	m	
 itemsTuple_	json/rapidjson/schema.h	/^    const SchemaType** itemsTuple_;$/;"	m	class:internal::Schema
 kAlternation	json/rapidjson/internal/regex.h	/^        kAlternation,$/;"	e	enum:internal::GenericRegex::Operator
 kAnyCharacterClass	json/rapidjson/internal/regex.h	/^    static const unsigned kAnyCharacterClass = 0xFFFFFFFF;   \/\/!< For '.'$/;"	m	class:internal::GenericRegex
-kArrayFlag	json/rapidjson/document.h	/^        kArrayFlag = kArrayType,$/;"	e	enum:GenericValue::__anon7
+kArrayFlag	json/rapidjson/document.h	/^        kArrayFlag = kArrayType,$/;"	e	enum:GenericValue::__anon5
 kArraySchemaType	json/rapidjson/schema.h	/^        kArraySchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kArrayType	json/rapidjson/rapidjson.h	/^    kArrayType = 4,     \/\/!< array $/;"	e	enum:Type
 kBitCount	json/rapidjson/internal/biginteger.h	/^    static const size_t kBitCount = 3328;  \/\/ 64bit * 54 > 10^1000$/;"	m	class:internal::BigInteger
-kBoolFlag	json/rapidjson/document.h	/^        kBoolFlag       = 0x0008,$/;"	e	enum:GenericValue::__anon7
+kBoolFlag	json/rapidjson/document.h	/^        kBoolFlag       = 0x0008,$/;"	e	enum:GenericValue::__anon5
 kBooleanSchemaType	json/rapidjson/schema.h	/^        kBooleanSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kCapacity	json/rapidjson/internal/biginteger.h	/^    static const size_t kCapacity = kBitCount \/ sizeof(Type);$/;"	m	class:internal::BigInteger
 kConcatenation	json/rapidjson/internal/regex.h	/^        kConcatenation,$/;"	e	enum:internal::GenericRegex::Operator
-kConstStringFlag	json/rapidjson/document.h	/^        kConstStringFlag = kStringType | kStringFlag,$/;"	e	enum:GenericValue::__anon7
-kCopyFlag	json/rapidjson/document.h	/^        kCopyFlag       = 0x0800,$/;"	e	enum:GenericValue::__anon7
-kCopyStringFlag	json/rapidjson/document.h	/^        kCopyStringFlag = kStringType | kStringFlag | kCopyFlag,$/;"	e	enum:GenericValue::__anon7
+kConstStringFlag	json/rapidjson/document.h	/^        kConstStringFlag = kStringType | kStringFlag,$/;"	e	enum:GenericValue::__anon5
+kCopyFlag	json/rapidjson/document.h	/^        kCopyFlag       = 0x0800,$/;"	e	enum:GenericValue::__anon5
+kCopyStringFlag	json/rapidjson/document.h	/^        kCopyStringFlag = kStringType | kStringFlag | kCopyFlag,$/;"	e	enum:GenericValue::__anon5
 kDefaultArrayCapacity	json/rapidjson/document.h	/^    static const SizeType kDefaultArrayCapacity = 16;$/;"	m	class:GenericValue
 kDefaultCapacity	json/rapidjson/memorybuffer.h	/^    static const size_t kDefaultCapacity = 256;$/;"	m	struct:GenericMemoryBuffer
 kDefaultCapacity	json/rapidjson/stringbuffer.h	/^    static const size_t kDefaultCapacity = 256;$/;"	m	class:GenericStringBuffer
@@ -2898,7 +2612,7 @@ kDefaultStackCapacity	json/rapidjson/document.h	/^    static const size_t kDefau
 kDefaultStackCapacity	json/rapidjson/reader.h	/^    static const size_t kDefaultStackCapacity = 256;    \/\/!< Default stack capacity in bytes for storing a single decoded string.$/;"	m	class:GenericReader
 kDenormalExponent	json/rapidjson/internal/ieee754.h	/^    static const int kDenormalExponent = 1 - kExponentBias;$/;"	m	class:internal::Double
 kDiySignificandSize	json/rapidjson/internal/diyfp.h	/^    static const int kDiySignificandSize = 64;$/;"	m	struct:internal::DiyFp
-kDoubleFlag	json/rapidjson/document.h	/^        kDoubleFlag     = 0x0200,$/;"	e	enum:GenericValue::__anon7
+kDoubleFlag	json/rapidjson/document.h	/^        kDoubleFlag     = 0x0200,$/;"	e	enum:GenericValue::__anon5
 kDpDenormalExponent	json/rapidjson/internal/diyfp.h	/^    static const int kDpDenormalExponent = -kDpExponentBias + 1;$/;"	m	struct:internal::DiyFp
 kDpExponentBias	json/rapidjson/internal/diyfp.h	/^    static const int kDpExponentBias = 0x3FF + kDpSignificandSize;$/;"	m	struct:internal::DiyFp
 kDpExponentMask	json/rapidjson/internal/diyfp.h	/^    static const uint64_t kDpExponentMask = RAPIDJSON_UINT64_C2(0x7FF00000, 0x00000000);$/;"	m	struct:internal::DiyFp
@@ -2909,7 +2623,7 @@ kDpSignificandMask	json/rapidjson/internal/diyfp.h	/^    static const uint64_t k
 kDpSignificandSize	json/rapidjson/internal/diyfp.h	/^    static const int kDpSignificandSize = 52;$/;"	m	struct:internal::DiyFp
 kExponentBias	json/rapidjson/internal/ieee754.h	/^    static const int kExponentBias = 0x3FF;$/;"	m	class:internal::Double
 kExponentMask	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kExponentMask = RAPIDJSON_UINT64_C2(0x7FF00000, 0x00000000);$/;"	m	class:internal::Double
-kFalseFlag	json/rapidjson/document.h	/^        kFalseFlag = kFalseType | kBoolFlag,$/;"	e	enum:GenericValue::__anon7
+kFalseFlag	json/rapidjson/document.h	/^        kFalseFlag = kFalseType | kBoolFlag,$/;"	e	enum:GenericValue::__anon5
 kFalseType	json/rapidjson/rapidjson.h	/^    kFalseType = 1,     \/\/!< false$/;"	e	enum:Type
 kFormatDefault	json/rapidjson/prettywriter.h	/^    kFormatDefault = 0,         \/\/!< Default pretty formatting.$/;"	e	enum:PrettyFormatOptions
 kFormatSingleLineArray	json/rapidjson/prettywriter.h	/^    kFormatSingleLineArray = 1  \/\/!< Format arrays on a single line.$/;"	e	enum:PrettyFormatOptions
@@ -2917,26 +2631,26 @@ kHiddenBit	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kHidden
 kInfinityQuantifier	json/rapidjson/internal/regex.h	/^    static const unsigned kInfinityQuantifier = ~0u;$/;"	m	class:internal::GenericRegex
 kInitialSchemaMapSize	json/rapidjson/schema.h	/^    static const size_t kInitialSchemaMapSize = 64;$/;"	m	class:GenericSchemaDocument
 kInitialSchemaRefSize	json/rapidjson/schema.h	/^    static const size_t kInitialSchemaRefSize = 64;$/;"	m	class:GenericSchemaDocument
-kInlineStrFlag	json/rapidjson/document.h	/^        kInlineStrFlag  = 0x1000,$/;"	e	enum:GenericValue::__anon7
-kInt64Flag	json/rapidjson/document.h	/^        kInt64Flag      = 0x0080,$/;"	e	enum:GenericValue::__anon7
-kIntFlag	json/rapidjson/document.h	/^        kIntFlag        = 0x0020,$/;"	e	enum:GenericValue::__anon7
+kInlineStrFlag	json/rapidjson/document.h	/^        kInlineStrFlag  = 0x1000,$/;"	e	enum:GenericValue::__anon5
+kInt64Flag	json/rapidjson/document.h	/^        kInt64Flag      = 0x0080,$/;"	e	enum:GenericValue::__anon5
+kIntFlag	json/rapidjson/document.h	/^        kIntFlag        = 0x0020,$/;"	e	enum:GenericValue::__anon5
 kIntegerSchemaType	json/rapidjson/schema.h	/^        kIntegerSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kLeftParenthesis	json/rapidjson/internal/regex.h	/^        kLeftParenthesis$/;"	e	enum:internal::GenericRegex::Operator
 kNeedFree	json/rapidjson/allocators.h	/^    static const bool kNeedFree = false;    \/\/!< Tell users that no need to call Free() with this allocator. (concept Allocator)$/;"	m	class:MemoryPoolAllocator
 kNeedFree	json/rapidjson/allocators.h	/^    static const bool kNeedFree = true;$/;"	m	class:CrtAllocator
-kNullFlag	json/rapidjson/document.h	/^        kNullFlag = kNullType,$/;"	e	enum:GenericValue::__anon7
+kNullFlag	json/rapidjson/document.h	/^        kNullFlag = kNullType,$/;"	e	enum:GenericValue::__anon5
 kNullSchemaType	json/rapidjson/schema.h	/^        kNullSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kNullType	json/rapidjson/rapidjson.h	/^    kNullType = 0,      \/\/!< null$/;"	e	enum:Type
-kNumberAnyFlag	json/rapidjson/document.h	/^        kNumberAnyFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag | kUintFlag | kUint64Flag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon7
-kNumberDoubleFlag	json/rapidjson/document.h	/^        kNumberDoubleFlag = kNumberType | kNumberFlag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon7
-kNumberFlag	json/rapidjson/document.h	/^        kNumberFlag     = 0x0010,$/;"	e	enum:GenericValue::__anon7
-kNumberInt64Flag	json/rapidjson/document.h	/^        kNumberInt64Flag = kNumberType | kNumberFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon7
-kNumberIntFlag	json/rapidjson/document.h	/^        kNumberIntFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon7
+kNumberAnyFlag	json/rapidjson/document.h	/^        kNumberAnyFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag | kUintFlag | kUint64Flag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon5
+kNumberDoubleFlag	json/rapidjson/document.h	/^        kNumberDoubleFlag = kNumberType | kNumberFlag | kDoubleFlag,$/;"	e	enum:GenericValue::__anon5
+kNumberFlag	json/rapidjson/document.h	/^        kNumberFlag     = 0x0010,$/;"	e	enum:GenericValue::__anon5
+kNumberInt64Flag	json/rapidjson/document.h	/^        kNumberInt64Flag = kNumberType | kNumberFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon5
+kNumberIntFlag	json/rapidjson/document.h	/^        kNumberIntFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag,$/;"	e	enum:GenericValue::__anon5
 kNumberSchemaType	json/rapidjson/schema.h	/^        kNumberSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kNumberType	json/rapidjson/rapidjson.h	/^    kNumberType = 6     \/\/!< number$/;"	e	enum:Type
-kNumberUint64Flag	json/rapidjson/document.h	/^        kNumberUint64Flag = kNumberType | kNumberFlag | kUint64Flag,$/;"	e	enum:GenericValue::__anon7
-kNumberUintFlag	json/rapidjson/document.h	/^        kNumberUintFlag = kNumberType | kNumberFlag | kUintFlag | kUint64Flag | kInt64Flag,$/;"	e	enum:GenericValue::__anon7
-kObjectFlag	json/rapidjson/document.h	/^        kObjectFlag = kObjectType,$/;"	e	enum:GenericValue::__anon7
+kNumberUint64Flag	json/rapidjson/document.h	/^        kNumberUint64Flag = kNumberType | kNumberFlag | kUint64Flag,$/;"	e	enum:GenericValue::__anon5
+kNumberUintFlag	json/rapidjson/document.h	/^        kNumberUintFlag = kNumberType | kNumberFlag | kUintFlag | kUint64Flag | kInt64Flag,$/;"	e	enum:GenericValue::__anon5
+kObjectFlag	json/rapidjson/document.h	/^        kObjectFlag = kObjectType,$/;"	e	enum:GenericValue::__anon5
 kObjectSchemaType	json/rapidjson/schema.h	/^        kObjectSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kObjectType	json/rapidjson/rapidjson.h	/^    kObjectType = 3,    \/\/!< object$/;"	e	enum:Type
 kOneOrMore	json/rapidjson/internal/regex.h	/^        kOneOrMore,$/;"	e	enum:internal::GenericRegex::Operator
@@ -2982,32 +2696,33 @@ kRangeCharacterClass	json/rapidjson/internal/regex.h	/^    static const unsigned
 kRangeNegationFlag	json/rapidjson/internal/regex.h	/^    static const unsigned kRangeNegationFlag = 0x80000000;$/;"	m	class:internal::GenericRegex
 kRegexInvalidRange	json/rapidjson/internal/regex.h	/^static const SizeType kRegexInvalidRange = ~SizeType(0);$/;"	m	namespace:internal
 kRegexInvalidState	json/rapidjson/internal/regex.h	/^static const SizeType kRegexInvalidState = ~SizeType(0);  \/\/!< Represents an invalid index in GenericRegex::State::out, out1$/;"	m	namespace:internal
-kShortStringFlag	json/rapidjson/document.h	/^        kShortStringFlag = kStringType | kStringFlag | kCopyFlag | kInlineStrFlag,$/;"	e	enum:GenericValue::__anon7
+kShortStringFlag	json/rapidjson/document.h	/^        kShortStringFlag = kStringType | kStringFlag | kCopyFlag | kInlineStrFlag,$/;"	e	enum:GenericValue::__anon5
 kSignMask	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kSignMask = RAPIDJSON_UINT64_C2(0x80000000, 0x00000000);$/;"	m	class:internal::Double
 kSignificandMask	json/rapidjson/internal/ieee754.h	/^    static const uint64_t kSignificandMask = RAPIDJSON_UINT64_C2(0x000FFFFF, 0xFFFFFFFF);$/;"	m	class:internal::Double
 kSignificandSize	json/rapidjson/internal/ieee754.h	/^    static const int kSignificandSize = 52;$/;"	m	class:internal::Double
-kStringFlag	json/rapidjson/document.h	/^        kStringFlag     = 0x0400,$/;"	e	enum:GenericValue::__anon7
+kStringFlag	json/rapidjson/document.h	/^        kStringFlag     = 0x0400,$/;"	e	enum:GenericValue::__anon5
 kStringSchemaType	json/rapidjson/schema.h	/^        kStringSchemaType,$/;"	e	enum:internal::Schema::SchemaValueType
 kStringType	json/rapidjson/rapidjson.h	/^    kStringType = 5,    \/\/!< string$/;"	e	enum:Type
 kTokenCount	json/rapidjson/reader.h	/^        kTokenCount$/;"	e	enum:GenericReader::Token
 kTotalSchemaType	json/rapidjson/schema.h	/^        kTotalSchemaType$/;"	e	enum:internal::Schema::SchemaValueType
-kTrueFlag	json/rapidjson/document.h	/^        kTrueFlag = kTrueType | kBoolFlag,$/;"	e	enum:GenericValue::__anon7
+kTrueFlag	json/rapidjson/document.h	/^        kTrueFlag = kTrueType | kBoolFlag,$/;"	e	enum:GenericValue::__anon5
 kTrueType	json/rapidjson/rapidjson.h	/^    kTrueType = 2,      \/\/!< true$/;"	e	enum:Type
 kTypeBit	json/rapidjson/internal/biginteger.h	/^    static const size_t kTypeBit = sizeof(Type) * 8;$/;"	m	class:internal::BigInteger
-kTypeMask	json/rapidjson/document.h	/^        kTypeMask = 0x07$/;"	e	enum:GenericValue::__anon7
+kTypeMask	json/rapidjson/document.h	/^        kTypeMask = 0x07$/;"	e	enum:GenericValue::__anon5
 kUTF16BE	json/rapidjson/encodings.h	/^    kUTF16BE = 2,   \/\/!< UTF-16 big endian.$/;"	e	enum:UTFType
 kUTF16LE	json/rapidjson/encodings.h	/^    kUTF16LE = 1,   \/\/!< UTF-16 little endian.$/;"	e	enum:UTFType
 kUTF32BE	json/rapidjson/encodings.h	/^    kUTF32BE = 4    \/\/!< UTF-32 big endian.$/;"	e	enum:UTFType
 kUTF32LE	json/rapidjson/encodings.h	/^    kUTF32LE = 3,   \/\/!< UTF-32 little endian.$/;"	e	enum:UTFType
 kUTF8	json/rapidjson/encodings.h	/^    kUTF8 = 0,      \/\/!< UTF-8.$/;"	e	enum:UTFType
-kUint64Flag	json/rapidjson/document.h	/^        kUint64Flag     = 0x0100,$/;"	e	enum:GenericValue::__anon7
-kUintFlag	json/rapidjson/document.h	/^        kUintFlag       = 0x0040,$/;"	e	enum:GenericValue::__anon7
+kUint64Flag	json/rapidjson/document.h	/^        kUint64Flag     = 0x0100,$/;"	e	enum:GenericValue::__anon5
+kUintFlag	json/rapidjson/document.h	/^        kUintFlag       = 0x0040,$/;"	e	enum:GenericValue::__anon5
 kWriteDefaultFlags	json/rapidjson/writer.h	/^    kWriteDefaultFlags = RAPIDJSON_WRITE_DEFAULT_FLAGS  \/\/!< Default write flags. Can be customized by defining RAPIDJSON_WRITE_DEFAULT_FLAGS$/;"	e	enum:WriteFlag
 kWriteNanAndInfFlag	json/rapidjson/writer.h	/^    kWriteNanAndInfFlag = 2,        \/\/!< Allow writing of Infinity, -Infinity and NaN.$/;"	e	enum:WriteFlag
 kWriteNoFlags	json/rapidjson/writer.h	/^    kWriteNoFlags = 0,              \/\/!< No flags are set.$/;"	e	enum:WriteFlag
 kWriteValidateEncodingFlag	json/rapidjson/writer.h	/^    kWriteValidateEncodingFlag = 1, \/\/!< Validate encoding of JSON strings.$/;"	e	enum:WriteFlag
 kZeroOrMore	json/rapidjson/internal/regex.h	/^        kZeroOrMore,$/;"	e	enum:internal::GenericRegex::Operator
 kZeroOrOne	json/rapidjson/internal/regex.h	/^        kZeroOrOne,$/;"	e	enum:internal::GenericRegex::Operator
+lTARGETS	makefile	/^lTARGETS := service\/service.a$/;"	m
 label_expression	basic/basic.y	/^label_expression:$/;"	l
 labelmap	basic/context.h	/^	map<string,int> labelmap;$/;"	m	class:Context
 lchild	basic/expression.h	/^	Expression *lchild;$/;"	m	class:Expression
@@ -3026,8 +2741,6 @@ m_debug	basic/basic.h	/^	bool m_debug;$/;"	m	class:Basic
 m_name	basic/basic.h	/^	string m_name;$/;"	m	class:Basic
 m_path	socket/unix-udp.h	/^	string m_path;$/;"	m	class:UnixUdp
 m_run	basic/basic.h	/^	bool m_run;$/;"	m	class:Basic
-main	basic/lexer.cpp	/^int main(int argc, char **argv)$/;"	f
-main	basic/parser.cpp	/^int main(int argc, char **argv)$/;"	f
 main	cgicc/test.c++	/^int main(int argc, char **argv)$/;"	f
 main	cgicc/test/test.cpp	/^int main(void)$/;"	f
 main	json/json.cpp	/^int main(void)$/;"	f
@@ -3046,6 +2759,7 @@ maxItems_	json/rapidjson/schema.h	/^    SizeType maxItems_;$/;"	m	class:internal
 maxLength_	json/rapidjson/schema.h	/^    SizeType maxLength_;$/;"	m	class:internal::Schema
 maxProperties_	json/rapidjson/schema.h	/^    SizeType maxProperties_;$/;"	m	class:internal::Schema
 maximum_	json/rapidjson/schema.h	/^    SValue maximum_;$/;"	m	class:internal::Schema
+mdiff	basic/timeoperator.cpp	/^int TimeOperator::mdiff(void)$/;"	f	class:TimeOperator
 members	json/rapidjson/document.h	/^        Member* members;$/;"	m	struct:GenericValue::ObjectData
 min	json/rapidjson/document.h	36;"	d
 minIndex	json/rapidjson/internal/regex.h	/^        SizeType minIndex;$/;"	m	struct:internal::GenericRegex::Frag
@@ -3076,9 +2790,9 @@ nullvalue	json/json.h	/^	Value nullvalue;$/;"	m	class:Json
 o	json/rapidjson/document.h	/^        ObjectData o;$/;"	m	union:GenericValue::Data
 objectPatternValidatorType	json/rapidjson/schema.h	/^    PatternValidatorType objectPatternValidatorType;$/;"	m	struct:internal::SchemaValidationContext
 offset_	json/rapidjson/error/error.h	/^    size_t offset_;$/;"	m	struct:ParseResult
-offtime	basic/variable.h	/^	time_t offtime;$/;"	m	class:Variable
+offtime	basic/variable.h	/^	TimeOperator offtime;$/;"	m	class:Variable
 oneOf_	json/rapidjson/schema.h	/^    SchemaArray oneOf_;$/;"	m	class:internal::Schema
-ontime	basic/variable.h	/^	time_t ontime;$/;"	m	class:Variable
+ontime	basic/variable.h	/^	TimeOperator ontime;$/;"	m	class:Variable
 operator !=	cgicc/CgiEnvironment.h	/^    operator!= (const CgiEnvironment& env) 		const$/;"	f	class:cgicc::CgiEnvironment
 operator !=	cgicc/CgiInput.h	/^    operator!= (const CgiInput& input) 			const$/;"	f	class:cgicc::CgiInput
 operator !=	cgicc/Cgicc.h	/^    operator!= (const Cgicc& cgi) 		const$/;"	f	class:cgicc::Cgicc
@@ -3230,7 +2944,6 @@ parseResult_	json/rapidjson/document.h	/^              parseResult_(rhs.parseRes
 parseResult_	json/rapidjson/document.h	/^    ParseResult parseResult_;$/;"	m	class:GenericDocument
 parseResult_	json/rapidjson/reader.h	/^    ParseResult parseResult_;$/;"	m	class:GenericReader
 parseResult_	json/rapidjson/schema.h	/^    ParseResult parseResult_;$/;"	m	class:SchemaValidatingReader
-parsefile	basic/parser.cpp	/^int parsefile(const string& file)$/;"	f
 parseok	json/json.h	/^	bool parseok;$/;"	m	class:Json
 pattern	json/rapidjson/schema.h	/^        RegexType* pattern;$/;"	m	struct:internal::Schema::PatternProperty
 patternPropertiesSchemaCount	json/rapidjson/schema.h	/^    SizeType patternPropertiesSchemaCount;$/;"	m	struct:internal::SchemaValidationContext
@@ -3252,7 +2965,7 @@ putFunc_	json/rapidjson/encodedstream.h	/^    PutFunc putFunc_;$/;"	m	class:Auto
 queryCheckbox	cgicc/Cgicc.cpp	/^cgicc::Cgicc::queryCheckbox(const std::string& elementName) 	const$/;"	f	class:cgicc::Cgicc
 query_iterator	cgicc/cgi.h	/^	typedef map<xstring, xstring>::iterator query_iterator;$/;"	t	class:Cgi
 querymap	cgicc/cgi.h	/^	map<xstring, xstring> querymap;$/;"	m	class:Cgi
-quot	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t quot;$/;"	m	struct:__anon16
+quot	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t quot;$/;"	m	struct:__anon14
 r_	json/rapidjson/reader.h	/^        GenericReader& r_;$/;"	m	struct:GenericReader::ClearStackOnExit
 rangeCount_	json/rapidjson/internal/regex.h	/^    SizeType rangeCount_;$/;"	m	class:internal::GenericRegex
 rangeStart	json/rapidjson/internal/regex.h	/^        SizeType rangeStart;$/;"	m	struct:internal::GenericRegex::State
@@ -3263,9 +2976,8 @@ readCount_	json/rapidjson/filereadstream.h	/^    size_t readCount_;$/;"	m	class:
 readEnvironmentVariables	cgicc/CgiEnvironment.cpp	/^cgicc::CgiEnvironment::readEnvironmentVariables(CgiInput *input)$/;"	f	class:cgicc::CgiEnvironment
 readLong	cgicc/CgiUtils.cpp	/^cgicc::readLong(std::istream& in)$/;"	f	class:cgicc
 readString	cgicc/CgiUtils.cpp	/^cgicc::readString(std::istream& in)$/;"	f	class:cgicc
-readfile	basic/parser.cpp	/^void readfile(const string& file, string& s)$/;"	f
 regex_	json/rapidjson/internal/regex.h	/^    const RegexType& regex_;$/;"	m	class:internal::GenericRegexSearch
-rem	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t rem;$/;"	m	struct:__anon16
+rem	json/rapidjson/msinttypes/inttypes.h	/^   intmax_t rem;$/;"	m	struct:__anon14
 remoteProvider_	json/rapidjson/schema.h	/^    IRemoteSchemaDocumentProviderType* remoteProvider_;$/;"	m	class:GenericSchemaDocument
 remove	cgicc/HTTPCookie.h	/^    remove()$/;"	f	class:cgicc::HTTPCookie
 render	cgicc/HTMLAttribute.cpp	/^cgicc::HTMLAttribute::render(std::ostream& out) 		const$/;"	f	class:cgicc::HTMLAttribute
@@ -3290,7 +3002,7 @@ root_	json/rapidjson/schema.h	/^    const SchemaType& root_;$/;"	m	class:Generic
 root_	json/rapidjson/schema.h	/^    const SchemaType* root_;                \/\/!< Root schema.$/;"	m	class:GenericSchemaDocument
 run	basic/basic.cpp	/^const bool Basic::run(void)$/;"	f	class:Basic
 run	basic/basic.cpp	/^void Basic::run(bool b)$/;"	f	class:Basic
-runtime	basic/variable.h	/^	time_t runtime;$/;"	m	class:Variable
+runtime	basic/variable.h	/^	double runtime;$/;"	m	class:Variable
 s	json/rapidjson/document.h	/^        String s;$/;"	m	union:GenericValue::Data
 s	json/rapidjson/document.h	/^    const Ch* const s; \/\/!< plain CharType pointer$/;"	m	struct:GenericStringRef
 s	json/rapidjson/reader.h	/^    Stream s;$/;"	m	class:internal::StreamLocalCopy
@@ -3311,6 +3023,7 @@ schemaRef_	json/rapidjson/schema.h	/^    internal::Stack<Allocator> schemaRef_; 
 schemaStack_	json/rapidjson/schema.h	/^    internal::Stack<StateAllocator> schemaStack_;    \/\/!< stack to store the current path of schema (BaseSchemaType *)$/;"	m	class:GenericSchemaValidator
 schemas	json/rapidjson/schema.h	/^        const SchemaType** schemas;$/;"	m	struct:internal::Schema::SchemaArray
 sd_	json/rapidjson/schema.h	/^    const SchemaDocumentType& sd_;$/;"	m	class:SchemaValidatingReader
+sdiff	basic/timeoperator.cpp	/^int TimeOperator::sdiff(void)$/;"	f	class:TimeOperator
 server	service/service.h	/^	UnixUdp server;$/;"	m	class:Service
 set	cgicc/HTMLAttributeList.cpp	/^cgicc::HTMLAttributeList::set(const std::string& name)$/;"	f	class:cgicc::HTMLAttributeList
 set	cgicc/HTMLAttributeList.cpp	/^cgicc::HTMLAttributeList::set(const std::string& name, $/;"	f	class:cgicc::HTMLAttributeList
@@ -3337,7 +3050,6 @@ setSecure	cgicc/HTTPCookie.h	/^    setSecure(bool secure)$/;"	f	class:cgicc::HTT
 setValue	cgicc/HTMLAttribute.h	/^    setValue(const std::string& value)$/;"	f	class:cgicc::HTMLAttribute
 setValue	cgicc/HTTPCookie.h	/^    setValue(const std::string& value)$/;"	f	class:cgicc::HTTPCookie
 set_expression	basic/basic.y	/^set_expression:$/;"	l
-short	basic/parser.cpp	182;"	d	file:
 show	basic/basic.cpp	/^void Basic::show(void)$/;"	f	class:Basic
 size	json/rapidjson/allocators.h	/^        size_t size;        \/\/!< Current size of allocated memory in bytes.$/;"	m	struct:MemoryPoolAllocator::ChunkHeader
 size	json/rapidjson/document.h	/^        SizeType size;$/;"	m	struct:GenericValue::ArrayData
@@ -3383,15 +3095,14 @@ stringsAreEqual	cgicc/CgiUtils.cpp	/^cgicc::stringsAreEqual(const std::string& s
 strtoimax	json/rapidjson/msinttypes/inttypes.h	307;"	d
 strtoumax	json/rapidjson/msinttypes/inttypes.h	308;"	d
 sudovar	basic/cache.h	/^	Variable sudovar;$/;"	m	class:Cache
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 0 };$/;"	e	enum:ASCII::__anon14
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:AutoUTF::__anon15
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF16::__anon12
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF32::__anon13
-supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF8::__anon11
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 0 };$/;"	e	enum:ASCII::__anon12
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:AutoUTF::__anon13
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF16::__anon10
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF32::__anon11
+supportUnicode	json/rapidjson/encodings.h	/^    enum { supportUnicode = 1 };$/;"	e	enum:UTF8::__anon9
 swapState	cgicc/HTMLBooleanElement.h	/^    swapState() 					const$/;"	f	class:cgicc::HTMLBooleanElement
 swapState	cgicc/HTMLElement.h	/^    swapState() 				const$/;"	f	class:cgicc::HTMLElement
-t	basic/parser.cpp	/^		char t[128];$/;"	m	struct:YYSTYPE::__anon2	file:
-t	basic/parser.h	/^		char t[128];$/;"	m	struct:YYSTYPE::__anon1
+t	basic/timeoperator.h	/^	struct timeval t;$/;"	m	class:TimeOperator	typeref:struct:TimeOperator::timeval
 takeFunc_	json/rapidjson/encodedstream.h	/^    TakeFunc takeFunc_;$/;"	m	class:AutoUTFInputStream
 target	json/rapidjson/schema.h	/^        PointerType target;$/;"	m	struct:GenericSchemaDocument::SchemaRefEntry
 tcp_accept	socket/tcp-socket.c	/^int tcp_accept(int socket)$/;"	f
@@ -3409,6 +3120,7 @@ tcp_reuse_address	socket/tcp-socket.c	/^int tcp_reuse_address(int socket)$/;"	f
 tcp_send	socket/tcp-socket.c	/^int tcp_send(int socket, char *data, int len)$/;"	f
 tcp_state	socket/tcp-socket.c	/^int tcp_state(int socket)$/;"	f
 then_expression	basic/basic.y	/^then_expression:$/;"	l
+threshold	basic/variable.h	/^	double threshold;$/;"	m	class:Variable
 tochar	cgicc/xstring.h	/^	const unsigned char tochar(void)const$/;"	f	class:xstring
 toint	cgicc/xstring.h	/^	const int toint(void)const$/;"	f	class:xstring
 token	basic/expression.h	/^	Token token;$/;"	m	class:Expression
@@ -3435,7 +3147,8 @@ u	json/rapidjson/schema.h	/^        }u;$/;"	m	struct:internal::Hasher::Number	ty
 u32toa	json/rapidjson/internal/itoa.h	/^inline char* u32toa(uint32_t value, char* buffer) {$/;"	f	namespace:internal
 u64	json/rapidjson/document.h	/^        uint64_t u64;$/;"	m	union:GenericValue::Number
 u64toa	json/rapidjson/internal/itoa.h	/^inline char* u64toa(uint64_t value, char* buffer) {$/;"	f	namespace:internal
-u_	json/rapidjson/internal/ieee754.h	/^        uint64_t u_;$/;"	m	union:internal::Double::__anon9
+u_	json/rapidjson/internal/ieee754.h	/^        uint64_t u_;$/;"	m	union:internal::Double::__anon7
+udiff	basic/timeoperator.cpp	/^int TimeOperator::udiff(void)$/;"	f	class:TimeOperator
 uint16_t	json/rapidjson/msinttypes/stdint.h	/^   typedef unsigned __int16  uint16_t;$/;"	t
 uint16_t	json/rapidjson/msinttypes/stdint.h	/^   typedef unsigned short    uint16_t;$/;"	t
 uint32_t	json/rapidjson/msinttypes/stdint.h	/^   typedef unsigned __int32  uint32_t;$/;"	t
@@ -3455,14 +3168,10 @@ uintmax_t	json/rapidjson/msinttypes/stdint.h	/^typedef uint64_t  uintmax_t;$/;"	
 uintptr_t	json/rapidjson/msinttypes/stdint.h	/^   typedef _W64 unsigned int uintptr_t;$/;"	t
 uintptr_t	json/rapidjson/msinttypes/stdint.h	/^   typedef unsigned __int64  uintptr_t;$/;"	t
 uniqueItems_	json/rapidjson/schema.h	/^    bool uniqueItems_;$/;"	m	class:internal::Schema
-unput	basic/lexer.cpp	189;"	d	file:
-update	basic/variable.h	/^	time_t update;$/;"	m	class:Variable
 userBuffer_	json/rapidjson/allocators.h	/^    void *userBuffer_;          \/\/!< User supplied buffer.$/;"	m	class:MemoryPoolAllocator
 usingHTTPS	cgicc/CgiEnvironment.h	/^    usingHTTPS() 				const$/;"	f	class:cgicc::CgiEnvironment
 uvalue	service/packet.cpp	/^unsigned int Packet::uvalue(void)$/;"	f	class:Packet
 uvalue	service/packet.cpp	/^void Packet::uvalue(unsigned int v)$/;"	f	class:Packet
-v	basic/parser.cpp	/^		double v;$/;"	m	struct:YYSTYPE::__anon2	file:
-v	basic/parser.h	/^		double v;$/;"	m	struct:YYSTYPE::__anon1
 valid_	json/rapidjson/pointer.h	/^        bool valid_;        \/\/!< Whether the parsing is valid.$/;"	m	class:GenericPointer::PercentDecodeStream
 valid_	json/rapidjson/schema.h	/^    bool valid_;$/;"	m	class:GenericSchemaValidator
 validatorCount	json/rapidjson/schema.h	/^    SizeType validatorCount;$/;"	m	struct:internal::SchemaValidationContext
@@ -3471,7 +3180,7 @@ validators	json/rapidjson/schema.h	/^    ISchemaValidator** validators;$/;"	m	st
 value	basic/token.h	/^	double value;$/;"	m	class:Token
 value	basic/variable.h	/^	double value;$/;"	m	class:Variable
 value	json/rapidjson/document.h	/^    GenericValue<Encoding, Allocator> value;    \/\/!< value of member.$/;"	m	struct:GenericMember
-value	json/rapidjson/rapidjson.h	/^template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };$/;"	e	enum:STATIC_ASSERTION_FAILURE::__anon3
+value	json/rapidjson/rapidjson.h	/^template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };$/;"	e	enum:STATIC_ASSERTION_FAILURE::__anon1
 valueCount	json/rapidjson/writer.h	/^        size_t valueCount;  \/\/!< number of values in this level$/;"	m	struct:Writer::Level
 valuePatternValidatorType	json/rapidjson/schema.h	/^    PatternValidatorType valuePatternValidatorType;$/;"	m	struct:internal::SchemaValidationContext
 valueSchema	json/rapidjson/schema.h	/^    const SchemaType* valueSchema;$/;"	m	struct:internal::SchemaValidationContext
@@ -3480,18 +3189,21 @@ value_	json/rapidjson/document.h	/^    ValueType& value_;$/;"	m	class:GenericArr
 value_	json/rapidjson/document.h	/^    ValueType& value_;$/;"	m	class:GenericObject
 value_expression	basic/basic.y	/^value_expression:$/;"	l
 var	basic/token.h	/^	Variable *var;$/;"	m	class:Token
+var_expression	basic/basic.y	/^var_expression:$/;"	l
 variablemap	basic/cache.h	/^	map<string,Variable> variablemap;$/;"	m	class:Cache
 vector	cgicc/CgiEnvironment.h	/^  template class CGICC_API std::vector<HTTPCookie>;$/;"	m	class:cgicc::std	typeref:class:cgicc::std::
 vector	cgicc/Cgicc.h	/^  template class CGICC_API std::vector<FormEntry>;$/;"	m	class:cgicc::std	typeref:class:cgicc::std::
 vector	cgicc/Cgicc.h	/^  template class CGICC_API std::vector<FormFile>;$/;"	m	class:cgicc::std	typeref:class:cgicc::std::
 vector	cgicc/HTMLAttributeList.h	/^  template class CGICC_API std::vector<HTMLAttribute>;$/;"	m	class:cgicc::std	typeref:class:cgicc::std::
 vector	cgicc/HTMLElementList.h	/^  template class CGICC_API std::vector<HTMLElement*>;$/;"	m	class:cgicc::std	typeref:class:cgicc::std::
+waitqueue	basic/variable.h	/^	list<string> waitqueue;$/;"	m	class:Variable
 wcstoimax	json/rapidjson/msinttypes/inttypes.h	311;"	d
 wcstoumax	json/rapidjson/msinttypes/inttypes.h	312;"	d
 writeLong	cgicc/CgiUtils.cpp	/^cgicc::writeLong(std::ostream& out, $/;"	f	class:cgicc
 writeString	cgicc/CgiUtils.cpp	/^cgicc::writeString(std::ostream& out, $/;"	f	class:cgicc
 writeToStream	cgicc/FormFile.cpp	/^cgicc::FormFile::writeToStream(std::ostream& out) 		const$/;"	f	class:cgicc::FormFile
 writer	json/json.h	/^	Writer<StringBuffer> writer;$/;"	m	class:Json
+xTARGETS	makefile	/^xTARGETS := bin\/unix-udp-client.exe $/;"	m
 xdigit	cgicc/xstring.h	/^	unsigned char xdigit(int i)$/;"	f	class:xstring
 xmlnsXHTML	cgicc/XHTMLDoctype.h	81;"	d
 xstring	cgicc/xstring.h	/^	xstring(const char* s){ if(s)format("%s",s); }$/;"	f	class:xstring
@@ -3499,172 +3211,6 @@ xstring	cgicc/xstring.h	/^	xstring(const string& s){ (*this) = s; }$/;"	f	class:
 xstring	cgicc/xstring.h	/^	xstring(void){}$/;"	f	class:xstring
 xstring	cgicc/xstring.h	/^class xstring : public std::string$/;"	c
 xtoint	cgicc/xstring.h	/^	const int xtoint(void) const$/;"	f	class:xstring
-yyHEADER_H	basic/lexer.h	2;"	d
-yyIN_HEADER	basic/lexer.h	331;"	d
-yyIN_HEADER	basic/lexer.h	3;"	d
-yy_accept	basic/lexer.cpp	/^static yyconst flex_int16_t yy_accept[158] =$/;"	v	file:
-yy_at_bol	basic/lexer.cpp	/^	int yy_at_bol;$/;"	m	struct:yy_buffer_state	file:
-yy_at_bol	basic/lexer.h	/^	int yy_at_bol;$/;"	m	struct:yy_buffer_state
-yy_base	basic/lexer.cpp	/^static yyconst flex_int16_t yy_base[177] =$/;"	v	file:
-yy_bs_column	basic/lexer.cpp	/^    int yy_bs_column; \/**< The column count. *\/$/;"	m	struct:yy_buffer_state	file:
-yy_bs_column	basic/lexer.h	/^    int yy_bs_column; \/**< The column count. *\/$/;"	m	struct:yy_buffer_state
-yy_bs_lineno	basic/lexer.cpp	/^    int yy_bs_lineno; \/**< The line count. *\/$/;"	m	struct:yy_buffer_state	file:
-yy_bs_lineno	basic/lexer.h	/^    int yy_bs_lineno; \/**< The line count. *\/$/;"	m	struct:yy_buffer_state
-yy_buf_pos	basic/lexer.cpp	/^	char *yy_buf_pos;		\/* current position in input buffer *\/$/;"	m	struct:yy_buffer_state	file:
-yy_buf_pos	basic/lexer.h	/^	char *yy_buf_pos;		\/* current position in input buffer *\/$/;"	m	struct:yy_buffer_state
-yy_buf_size	basic/lexer.cpp	/^	yy_size_t yy_buf_size;$/;"	m	struct:yy_buffer_state	file:
-yy_buf_size	basic/lexer.h	/^	yy_size_t yy_buf_size;$/;"	m	struct:yy_buffer_state
-yy_buffer_stack	basic/lexer.cpp	/^static YY_BUFFER_STATE * yy_buffer_stack = 0; \/**< Stack as an array. *\/$/;"	v	file:
-yy_buffer_stack_max	basic/lexer.cpp	/^static size_t yy_buffer_stack_max = 0; \/**< capacity of stack. *\/$/;"	v	file:
-yy_buffer_stack_top	basic/lexer.cpp	/^static size_t yy_buffer_stack_top = 0; \/**< index of top of stack. *\/$/;"	v	file:
-yy_buffer_state	basic/lexer.cpp	/^struct yy_buffer_state$/;"	s	file:
-yy_buffer_state	basic/lexer.h	/^struct yy_buffer_state$/;"	s
-yy_buffer_status	basic/lexer.cpp	/^	int yy_buffer_status;$/;"	m	struct:yy_buffer_state	file:
-yy_buffer_status	basic/lexer.h	/^	int yy_buffer_status;$/;"	m	struct:yy_buffer_state
-yy_c_buf_p	basic/lexer.cpp	/^static char *yy_c_buf_p = (char *) 0;$/;"	v	file:
-yy_ch_buf	basic/lexer.cpp	/^	char *yy_ch_buf;		\/* input buffer *\/$/;"	m	struct:yy_buffer_state	file:
-yy_ch_buf	basic/lexer.h	/^	char *yy_ch_buf;		\/* input buffer *\/$/;"	m	struct:yy_buffer_state
-yy_chk	basic/lexer.cpp	/^static yyconst flex_int16_t yy_chk[419] =$/;"	v	file:
-yy_create_buffer	basic/lexer.cpp	/^    YY_BUFFER_STATE yy_create_buffer  (FILE * file, int  size )$/;"	f
-yy_def	basic/lexer.cpp	/^static yyconst flex_int16_t yy_def[177] =$/;"	v	file:
-yy_delete_buffer	basic/lexer.cpp	/^    void yy_delete_buffer (YY_BUFFER_STATE  b )$/;"	f
-yy_did_buffer_switch_on_eof	basic/lexer.cpp	/^static int yy_did_buffer_switch_on_eof;$/;"	v	file:
-yy_ec	basic/lexer.cpp	/^static yyconst flex_int32_t yy_ec[256] =$/;"	v	file:
-yy_fatal_error	basic/lexer.cpp	/^static void yy_fatal_error (yyconst char* msg )$/;"	f	file:
-yy_fill_buffer	basic/lexer.cpp	/^	int yy_fill_buffer;$/;"	m	struct:yy_buffer_state	file:
-yy_fill_buffer	basic/lexer.h	/^	int yy_fill_buffer;$/;"	m	struct:yy_buffer_state
-yy_flex_debug	basic/lexer.cpp	/^int yy_flex_debug = 0;$/;"	v
-yy_flex_strlen	basic/lexer.cpp	/^static int yy_flex_strlen (yyconst char * s )$/;"	f	file:
-yy_flex_strncpy	basic/lexer.cpp	/^static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )$/;"	f	file:
-yy_flush_buffer	basic/lexer.cpp	/^    void yy_flush_buffer (YY_BUFFER_STATE  b )$/;"	f
-yy_get_next_buffer	basic/lexer.cpp	/^static int yy_get_next_buffer (void)$/;"	f	file:
-yy_get_previous_state	basic/lexer.cpp	/^    static yy_state_type yy_get_previous_state (void)$/;"	f	file:
-yy_hold_char	basic/lexer.cpp	/^static char yy_hold_char;$/;"	v	file:
-yy_init	basic/lexer.cpp	/^static int yy_init = 0;		\/* whether we need to initialize *\/$/;"	v	file:
-yy_init_buffer	basic/lexer.cpp	/^    static void yy_init_buffer  (YY_BUFFER_STATE  b, FILE * file )$/;"	f	file:
-yy_init_globals	basic/lexer.cpp	/^static int yy_init_globals (void)$/;"	f	file:
-yy_input_file	basic/lexer.cpp	/^	FILE *yy_input_file;$/;"	m	struct:yy_buffer_state	file:
-yy_input_file	basic/lexer.h	/^	FILE *yy_input_file;$/;"	m	struct:yy_buffer_state
-yy_is_interactive	basic/lexer.cpp	/^	int yy_is_interactive;$/;"	m	struct:yy_buffer_state	file:
-yy_is_interactive	basic/lexer.h	/^	int yy_is_interactive;$/;"	m	struct:yy_buffer_state
-yy_is_our_buffer	basic/lexer.cpp	/^	int yy_is_our_buffer;$/;"	m	struct:yy_buffer_state	file:
-yy_is_our_buffer	basic/lexer.h	/^	int yy_is_our_buffer;$/;"	m	struct:yy_buffer_state
-yy_last_accepting_cpos	basic/lexer.cpp	/^static char *yy_last_accepting_cpos;$/;"	v	file:
-yy_last_accepting_state	basic/lexer.cpp	/^static yy_state_type yy_last_accepting_state;$/;"	v	file:
-yy_load_buffer_state	basic/lexer.cpp	/^static void yy_load_buffer_state  (void)$/;"	f	file:
-yy_meta	basic/lexer.cpp	/^static yyconst flex_int32_t yy_meta[48] =$/;"	v	file:
-yy_n_chars	basic/lexer.cpp	/^	int yy_n_chars;$/;"	m	struct:yy_buffer_state	file:
-yy_n_chars	basic/lexer.cpp	/^static int yy_n_chars;		\/* number of characters read into yy_ch_buf *\/$/;"	v	file:
-yy_n_chars	basic/lexer.h	/^	int yy_n_chars;$/;"	m	struct:yy_buffer_state
-yy_new_buffer	basic/lexer.cpp	318;"	d	file:
-yy_new_buffer	basic/lexer.h	318;"	d
-yy_nxt	basic/lexer.cpp	/^	flex_int32_t yy_nxt;$/;"	m	struct:yy_trans_info	file:
-yy_nxt	basic/lexer.cpp	/^static yyconst flex_int16_t yy_nxt[419] =$/;"	v	file:
-yy_reduce_print	basic/parser.cpp	/^yy_reduce_print (YYSTYPE *yyvsp, int yyrule)$/;"	f	file:
-yy_scan_buffer	basic/lexer.cpp	/^YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )$/;"	f
-yy_scan_bytes	basic/lexer.cpp	/^YY_BUFFER_STATE yy_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )$/;"	f
-yy_scan_string	basic/lexer.cpp	/^YY_BUFFER_STATE yy_scan_string (yyconst char * yystr )$/;"	f
-yy_set_bol	basic/lexer.cpp	330;"	d	file:
-yy_set_bol	basic/lexer.h	317;"	d
-yy_set_interactive	basic/lexer.cpp	320;"	d	file:
-yy_set_interactive	basic/lexer.h	319;"	d
-yy_size_t	basic/lexer.cpp	/^typedef size_t yy_size_t;$/;"	t	file:
-yy_size_t	basic/lexer.h	/^typedef size_t yy_size_t;$/;"	t
-yy_stack_print	basic/parser.cpp	/^yy_stack_print (yytype_int16 *yybottom, yytype_int16 *yytop)$/;"	f	file:
-yy_start	basic/lexer.cpp	/^static int yy_start = 0;	\/* start state number *\/$/;"	v	file:
-yy_state_type	basic/lexer.cpp	/^typedef int yy_state_type;$/;"	t	file:
-yy_switch_to_buffer	basic/lexer.cpp	/^    void yy_switch_to_buffer  (YY_BUFFER_STATE  new_buffer )$/;"	f
-yy_symbol_print	basic/parser.cpp	/^yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)$/;"	f	file:
-yy_symbol_value_print	basic/parser.cpp	/^yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)$/;"	f	file:
-yy_trans_info	basic/lexer.cpp	/^struct yy_trans_info$/;"	s	file:
-yy_try_NUL_trans	basic/lexer.cpp	/^    static yy_state_type yy_try_NUL_trans  (yy_state_type yy_current_state )$/;"	f	file:
-yy_verify	basic/lexer.cpp	/^	flex_int32_t yy_verify;$/;"	m	struct:yy_trans_info	file:
-yyalloc	basic/lexer.cpp	/^void *yyalloc (yy_size_t  size )$/;"	f
-yyalloc	basic/parser.cpp	/^union yyalloc$/;"	u	file:
-yychar	basic/parser.cpp	/^int yychar;$/;"	v
-yycheck	basic/parser.cpp	/^static const yytype_int8 yycheck[] =$/;"	v	file:
-yyclearin	basic/parser.cpp	645;"	d	file:
-yyconst	basic/lexer.cpp	107;"	d	file:
-yyconst	basic/lexer.cpp	109;"	d	file:
-yyconst	basic/lexer.h	111;"	d
-yyconst	basic/lexer.h	113;"	d
-yydebug	basic/parser.cpp	/^int yydebug;$/;"	v
-yydefact	basic/parser.cpp	/^static const yytype_uint8 yydefact[] =$/;"	v	file:
-yydefgoto	basic/parser.cpp	/^static const yytype_int8 yydefgoto[] =$/;"	v	file:
-yydestruct	basic/parser.cpp	/^yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep)$/;"	f	file:
-yyensure_buffer_stack	basic/lexer.cpp	/^static void yyensure_buffer_stack (void)$/;"	f	file:
-yyerrok	basic/parser.cpp	644;"	d	file:
-yyerror	basic/parser.cpp	/^void yyerror(const char *p)$/;"	f
-yyfree	basic/lexer.cpp	/^void yyfree (void * ptr )$/;"	f
-yyget_debug	basic/lexer.cpp	/^int yyget_debug  (void)$/;"	f
-yyget_in	basic/lexer.cpp	/^FILE *yyget_in  (void)$/;"	f
-yyget_leng	basic/lexer.cpp	/^int yyget_leng  (void)$/;"	f
-yyget_lineno	basic/lexer.cpp	/^int yyget_lineno  (void)$/;"	f
-yyget_out	basic/lexer.cpp	/^FILE *yyget_out  (void)$/;"	f
-yyget_text	basic/lexer.cpp	/^char *yyget_text  (void)$/;"	f
-yyin	basic/lexer.cpp	/^FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;$/;"	v
-yyinput	basic/lexer.cpp	/^    static int yyinput (void)$/;"	f	file:
-yyleng	basic/lexer.cpp	/^int yyleng;$/;"	v
-yyless	basic/lexer.cpp	176;"	d	file:
-yyless	basic/lexer.cpp	1913;"	d	file:
-yyless	basic/lexer.cpp	1914;"	d	file:
-yylex_destroy	basic/lexer.cpp	/^int yylex_destroy  (void)$/;"	f
-yylineno	basic/lexer.cpp	/^int yylineno = 1;$/;"	v
-yylval	basic/parser.cpp	/^YYSTYPE yylval;$/;"	v
-yymore	basic/lexer.cpp	599;"	d	file:
-yynerrs	basic/parser.cpp	/^int yynerrs;$/;"	v
-yyout	basic/lexer.cpp	/^FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;$/;"	v
-yypact	basic/parser.cpp	/^static const yytype_int8 yypact[] =$/;"	v	file:
-yypact_value_is_default	basic/parser.cpp	607;"	d	file:
-yyparse	basic/parser.cpp	/^yyparse (void *YYPARSE_PARAM)$/;"	f
-yypgoto	basic/parser.cpp	/^static const yytype_int8 yypgoto[] =$/;"	v	file:
-yypop_buffer_state	basic/lexer.cpp	/^void yypop_buffer_state (void)$/;"	f
-yyprhs	basic/parser.cpp	/^static const yytype_uint8 yyprhs[] =$/;"	v	file:
-yypush_buffer_state	basic/lexer.cpp	/^void yypush_buffer_state (YY_BUFFER_STATE new_buffer )$/;"	f
-yyr1	basic/parser.cpp	/^static const yytype_uint8 yyr1[] =$/;"	v	file:
-yyr2	basic/parser.cpp	/^static const yytype_uint8 yyr2[] =$/;"	v	file:
-yyrealloc	basic/lexer.cpp	/^void *yyrealloc  (void * ptr, yy_size_t  size )$/;"	f
-yyrestart	basic/lexer.cpp	/^    void yyrestart  (FILE * input_file )$/;"	f
-yyrhs	basic/parser.cpp	/^static const yytype_int8 yyrhs[] =$/;"	v	file:
-yyrline	basic/parser.cpp	/^static const yytype_uint8 yyrline[] =$/;"	v	file:
-yyset_debug	basic/lexer.cpp	/^void yyset_debug (int  bdebug )$/;"	f
-yyset_in	basic/lexer.cpp	/^void yyset_in (FILE *  in_str )$/;"	f
-yyset_lineno	basic/lexer.cpp	/^void yyset_lineno (int  line_number )$/;"	f
-yyset_out	basic/lexer.cpp	/^void yyset_out (FILE *  out_str )$/;"	f
-yyss_alloc	basic/parser.cpp	/^  yytype_int16 yyss_alloc;$/;"	m	union:yyalloc	file:
-yystos	basic/parser.cpp	/^static const yytype_uint8 yystos[] =$/;"	v	file:
-yystpcpy	basic/parser.cpp	/^yystpcpy (char *yydest, const char *yysrc)$/;"	f	file:
-yystpcpy	basic/parser.cpp	941;"	d	file:
-yystring	basic/lexer.cpp	/^void* yystring(const char *s)$/;"	f
-yystrlen	basic/parser.cpp	/^yystrlen (const char *yystr)$/;"	f	file:
-yystrlen	basic/parser.cpp	918;"	d	file:
-yystype	basic/parser.cpp	170;"	d	file:
-yystype	basic/parser.h	102;"	d
-yysyntax_error	basic/parser.cpp	/^yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,$/;"	f	file:
-yytable	basic/parser.cpp	/^static const yytype_uint8 yytable[] =$/;"	v	file:
-yytable_value_is_error	basic/parser.cpp	610;"	d	file:
-yyterminate	basic/lexer.cpp	752;"	d	file:
-yytext	basic/lexer.cpp	/^char *yytext;$/;"	v
-yytext_ptr	basic/lexer.cpp	355;"	d	file:
-yytext_ptr	basic/lexer.h	215;"	d
-yytname	basic/parser.cpp	/^static const char *const yytname[] =$/;"	v	file:
-yytnamerr	basic/parser.cpp	/^yytnamerr (char *yyres, const char *yystr)$/;"	f	file:
-yytokentype	basic/parser.cpp	/^   enum yytokentype {$/;"	g	file:
-yytokentype	basic/parser.h	/^   enum yytokentype {$/;"	g
-yytoknum	basic/parser.cpp	/^static const yytype_uint16 yytoknum[] =$/;"	v	file:
-yytranslate	basic/parser.cpp	/^static const yytype_uint8 yytranslate[] =$/;"	v	file:
-yytype_int16	basic/parser.cpp	/^typedef YYTYPE_INT16 yytype_int16;$/;"	t	file:
-yytype_int16	basic/parser.cpp	/^typedef short int yytype_int16;$/;"	t	file:
-yytype_int8	basic/parser.cpp	/^typedef YYTYPE_INT8 yytype_int8;$/;"	t	file:
-yytype_int8	basic/parser.cpp	/^typedef short int yytype_int8;$/;"	t	file:
-yytype_int8	basic/parser.cpp	/^typedef signed char yytype_int8;$/;"	t	file:
-yytype_uint16	basic/parser.cpp	/^typedef YYTYPE_UINT16 yytype_uint16;$/;"	t	file:
-yytype_uint16	basic/parser.cpp	/^typedef unsigned short int yytype_uint16;$/;"	t	file:
-yytype_uint8	basic/parser.cpp	/^typedef YYTYPE_UINT8 yytype_uint8;$/;"	t	file:
-yytype_uint8	basic/parser.cpp	/^typedef unsigned char yytype_uint8;$/;"	t	file:
-yyunput	basic/lexer.cpp	/^    static void yyunput (int c, register char * yy_bp )$/;"	f	file:
-yyvs_alloc	basic/parser.cpp	/^  YYSTYPE yyvs_alloc;$/;"	m	union:yyalloc	file:
-yywrap	basic/lexer.cpp	/^int yywrap(void)$/;"	f
 ~CgiEnvironment	cgicc/CgiEnvironment.cpp	/^cgicc::CgiEnvironment::~CgiEnvironment()$/;"	f	class:cgicc::CgiEnvironment
 ~CgiInput	cgicc/CgiInput.cpp	/^cgicc::CgiInput::~CgiInput()$/;"	f	class:cgicc::CgiInput
 ~Cgicc	cgicc/Cgicc.cpp	/^cgicc::Cgicc::~Cgicc()$/;"	f	class:cgicc::Cgicc

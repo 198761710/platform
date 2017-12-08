@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include "basic.h"
 #include "service.h"
 
@@ -12,6 +13,7 @@ int main(void)
 	while(1)
 	{
 		service.Run();
+		usleep(100);
 	}
 
 	return 0;

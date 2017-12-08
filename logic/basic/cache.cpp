@@ -28,7 +28,7 @@ void Cache::Show(void)
 	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
 	{
 		printf("| %-12s | ", i->first.data());
-		printf(" %-14.1f |", i->second.GetValue());
+		printf(" %-14.1f |", i->second.Value());
 		printf(" %-7d |", (int)i->second.Runtime());
 		printf(" %-7d |", (int)i->second.OnTime());
 		printf(" %-6d |\n", (int)i->second.OffTime());

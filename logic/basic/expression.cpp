@@ -486,7 +486,7 @@ double Expression::Execute_MOD(void)
 double Expression::Execute_LC(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return token.Value();
 }
 double Expression::Execute_LCO(void)
 {
@@ -501,12 +501,12 @@ double Expression::Execute_LCF(void)
 double Expression::Execute_ID(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return token.Value();
 }
 double Expression::Execute_IDR(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetRuntime();
+	return token.Runtime();
 }
 double Expression::Execute_IDO(void)
 {
@@ -526,34 +526,34 @@ double Expression::Execute_IDV(void)
 double Expression::Execute_NUM(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return token.Value();
 }
 double Expression::Execute_HEX(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return token.Value();
 }
 double Expression::Execute_TIME(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return token.Value();
 }
 double Expression::Execute_DATE(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return token.Value();
 }
 double Expression::Execute_DATETIME(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return token.Value();
 }
 double Expression::Execute_SET(void)
 {
 	//printf("%s ", token.name.data());
 	if( lchild && rchild )
 	{
-		lchild->token.SetValueAuto( rchild->Execute() );
+		lchild->token.SetValue( rchild->Execute() );
 	}
 	return 0.0;
 }

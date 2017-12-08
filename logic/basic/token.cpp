@@ -57,7 +57,7 @@ void Token::SetVariable(Variable& variable)
 {
 	var = &variable;
 }
-const double& Token::GetValue(void)
+const double Token::Value(void)
 {
 	switch(type)
 	{
@@ -83,6 +83,14 @@ const double& Token::GetValue(void)
 	}
 	if( var )
 	{
+		return var->Value();
+	}
+	return value;
+}
+const double Token::GetValue(void)
+{
+	if( var )
+	{
 		return var->GetValue();
 	}
 	return value;
@@ -91,59 +99,34 @@ bool Token::SetValue(const double& v)
 {
 	if( var )
 	{
-		var->SetValueAuto((double&)v);
+		var->SoftSetValue((double&)v);
 		return true;
 	}
 	return false;
 }
-bool Token::SetValueAuto(const double& v)
+const double Token::Runtime(void)
 {
 	if( var )
 	{
-		var->SetValueAuto((double&)v);
-		return true;
+		return var->Runtime();
 	}
-	return false;
+	return double(0.0000);
 }
-bool Token::SetValueManual(const double& v)
-{
-	if( var )
-	{
-		var->SetValueManual((double&)v);
-		return true;
-	}
-	return false;
-}
-const time_t Token::GetRuntime(void)
-{
-	if( var )
-	{
-		return (const time_t)var->Runtime();
-	}
-	return (const time_t)(0);
-}
-void Token::SetRuntime(const time_t t)
-{
-	if( var )
-	{
-		var->SetRuntime((time_t)t);
-	}
-}
-const time_t Token::OnTime(void)
+const double Token::OnTime(void)
 {
 	if( var )
 	{
 		return var->OnTime();
 	}
-	return time_t(0);
+	return double(0.0000);
 }
-const time_t Token::OffTime(void)
+const double Token::OffTime(void)
 {
 	if( var )
 	{
 		return var->OffTime();
 	}
-	return time_t(0);
+	return double(0.0000);
 }
 void Token::TokenValue(void)
 {

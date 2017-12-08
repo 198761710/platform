@@ -49,7 +49,7 @@ bool Service::ProcPacket(Packet& packet)
 	switch( packet.type() )
 	{
 	case CmdValueSet:
-		SetValue(packet);
+		SoftSetValue(packet);
 		break;
 	case CmdValueGet:
 		GetValue(packet);
@@ -72,7 +72,7 @@ bool Service::ProcPacket(Packet& packet)
 
 	}
 }
-bool Service::SetValue(Packet& packet)
+bool Service::SoftSetValue(Packet& packet)
 {
 	string name = packet.name();
 	Variable &v = GlobalVariable.GetVariable( name );
@@ -81,10 +81,10 @@ bool Service::SetValue(Packet& packet)
 	switch( packet.autx() )
 	{
 		case Auto:
-			v.SetValueAuto( value );
+			v.SoftSetValue( value );
 			break;
 		case Manual:
-			v.SetValueManual( value );
+			v.HardSetValue( value );
 			break;
 	}
 	return true;

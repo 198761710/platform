@@ -16,16 +16,19 @@ int main(int argc, char **argv)
 	}
 	basic.run(1);
 	basic.name(file);
-	while( basic.load() )
+	if( basic.load() )
 	{
-		if( time(0) - t != 0 )
+		while(1)
 		{
-			t = time(0);
-			basic.show();
-			GlobalVariable.Show();
+			if( time(0) - t != 0 )
+			{
+				t = time(0);
+				basic.show();
+				GlobalVariable.Show();
+			}
+			basic.execute();
+			usleep(1000);
 		}
-		basic.execute();
-		usleep(1);
 	}
 	return 0;
 }

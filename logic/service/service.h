@@ -21,14 +21,17 @@ public:
 	void Run(void);
 	void RunBasic(void);
 	bool StartServer(const string& path);
+public:
 	bool ProcPacket(Packet& packet);
-	bool SetValue(Packet& packet);
+
+	bool SoftSetValue(Packet& packet);
+	bool HardSetValue(Packet& packet);
 	bool GetValue(Packet& packet);
+
 	bool SetBasicRun(Packet& packet);
 	bool SetBasicLoad(Packet& packet);
 	bool SetBasicDebug(Packet& packet);
 	bool GetBasicRun(Packet& packet);
-	bool GetBasicLoad(Packet& packet);
 	bool GetBasicDebug(Packet& packet);
 };
 

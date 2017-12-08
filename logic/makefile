@@ -46,6 +46,7 @@ xTARGETS += bin/basic.exe
 target:  $(xTARGETS)
 	@$(STRIP) $+
 	@ls -shv $(xTARGETS)
+	@rm -rf test/*.o
 
 bin/basic.exe: test/basic.o $(lTARGETS)
 	@$(CC) $+ -o $@ 

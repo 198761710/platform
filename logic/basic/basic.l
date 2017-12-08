@@ -10,7 +10,7 @@ extern "C" void* yystring(const char *s);
 #define CopyText() strcpy(yylval.t, yytext)
 %}
 
-LC			[a-zA-Z]
+LC			[a-z]
 LCO			{LC}[.]ontime(\(\))?
 LCF			{LC}[.]offtime(\(\))?
 ID			[a-zA-Z_][_a-zA-Z0-9]+

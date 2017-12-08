@@ -18,14 +18,14 @@ public:
 public:
 	void SetContext(class Context&);
 	void SetVariable(class Variable&);
-	const double& GetValue(void);
+public:
+	const double Value(void);
+	const double OnTime(void);
+	const double OffTime(void);
+	const double Runtime(void);
+	const double GetValue(void);
+public:
 	bool SetValue(const double&);
-	bool SetValueAuto(const double&);
-	bool SetValueManual(const double&);
-	const time_t OnTime(void);
-	const time_t OffTime(void);
-	const time_t GetRuntime(void);
-	void SetRuntime(const time_t t);
 private:
 	void TokenValue(void);
 };

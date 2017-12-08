@@ -5,71 +5,74 @@
 
 Variable::Variable(void)
 {
-	value  = 0.0;
+	//inited = false;
+	inited = true;
 	manual = false;
-	update = time_t(0);
-	ontime = time_t(0);
-	offtime= time(0);
-	runtime= time_t(0);
+	output = false;
+	value  = 0.000;
+	outvalue = 0.000;
+	runtime = 0.0000;
+	threshold = 0.0001;
+	type = VarValue;
 }
-double& Variable::GetValue(void)
+const double Variable::Value(void)
 {
 	return value;
 }
-void Variable::SetValueAuto(double &v)
+const double Variable::GetValue(void)
+{
+	if( inited )
+	{
+		return value;
+	}
+	return double(0.0000);
+}
+void Variable::SoftSetValue(const double &v)
 {
 	if( manual )
 	{
 		return;
 	}
-	SetValueManual(v);
+	HardSetValue(v);
 }
-void Variable::SetValueManual(double &v)
+void Variable::HardSetValue(const double &v)
 {
+	if( fabs(v - value) < threshold )
+	{
+		return;
+	}
+	if( fabs(value) >= 0.9999 && fabs(v) < 0.9999 )
+	{
+		offtime.init();
+		runtime += (double)ontime.sdiff();
+	}
+	else if( fabs(value) < 0.9999 && fabs(v) >= 0.9999 )
+	{
+		ontime.init();
+	}
 	value = v;
-	update = time(0);
-	if( value >= 0.9999 || value <= -0.9999 )
-	{
-		if( time_t(0) == ontime )
-		{
-			ontime = update;
-		}
-		offtime = time_t(0);
-	}
-	else
-	{
-		if( time_t(0) == offtime )
-		{
-			offtime = update;
-		}
-		if( time_t(0) != ontime )
-		{
-			runtime += labs(update - ontime);
-			ontime = time_t(0);
-		}
-	}
 }
-time_t Variable::OnTime(void)
+const double Variable::OnTime(void)
 {
 	if( fabs(value) >= 0.9999 )
 	{
-		return labs(time(0) - ontime);
+		return (double)ontime.sdiff();
 	}
-	return time_t(0);
+	return double(0.0000);
 }
-time_t Variable::OffTime(void)
+const double Variable::OffTime(void)
 {
 	if( fabs(value) < 0.9999 )
 	{
-		return labs(time(0) - offtime);
+		return (double)offtime.sdiff();
 	}
-	return time_t(0);
+	return double(0.0000);
 }
-time_t Variable::Runtime(void)
+const double Variable::Runtime(void)
 {
 	return runtime + OnTime();
 }
-void Variable::SetRuntime(time_t t)
+void Variable::SetRuntime(const double &t)
 {
 	runtime = t;
 }
