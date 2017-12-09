@@ -42,3 +42,14 @@ void Context::Clear(void)
 	statement_count = 0;
 	index = context.begin();
 }
+bool Context::Check(void)
+{
+	for(Iterator i = context.begin(); i != context.end(); i++)
+	{
+		if( i->second.Check() == false )
+		{
+			return false;
+		}
+	}
+	return true;
+}

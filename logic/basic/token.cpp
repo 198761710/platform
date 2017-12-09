@@ -57,7 +57,7 @@ void Token::SetVariable(Variable& variable)
 {
 	var = &variable;
 }
-const double Token::Value(void)
+const double Token::GetValue(void)
 {
 	switch(type)
 	{
@@ -83,17 +83,17 @@ const double Token::Value(void)
 	}
 	if( var )
 	{
-		return var->Value();
-	}
-	return value;
-}
-const double Token::GetValue(void)
-{
-	if( var )
-	{
 		return var->GetValue();
 	}
 	return value;
+}
+bool Token::Check(void)
+{
+	if( NULL == var )
+	{
+		return true;
+	}
+	return var->GetInit();
 }
 bool Token::SetValue(const double& v)
 {
@@ -104,27 +104,27 @@ bool Token::SetValue(const double& v)
 	}
 	return false;
 }
-const double Token::Runtime(void)
+const double Token::GetRuntime(void)
 {
 	if( var )
 	{
-		return var->Runtime();
+		return var->GetRuntime();
 	}
 	return double(0.0000);
 }
-const double Token::OnTime(void)
+const double Token::GetOnTime(void)
 {
 	if( var )
 	{
-		return var->OnTime();
+		return var->GetOnTime();
 	}
 	return double(0.0000);
 }
-const double Token::OffTime(void)
+const double Token::GetOffTime(void)
 {
 	if( var )
 	{
-		return var->OffTime();
+		return var->GetOffTime();
 	}
 	return double(0.0000);
 }

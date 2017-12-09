@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 				GlobalVariable.Show();
 			}
 			basic.execute();
-			usleep(1000);
+			//usleep(1000);
 		}
 	}
 	return 0;

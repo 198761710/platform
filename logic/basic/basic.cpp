@@ -67,7 +67,11 @@ bool Basic::load(void)
 }
 void Basic::execute(void)
 {
-	if( m_run )
+	if( false == m_run )
+	{
+		return;
+	}
+	if( m_context.Check() )
 	{
 		m_context.Execute();
 	}

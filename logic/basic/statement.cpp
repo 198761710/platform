@@ -52,6 +52,17 @@ void Statement::Execute(void)
 			break;
 	}
 }
+bool Statement::Check(void)
+{
+	for(Iterator i = statement.begin(); i != statement.end(); i++)
+	{
+		if( i->Check() == false )
+		{
+			return false;
+		}
+	}
+	return true;
+}
 Statement& Statement::operator=(Statement& s)
 {
 	statement = s.statement;

@@ -5,28 +5,86 @@
 
 Variable::Variable(void)
 {
-	//inited = false;
-	inited = true;
+	init = true;
 	manual = false;
 	output = false;
 	value  = 0.000;
 	outvalue = 0.000;
 	runtime = 0.0000;
 	threshold = 0.0001;
-	type = VarValue;
+	vartype = VarValue;
+	valuetype = Analog;
 }
-const double Variable::Value(void)
+bool Variable::GetInit(void)
+{
+	return init;
+}
+bool Variable::GetManual(void)
+{
+	return manual;
+}
+bool Variable::GetOutput(void)
+{
+	return output;
+}
+double Variable::GetValue(void)
 {
 	return value;
 }
-const double Variable::GetValue(void)
+double Variable::GetThreshold(void)
 {
-	if( inited )
+	return threshold;
+}
+double Variable::GetOnTime(void)
+{
+	if( fabs(value) >= 0.9999 )
 	{
-		return value;
+		return (double)ontime.sdiff();
 	}
 	return double(0.0000);
 }
+double Variable::GetOffTime(void)
+{
+	if( fabs(value) < 0.9999 )
+	{
+		return (double)offtime.sdiff();
+	}
+	return double(0.0000);
+}
+double Variable::GetRuntime(void)
+{
+	return runtime + GetOnTime();
+}
+
+void Variable::SetInit(const bool b)
+{
+	init = b;
+}
+void Variable::SetManual(const bool b)
+{
+	manual = b;
+}
+void Variable::SetOutput(const bool b)
+{
+	output = b;
+}
+void Variable::SetRuntime(const double &v)
+{
+	runtime = v;
+}
+void Variable::SetThreshold(const double &v)
+{
+	threshold = v;
+}
+void Variable::SetValueType(const ValueType t)
+{
+	valuetype = t;
+}
+void Variable::SetVariableType(const VariableType t)
+{
+	vartype = t;
+}
+
 void Variable::SoftSetValue(const double &v)
 {
 	if( manual )
@@ -51,28 +109,4 @@ void Variable::HardSetValue(const double &v)
 		ontime.init();
 	}
 	value = v;
-}
-const double Variable::OnTime(void)
-{
-	if( fabs(value) >= 0.9999 )
-	{
-		return (double)ontime.sdiff();
-	}
-	return double(0.0000);
-}
-const double Variable::OffTime(void)
-{
-	if( fabs(value) < 0.9999 )
-	{
-		return (double)offtime.sdiff();
-	}
-	return double(0.0000);
-}
-const double Variable::Runtime(void)
-{
-	return runtime + OnTime();
-}
-void Variable::SetRuntime(const double &t)
-{
-	runtime = t;
 }

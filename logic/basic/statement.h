@@ -19,6 +19,7 @@ public:
 	void SetContext(Context& context);
 	void AddExpression(Expression& expression);
 	void Execute(void);
+	bool Check(void);
 public:
 	Statement& operator=(Statement&);
 };

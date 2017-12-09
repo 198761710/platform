@@ -24,5 +24,6 @@ public:
 	void GotoLabel(const string& label);
 	void Execute(void);
 	void Clear(void);
+	bool Check(void);
 };
 #endif//__CONTEXT_H__

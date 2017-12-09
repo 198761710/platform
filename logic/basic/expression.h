@@ -31,6 +31,8 @@ public:
 public:
 	Expression& operator=(const Expression& t);
 public:
+	bool Check(void);
+public:
 	double Execute(void);
 	double Execute_IF(void);
 	double Execute_THEN(void);

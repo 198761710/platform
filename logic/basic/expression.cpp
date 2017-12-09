@@ -230,6 +230,22 @@ Expression& Expression::operator=(const Expression& t)
 	}
 	return *this;
 }
+bool Expression::Check(void)
+{
+	if( token.Check() == false )
+	{
+		return false;
+	}
+	if( lchild && lchild->Check() == false )
+	{
+		return false;
+	}
+	if( rchild && rchild->Check() == false )
+	{
+		return false;
+	}
+	return true;
+}
 double Expression::Execute(void)
 {
 	switch( token.type )
@@ -486,37 +502,37 @@ double Expression::Execute_MOD(void)
 double Expression::Execute_LC(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Value();
+	return token.GetValue();
 }
 double Expression::Execute_LCO(void)
 {
 	//printf("%s ", token.name.data());
-	return token.OnTime();
+	return token.GetOnTime();
 }
 double Expression::Execute_LCF(void)
 {
 	//printf("%s ", token.name.data());
-	return token.OffTime();
+	return token.GetOffTime();
 }
 double Expression::Execute_ID(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Value();
+	return token.GetValue();
 }
 double Expression::Execute_IDR(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Runtime();
+	return token.GetRuntime();
 }
 double Expression::Execute_IDO(void)
 {
 	//printf("%s ", token.name.data());
-	return token.OnTime();
+	return token.GetOnTime();
 }
 double Expression::Execute_IDF(void)
 {
 	//printf("%s ", token.name.data());
-	return token.OffTime();
+	return token.GetOffTime();
 }
 double Expression::Execute_IDV(void)
 {
@@ -526,27 +542,27 @@ double Expression::Execute_IDV(void)
 double Expression::Execute_NUM(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Value();
+	return token.GetValue();
 }
 double Expression::Execute_HEX(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Value();
+	return token.GetValue();
 }
 double Expression::Execute_TIME(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Value();
+	return token.GetValue();
 }
 double Expression::Execute_DATE(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Value();
+	return token.GetValue();
 }
 double Expression::Execute_DATETIME(void)
 {
 	//printf("%s ", token.name.data());
-	return token.Value();
+	return token.GetValue();
 }
 double Expression::Execute_SET(void)
 {
