@@ -10,6 +10,12 @@ extern "C" void* yystring(const char *s);
 #define CopyText() strcpy(yylval.t, yytext)
 %}
 
+DI			(DI)|(di)
+DO			(DO)|(do)
+DV			(DV)|(dv)
+AI			(AI)|(ai)
+AO			(AO)|(ao)
+AV			(AV)|(av)
 LC			[a-z]
 LCO			{LC}[.]ontime(\(\))?
 LCF			{LC}[.]offtime(\(\))?
@@ -60,6 +66,12 @@ LABEL		{ID}[:]
 <INITIAL>"{"		{CopyText(); return LB;}
 <INITIAL>"}"		{CopyText(); return RB;}
 <INITIAL>","		{CopyText(); return CM;}
+<INITIAL>{DI}		{CopyText(); return DI;}
+<INITIAL>{DO}		{CopyText(); return DO;}
+<INITIAL>{DV}		{CopyText(); return DV;}
+<INITIAL>{AI}		{CopyText(); return AI;}
+<INITIAL>{AO}		{CopyText(); return AO;}
+<INITIAL>{AV}		{CopyText(); return AV;}
 <INITIAL>{ID}		{CopyText(); return ID;}
 <INITIAL>{LC}		{CopyText(); return LC;}
 <INITIAL>{LCO}		{CopyText(); return LCO;}

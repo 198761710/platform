@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "variable.h"
 
@@ -109,4 +110,20 @@ void Variable::HardSetValue(const double &v)
 		ontime.init();
 	}
 	value = v;
+}
+void Variable::SetDefine(ValueType val, VariableType var)
+{
+	vartype = var;
+	valuetype = val;
+	switch(vartype)
+	{
+		case VarInput:
+		case VarOutput:
+			init = false;
+			break;
+		case VarValue:
+			init = true;
+			break;
+	}
+	printf("%s,%d,%d\n", __func__, vartype, valuetype);
 }

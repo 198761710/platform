@@ -1,3 +1,9 @@
+DO fan
+AV rps
+AV fan_ontime
+AV fan_offtime
+AI tempreture
+
 Begin:
 	if( tempreture >= 5 ) then goto FanStart else goto FanStop
 

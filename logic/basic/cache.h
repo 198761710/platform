@@ -17,9 +17,10 @@ public:
 	Cache(const string& name):cachename(name){}
 
 public:
-	Variable& GetVariable(const string& name);
-	void SetToken(Token& token);
 	void Show(void);
+	void SetToken(Token& token);
+	Variable& GetVariable(const string& name);
+	void SetDefine(const string&, ValueType, VariableType);
 };
 extern Cache GlobalVariable;
 

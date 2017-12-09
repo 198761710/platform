@@ -324,7 +324,7 @@ extern int yylex (void);
 #undef YY_DECL
 #endif
 
-#line 80 "basic.l"
+#line 92 "basic.l"
 
 
 #line 331 "lexer.h"

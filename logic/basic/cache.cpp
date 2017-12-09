@@ -9,6 +9,10 @@ void Cache::SetToken(Token& token)
 {
 	token.SetVariable( variablemap[token.name] );
 }
+void Cache::SetDefine(const string &name, ValueType val, VariableType var)
+{
+	variablemap[name].SetDefine(val, var);
+}
 Variable& Cache::GetVariable(const string& name)
 {
 	map<string,Variable>::iterator i = variablemap.find(name);

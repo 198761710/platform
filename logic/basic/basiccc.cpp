@@ -3,12 +3,35 @@
 #include "token.h"
 #include "parser.h"
 #include "basiccc.h"
+#include "cache.h"
 
+extern Cache GlobalVariable;
 TokenLmap BasicCC::tokenlmap;
 TokenList BasicCC::tokenlist;
 
 void BasicCC::AddToken(const Token& node)
 {
+	switch( node.type )
+	{
+		case DI:
+			GlobalVariable.SetDefine(node.name, Binary, VarInput);
+			return;
+		case DO:
+			GlobalVariable.SetDefine(node.name, Binary, VarOutput);
+			return;
+		case DV:
+			GlobalVariable.SetDefine(node.name, Binary, VarValue);
+			return;
+		case AI:
+			GlobalVariable.SetDefine(node.name, Analog, VarInput);
+			return;
+		case AO:
+			GlobalVariable.SetDefine(node.name, Analog, VarOutput);
+			return;
+		case AV:
+			GlobalVariable.SetDefine(node.name, Analog, VarValue);
+			return;
+	}
 	tokenlist.push_back(node);
 }
 void BasicCC::AddList(void)

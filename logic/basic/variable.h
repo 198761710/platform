@@ -59,6 +59,7 @@ public:
 	void SoftSetValue(const double &v);
 	void HardSetValue(const double &v);
 public:
+	void SetDefine(ValueType, VariableType);
 };
 
 #endif//__VARIABLE_H__

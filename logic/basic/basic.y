@@ -17,6 +17,8 @@ extern "C" void* yystring(const char *s);
 }
 %type <double>	NUM
 
+%token	DI DO DV AI AO AV
+
 %token	ID IDR IDO IDF IDV LC LCO LCF NUM HEX DATE TIME DATETIME
 
 %token	IF THEN ELSE 
@@ -48,6 +50,8 @@ line_expression:
 	execute_expression
 	|
 	label_expression
+	|
+	define_expression
 	;
 if_else_expression:
 	if_expression then_expression
@@ -78,6 +82,19 @@ goto_expression:
 	;
 label_expression:
 	LABEL {NODE(LABEL, $<t>1);}
+	;
+define_expression:
+	DI ID {NODE(DI, $<t>2);}
+	|
+	DO ID {NODE(DO, $<t>2);}
+	|
+	DV ID {NODE(DV, $<t>2);}
+	|
+	AI ID {NODE(AI, $<t>2);}
+	|
+	AO ID {NODE(AO, $<t>2);}
+	|
+	AV ID {NODE(AV, $<t>2);}
 	;
 value_expression:
 	LC {NODE(LC, $<t>1);} 
