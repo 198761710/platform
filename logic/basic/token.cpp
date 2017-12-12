@@ -95,6 +95,14 @@ bool Token::Check(void)
 	}
 	return var->GetInit();
 }
+bool Token::Invalid(void)
+{
+	if( NULL == var )
+	{
+		return false;
+	}
+	return (var->GetInit() == false);
+}
 bool Token::SetValue(const double& v)
 {
 	if( var )

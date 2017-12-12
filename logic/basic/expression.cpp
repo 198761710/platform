@@ -537,7 +537,7 @@ double Expression::Execute_IDF(void)
 double Expression::Execute_IDV(void)
 {
 	//printf("%s ", token.name.data());
-	return token.GetValue();
+	return (double)token.Invalid();
 }
 double Expression::Execute_NUM(void)
 {

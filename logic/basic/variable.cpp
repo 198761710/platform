@@ -8,7 +8,6 @@ Variable::Variable(void)
 {
 	init = true;
 	manual = false;
-	output = false;
 	value  = 0.000;
 	outvalue = 0.000;
 	runtime = 0.0000;
@@ -24,9 +23,22 @@ bool Variable::GetManual(void)
 {
 	return manual;
 }
-bool Variable::GetOutput(void)
+bool Variable::Output(void)
 {
-	return output;
+	if( VarOutput != vartype )
+	{
+		return false;
+	}
+	if( fabs(value - outvalue) < threshold )
+	{
+		return false;
+	}
+	if( outtime.mdiff() < 1000 )
+	{
+		return false;
+	}
+	outtime.init();
+	return true;
 }
 double Variable::GetValue(void)
 {
@@ -56,6 +68,10 @@ double Variable::GetRuntime(void)
 {
 	return runtime + GetOnTime();
 }
+const string& Variable::GetListener(void)
+{
+	return listener;
+}
 
 void Variable::SetInit(const bool b)
 {
@@ -65,10 +81,6 @@ void Variable::SetManual(const bool b)
 {
 	manual = b;
 }
-void Variable::SetOutput(const bool b)
-{
-	output = b;
-}
 void Variable::SetRuntime(const double &v)
 {
 	runtime = v;
@@ -76,6 +88,10 @@ void Variable::SetRuntime(const double &v)
 void Variable::SetThreshold(const double &v)
 {
 	threshold = v;
+}
+void Variable::SetListener(const string &ls)
+{
+	listener = ls;
 }
 void Variable::SetValueType(const ValueType t)
 {
@@ -92,7 +108,16 @@ void Variable::SoftSetValue(const double &v)
 	{
 		return;
 	}
-	HardSetValue(v);
+	switch( vartype )
+	{
+		case VarValue:
+		case VarInput:
+			HardSetValue(v);
+			break;
+		case VarOutput:
+			outvalue = v;
+			break;
+	}
 }
 void Variable::HardSetValue(const double &v)
 {

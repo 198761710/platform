@@ -11,6 +11,7 @@ class Cache
 protected:
 	string cachename;
 	Variable sudovar;
+	TimeOperator outtime;
 	map<string,Variable> variablemap;
 	typedef map<string,Variable>::iterator Iterator;
 public:
@@ -19,6 +20,7 @@ public:
 public:
 	void Show(void);
 	void SetToken(Token& token);
+	bool GetOutput(map<string,Variable> &);
 	Variable& GetVariable(const string& name);
 	void SetDefine(const string&, ValueType, VariableType);
 };

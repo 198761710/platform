@@ -25,6 +25,7 @@ public:
 	const double GetRuntime(void);
 public:
 	bool Check(void);
+	bool Invalid(void);
 	bool SetValue(const double&);
 private:
 	void TokenValue(void);

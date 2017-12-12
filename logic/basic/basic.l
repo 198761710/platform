@@ -23,7 +23,7 @@ ID			[a-zA-Z_][_a-zA-Z0-9]+
 IDRT		{ID}[.]runtime(\(\))?
 IDOT		{ID}[.]ontime(\(\))?
 IDFT		{ID}[.]offtime(\(\))?
-IDVL		{ID}[.]value(\(\))?
+IDVL		{ID}[.]invalid(\(\))?
 NUM			[0-9]+([.][0-9]+)?
 HEX			0x[0-9a-fA-F]{1,16}
 y			[0-9]{4,4}

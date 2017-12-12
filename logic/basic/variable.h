@@ -20,39 +20,39 @@ typedef enum
 
 class Variable
 {
-public:
+protected:
 	bool init;
 	bool manual;
-	bool output;
 	double value;
 	double outvalue;
 	double threshold;
 	double runtime;
+	string listener;
 	ValueType valuetype;
 	VariableType vartype;
 	TimeOperator ontime;
 	TimeOperator offtime;
 	TimeOperator outtime;
-	list<string> waitqueue;
 public:
 	Variable(void);
 public:
+	bool Output(void);
 	bool GetInit(void);
 	bool GetManual(void);
-	bool GetOutput(void);
 	double GetValue(void);
 	double GetOnTime(void);
 	double GetOffTime(void);
 	double GetRuntime(void);
 	double GetThreshold(void);
-	ValueType GetValueType(void);
+	const string& GetListener(void);
 	VariableType GetVariableType(void);
+	ValueType GetValueType(void);
 public:
 	void SetInit(const bool b);
 	void SetManual(const bool b);
-	void SetOutput(const bool b);
 	void SetRuntime(const double &v);
 	void SetThreshold(const double &v);
+	void SetListener(const string &ls);
 	void SetValueType(const ValueType t);
 	void SetVariableType(const VariableType t);
 public:

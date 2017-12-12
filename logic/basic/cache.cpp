@@ -22,6 +22,22 @@ Variable& Cache::GetVariable(const string& name)
 	}
 	return i->second;
 }
+bool Cache::GetOutput(map<string,Variable> &outmap)
+{
+	if( outtime.mdiff() < 100 )
+	{
+		return false;
+	}
+	outtime.init();
+	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
+	{
+		if( i->second.Output() )
+		{
+			outmap[i->first] = i->second;
+		}
+	}
+	return (outmap.empty() == false);
+}
 void Cache::Show(void)
 {
 	printf("_______________________________________________________________\n");
