@@ -10,31 +10,31 @@ extern "C" void* yystring(const char *s);
 Basic::Basic(void):m_run(0),m_debug(0)
 {
 }
-const bool Basic::run(void)
+const bool Basic::GetRun(void)
 {
 	return m_run;
 }
-const bool Basic::debug(void)
+const bool Basic::GetDebug(void)
 {
 	return m_debug;
 }
-const string& Basic::name(void)
+const string& Basic::GetName(void)
 {
 	return m_name;
 }
-void Basic::run(bool b)
+void Basic::SetRun(bool b)
 {
 	m_run = b;
 }
-void Basic::debug(bool b)
+void Basic::SetDebug(bool b)
 {
 	m_debug = b;
 }
-void Basic::name(const string& n)
+void Basic::SetName(const string& n)
 {
 	m_name = n;
 }
-bool Basic::load(void)
+bool Basic::Compile(void)
 {
 	string data;
 	char *p = 0;
@@ -65,7 +65,7 @@ bool Basic::load(void)
 
 	return BasicCC::MakeContext( m_context );
 }
-void Basic::execute(void)
+void Basic::Execute(void)
 {
 	if( false == m_run )
 	{
@@ -76,7 +76,7 @@ void Basic::execute(void)
 		m_context.Execute();
 	}
 }
-void Basic::show(void)
+void Basic::Show(void)
 {
 	m_context.GetLocalVariable().Show();
 }

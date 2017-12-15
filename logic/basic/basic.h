@@ -16,19 +16,19 @@ public:
 	Basic(void);
 
 public:
-	const bool run(void);
-	const bool debug(void);
-	const string& name(void);
+	const bool GetRun(void);
+	const bool GetDebug(void);
+	const string& GetName(void);
 
 public:
-	void run(bool b);
-	void debug(bool b);
-	void name(const string&);
+	void SetRun(bool b);
+	void SetDebug(bool b);
+	void SetName(const string&);
 
 public:
-	bool load(void);
-	void execute(void);
-	void show(void);
+	bool Compile(void);
+	void Execute(void);
+	void Show(void);
 };
 
 #endif//__BASIC_H__

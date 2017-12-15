@@ -4,39 +4,63 @@
 /*
  *[type][cmd][auto][double][name]
  */
+ typedef unsigned char uint8_t;
+ typedef unsigned short uint16_t;
+ typedef unsigned int  uint32_t;
+ typedef unsigned long long uint64_t;
 
 typedef enum
 {
-	CmdValueSet  = 0,
-	CmdValueGet  = 1,
-	CmdSetBasicRun  = 2,
-	CmdSetBasicLoad = 3,
-	CmdSetBasicDebug= 4,
-	CmdGetBasicRun  = 5,
-	CmdGetBasicDebug= 6,
-}CmdEnumDef;
+	VarGetType,
+	VarSetType,
+	VarGetInit,
+	VarSetInit,
+	VarGetValue,
+	VarSoftValue,
+	VarHardValue,
+	VarGetManual,
+	VarSetManual,
+	VarGetRuntime,
+	VarSetRuntime,
+	VarGetThreshold,
+	VarSetThreshold,
+	VarSetListener,
+	BasicAddFile,
+	BasicDelFile,
+	BasicSetRun,
+	BasicGetRun,
+	BasicSetDebug,
+	BasicCompile,
+}CommandType;
 
 typedef enum
 {
 	Auto   = 0,
 	Manual = 1,
-}AutoEnumDef;
+}AutoType;
 
 typedef enum
 {
 	TypeIndex   = 0,
-	AutoIndex   = 1,
-	ValueIndex0 = 2,
-	ValueIndex1 = 3,
-	ValueIndex2 = 4,
-	ValueIndex3 = 5,
-	ValueIndex4 = 6,
-	ValueIndex5 = 7,
-	ValueIndex6 = 8,
-	ValueIndex7 = 9,
-	LengthIndex = 10,
-	NameIndex	= 11,
-	MaxIndex	= 127,
+	GuidIndex0  = 1,
+	GuidIndex1  = 2,
+	GuidIndex2  = 3,
+	GuidIndex3  = 4,
+	GuidIndex4  = 5,
+	GuidIndex5  = 6,
+	GuidIndex6  = 7,
+	GuidIndex7  = 8,
+	ValueIndex0 = 9,
+	ValueIndex1 = 10,
+	ValueIndex2 = 11,
+	ValueIndex3 = 12,
+	ValueIndex4 = 13,
+	ValueIndex5 = 14,
+	ValueIndex6 = 15,
+	ValueIndex7 = 16,
+	LengthIndex = 49,
+	NameIndex	= 50,
+	MaxIndex	= 128,
 }IndexEnumDef;
 
 class Packet
@@ -53,17 +77,19 @@ public:
 
 public:
 	unsigned char type(void);
-	unsigned char autx(void);
+	unsigned long long guid(void);
 	const double  dvalue(void);
 	unsigned int  uvalue(void);
+	const char*   svalue(void);
 	unsigned int  length(void);
 	const char*	  name(void);
 
 public:
 	void type(unsigned char t);
-	void autx(unsigned char a);
+	void guid(unsigned long long);
 	void dvalue(const double &v);
 	void uvalue(unsigned int v);
+	bool svalue(const char *buf);
 	bool name(const char *buf);
 };
 

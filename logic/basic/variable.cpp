@@ -72,6 +72,14 @@ const string& Variable::GetListener(void)
 {
 	return listener;
 }
+ValueType Variable::GetValueType(void)
+{
+	return valuetype;
+}
+VariableType Variable::GetVariableType(void)
+{
+	return vartype;
+}
 
 void Variable::SetInit(const bool b)
 {

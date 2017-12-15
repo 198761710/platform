@@ -38,7 +38,8 @@ lTARGETS += socket/socket.a
 xTARGETS := bin/unix-udp-client.exe 
 xTARGETS += bin/unix-udp-server.exe
 xTARGETS += bin/unix-udp-connect.exe
-xTARGETS += bin/service.exe
+xTARGETS += bin/basicservice.exe
+xTARGETS += bin/basicconfig.exe
 xTARGETS += bin/json.exe
 xTARGETS += bin/packet.exe
 xTARGETS += bin/basic.exe
@@ -46,21 +47,23 @@ xTARGETS += bin/basic.exe
 target:  $(xTARGETS)
 	@$(STRIP) $+
 	@ls -shv $(xTARGETS)
-	@rm -rf test/*.o
+	@rm -rf ztest/*.o
 
-bin/basic.exe: test/basic.o $(lTARGETS)
+bin/basic.exe: ztest/basic.o $(lTARGETS)
 	@$(CC) $+ -o $@ 
-bin/packet.exe: test/packet.o $(lTARGETS)
+bin/packet.exe: ztest/packet.o $(lTARGETS)
 	@$(CC) $+ -o $@ 
-bin/service.exe: test/service.o $(lTARGETS)
-	$(CC) $+ -o $@ 
-bin/unix-udp-client.exe: test/unix-udp-client.o $(lTARGETS)
+bin/basicservice.exe: ztest/basicservice.o $(lTARGETS)
 	@$(CC) $+ -o $@ 
-bin/unix-udp-connect.exe: test/unix-udp-connect.o $(lTARGETS)
+bin/basicconfig.exe: ztest/basicconfig.o $(lTARGETS)
 	@$(CC) $+ -o $@ 
-bin/unix-udp-server.exe: test/unix-udp-server.o $(lTARGETS)
+bin/unix-udp-client.exe: ztest/unix-udp-client.o $(lTARGETS)
+	@$(CC) $+ -o $@ 
+bin/unix-udp-connect.exe: ztest/unix-udp-connect.o $(lTARGETS)
+	@$(CC) $+ -o $@ 
+bin/unix-udp-server.exe: ztest/unix-udp-server.o $(lTARGETS)
 	@$(CC) $+ -o $@
-bin/json.exe: test/json.o $(lTARGETS)
+bin/json.exe: ztest/json.o $(lTARGETS)
 	@$(CC) $+ -o $@
 
 json/json.a: $(JSON_OBJ)

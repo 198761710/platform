@@ -17,9 +17,43 @@ unsigned char Packet::type(void)
 {
 	return buffer[TypeIndex];
 }
-unsigned char Packet::autx(void)
+unsigned long long Packet::guid(void)
 {
-	return buffer[AutoIndex];
+	union{
+		unsigned short s;
+		unsigned char c[2];
+	}endian;
+	union{
+		unsigned long long ll;
+		unsigned char c[sizeof(double)];
+	}value;
+
+	endian.s = 0xaabb;
+
+	if( 0xaa == endian.c[0] )
+	{
+		value.c[ 0 ] = buffer[ ValueIndex0 ];
+		value.c[ 1 ] = buffer[ ValueIndex1 ];
+		value.c[ 2 ] = buffer[ ValueIndex2 ];
+		value.c[ 3 ] = buffer[ ValueIndex3 ];
+		value.c[ 4 ] = buffer[ ValueIndex4 ];
+		value.c[ 5 ] = buffer[ ValueIndex5 ];
+		value.c[ 6 ] = buffer[ ValueIndex6 ];
+		value.c[ 7 ] = buffer[ ValueIndex7 ];
+	}
+	else
+	{
+		value.c[ 7 ] = buffer[ ValueIndex0 ];
+		value.c[ 6 ] = buffer[ ValueIndex1 ];
+		value.c[ 5 ] = buffer[ ValueIndex2 ];
+		value.c[ 4 ] = buffer[ ValueIndex3 ];
+		value.c[ 3 ] = buffer[ ValueIndex4 ];
+		value.c[ 2 ] = buffer[ ValueIndex5 ];
+		value.c[ 1 ] = buffer[ ValueIndex6 ];
+		value.c[ 0 ] = buffer[ ValueIndex7 ];
+	}
+
+	return value.ll;
 }
 const double Packet::dvalue(void)
 {
@@ -89,13 +123,18 @@ unsigned int Packet::uvalue(void)
 
 	return value.u;
 }
+const char* Packet::svalue(void)
+{
+	buffer[LengthIndex-1] = 0;
+	return (const char*)&buffer[ValueIndex0];
+}
 unsigned int Packet::length(void)
 {
 	return (unsigned int)buffer[LengthIndex];
 }
 const char* Packet::name(void)
 {
-	buffer[MaxIndex] = 0;
+	buffer[MaxIndex-1] = 0;
 	return (const char*)&buffer[NameIndex];
 }
 
@@ -103,9 +142,41 @@ void Packet::type(unsigned char t)
 {
 	buffer[TypeIndex] = t;
 }
-void Packet::autx(unsigned char a)
+void Packet::guid(unsigned long long id)
 {
-	buffer[AutoIndex] = a;
+	union{
+		unsigned short s;
+		unsigned char c[2];
+	}endian;
+	union{
+		unsigned long long ll;
+		unsigned char c[sizeof(double)];
+	}value;
+
+	value.ll = id;
+	endian.s = 0xaabb;	
+	if( 0xaa == endian.c[0] )
+	{
+		buffer[ GuidIndex0 ] = value.c[ 0 ];
+		buffer[ GuidIndex1 ] = value.c[ 1 ];
+		buffer[ GuidIndex2 ] = value.c[ 2 ];
+		buffer[ GuidIndex3 ] = value.c[ 3 ];
+		buffer[ GuidIndex4 ] = value.c[ 4 ];
+		buffer[ GuidIndex5 ] = value.c[ 5 ];
+		buffer[ GuidIndex6 ] = value.c[ 6 ];
+		buffer[ GuidIndex7 ] = value.c[ 7 ];
+	}
+	else
+	{
+		buffer[ GuidIndex0 ] = value.c[ 7 ];
+		buffer[ GuidIndex1 ] = value.c[ 6 ];
+		buffer[ GuidIndex2 ] = value.c[ 5 ];
+		buffer[ GuidIndex3 ] = value.c[ 4 ];
+		buffer[ GuidIndex4 ] = value.c[ 3 ];
+		buffer[ GuidIndex5 ] = value.c[ 2 ];
+		buffer[ GuidIndex6 ] = value.c[ 1 ];
+		buffer[ GuidIndex7 ] = value.c[ 0 ];
+	}
 }
 void Packet::dvalue(const double &v)
 {
@@ -171,6 +242,25 @@ void Packet::uvalue(unsigned int v)
 		buffer[ ValueIndex3 ] = value.c[ 0 ];
 	}
 }
+bool Packet::svalue(const char *buf)
+{
+	int len = 0;
+
+	if( NULL == buf )
+	{
+		return false;
+	}
+	if( (len = strlen(buf)) < 1 )
+	{
+		return false;
+	}
+	if( len > (LengthIndex - ValueIndex0 - 1) )
+	{
+		len = (LengthIndex - ValueIndex0 - 1);
+	}
+	memcpy(buffer+ValueIndex0, buf, len);
+	return true;
+}
 bool Packet::name(const char *buf)
 {
 	int len = 0;
@@ -183,9 +273,9 @@ bool Packet::name(const char *buf)
 	{
 		return false;
 	}
-	if( len > (MaxIndex - NameIndex) )
+	if( len > (MaxIndex - NameIndex - 1) )
 	{
-		len = (MaxIndex - NameIndex);
+		len = (MaxIndex - NameIndex - 1);
 	}
 	memcpy(buffer+NameIndex, buf, len);
 	return true;
