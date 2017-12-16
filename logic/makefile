@@ -43,6 +43,7 @@ xTARGETS += bin/basicconfig.exe
 xTARGETS += bin/json.exe
 xTARGETS += bin/packet.exe
 xTARGETS += bin/basic.exe
+xTARGETS += bin/testcgi.exe
 
 target:  $(xTARGETS)
 	@$(STRIP) $+
@@ -64,6 +65,8 @@ bin/unix-udp-connect.exe: ztest/unix-udp-connect.o $(lTARGETS)
 bin/unix-udp-server.exe: ztest/unix-udp-server.o $(lTARGETS)
 	@$(CC) $+ -o $@
 bin/json.exe: ztest/json.o $(lTARGETS)
+	@$(CC) $+ -o $@
+bin/testcgi.exe: ztest/testcgi.o $(lTARGETS)
 	@$(CC) $+ -o $@
 
 json/json.a: $(JSON_OBJ)

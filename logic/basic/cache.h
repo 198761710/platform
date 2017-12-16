@@ -21,8 +21,11 @@ public:
 	void Show(void);
 	void SetToken(Token& token);
 	bool GetOutput(map<string,Variable> &);
-	Variable& GetVariable(const string& name);
+	void GetInputList(map<string,Variable>& varmap);
+	void GetOutputList(map<string,Variable>& varmap);
+	void GetValueList(map<string,Variable>& varmap);
 	void SetDefine(const string&, ValueType, VariableType);
+	Variable& GetVariable(const string& name);
 };
 extern Cache GlobalVariable;
 

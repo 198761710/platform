@@ -38,6 +38,36 @@ bool Cache::GetOutput(map<string,Variable> &outmap)
 	}
 	return (outmap.empty() == false);
 }
+void Cache::GetInputList(map<string,Variable>& varmap)
+{
+	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
+	{
+		if( i->second.GetVariableType() == VarInput )
+		{
+			varmap[i->first] = i->second;
+		}
+	}
+}
+void Cache::GetOutputList(map<string,Variable>& varmap)
+{
+	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
+	{
+		if( i->second.GetVariableType() == VarOutput )
+		{
+			varmap[i->first] = i->second;
+		}
+	}
+}
+void Cache::GetValueList(map<string,Variable>& varmap)
+{
+	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
+	{
+		if( i->second.GetVariableType() == VarValue )
+		{
+			varmap[i->first] = i->second;
+		}
+	}
+}
 void Cache::Show(void)
 {
 	printf("_______________________________________________________________\n");

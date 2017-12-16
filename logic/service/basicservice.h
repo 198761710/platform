@@ -27,12 +27,19 @@ public:
 	bool ProcVarGetThreshold(Packet &packet);
 	bool ProcVarSetThreshold(Packet &packet);
 	bool ProcVarSetListener(Packet &packet);
+	bool ProcVarGetInputList(Packet &packet);
+	bool ProcVarGetOutputList(Packet &packet);
+	bool ProcVarGetValueList(Packet &packet);
 	bool ProcBasicAddFile(Packet &packet);
 	bool ProcBasicDelFile(Packet &packet);
 	bool ProcBasicGetRun(Packet &packet);
 	bool ProcBasicSetRun(Packet &packet);
 	bool ProcBasicSetDebug(Packet &packet);
 	bool ProcBasicCompile(Packet &packet);
+
+public:
+	bool ListAsHtml(const string& fname, map<string,Variable>&);
+	bool ListAsJson(const string& fname, map<string,Variable>&);
 };
 
 #endif//__BASIC_SERVICE_H__

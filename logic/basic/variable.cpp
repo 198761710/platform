@@ -50,6 +50,10 @@ double Variable::GetThreshold(void)
 }
 double Variable::GetOnTime(void)
 {
+	if( false == init )
+	{
+		return double(0.0000);
+	}
 	if( fabs(value) >= 0.9999 )
 	{
 		return (double)ontime.sdiff();
@@ -58,6 +62,10 @@ double Variable::GetOnTime(void)
 }
 double Variable::GetOffTime(void)
 {
+	if( false == init )
+	{
+		return double(0.0000);
+	}
 	if( fabs(value) < 0.9999 )
 	{
 		return (double)offtime.sdiff();

@@ -9,6 +9,7 @@ using namespace cgicc;
 class Cgi : public Cgicc
 {
 public:
+	typedef map<xstring, xstring>::iterator Qiterator;
 	typedef map<xstring, xstring>::iterator query_iterator;
 protected:
 	const xstring nullvalue;

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "cache.h"
 #include "basicservice.h"
 
@@ -59,6 +60,15 @@ bool BasicService::ProcPacket(Packet& packet)
 
 	case VarSetListener:
 		return ProcVarSetListener(packet);
+
+	case VarGetInputList:
+		return ProcVarGetInputList(packet);
+
+	case VarGetOutputList:
+		return ProcVarGetOutputList(packet);
+
+	case VarGetValueList:
+		return ProcVarGetValueList(packet);
 
 	case BasicAddFile:
 		return ProcBasicAddFile(packet);
@@ -192,6 +202,42 @@ bool BasicService::ProcVarSetListener(Packet &packet)
 
 	return true;
 }
+bool BasicService::ProcVarGetInputList(Packet &packet)
+{
+	map<string,Variable> varmap;
+
+	GlobalVariable.GetInputList(varmap);
+	if( varmap.empty() )
+	{
+		return false;
+	}
+	return ListAsJson("inputlist.txt", varmap);
+	return ListAsHtml("inputlist.html", varmap);
+}
+bool BasicService::ProcVarGetOutputList(Packet &packet)
+{
+	map<string,Variable> varmap;
+
+	GlobalVariable.GetOutputList(varmap);
+	if( varmap.empty() )
+	{
+		return false;
+	}
+	return ListAsJson("outputlist.txt", varmap);
+	return ListAsHtml("outputlist.html", varmap);
+}
+bool BasicService::ProcVarGetValueList(Packet &packet)
+{
+	map<string,Variable> varmap;
+
+	GlobalVariable.GetValueList(varmap);
+	if( varmap.empty() )
+	{
+		return false;
+	}
+	return ListAsJson("variablelist.txt", varmap);
+	return ListAsHtml("variablelist.html", varmap);
+}
 bool BasicService::ProcBasicAddFile(Packet &packet)
 {
 	string name = packet.svalue();
@@ -250,6 +296,94 @@ bool BasicService::ProcBasicCompile(Packet &packet)
 	}
 	i->second.SetName( i->first );
 	i->second.Compile();
+
+	return true;
+}
+bool BasicService::ListAsHtml(const string &fname, map<string,Variable> &varmap)
+{
+	FILE *f = fopen(fname.data(), "w");
+
+	if( NULL == f )
+	{
+		return false;
+	}
+
+	string table;
+	table += "<style>th{border:solid 1px;}";
+	table += "td{border:solid 1px;}</style>";
+	table += "<table><tr>";
+	table += "<th>Name</th>";
+	table += "<th>Init</th>";
+	table += "<th>Manual</th>";
+	table += "<th>OnTime</th>";
+	table += "<th>OffTime</th>";
+	table += "<th>RunTime</th>";
+	table += "<th>Threshold</th>";
+	table += "<th>Value</th>";
+	table += "</tr>";
+	fwrite(table.data(), table.length(), 1, f);
+
+	for(map<string,Variable>::iterator i = varmap.begin(); i != varmap.end(); i++)
+	{
+		string data;
+		char buf[128];
+		snprintf(buf, sizeof(buf), "<tr><td>%s</tb>", i->first.data());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetInit());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetManual());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetOnTime());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetOffTime());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetRuntime());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td>%f</tb>", i->second.GetThreshold());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td>%.1f</tb></tr>\n ", i->second.GetValue());
+		data += buf;
+		fwrite(data.data(), data.length(), 1, f);
+	}
+	table = "</table>";
+	fwrite(table.data(), table.length(), 1, f);
+	fflush(f);
+	fclose(f);
+
+	return true;
+}
+bool BasicService::ListAsJson(const string &fname, map<string,Variable> &varmap)
+{
+	FILE *f = fopen(fname.data(), "w");
+
+	if( NULL == f )
+	{
+		return false;
+	}
+	for(map<string,Variable>::iterator i = varmap.begin(); i != varmap.end(); i++)
+	{
+		string data;
+		char buf[128];
+		snprintf(buf, sizeof(buf), "{\"name\":\"%s\",", i->first.data());
+		data += buf;
+		snprintf(buf, sizeof(buf), "\"init\":\"%d\",", (int)i->second.GetInit());
+		data += buf;
+		snprintf(buf, sizeof(buf), "\"manual\":\"%d\",", (int)i->second.GetManual());
+		data += buf;
+		snprintf(buf, sizeof(buf), "\"ontime\":\"%d\",", (int)i->second.GetOnTime());
+		data += buf;
+		snprintf(buf, sizeof(buf), "\"offtime\":\"%d\",", (int)i->second.GetOffTime());
+		data += buf;
+		snprintf(buf, sizeof(buf), "\"runtime\":\"%d\",", (int)i->second.GetRuntime());
+		data += buf;
+		snprintf(buf, sizeof(buf), "\"threshold\":\"%f\",", i->second.GetThreshold());
+		data += buf;
+		snprintf(buf, sizeof(buf), "\"value\":\"%.1f\"}\n", i->second.GetValue());
+		data += buf;
+		fwrite(data.data(), data.length(), 1, f);
+	}
+	fflush(f);
+	fclose(f);
 
 	return true;
 }

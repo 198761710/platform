@@ -259,6 +259,7 @@ bool Packet::svalue(const char *buf)
 		len = (LengthIndex - ValueIndex0 - 1);
 	}
 	memcpy(buffer+ValueIndex0, buf, len);
+	buffer[ValueIndex0+len] = 0;
 	return true;
 }
 bool Packet::name(const char *buf)
@@ -278,5 +279,6 @@ bool Packet::name(const char *buf)
 		len = (MaxIndex - NameIndex - 1);
 	}
 	memcpy(buffer+NameIndex, buf, len);
+	buffer[NameIndex+len] = 0;
 	return true;
 }
