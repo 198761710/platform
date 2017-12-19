@@ -15,7 +15,6 @@ void Service::DoReceive(void)
 	len = server.RecvFrom(peer, (char*)packet.data(), packet.size());
 	if( len == packet.size() )
 	{
-		printf("recv(%s)\n", peer.data());
 		ProcPacket(packet);
 	}
 }

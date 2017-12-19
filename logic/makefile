@@ -7,6 +7,7 @@ CFLAGS += -Icgicc
 CFLAGS += -Ibasic
 CFLAGS += -Isocket
 CFLAGS += -Iservice 
+CFLAGS += -Ioperator
 CFLAGS += -Ijson/rapidjson
 
 JSON_CPP    := $(wildcard json/*.cpp)
@@ -15,6 +16,7 @@ BASIC_CPP   := $(wildcard basic/*.cpp)
 SOCKET_SRC  := $(wildcard socket/*.c)
 SOCKET_CPP  := $(wildcard socket/*.cpp)
 SERVICE_CPP := $(wildcard service/*.cpp)
+OPERATOR_CPP:= $(wildcard operator/*.cpp)
 
 JSON_OBJ	:= $(patsubst %.cpp, %.o, $(JSON_CPP))
 CGICC_OBJ	:= $(patsubst %.cpp, %.o, $(CGICC_CPP))
@@ -22,18 +24,21 @@ BASIC_OBJ   := $(patsubst %.cpp, %.o, $(BASIC_CPP))
 SOCKET_OBJ  := $(patsubst %.c  , %.o, $(SOCKET_SRC))
 SOCKET_OBJ  += $(patsubst %.cpp, %.o, $(SOCKET_CPP))
 SERVICE_OBJ := $(patsubst %.cpp, %.o, $(SERVICE_CPP))
+OPERATOR_OBJ:= $(patsubst %.cpp, %.o, $(OPERATOR_CPP))
 
 OBJ := $(JSON_OBJ)
 OBJ += $(CGICC_OBJ)
 OBJ += $(BASIC_OBJ)
 OBJ += $(SOCKET_OBJ)
 OBJ += $(SERVICE_OBJ)
+OBJ += $(OPERATOR_OBJ)
 
 lTARGETS := service/service.a
 lTARGETS += json/json.a
 lTARGETS += cgicc/cgicc.a
 lTARGETS += basic/basic.a
 lTARGETS += socket/socket.a
+lTARGETS += operator/operator.a
 
 xTARGETS := bin/unix-udp-client.exe 
 xTARGETS += bin/unix-udp-server.exe
@@ -44,6 +49,7 @@ xTARGETS += bin/json.exe
 xTARGETS += bin/packet.exe
 xTARGETS += bin/basic.exe
 xTARGETS += bin/testcgi.exe
+xTARGETS += bin/varoperator.exe
 
 target:  $(xTARGETS)
 	@$(STRIP) $+
@@ -68,6 +74,8 @@ bin/json.exe: ztest/json.o $(lTARGETS)
 	@$(CC) $+ -o $@
 bin/testcgi.exe: ztest/testcgi.o $(lTARGETS)
 	@$(CC) $+ -o $@
+bin/varoperator.exe: ztest/varoperator.o $(lTARGETS)
+	@$(CC) $+ -o $@
 
 json/json.a: $(JSON_OBJ)
 	@$(AR) -rc $@ $+
@@ -78,6 +86,8 @@ basic/basic.a: $(BASIC_OBJ)
 socket/socket.a: $(SOCKET_OBJ)
 	@$(AR) -rc $@ $+
 service/service.a: $(SERVICE_OBJ)
+	@$(AR) -rc $@ $+
+operator/operator.a: $(OPERATOR_OBJ)
 	@$(AR) -rc $@ $+
 
 .c.o:

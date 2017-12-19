@@ -6,7 +6,7 @@
 
 Variable::Variable(void)
 {
-	init = true;
+	init = false;
 	manual = false;
 	value  = 0.000;
 	outvalue = 0.000;
@@ -43,6 +43,10 @@ bool Variable::Output(void)
 double Variable::GetValue(void)
 {
 	return value;
+}
+double Variable::GetOutValue(void)
+{
+	return outvalue;
 }
 double Variable::GetThreshold(void)
 {
@@ -96,6 +100,10 @@ void Variable::SetInit(const bool b)
 void Variable::SetManual(const bool b)
 {
 	manual = b;
+	if( manual )
+	{
+		init = true;
+	}
 }
 void Variable::SetRuntime(const double &v)
 {
@@ -137,6 +145,7 @@ void Variable::SoftSetValue(const double &v)
 }
 void Variable::HardSetValue(const double &v)
 {
+	init = true;
 	if( fabs(v - value) < threshold )
 	{
 		return;
@@ -160,7 +169,6 @@ void Variable::SetDefine(ValueType val, VariableType var)
 	{
 		case VarInput:
 		case VarOutput:
-			init = false;
 			break;
 		case VarValue:
 			init = true;

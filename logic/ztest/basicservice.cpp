@@ -36,7 +36,7 @@ int main(void)
 		if( t.sdiff() != 0 )
 		{
 			t.init();
-			GlobalVariable.Show();
+			//GlobalVariable.Show();
 		}
 	}
 

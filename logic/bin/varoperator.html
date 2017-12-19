@@ -1,0 +1,64 @@
+<script>
+function OnMouseMove(type, name ,value)
+{
+	alert(type+name+value);
+}
+//OnMouseMove("setinit", "fan", "1");
+</script>
+<style>
+th{
+	border-top: solid 1px;
+	border-left: solid 1px;
+	background-color:gray;
+}
+td{
+	border-top: solid 1px;
+	border-left: solid 1px;
+}
+</style>
+
+<table>
+<tr>
+<th>type</th>
+<th>name</th>
+<th>value</th>
+<th>action</th>
+</tr>
+
+<tr>
+<form action="varoperator.cgi" method="get">
+<td><input type="input" name="type" value="setinit"></td>
+<td><input type="input" name="name" value="fan"></td>
+<td><input type="input" name="value" value="1"></td>
+<td><input type="submit" name="send" value="send"></td>
+</form>
+</tr>
+
+<tr>
+<form action="varoperator.cgi" method="get">
+<td><input type="input" name="type" value="setmanual"></td>
+<td><input type="input" name="name" value="fan"></td>
+<td><input type="input" name="value" value="1"></td>
+<td><input type="submit" name="send" value="send"></td>
+</form>
+</tr>
+
+<tr>
+<form action="varoperator.cgi" method="get">
+<td><input type="input" name="type" value="setvalue"></td>
+<td><input type="input" name="name" value="fan"></td>
+<td><input type="input" name="value" value="1"></td>
+<td><input type="submit" name="send" value="send"></td>
+</form>
+</tr>
+</table>
+
+<tr>
+<form action="varoperator.cgi" method="get">
+<td><input type="input" name="type" value="setthreshold"></td>
+<td><input type="input" name="name" value="fan"></td>
+<td><input type="input" name="value" value="0.1"></td>
+<td><input type="submit" name="send" value="send"></td>
+</form>
+</tr>
+</table>

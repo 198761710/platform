@@ -37,7 +37,7 @@ int main(void)
 			packet.svalue( "inputlist.html" );
 			service.SendPacket(to, packet);
 
-			packet.type( VarGetOutputList);
+			packet.type( VarGetOutputList );
 			packet.svalue( "outputlist.html" );
 			service.SendPacket(to, packet);
 
@@ -45,6 +45,7 @@ int main(void)
 			packet.svalue( "variablelist.html" );
 			service.SendPacket(to, packet);
 		}
+		usleep(1000);
 	}
 
 	return 0;

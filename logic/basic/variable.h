@@ -43,6 +43,7 @@ public:
 	double GetOnTime(void);
 	double GetOffTime(void);
 	double GetRuntime(void);
+	double GetOutValue(void);
 	double GetThreshold(void);
 	const string& GetListener(void);
 	VariableType GetVariableType(void);

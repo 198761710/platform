@@ -211,8 +211,7 @@ bool BasicService::ProcVarGetInputList(Packet &packet)
 	{
 		return false;
 	}
-	return ListAsJson("inputlist.txt", varmap);
-	return ListAsHtml("inputlist.html", varmap);
+	return ListAsHtml("inputlist", varmap);
 }
 bool BasicService::ProcVarGetOutputList(Packet &packet)
 {
@@ -223,8 +222,7 @@ bool BasicService::ProcVarGetOutputList(Packet &packet)
 	{
 		return false;
 	}
-	return ListAsJson("outputlist.txt", varmap);
-	return ListAsHtml("outputlist.html", varmap);
+	return ListAsHtml("outputlist", varmap);
 }
 bool BasicService::ProcVarGetValueList(Packet &packet)
 {
@@ -235,8 +233,7 @@ bool BasicService::ProcVarGetValueList(Packet &packet)
 	{
 		return false;
 	}
-	return ListAsJson("variablelist.txt", varmap);
-	return ListAsHtml("variablelist.html", varmap);
+	return ListAsHtml("variablelist", varmap);
 }
 bool BasicService::ProcBasicAddFile(Packet &packet)
 {
@@ -301,51 +298,57 @@ bool BasicService::ProcBasicCompile(Packet &packet)
 }
 bool BasicService::ListAsHtml(const string &fname, map<string,Variable> &varmap)
 {
-	FILE *f = fopen(fname.data(), "w");
+	string filename = fname + ".html";
+	FILE *f = fopen(filename.data(), "w");
 
+	ListAsJson(fname, varmap);
 	if( NULL == f )
 	{
 		return false;
 	}
 
 	string table;
-	table += "<style>th{border:solid 1px;}";
-	table += "td{border:solid 1px;}</style>";
-	table += "<table><tr>";
-	table += "<th>Name</th>";
-	table += "<th>Init</th>";
-	table += "<th>Manual</th>";
-	table += "<th>OnTime</th>";
-	table += "<th>OffTime</th>";
-	table += "<th>RunTime</th>";
-	table += "<th>Threshold</th>";
-	table += "<th>Value</th>";
+	table += "<link rel=\"stylesheet\" type=\"text/css\" href=\"varlist.css\" />";
+	table += "<script src=\"varlist.js\"></script>";
+	table += "<div id=\"tdiv\"><table><tr>";
+	table += "<th id=\"th_id\">Id</th>";
+	table += "<th id=\"th_name\">Name</th>";
+	table += "<th id=\"th_init\">Init</th>";
+	table += "<th id=\"th_manual\">Manual</th>";
+	table += "<th id=\"th_ontime\">OnTime</th>";
+	table += "<th id=\"th_offtime\">OffTime</th>";
+	table += "<th id=\"th_runtime\">RunTime</th>";
+	table += "<th id=\"th_threshold\">Threshold</th>";
+	table += "<th id=\"th_value\">Value</th>";
 	table += "</tr>";
 	fwrite(table.data(), table.length(), 1, f);
 
+	int id = 1;
 	for(map<string,Variable>::iterator i = varmap.begin(); i != varmap.end(); i++)
 	{
 		string data;
 		char buf[128];
-		snprintf(buf, sizeof(buf), "<tr><td>%s</tb>", i->first.data());
+		snprintf(buf, sizeof(buf), "<tr><td id=\"td_value\">%d</tb>", id++);
 		data += buf;
-		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetInit());
+		snprintf(buf, sizeof(buf), "<td id=\"td_name\">%s</tb>", i->first.data());
 		data += buf;
-		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetManual());
+		snprintf(buf, sizeof(buf), "<td id=\"td_init\">%d</tb>", (int)i->second.GetInit());
 		data += buf;
-		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetOnTime());
+		snprintf(buf, sizeof(buf), "<td id=\"td_manual\">%d</tb>", (int)i->second.GetManual());
 		data += buf;
-		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetOffTime());
+		snprintf(buf, sizeof(buf), "<td id=\"td_ontime\">%d</tb>", (int)i->second.GetOnTime());
 		data += buf;
-		snprintf(buf, sizeof(buf), "<td>%d</tb>", (int)i->second.GetRuntime());
+		snprintf(buf, sizeof(buf), "<td id=\"td_offtime\">%d</tb>", (int)i->second.GetOffTime());
 		data += buf;
-		snprintf(buf, sizeof(buf), "<td>%f</tb>", i->second.GetThreshold());
+		snprintf(buf, sizeof(buf), "<td id=\"td_runtime\">%d</tb>", (int)i->second.GetRuntime());
 		data += buf;
-		snprintf(buf, sizeof(buf), "<td>%.1f</tb></tr>\n ", i->second.GetValue());
+		snprintf(buf, sizeof(buf), "<td id=\"td_threhold\">%f</tb>", i->second.GetThreshold());
+		data += buf;
+		snprintf(buf, sizeof(buf), "<td id=\"td_value\">%.1f</tb></tr>\n ", i->second.GetValue());
 		data += buf;
 		fwrite(data.data(), data.length(), 1, f);
 	}
-	table = "</table>";
+	table = "</table></div>";
 	fwrite(table.data(), table.length(), 1, f);
 	fflush(f);
 	fclose(f);
@@ -354,7 +357,8 @@ bool BasicService::ListAsHtml(const string &fname, map<string,Variable> &varmap)
 }
 bool BasicService::ListAsJson(const string &fname, map<string,Variable> &varmap)
 {
-	FILE *f = fopen(fname.data(), "w");
+	string filename = fname + ".txt";
+	FILE *f = fopen(filename.data(), "w");
 
 	if( NULL == f )
 	{
@@ -378,6 +382,11 @@ bool BasicService::ListAsJson(const string &fname, map<string,Variable> &varmap)
 		data += buf;
 		snprintf(buf, sizeof(buf), "\"threshold\":\"%f\",", i->second.GetThreshold());
 		data += buf;
+		if( i->second.GetVariableType() == VarOutput )
+		{
+			snprintf(buf, sizeof(buf), "\"outvalue\":\"%f\",", i->second.GetOutValue());
+			data += buf;
+		}
 		snprintf(buf, sizeof(buf), "\"value\":\"%.1f\"}\n", i->second.GetValue());
 		data += buf;
 		fwrite(data.data(), data.length(), 1, f);

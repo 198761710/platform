@@ -71,7 +71,7 @@ void Basic::Execute(void)
 	{
 		return;
 	}
-	if( m_context.Check() )
+	//if( m_context.Check() )
 	{
 		m_context.Execute();
 	}
