@@ -211,7 +211,7 @@ bool BasicService::ProcVarGetInputList(Packet &packet)
 	{
 		return false;
 	}
-	return ListAsHtml("inputlist", varmap);
+	return ListAsJson("inputlist", varmap);
 }
 bool BasicService::ProcVarGetOutputList(Packet &packet)
 {
@@ -222,7 +222,7 @@ bool BasicService::ProcVarGetOutputList(Packet &packet)
 	{
 		return false;
 	}
-	return ListAsHtml("outputlist", varmap);
+	return ListAsJson("outputlist", varmap);
 }
 bool BasicService::ProcVarGetValueList(Packet &packet)
 {
@@ -233,7 +233,7 @@ bool BasicService::ProcVarGetValueList(Packet &packet)
 	{
 		return false;
 	}
-	return ListAsHtml("variablelist", varmap);
+	return ListAsJson("variablelist", varmap);
 }
 bool BasicService::ProcBasicAddFile(Packet &packet)
 {
@@ -301,7 +301,6 @@ bool BasicService::ListAsHtml(const string &fname, map<string,Variable> &varmap)
 	string filename = fname + ".html";
 	FILE *f = fopen(filename.data(), "w");
 
-	ListAsJson(fname, varmap);
 	if( NULL == f )
 	{
 		return false;
@@ -357,13 +356,14 @@ bool BasicService::ListAsHtml(const string &fname, map<string,Variable> &varmap)
 }
 bool BasicService::ListAsJson(const string &fname, map<string,Variable> &varmap)
 {
-	string filename = fname + ".txt";
+	string filename = fname + ".json";
 	FILE *f = fopen(filename.data(), "w");
 
 	if( NULL == f )
 	{
 		return false;
 	}
+	fwrite("[", 1, 1, f);
 	for(map<string,Variable>::iterator i = varmap.begin(); i != varmap.end(); i++)
 	{
 		string data;
@@ -387,10 +387,11 @@ bool BasicService::ListAsJson(const string &fname, map<string,Variable> &varmap)
 			snprintf(buf, sizeof(buf), "\"outvalue\":\"%f\",", i->second.GetOutValue());
 			data += buf;
 		}
-		snprintf(buf, sizeof(buf), "\"value\":\"%.1f\"}\n", i->second.GetValue());
+		snprintf(buf, sizeof(buf), "\"value\":\"%.1f\"},", i->second.GetValue());
 		data += buf;
 		fwrite(data.data(), data.length(), 1, f);
 	}
+	fwrite("{}]", 3, 1, f);
 	fflush(f);
 	fclose(f);
 
