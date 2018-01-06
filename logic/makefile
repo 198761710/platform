@@ -56,6 +56,8 @@ target:  $(xTARGETS)
 	@ls -shv $(xTARGETS)
 	@rm -rf ztest/*.o
 
+bin/cgi.exe: ztest/cgi.o $(lTARGETS)
+	@$(CC) $+ -o $@ 
 bin/basic.exe: ztest/basic.o $(lTARGETS)
 	@$(CC) $+ -o $@ 
 bin/packet.exe: ztest/packet.o $(lTARGETS)
