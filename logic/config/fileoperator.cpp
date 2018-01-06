@@ -124,21 +124,20 @@ int FileOperator::Size()
 }
 
 #ifdef TEST_FILEOPERATOR
-int main(void)
-{
-	FileOperator file;
-
-	file.Open("test.db");
-
+void Write(FileOperator& file)
+{	
 	for(int i = 0; i < 32; i++)
 	{
 		Record rc;
+		float d = i;
 
-		rc.SetData((unsigned char*)&i, sizeof(i));
+		rc.SetData((unsigned char*)&d, sizeof(d));
 		rc.SetOffset(i * rc.GetBufferLength());
 		file.WriteRecord(rc);
 	}
-	printf("file.size(%d)\n", file.Size());
+}
+void Read(FileOperator& file)
+{
 	file.Seek(0);
 	while(1)
 	{
@@ -147,12 +146,26 @@ int main(void)
 		if( file.ReadRecord(rc) )
 		{
 			rc.Show();
-			int d = (*(int*)rc.GetData()) * 2;
+			float d = (*(float*)rc.GetData()) * 1.1234;
 			rc.SetData((unsigned char*)&d, sizeof(d));
 			file.WriteRecord(rc);
 			continue;
 		}
 		break;
+	}
+}
+int main(void)
+{
+	FileOperator file;
+
+	file.Open("test.db");
+
+	Write(file);
+	printf("file.size(%d)\n", file.Size());
+	for(int i = 0; i < 100; i++)
+	{
+		Read(file);
+		getchar();
 	}
 
 	return 0;
