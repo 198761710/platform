@@ -7,33 +7,32 @@ AV fan_ontime
 AV fan_offtime
 AI tempreture
 
-a = a + 1
-test:
-	b = b + 1
-if fan_open.invalid then goto End
-if fan_close.invalid then goto End
-if fan_status.invalid then goto End
-if tempreture.invalid then goto End
+goto main
 
-Begin:
-	if( tempreture >= 5 ) then goto FanStart else goto FanStop
+if fan_open.invalid then goto end
+if fan_close.invalid then goto end
+if fan_status.invalid then goto end
+if tempreture.invalid then goto end
 
-FanStart:
+begin:
+	if( tempreture >= 5 ) then goto fanstart else goto fanstop
+
+fanstart:
 	if( fan.offtime > 5 ) then fan = 1
-	goto Normal
+	goto main 
 
-FanStop:
+fanstop:
 	if( fan.ontime > 5 ) then fan = 0
-	goto Normal
+	goto main
 
-Normal:
+main:
 	a = a + 1
 	b = b + 2
 	rps = a / a.ontime
-	c = (0.001 == 0.0009)
+	c = (0.0010 == 0.0009)
 	fan_ontime = fan.ontime
-	fan_offtime = fan.offtime
-	if(fan.offtime > 4 and tempreture < 4) then tempreture = fan.offtime 
-	if( fan.ontime > 5 and tempreture < 6) then fan = 0
+	fan_offtime = fan.offtime + 1
+	if (fan.offtime > 4) and (tempreture < 4) then tempreture = (fan.offtime + b.ontime)
+	if (fan.ontime > 5) and (tempreture < 6) then fan = 0
 
-EndPoint:
+end:
