@@ -5,11 +5,19 @@
 #include "statement.h"
 
 
-void Statement::SetContext(Context& context)
+unsigned Statement::GetLineNumber(void)
+{
+	if( statement.begin() == statement.end() )
+	{
+		return unsigned(0);
+	}
+	return statement.front().GetLineNumber();
+}
+bool Statement::SetContext(Context& context)
 {
 	if( statement.empty() )
 	{
-		return;
+		return false;
 	}
 	Expression& expression = statement.front();
 	if( expression.GetType() == LABEL )
@@ -18,8 +26,12 @@ void Statement::SetContext(Context& context)
 	}
 	for(Iterator i = statement.begin(); i != statement.end(); i++)
 	{
-		i->SetContext(context);
+		if( i->SetContext(context) == false )
+		{
+			return false;
+		}
 	}
+	return true;
 }
 void Statement::AddExpression(Expression& expression)
 {

@@ -5,7 +5,28 @@
 
 Cache GlobalVariable("GlobalVariable");
 
-void Cache::SetToken(Token& token)
+map<string,Variable>::iterator Cache::begin(void)
+{
+	return variablemap.begin();
+}
+map<string,Variable>::iterator Cache::end(void)
+{
+	return variablemap.end();
+}
+void Cache::SetTokenFind(Token& token)
+{
+	map<string,Variable>::iterator i = variablemap.find(token.name);
+
+	if( variablemap.end() != i )
+	{
+		token.SetVariable( variablemap[token.name] );
+	}
+	else
+	{
+		token.bindup = false;
+	}
+}
+void Cache::SetTokenForce(Token& token)
 {
 	token.SetVariable( variablemap[token.name] );
 }

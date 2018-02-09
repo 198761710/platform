@@ -1,5 +1,5 @@
-ARCH := /usr/bin/
 ARCH := arm-linux-
+ARCH := /usr/bin/
 CC := $(ARCH)g++
 STRIP := $(ARCH)strip
 CFLAGS := -Ijson

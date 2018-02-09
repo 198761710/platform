@@ -20,7 +20,8 @@ public:
 public:
 	signed GetType(void);
 	const string& GetName(void);
-	void SetContext(Context& c);
+	bool SetContext(Context& c);
+	unsigned GetLineNumber(void);
 public:
 	void CreateTree(list<Token>& l);
 	void CreateLeft(list<Token>& l);

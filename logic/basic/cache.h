@@ -16,10 +16,13 @@ protected:
 	typedef map<string,Variable>::iterator Iterator;
 public:
 	Cache(const string& name):cachename(name){}
-
+public:
+	map<string,Variable>::iterator begin(void);
+	map<string,Variable>::iterator end(void);
 public:
 	void Show(void);
-	void SetToken(Token& token);
+	void SetTokenFind(Token& token);
+	void SetTokenForce(Token& token);
 	bool GetOutput(map<string,Variable> &);
 	void GetInputList(map<string,Variable>& varmap);
 	void GetOutputList(map<string,Variable>& varmap);

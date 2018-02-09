@@ -2,9 +2,16 @@
 #include <stdio.h>
 #include "basiccc.h"
 
+static unsigned linenumber = 0;
+static const char *linestring = 0;
+static const char *filename = 0;
+
 extern "C" int yylex(void);
 extern "C" void yyerror(const char *s);
 extern "C" void* yystring(const char *s);
+extern "C" void yysetlinenumber(unsigned);
+extern "C" void yysetlinestring(const char *s);
+extern "C" void yysetfilename(const char *s);
 
 %}
 %union
@@ -155,9 +162,28 @@ value_expression:
 	;
 %%
 
+void yysetlinenumber(unsigned l)
+{
+	linenumber = l;
+}
+void yysetlinestring(const char *p)
+{
+	linestring = p;
+}
+void yysetfilename(const char *p)
+{
+	filename = p;
+}
 void yyerror(const char *p)
 {
-	printf("error:%s\n", p?p:"null");
+	if( linestring && filename && p )
+	{
+		printf("%s:file(%s).line(%d):%s\n", p, filename, linenumber, linestring);
+	}
+	else
+	{
+		printf("error:%s\n", p ? p : "null");
+	}
 }
 void readfile(const string& file, string& s)
 {

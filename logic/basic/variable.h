@@ -24,9 +24,9 @@ protected:
 	bool init;
 	bool manual;
 	double value;
+	double runtime;
 	double outvalue;
 	double threshold;
-	double runtime;
 	string listener;
 	ValueType valuetype;
 	VariableType vartype;

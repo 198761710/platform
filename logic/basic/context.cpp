@@ -2,6 +2,17 @@
 #include "context.h"
 #include "statement.h"
 
+Context::Context(void):LocalVariable("LocalVariable"),statement_count(0)
+{
+}
+void Context::SymbelNotFound(Token& token)
+{
+	synbelnotfound = token;
+}
+Token& Context::SymbelNotFound(void)
+{
+	return synbelnotfound;
+}
 Cache& Context::GetLocalVariable(void)
 {
 	return LocalVariable;

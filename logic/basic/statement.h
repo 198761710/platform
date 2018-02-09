@@ -16,7 +16,8 @@ protected:
 public:
 	Statement(void):expression_count(0){}
 public:
-	void SetContext(Context& context);
+	unsigned GetLineNumber(void);
+	bool SetContext(Context& context);
 	void AddExpression(Expression& expression);
 	void Execute(void);
 	bool Check(void);

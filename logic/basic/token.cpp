@@ -8,18 +8,12 @@
 
 extern Cache GlobalVariable;
 
-Token::Token(void)
+Token::Token(void):var(0),type(-1),value(0.0),bindup(0)
 {
-	var = 0;
-	type = -1;
-	value = 0.0;
 	name = "unknow-token";
 }
-Token::Token(signed t, const string& n)
+Token::Token(signed t, const string& n):var(0),type(t),name(n)
 {
-	var = 0;
-	type = t;
-	name = n;
 	TokenValue();
 }
 Token::~Token(void)
@@ -27,12 +21,12 @@ Token::~Token(void)
 	//GlobalVariable.DelTokon(*this);
 	var = NULL;
 }
-void Token::SetContext(Context& context)
+bool Token::SetContext(Context& context)
 {
 	switch(type)
 	{
 	case ID:
-		GlobalVariable.SetToken(*this);
+		GlobalVariable.SetTokenFind(*this);
 		break;
 	case IDR:
 	case IDO:
@@ -40,22 +34,30 @@ void Token::SetContext(Context& context)
 	case IDV:
 		name[name.find_first_of(".")] = 0;
 		name = name.data();
-		GlobalVariable.SetToken(*this);
+		GlobalVariable.SetTokenFind(*this);
 		break;
 	case LC:
-		context.GetLocalVariable().SetToken(*this);
+		context.GetLocalVariable().SetTokenForce(*this);
 		break;
 	case LCO:
 	case LCF:
 		name[name.find_first_of(".")] = 0;
 		name = name.data();
-		context.GetLocalVariable().SetToken(*this);
+		context.GetLocalVariable().SetTokenForce(*this);
 		break;
+	default:
+		bindup = true;
 	}
+	if( false == bindup )
+	{
+		context.SymbelNotFound(*this);
+	}
+	return bindup;
 }
 void Token::SetVariable(Variable& variable)
 {
 	var = &variable;
+	bindup = true;
 }
 const double Token::GetValue(void)
 {
@@ -111,6 +113,14 @@ bool Token::SetValue(const double& v)
 		return true;
 	}
 	return false;
+}
+void Token::SetLineNumber(unsigned l)
+{
+	line = l;
+}
+const unsigned Token::GetLineNumber(void)
+{
+	return line;
 }
 const double Token::GetRuntime(void)
 {

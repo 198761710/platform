@@ -8,7 +8,12 @@
 extern Cache GlobalVariable;
 TokenLmap BasicCC::tokenlmap;
 TokenList BasicCC::tokenlist;
+unsigned BasicCC::linenumber = 0;
 
+void BasicCC::SetLineNumber(unsigned line)
+{
+	linenumber = line;
+}
 void BasicCC::AddToken(const Token& node)
 {
 	switch( node.type )
@@ -33,6 +38,7 @@ void BasicCC::AddToken(const Token& node)
 			return;
 	}
 	tokenlist.push_back(node);
+	tokenlist.back().SetLineNumber(linenumber);
 }
 void BasicCC::AddList(void)
 {
@@ -66,7 +72,10 @@ bool BasicCC::MakeContext(Context& context)
 			Expression expression;
 			expression.CreateTree(tokenlist);
 			statement.AddExpression(expression);
-			statement.SetContext(context);
+			if( statement.SetContext(context) == false )
+			{
+				return false;
+			}
 		}
 		context.AddStatement(statement);
 	}

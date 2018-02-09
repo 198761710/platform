@@ -13,12 +13,14 @@ typedef map<signed,TokenList> TokenLmap;
 class BasicCC
 {
 protected:
+	static unsigned linenumber;
 	static TokenLmap tokenlmap;
 	static TokenList tokenlist;
 public:
 	typedef TokenLmap::iterator MapIterator;
 	typedef TokenList::iterator ListIterator;
 public:
+	static void SetLineNumber(unsigned);
 	static bool MakeContext(Context& context);
 	static void AddToken(const Token& node);
 	static void AddList(void);

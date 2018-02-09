@@ -29,18 +29,32 @@ const string& Expression::GetName(void)
 {
 	return token.name;
 }
-void Expression::SetContext(Context& c)
+bool Expression::SetContext(Context& c)
 {
 	context = &c;
-	token.SetContext(c);
+	if( token.SetContext(c) == false )
+	{
+		return false;
+	}
 	if( lchild )
 	{
-		lchild->SetContext(c);
+		if( lchild->SetContext(c) == false )
+		{
+			return false;
+		}
 	}
 	if( rchild )
 	{
-		rchild->SetContext(c);
+		if( rchild->SetContext(c) == false )
+		{
+			return false;
+		}
 	}
+	return true;
+}
+unsigned Expression::GetLineNumber(void)
+{
+	return token.GetLineNumber();
 }
 void Expression::CreateLeft(list<Token>& line)
 {

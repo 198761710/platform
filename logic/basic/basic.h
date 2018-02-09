@@ -9,6 +9,7 @@ class Basic
 protected:
 	bool m_run;
 	bool m_debug;
+	unsigned m_line;
 	string m_name;
 	Context m_context;
 
