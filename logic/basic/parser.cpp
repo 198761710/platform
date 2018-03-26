@@ -1846,7 +1846,7 @@ void yyerror(const char *p)
 	}
 	else
 	{
-		printf("error:%s\n", p?p:"null");
+		printf("error:%s\n", p ? p : "null");
 	}
 }
 void readfile(const string& file, string& s)

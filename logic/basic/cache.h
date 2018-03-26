@@ -19,8 +19,11 @@ public:
 public:
 	map<string,Variable>::iterator begin(void);
 	map<string,Variable>::iterator end(void);
+	map<string,Variable>::iterator find(const string&);
 public:
 	void Show(void);
+	void Add(const string&);
+	void Del(const string&);
 	void SetTokenFind(Token& token);
 	void SetTokenForce(Token& token);
 	bool GetOutput(map<string,Variable> &);

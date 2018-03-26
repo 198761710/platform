@@ -13,6 +13,15 @@ map<string,Variable>::iterator Cache::end(void)
 {
 	return variablemap.end();
 }
+
+void Cache::Add(const string& name)
+{
+	variablemap[name];
+}
+void Cache::Del(const string& name)
+{
+	variablemap.erase(name);
+}
 void Cache::SetTokenFind(Token& token)
 {
 	map<string,Variable>::iterator i = variablemap.find(token.name);

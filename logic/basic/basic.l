@@ -16,10 +16,10 @@ DV			(DV)|(dv)
 AI			(AI)|(ai)
 AO			(AO)|(ao)
 AV			(AV)|(av)
-LC			[a-z]
+LC			[a-z]?
 LCO			{LC}[.]ontime(\(\))?
 LCF			{LC}[.]offtime(\(\))?
-ID			[a-zA-Z_][_a-zA-Z0-9]+
+ID			[a-zA-Z_][_a-zA-Z0-9]{0,63}
 IDRT		{ID}[.]runtime(\(\))?
 IDOT		{ID}[.]ontime(\(\))?
 IDFT		{ID}[.]offtime(\(\))?
