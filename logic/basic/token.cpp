@@ -37,13 +37,13 @@ bool Token::SetContext(Context& context)
 		GlobalVariable.SetTokenFind(*this);
 		break;
 	case LC:
-		context.GetLocalVariable().SetTokenForce(*this);
+		context.GetCache().SetTokenForce(*this);
 		break;
 	case LCO:
 	case LCF:
 		name[name.find_first_of(".")] = 0;
 		name = name.data();
-		context.GetLocalVariable().SetTokenForce(*this);
+		context.GetCache().SetTokenForce(*this);
 		break;
 	default:
 		bindup = true;
@@ -85,7 +85,7 @@ const double Token::GetValue(void)
 	}
 	if( var )
 	{
-		return var->GetValue();
+		return var->GetValueI();
 	}
 	return value;
 }
@@ -109,7 +109,7 @@ bool Token::SetValue(const double& v)
 {
 	if( var )
 	{
-		var->SoftSetValue((double&)v);
+		var->SetValue((double&)v);
 		return true;
 	}
 	return false;

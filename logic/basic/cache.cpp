@@ -5,30 +5,21 @@
 
 Cache GlobalVariable("GlobalVariable");
 
-map<string,Variable>::iterator Cache::begin(void)
-{
-	return variablemap.begin();
-}
-map<string,Variable>::iterator Cache::end(void)
-{
-	return variablemap.end();
-}
-
 void Cache::Add(const string& name)
 {
-	variablemap[name];
+	varmap[name].SetName(name);
 }
 void Cache::Del(const string& name)
 {
-	variablemap.erase(name);
+	varmap.erase(name);
 }
 void Cache::SetTokenFind(Token& token)
 {
-	map<string,Variable>::iterator i = variablemap.find(token.name);
+	Iterator i = find(token.name);
 
-	if( variablemap.end() != i )
+	if( end() != i )
 	{
-		token.SetVariable( variablemap[token.name] );
+		token.SetVariable( varmap[token.name] );
 	}
 	else
 	{
@@ -37,80 +28,42 @@ void Cache::SetTokenFind(Token& token)
 }
 void Cache::SetTokenForce(Token& token)
 {
-	token.SetVariable( variablemap[token.name] );
+	Variable& var = varmap[token.name];
+	var.SetName(token.name);
+	token.SetVariable( var );
 }
-void Cache::SetDefine(const string &name, ValueType val, VariableType var)
+void Cache::Define(const string &name, ABType ab, IOType io)
 {
-	variablemap[name].SetDefine(val, var);
+	varmap[name].SetName(name);
+	varmap[name].Define(ab, io);
 }
-Variable& Cache::GetVariable(const string& name)
+void Cache::GetInput(map<string,Variable>& m)
 {
-	map<string,Variable>::iterator i = variablemap.find(name);
-	if( variablemap.end() == i )
+	for(Iterator i = varmap.begin(); i != varmap.end(); i++)
 	{
-		return sudovar;
-	}
-	return i->second;
-}
-bool Cache::GetOutput(map<string,Variable> &outmap)
-{
-	if( outtime.mdiff() < 100 )
-	{
-		return false;
-	}
-	outtime.init();
-	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
-	{
-		if( i->second.Output() )
+		if( i->second.GetIOType() == IO_Input )
 		{
-			outmap[i->first] = i->second;
-		}
-	}
-	return (outmap.empty() == false);
-}
-void Cache::GetInputList(map<string,Variable>& varmap)
-{
-	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
-	{
-		if( i->second.GetVariableType() == VarInput )
-		{
-			varmap[i->first] = i->second;
+			m[i->first] = i->second;
 		}
 	}
 }
-void Cache::GetOutputList(map<string,Variable>& varmap)
+void Cache::GetOutput(map<string,Variable>& m)
 {
-	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
+	for(Iterator i = begin(); i != varmap.end(); i++)
 	{
-		if( i->second.GetVariableType() == VarOutput )
+		if( i->second.GetIOType() == IO_Output )
 		{
-			varmap[i->first] = i->second;
+			m[i->first] = i->second;
 		}
 	}
 }
-void Cache::GetValueList(map<string,Variable>& varmap)
+void Cache::GetHolding(map<string,Variable>& m)
 {
-	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
+	for(Iterator i = begin(); i != varmap.end(); i++)
 	{
-		if( i->second.GetVariableType() == VarValue )
+		if( i->second.GetIOType() == IO_Holding)
 		{
-			varmap[i->first] = i->second;
+			m[i->first] = i->second;
 		}
-	}
-}
-void Cache::Show(void)
-{
-	printf("_______________________________________________________________\n");
-	printf("|*********************** %14s **********************|\n", cachename.data());
-	printf("|-------------------------------------------------------------|\n");
-	printf("|     name     |      value      | runtime | ontime | offtime |\n");
-	printf("|-------------------------------------------------------------|\n");
-	for(Iterator i = variablemap.begin(); i != variablemap.end(); i++)
-	{
-		printf("| %-12s | ", i->first.data());
-		printf(" %-14.1f |", i->second.GetValue());
-		printf(" %-7d |", (int)i->second.GetRuntime());
-		printf(" %-7d |", (int)i->second.GetOnTime());
-		printf(" %-6d |\n", (int)i->second.GetOffTime());
 	}
 }

@@ -6,14 +6,15 @@ using namespace std;
 class CacheManager
 {
 protected:
-	typedef map<string,Variable>::iterator Iterator;
-protected:
-	map<string,Variable>::iterator begin(void);
-	map<string,Variable>::iterator end(void);
-	map<string,Variable>::iterator find(const string&);
+	Cache::Iterator end(void){return GlobalVariable.end();}
+	Cache::Iterator begin(void){return GlobalVariable.begin();}
+	Cache::Iterator find(const string& n){return GlobalVariable.find(n);}
 
 public:
 	void Run(void);
+	void StoreDigital(void);
+	void StoreAnalog(void);
+public:
 	void Add(const string&);
 	void Del(const string&);
 	void SetInit(const string&);
@@ -21,8 +22,12 @@ public:
 	void SetDeath(const string&);
 	void SetManual(const string&);
 	void SetRuntime(const string&);
-	void SetValueType(const string&);
-	void SetVariableType(const string&);
+	void SetIOType(const string&);
+	void SetABType(const string&);
+public:
+	void GetInput(map<string,Variable>&);
+	void GetOutput(map<string,Variable>&);
+	void GetHolding(map<string,Variable>&);
 };
 
 #endif//__CACHE_MANAGER_H__

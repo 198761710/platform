@@ -2,19 +2,13 @@
 #include "cachemanager.h"
 
 
-map<string,Variable>::iterator CacheManager::begin(void)
-{
-	return GlobalVariable.begin();
-}
-map<string,Variable>::iterator CacheManager::end(void)
-{
-	return GlobalVariable.end();
-}
-map<string,Variable>::iterator CacheManager::find(const string& name)
-{
-	return GlobalVariable.find(name);
-}
 void CacheManager::Run(void)
+{
+}
+void CacheManager::StoreDigital(void)
+{
+}
+void CacheManager::StoreAnalog(void)
 {
 }
 void CacheManager::Add(const string& args)
@@ -29,7 +23,7 @@ void CacheManager::SetInit(const string& args)
 {
 	if( args.empty() == false )
 	{
-		Iterator i;
+		Cache::Iterator i;
 		int init = 0;
 		char name[256] = {0};
 
@@ -46,7 +40,7 @@ void CacheManager::SetValue(const string& args)
 {
 	if( args.empty() == false )
 	{
-		Iterator i;
+		Cache::Iterator i;
 		double value = 0.0;
 		char name[256] = {0};
 
@@ -56,14 +50,14 @@ void CacheManager::SetValue(const string& args)
 		{
 			return;
 		}
-		i->second.HardSetValue( value );
+		i->second.SetReal( value );
 	}
 }
 void CacheManager::SetDeath(const string& args)
 {
 	if( args.empty() == false )
 	{
-		Iterator i;
+		Cache::Iterator i;
 		double death = 0.0;
 		char name[256] = {0};
 
@@ -73,14 +67,14 @@ void CacheManager::SetDeath(const string& args)
 		{
 			return;
 		}
-		i->second.SetThreshold( death );
+		i->second.SetDeath( death );
 	}
 }
 void CacheManager::SetManual(const string& args)
 {
 	if( args.empty() == false )
 	{
-		Iterator i;
+		Cache::Iterator i;
 		int manual = 0;
 		char name[256] = {0};
 
@@ -97,7 +91,7 @@ void CacheManager::SetRuntime(const string& args)
 {
 	if( args.empty() == false )
 	{
-		Iterator i;
+		Cache::Iterator i;
 		int runtime = 0;
 		char name[256] = {0};
 
@@ -110,11 +104,11 @@ void CacheManager::SetRuntime(const string& args)
 		i->second.SetRuntime( runtime );
 	}
 }
-void CacheManager::SetValueType(const string& args)
+void CacheManager::SetIOType(const string& args)
 {
 	if( args.empty() == false )
 	{
-		Iterator i;
+		Cache::Iterator i;
 		int type = 0;
 		char name[256] = {0};
 
@@ -124,14 +118,14 @@ void CacheManager::SetValueType(const string& args)
 		{
 			return;
 		}
-		i->second.SetValueType( (ValueType)type );
+		i->second.SetIOType( (IOType)type );
 	}
 }
-void CacheManager::SetVariableType(const string& args)
+void CacheManager::SetABType(const string& args)
 {
 	if( args.empty() == false )
 	{
-		Iterator i;
+		Cache::Iterator i;
 		int type = 0;
 		char name[256] = {0};
 
@@ -141,6 +135,18 @@ void CacheManager::SetVariableType(const string& args)
 		{
 			return;
 		}
-		i->second.SetVariableType( (VariableType)type );
+		i->second.SetABType( (ABType)type );
 	}
+}
+void CacheManager::GetInput(map<string,Variable>& m)
+{
+	GlobalVariable.GetInput(m);
+}
+void CacheManager::GetOutput(map<string,Variable>& m)
+{
+	GlobalVariable.GetOutput(m);
+}
+void CacheManager::GetHolding(map<string,Variable>& m)
+{
+	GlobalVariable.GetHolding(m);
 }

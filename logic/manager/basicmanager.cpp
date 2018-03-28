@@ -63,18 +63,7 @@ void BasicManager::Compile(const string& args)
 
 	if( end() != i )
 	{
+		printf("%s.Compile\n", i->second.GetName().data());
 		i->second.Compile();
 	}
-}
-map<string,Basic>::iterator BasicManager::begin(void)
-{
-	return basicmap.begin();
-}
-map<string,Basic>::iterator BasicManager::end(void)
-{
-	return basicmap.end();
-}
-map<string,Basic>::iterator BasicManager::find(const string& name)
-{
-	return basicmap.find(name);
 }

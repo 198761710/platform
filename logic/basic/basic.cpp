@@ -37,6 +37,7 @@ void Basic::SetDebug(bool b)
 void Basic::SetName(const string& n)
 {
 	m_name = n;
+	GetCache().SetName(m_name);
 	yysetfilename(m_name.data());
 }
 bool Basic::Compile(void)
@@ -110,7 +111,7 @@ void Basic::Execute(void)
 		m_context.Execute();
 	}
 }
-void Basic::Show(void)
+Cache& Basic::GetCache(void)
 {
-	m_context.GetLocalVariable().Show();
+	return m_context.GetCache();
 }

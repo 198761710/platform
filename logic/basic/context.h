@@ -9,8 +9,8 @@ using namespace std;
 class Context
 {
 protected:
+	Cache cache;
 	int statement_count;
-	Cache LocalVariable;
 	Token synbelnotfound;
 	map<string,int> labelmap;
 	map<int,class Statement> context;
@@ -22,7 +22,7 @@ public:
 	void SymbelNotFound(Token&);
 	Token& SymbelNotFound(void);
 public:
-	class Cache& GetLocalVariable(void);
+	class Cache& GetCache(void);
 	void AddStatement(class Statement& statement);
 	void AddLabel(const string& label);
 	void GotoLabel(const string& label);

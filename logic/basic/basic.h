@@ -9,8 +9,8 @@ class Basic
 protected:
 	bool m_run;
 	bool m_debug;
-	unsigned m_line;
 	string m_name;
+	unsigned m_line;
 	Context m_context;
 
 public:
@@ -29,7 +29,7 @@ public:
 public:
 	bool Compile(void);
 	void Execute(void);
-	void Show(void);
+	Cache& GetCache(void);
 };
 
 #endif//__BASIC_H__

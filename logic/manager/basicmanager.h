@@ -8,13 +8,12 @@ class BasicManager
 {
 protected:
 	map<string,Basic> basicmap;
+public:
 	typedef map<string,Basic>::iterator Iterator;
-
-protected:
-	map<string,Basic>::iterator begin(void);
-	map<string,Basic>::iterator end(void);
-	map<string,Basic>::iterator find(const string&);
-
+public:
+	map<string,Basic>::iterator end(void){return basicmap.end();}
+	map<string,Basic>::iterator begin(void){return basicmap.begin();}
+	map<string,Basic>::iterator find(const string& n){return basicmap.find(n);}
 public:
 	void Run(void);
 	void Add(const string&);

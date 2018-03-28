@@ -8,28 +8,28 @@ using namespace std;
 
 typedef enum
 {
-	VarValue,
-	VarInput,
-	VarOutput,
-}VariableType;
+	IO_Holding,
+	IO_Input,
+	IO_Output,
+}IOType;
 typedef enum
 {
-	Binary,
-	Analog,
-}ValueType;
+	AB_Analog,
+	AB_Binary,
+}ABType;
 
 class Variable
 {
 protected:
 	bool init;
 	bool manual;
-	double value;
+	double death;
+	double valueI;
+	double valueO;
 	double runtime;
-	double outvalue;
-	double threshold;
-	string listener;
-	ValueType valuetype;
-	VariableType vartype;
+	string name;
+	ABType abtype;
+	IOType iotype;
 	TimeOperator ontime;
 	TimeOperator offtime;
 	TimeOperator outtime;
@@ -39,28 +39,28 @@ public:
 	bool Output(void);
 	bool GetInit(void);
 	bool GetManual(void);
-	double GetValue(void);
+	double GetDeath(void);
+	double GetValueI(void);
+	double GetValueO(void);
 	double GetOnTime(void);
 	double GetOffTime(void);
 	double GetRuntime(void);
-	double GetOutValue(void);
-	double GetThreshold(void);
-	const string& GetListener(void);
-	VariableType GetVariableType(void);
-	ValueType GetValueType(void);
+	ABType GetABType(void);
+	IOType GetIOType(void);
+	const string& GetName(void);
 public:
+	void SetName(const string&);
 	void SetInit(const bool b);
 	void SetManual(const bool b);
+	void SetDeath(const double &v);
 	void SetRuntime(const double &v);
-	void SetThreshold(const double &v);
-	void SetListener(const string &ls);
-	void SetValueType(const ValueType t);
-	void SetVariableType(const VariableType t);
+	void SetIOType(const IOType t);
+	void SetABType(const ABType t);
 public:
-	void SoftSetValue(const double &v);
-	void HardSetValue(const double &v);
+	void SetReal(const double &v);
+	void SetValue(const double &v);
 public:
-	void SetDefine(ValueType, VariableType);
+	void Define(ABType, IOType);
 };
 
 #endif//__VARIABLE_H__

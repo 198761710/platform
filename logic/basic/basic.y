@@ -6,7 +6,7 @@ static unsigned linenumber = 0;
 static const char *linestring = 0;
 static const char *filename = 0;
 
-extern "C" int yylex(void);
+extern "C" int  yylex(void);
 extern "C" void yyerror(const char *s);
 extern "C" void* yystring(const char *s);
 extern "C" void yysetlinenumber(unsigned);
@@ -26,7 +26,11 @@ extern "C" void yysetfilename(const char *s);
 
 %token	DI DO DV AI AO AV
 
-%token	ID IDR IDO IDF IDV LC LCO LCF NUM HEX DATE TIME DATETIME
+%token	LC LCO LCF LCB LCM
+
+%token	ID IDR IDO IDF IDV IDB IDM
+
+%token  NUM HEX DATE TIME DATETIME
 
 %token	IF THEN ELSE 
 
@@ -82,7 +86,11 @@ execute_expression:
 set_expression:
 	ID SET value_expression {NODE(ID, $<t>1); NODE(SET,"=");}
 	|
+	IDB SET value_expression {NODE(IDB, $<t>1); NODE(SET,"=");}
+	|
 	LC SET value_expression {NODE(LC, $<t>1); NODE(SET,"=");}
+	|
+	LCB SET value_expression {NODE(LCB, $<t>1); NODE(SET,"=");}
 	;
 goto_expression:
 	GOTO ID {NODE(LABEL,string($<t>2)+":"); NODE(GOTO,"goto");}
@@ -110,6 +118,10 @@ value_expression:
 	| 
 	LCF {NODE(LCF, $<t>1);} 
 	| 
+	LCB {NODE(LCB, $<t>1);} 
+	| 
+	LCM {NODE(LCM, $<t>1);} 
+	| 
 	ID {NODE(ID, $<t>1);}
 	|
 	IDR {NODE(IDR, $<t>1);}
@@ -119,6 +131,10 @@ value_expression:
 	IDF {NODE(IDF, $<t>1);}
 	|
 	IDV {NODE(IDV, $<t>1);}
+	|
+	IDB {NODE(IDB, $<t>1);}
+	|
+	IDM {NODE(IDM, $<t>1);}
 	|
 	NUM {NODE(NUM, $<t>1);} 
 	| 
@@ -224,8 +240,7 @@ int main(int argc, char **argv)
 		if( time(0) - t != 0 )
 		{
 			t = time(0);
-			GlobalVariable.Show();
-			context.GetLocalVariable().Show();
+			context.GetCache();
 			static int i = 0;
 			printf("\n%d", ++i);
 		}

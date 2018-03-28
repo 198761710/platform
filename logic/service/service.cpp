@@ -4,46 +4,42 @@
 Service::Service(void)
 {
 }
+Service::Service(const string& s):server(s)
+{
+}
 void Service::Run(void)
 {
 }
-void Service::DoReceive(void)
+void Service::Reciev(void)
 {
-	int len = 0;
-	Packet packet;
-
-	len = server.RecvFrom(peer, (char*)packet.data(), packet.size());
-	if( len == packet.size() )
+	int len = socket.RecvFrom(client, (char*)packet.data(), packet.length());
+	if( packet.length() == len )
 	{
-		ProcPacket(packet);
+		Process();
 	}
 }
-bool Service::StartServer(const string& path)
+bool Service::Start(void)
 {
-	if( server.Open() == false )
+	if( socket.Open() == false )
 	{
 		return false;
 	}
-	if( server.Connect(path) )
+	if( socket.Connect(server) )
 	{
 		return false;
 	}
-	server.Unlink(path);
-	if( server.Bind(path) == false )
+	socket.Unlink(server);
+	if( socket.Bind(server) == false )
 	{
 		return false;
 	}
-	return server.Unblock();
+	return socket.Unblock();
 }
-bool Service::ProcPacket(Packet& packet)
+bool Service::Process(void)
 {
 	return false;
 }
-bool Service::SendPacket(const string& to, Packet& packet)
+bool Service::Send(const string& to, const Packet& p)
 {
-	int ret = 0;
-
-	ret = server.SendTo(to, (char*)packet.data(), packet.size());
-
-	return (packet.size() == ret);
+	return (socket.SendTo(to, p.data(), p.length()) == p.length());
 }

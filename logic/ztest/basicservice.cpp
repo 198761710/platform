@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <unistd.h>
 #include "basic.h"
 #include "basicservice.h"
@@ -6,38 +7,26 @@ extern Cache GlobalVariable;
 
 int main(void)
 {
-	Packet packet;
-	BasicService service;
+	TimeOperator timer;
+	BasicService service(".basic.server");
 
-	if( !service.StartServer("basicservice.unix") )
-	{
-		return -1;
-	}
-#if 0
-	packet.type(BasicAddFile);
-	packet.name("example.bas");
-	packet.svalue("example.bas");
-	service.ProcPacket(packet);
+	assert( service.Start() );
+	service.Send(".basic.server", Packet(Pkt_SetBasAdd, "example.bas"));
+	service.Send(".basic.server", Packet(Pkt_SetBasRun, "1,example.bas"));
+	service.Send(".basic.server", Packet(Pkt_SetBasCompile, "example.bas"));
+	service.Send(".basic.server", Packet(Pkt_SetBasAdd, "example2.bas"));
+	service.Send(".basic.server", Packet(Pkt_SetBasRun, "1,example2.bas"));
+	service.Send(".basic.server", Packet(Pkt_SetBasCompile, "example2.bas"));
 
-	packet.type(BasicCompile);
-	packet.uvalue(true);
-	service.ProcPacket(packet);
-
-	packet.type(BasicSetRun);
-	packet.uvalue(true);
-	service.ProcPacket(packet);
-
-#endif
 	while(1)
 	{
-		service.Run();
-		usleep(100);
-		static TimeOperator t;
-		if( t.sdiff() != 0 )
+		if( timer.sdiff() > 1 )
 		{
-			t.init();
-			//GlobalVariable.Show();
+			timer.init();
+			service.Show();
 		}
+		usleep(100);
+		service.Run();
 	}
 
 	return 0;

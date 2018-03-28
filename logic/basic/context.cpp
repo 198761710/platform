@@ -2,7 +2,7 @@
 #include "context.h"
 #include "statement.h"
 
-Context::Context(void):LocalVariable("LocalVariable"),statement_count(0)
+Context::Context(void):cache("local"),statement_count(0)
 {
 }
 void Context::SymbelNotFound(Token& token)
@@ -13,9 +13,9 @@ Token& Context::SymbelNotFound(void)
 {
 	return synbelnotfound;
 }
-Cache& Context::GetLocalVariable(void)
+Cache& Context::GetCache(void)
 {
-	return LocalVariable;
+	return cache;
 }
 void Context::AddStatement(Statement& statement)
 {

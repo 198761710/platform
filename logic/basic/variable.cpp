@@ -8,12 +8,16 @@ Variable::Variable(void)
 {
 	init = false;
 	manual = false;
-	value  = 0.000;
-	outvalue = 0.000;
+	death  = 0.0001;
+	valueI = 0.000;
+	valueO = 0.000;
 	runtime = 0.0000;
-	threshold = 0.0001;
-	vartype = VarValue;
-	valuetype = Analog;
+	abtype = AB_Analog;
+	iotype = IO_Holding;
+}
+const string& Variable::GetName(void)
+{
+	return name;
 }
 bool Variable::GetInit(void)
 {
@@ -25,11 +29,11 @@ bool Variable::GetManual(void)
 }
 bool Variable::Output(void)
 {
-	if( VarOutput != vartype )
+	if( IO_Output != iotype )
 	{
 		return false;
 	}
-	if( fabs(value - outvalue) < threshold )
+	if( fabs(valueI - valueO) < death )
 	{
 		return false;
 	}
@@ -40,17 +44,17 @@ bool Variable::Output(void)
 	outtime.init();
 	return true;
 }
-double Variable::GetValue(void)
+double Variable::GetValueI(void)
 {
-	return value;
+	return valueI;
 }
-double Variable::GetOutValue(void)
+double Variable::GetValueO(void)
 {
-	return outvalue;
+	return valueO;
 }
-double Variable::GetThreshold(void)
+double Variable::GetDeath(void)
 {
-	return threshold;
+	return death;
 }
 double Variable::GetOnTime(void)
 {
@@ -58,7 +62,7 @@ double Variable::GetOnTime(void)
 	{
 		return double(0.0000);
 	}
-	if( fabs(value) >= 0.9999 )
+	if( fabs(valueI) >= 0.9999 )
 	{
 		return (double)ontime.sdiff();
 	}
@@ -70,7 +74,7 @@ double Variable::GetOffTime(void)
 	{
 		return double(0.0000);
 	}
-	if( fabs(value) < 0.9999 )
+	if( fabs(valueI) < 0.9999 )
 	{
 		return (double)offtime.sdiff();
 	}
@@ -80,19 +84,18 @@ double Variable::GetRuntime(void)
 {
 	return runtime + GetOnTime();
 }
-const string& Variable::GetListener(void)
+IOType Variable::GetIOType(void)
 {
-	return listener;
+	return iotype;
 }
-ValueType Variable::GetValueType(void)
+ABType Variable::GetABType(void)
 {
-	return valuetype;
+	return abtype;
 }
-VariableType Variable::GetVariableType(void)
+void Variable::SetName(const string& n)
 {
-	return vartype;
+	name = n;
 }
-
 void Variable::SetInit(const bool b)
 {
 	init = b;
@@ -109,70 +112,66 @@ void Variable::SetRuntime(const double &v)
 {
 	runtime = v;
 }
-void Variable::SetThreshold(const double &v)
+void Variable::SetDeath(const double &v)
 {
-	threshold = v;
+	death = v;
 }
-void Variable::SetListener(const string &ls)
+void Variable::SetIOType(const IOType t)
 {
-	listener = ls;
+	iotype = t;
 }
-void Variable::SetValueType(const ValueType t)
+void Variable::SetABType(const ABType t)
 {
-	valuetype = t;
-}
-void Variable::SetVariableType(const VariableType t)
-{
-	vartype = t;
+	abtype = t;
 }
 
-void Variable::SoftSetValue(const double &v)
+void Variable::SetValue(const double &v)
 {
 	if( manual )
 	{
 		return;
 	}
-	switch( vartype )
+	switch( iotype )
 	{
-		case VarValue:
-		case VarInput:
-			HardSetValue(v);
+		case IO_Holding:
+		case IO_Input:
+			SetReal(v);
 			break;
-		case VarOutput:
-			outvalue = v;
+		case IO_Output:
+			valueO = v;
 			break;
 	}
 }
-void Variable::HardSetValue(const double &v)
+void Variable::SetReal(const double &v)
 {
 	init = true;
-	if( fabs(v - value) < threshold )
+	if( fabs(v - valueI) < death )
 	{
 		return;
 	}
-	if( fabs(value) >= 0.9999 && fabs(v) < 0.9999 )
+	if( fabs(valueI) >= 0.9999 && fabs(v) < 0.9999 )
 	{
 		offtime.init();
 		runtime += (double)ontime.sdiff();
 	}
-	else if( fabs(value) < 0.9999 && fabs(v) >= 0.9999 )
+	else if( fabs(valueI) < 0.9999 && fabs(v) >= 0.9999 )
 	{
 		ontime.init();
 	}
-	value = v;
+	valueI = v;
 }
-void Variable::SetDefine(ValueType val, VariableType var)
+void Variable::Define(ABType ab, IOType io)
 {
-	vartype = var;
-	valuetype = val;
-	switch(vartype)
+	abtype = ab;
+	iotype = io;
+	switch(iotype)
 	{
-		case VarInput:
-		case VarOutput:
+		case IO_Input:
+		case IO_Output:
 			break;
-		case VarValue:
+		case IO_Holding:
 			init = true;
 			break;
 	}
-	printf("%s,%d,%d\n", __func__, vartype, valuetype);
+	printf("%s,%d,%d\n", __func__, abtype, iotype);
 }

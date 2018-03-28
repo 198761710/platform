@@ -10,21 +10,21 @@ using namespace std;
 class Service
 {
 protected:
-	string peer;
-	UnixUdp server;
+	string client;
+	string server;
+	Packet packet;
+	UnixUdp socket;
 
 public:
 	Service(void);
+	Service(const string&);
 
 public:
 	virtual void Run(void);
-	virtual void DoReceive(void);
-	virtual bool StartServer(const string& path);
-public:
-	virtual bool ProcPacket(Packet& packet);
-
-public:
-	bool SendPacket(const string&, Packet& packet);
+	virtual bool Start(void);
+	virtual void Reciev(void);
+	virtual bool Process(void);
+	virtual bool Send(const string&, const Packet& packet);
 };
 
 #endif//__SERVICE_H__

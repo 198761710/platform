@@ -7,8 +7,8 @@ int main(int argc, char **argv)
 {
 	Json json;
 	UnixUdp unixudp;
-	string client_path = "unixudp.udp.clien.socket";
-	string server_path = "unixudp.udp.server.socket";
+	string client_path = ".clien";
+	string server_path = ".server";
 
 	unixudp.Open();
 	if( unixudp.Connect(client_path) )
