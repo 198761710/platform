@@ -5,11 +5,14 @@
 void CacheManager::Run(void)
 {
 }
-void CacheManager::StoreDigital(void)
+bool CacheManager::Load(const string& fname)
 {
+	filename = fname;
+	return false;
 }
-void CacheManager::StoreAnalog(void)
+bool CacheManager::Store(void)
 {
+	return true;
 }
 void CacheManager::Add(const string& args)
 {

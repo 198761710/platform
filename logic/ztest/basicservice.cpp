@@ -17,6 +17,10 @@ int main(void)
 	service.Send(".basic.server", Packet(Pkt_SetBasAdd, "example2.bas"));
 	service.Send(".basic.server", Packet(Pkt_SetBasRun, "1,example2.bas"));
 	service.Send(".basic.server", Packet(Pkt_SetBasCompile, "example2.bas"));
+	service.Send(".basic.server", Packet(Pkt_SetVarAdd, "example"));
+	service.Send(".basic.server", Packet(Pkt_SetVarInit, "1,example"));
+	service.Send(".basic.server", Packet(Pkt_SetVarABType, "1,example"));
+	service.Send(".basic.server", Packet(Pkt_SetVarIOType, "2,example"));
 
 	while(1)
 	{

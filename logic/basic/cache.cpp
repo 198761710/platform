@@ -11,7 +11,11 @@ void Cache::Add(const string& name)
 }
 void Cache::Del(const string& name)
 {
-	varmap.erase(name);
+	Iterator i = find(name);
+	if( end() != i )
+	{
+		i->second.SetChange(2);
+	}
 }
 void Cache::SetTokenFind(Token& token)
 {

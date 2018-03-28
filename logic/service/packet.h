@@ -13,11 +13,14 @@ using namespace std;
 
 typedef enum
 {
+	Pkt_SetBasAdd,
 	Pkt_SetBasDel,
 	Pkt_SetBasRun,
 	Pkt_SetBasDebug,
 	Pkt_SetBasCompile,
 
+	Pkt_SetVarAdd,
+	Pkt_SetVarDel,
 	Pkt_SetVarABType,
 	Pkt_SetVarIOType,
 	Pkt_SetVarInit,
@@ -25,7 +28,6 @@ typedef enum
 	Pkt_SetVarDeath,
 	Pkt_SetVarManual,
 	Pkt_SetVarRuntime,
-	Pkt_SetBasAdd,
 }SCommandType;
 
 class Packet

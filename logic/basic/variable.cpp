@@ -7,6 +7,7 @@
 Variable::Variable(void)
 {
 	init = false;
+	change = 0x01;
 	manual = false;
 	death  = 0.0001;
 	valueI = 0.000;
@@ -18,6 +19,10 @@ Variable::Variable(void)
 const string& Variable::GetName(void)
 {
 	return name;
+}
+char Variable::GetChange(void)
+{
+	return change;
 }
 bool Variable::GetInit(void)
 {
@@ -108,6 +113,10 @@ void Variable::SetManual(const bool b)
 		init = true;
 	}
 }
+void Variable::SetChange(const char c)
+{
+	change = c;
+}
 void Variable::SetRuntime(const double &v)
 {
 	runtime = v;
@@ -159,6 +168,13 @@ void Variable::SetReal(const double &v)
 		ontime.init();
 	}
 	valueI = v;
+	if( AB_Binary == abtype )
+	{
+		if( 0 == change )
+		{
+			change = 1;
+		}
+	}
 }
 void Variable::Define(ABType ab, IOType io)
 {

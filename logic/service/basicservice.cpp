@@ -16,6 +16,9 @@ bool BasicService::Process(void)
 {
 	switch( packet.type() )
 	{
+	case Pkt_SetVarAdd:
+		cachemanager.Add(packet.body());
+		break;
 	case Pkt_SetVarABType:
 		cachemanager.SetABType(packet.body());
 		break;
@@ -65,18 +68,48 @@ void BasicService::Show(void)
 void BasicService::ShowCache(Cache& cache)
 {
 	printf("%s:\n", cache.GetName().data());
+	printf("%20s|", "name");
+	printf("%s|", "init");
+	printf("%s|", "manual");
+	printf("%6s|", "abtype");
+	printf("%6s|", "iotype");
+	printf("%6s|", "death");
+	printf("%12s|", "valueI");
+	printf("%12s|", "valueO");
+	printf("%12s|", "ontime");
+	printf("%12s|", "offtime");
+	printf("%12s\n", "runtime");
 	for(Cache::Iterator i = cache.begin(); i != cache.end(); i++)
 	{
-		printf("name(%s)", i->second.GetName().data());
-		printf(".init(%d)", i->second.GetInit());
-		printf(".manual(%d)", i->second.GetManual());
-		printf(".death(%.1f)", i->second.GetDeath());
-		printf(".valueI(%.1f)", i->second.GetValueI());
-		printf(".valueO(%.1f)", i->second.GetValueO());
-		printf(".Ontime(%.1f)", i->second.GetOnTime());
-		printf(".Offtime(%.1f)", i->second.GetOffTime());
-		printf(".Runtime(%.0f)", i->second.GetRuntime());
-		printf(".abtype(%d)", i->second.GetABType());
-		printf(".iotype(%d)\n", i->second.GetIOType());
+		printf("%20s|", i->second.GetName().data());
+		printf("%4d|", i->second.GetInit());
+		printf("%6d|", i->second.GetManual());
+		switch(i->second.GetABType())
+		{
+			case AB_Binary:
+				printf("%6s|", "Binary");
+				break;
+			case AB_Analog:
+				printf("%6s|", "Analog");
+				break;
+		}
+		switch(i->second.GetIOType())
+		{
+			case IO_Holding:
+				printf("%6s|", "Holdin");
+				break;
+			case IO_Input:
+				printf("%6s|", "Input");
+				break;
+			case IO_Output:
+				printf("%6s|", "Output");
+				break;
+		}
+		printf("%.4f|", i->second.GetDeath());
+		printf("%12.1f|", i->second.GetValueI());
+		printf("%12.1f|", i->second.GetValueO());
+		printf("%12.0f|", i->second.GetOnTime());
+		printf("%12.0f|", i->second.GetOffTime());
+		printf("%12.0f\n", i->second.GetRuntime());
 	}
 }

@@ -7,6 +7,8 @@ using namespace std;
 class BasicManager
 {
 protected:
+	string filename;
+	TimeOperator timer;
 	map<string,Basic> basicmap;
 public:
 	typedef map<string,Basic>::iterator Iterator;
@@ -21,6 +23,9 @@ public:
 	void SetRun(const string&);
 	void SetDebug(const string&);
 	void Compile(const string&);
+public:
+	bool Load(const string&);
+	bool Store(void);
 };
 
 #endif//__BASIC_MANAGER_H__

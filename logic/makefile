@@ -9,6 +9,7 @@ ST := $(ARCH)strip
 CFLAGS := -Ijson
 CFLAGS += -Icgicc
 CFLAGS += -Ibasic
+CFLAGS += -Icommon
 CFLAGS += -Isocket
 CFLAGS += -Imanager
 CFLAGS += -Iservice 
@@ -25,6 +26,7 @@ TARGET += bin/json.exe
 TARGET += bin/basic.exe
 TARGET += bin/testcgi.exe
 TARGET += bin/basicservice.exe
+TARGET += bin/fileoperator.exe
 
 all: $(TARGET)
 	@$(ST) $+
@@ -54,6 +56,8 @@ bin/json.exe: ztest/json.o $(LIB)
 bin/testcgi.exe: ztest/testcgi.o $(LIB)
 	@$(CC) $+ -o $@
 bin/basicservice.exe: ztest/basicservice.o $(LIB)
+	@$(CC) $+ -o $@ 
+bin/fileoperator.exe: ztest/fileoperator.o $(LIB)
 	@$(CC) $+ -o $@ 
 
 clean:

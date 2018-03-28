@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "fileoperator.h"
 #include "basicmanager.h"
 
 void BasicManager::Run(void)
@@ -10,6 +11,34 @@ void BasicManager::Run(void)
 			i->second.Execute();
 		}
 	}
+}
+bool BasicManager::Load(const string& fname)
+{
+	filename = fname;
+	return false;
+}
+bool BasicManager::Store(void)
+{
+	bool change = false;
+
+	for(Iterator i = begin(); i != end(); i++)
+	{
+		if( i->second.Change() )
+		{
+			change = true;
+		}
+	}
+	if( change && filename.empty() == false )
+	{
+		FileOperator filew;
+		for(Iterator i = begin(); i != end(); i++)
+		{
+			filew.AddLine("%d,%s\n", i->second.GetRun(), i->second.GetName().data());
+		}
+		filew.AddLine("X");
+		return (filew.Store(filename + "A") && filew.Store(filename + "B"));
+	}
+	return false;
 }
 void BasicManager::Add(const string& args)
 {

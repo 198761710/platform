@@ -9,6 +9,7 @@ class Basic
 protected:
 	bool m_run;
 	bool m_debug;
+	bool m_change;
 	string m_name;
 	unsigned m_line;
 	Context m_context;
@@ -17,6 +18,7 @@ public:
 	Basic(void);
 
 public:
+	const bool Change(void);
 	const bool GetRun(void);
 	const bool GetDebug(void);
 	const string& GetName(void);

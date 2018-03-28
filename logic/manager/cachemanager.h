@@ -6,14 +6,17 @@ using namespace std;
 class CacheManager
 {
 protected:
+	string filename;
+	TimeOperator timer;
+protected:
 	Cache::Iterator end(void){return GlobalVariable.end();}
 	Cache::Iterator begin(void){return GlobalVariable.begin();}
 	Cache::Iterator find(const string& n){return GlobalVariable.find(n);}
 
 public:
 	void Run(void);
-	void StoreDigital(void);
-	void StoreAnalog(void);
+	bool Store(void);
+	bool Load(const string&);
 public:
 	void Add(const string&);
 	void Del(const string&);

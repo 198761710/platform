@@ -23,6 +23,7 @@ class Variable
 protected:
 	bool init;
 	bool manual;
+	char change;
 	double death;
 	double valueI;
 	double valueO;
@@ -39,6 +40,7 @@ public:
 	bool Output(void);
 	bool GetInit(void);
 	bool GetManual(void);
+	char GetChange(void);
 	double GetDeath(void);
 	double GetValueI(void);
 	double GetValueO(void);
@@ -50,15 +52,16 @@ public:
 	const string& GetName(void);
 public:
 	void SetName(const string&);
-	void SetInit(const bool b);
-	void SetManual(const bool b);
-	void SetDeath(const double &v);
-	void SetRuntime(const double &v);
-	void SetIOType(const IOType t);
-	void SetABType(const ABType t);
+	void SetInit(const bool);
+	void SetChange(const char);
+	void SetManual(const bool);
+	void SetDeath(const double&);
+	void SetRuntime(const double&);
+	void SetIOType(const IOType);
+	void SetABType(const ABType);
 public:
-	void SetReal(const double &v);
-	void SetValue(const double &v);
+	void SetReal(const double&);
+	void SetValue(const double&);
 public:
 	void Define(ABType, IOType);
 };

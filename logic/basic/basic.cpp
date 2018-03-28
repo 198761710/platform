@@ -18,6 +18,15 @@ const bool Basic::GetRun(void)
 {
 	return m_run;
 }
+const bool Basic::Change(void)
+{
+	if( m_change )
+	{
+		m_change = false;
+		return true;
+	}
+	return false;
+}
 const bool Basic::GetDebug(void)
 {
 	return m_debug;
@@ -28,7 +37,11 @@ const string& Basic::GetName(void)
 }
 void Basic::SetRun(bool b)
 {
-	m_run = b;
+	if( b != m_run )
+	{
+		m_run = b;
+		m_change = true;
+	}
 }
 void Basic::SetDebug(bool b)
 {
