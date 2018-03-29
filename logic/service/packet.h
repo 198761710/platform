@@ -28,6 +28,11 @@ typedef enum
 	Pkt_SetVarDeath,
 	Pkt_SetVarManual,
 	Pkt_SetVarRuntime,
+
+	Pkt_LoadBasic,
+	Pkt_StoreBasic,
+	Pkt_LoadVarible,
+	Pkt_StoreVarible,
 }SCommandType;
 
 class Packet

@@ -18,14 +18,15 @@ public:
 	Basic(void);
 
 public:
-	const bool Change(void);
 	const bool GetRun(void);
 	const bool GetDebug(void);
+	const bool GetChange(void);
 	const string& GetName(void);
 
 public:
 	void SetRun(bool b);
 	void SetDebug(bool b);
+	void SetChange(bool b);
 	void SetName(const string&);
 
 public:

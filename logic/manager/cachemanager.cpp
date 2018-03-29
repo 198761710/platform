@@ -7,10 +7,9 @@ void CacheManager::Run(void)
 }
 bool CacheManager::Load(const string& fname)
 {
-	filename = fname;
 	return false;
 }
-bool CacheManager::Store(void)
+bool CacheManager::Store(const string& fname)
 {
 	return true;
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "lineoperator.h"
 #include "fileoperator.h"
 #include "basicmanager.h"
 
@@ -14,85 +15,139 @@ void BasicManager::Run(void)
 }
 bool BasicManager::Load(const string& fname)
 {
-	filename = fname;
+	if( DoLoad(fname + "A") )
+	{
+		return true;
+	}
+	return DoLoad(fname + "B");
+}
+bool BasicManager::DoLoad(const string& fname)
+{
+	FileOperator file;
+
+	if( file.Load(fname) )
+	{
+		for(FileOperator::Iterator i = file.begin(); i != file.end(); i++)
+		{
+			if( LineOperator(i->second).Check() == false )
+			{
+				return false;
+			}
+		}
+		for(FileOperator::Iterator i = file.begin(); i != file.end(); i++)
+		{
+			Add(LineOperator(i->second).Trim());
+			SetRun(LineOperator(i->second).Trim());
+			Compile(LineOperator(i->second).Trim());
+		}
+		for(Iterator i = begin(); i != end(); i++)
+		{
+			i->second.SetChange(false);
+		}
+		return true;
+	}
 	return false;
 }
-bool BasicManager::Store(void)
+bool BasicManager::Store(const string& filename)
 {
 	bool change = false;
 
 	for(Iterator i = begin(); i != end(); i++)
 	{
-		if( i->second.Change() )
+		if( i->second.GetChange() )
 		{
 			change = true;
+			i->second.SetChange(false);
 		}
 	}
-	if( change && filename.empty() == false )
+	DoStore(filename + "A");
+	DoStore(filename + "B");
+	return change;
+}
+bool BasicManager::DoStore(const string& filename)
+{
+	FileOperator file;
+	for(Iterator i = begin(); i != end(); i++)
 	{
-		FileOperator filew;
-		for(Iterator i = begin(); i != end(); i++)
-		{
-			filew.AddLine("%d,%s\n", i->second.GetRun(), i->second.GetName().data());
-		}
-		filew.AddLine("X");
-		return (filew.Store(filename + "A") && filew.Store(filename + "B"));
+		LineOperator line;
+		line.Add(i->second.GetRun());
+		line.Add(i->second.GetName());
+		file.AddLine(line.Make());
 	}
-	return false;
+	return file.Store(filename);
 }
 void BasicManager::Add(const string& args)
 {
-	basicmap[args].SetName(args);
+	int x = 0;
+	char name[256] = {0};
+	LineOperator line(args);
+
+
+	if( line.Scan("%d,%s", &x, name) == 2 )
+	{
+		basicmap[name].SetName(name);
+	}
 }
 void BasicManager::Del(const string& args)
 {
-	basicmap.erase(args);
+	int x = 0;
+	char name[256] = {0};
+	LineOperator line(args);
+
+
+	if( line.Scan("%d,%s", &x, name) == 2 )
+	{
+		basicmap.erase(name);
+	}
 }
 void BasicManager::SetDebug(const string& args)
 {
-	int debug = 0;
+	int x = 0;
 	char name[256] = {0};
+	LineOperator line(args);
 
-	if( args.empty() )
+
+	if( line.Scan("%d,%s", &x, name) == 2 )
 	{
-		return;
-	}
+		Iterator i = find( string(name) );
 
-	sscanf(args.data(), "%d,%s", &debug, name);
-
-	Iterator i = find( string(name) );
-
-	if( end() != i )
-	{
-		i->second.SetDebug(!!debug);
+		if( end() != i )
+		{
+			i->second.SetDebug(x);
+		}
 	}
 }
 void BasicManager::SetRun(const string& args)
 {
-	int run = 0;
+	int x = 0;
 	char name[256] = {0};
+	LineOperator line(args);
 
-	if( args.empty() )
+
+	if( line.Scan("%d,%s", &x, name) == 2 )
 	{
-		return;
-	}
+		Iterator i = find( string(name) );
 
-	sscanf(args.data(), "%d,%s", &run, name);
-
-	Iterator i = find( string(name) );
-
-	if( end() != i )
-	{
-		i->second.SetRun(run);
+		if( end() != i )
+		{
+			i->second.SetRun(x);
+		}
 	}
 }
 void BasicManager::Compile(const string& args)
 {
-	Iterator i = find( args );
+	int x = 0;
+	char name[256] = {0};
+	LineOperator line(args);
 
-	if( end() != i )
+
+	if( line.Scan("%d,%s", &x, name) == 2 )
 	{
-		printf("%s.Compile\n", i->second.GetName().data());
-		i->second.Compile();
+		Iterator i = find( string(name) );
+
+		if( end() != i )
+		{
+			i->second.Compile();
+		}
 	}
 }

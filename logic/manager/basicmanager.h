@@ -7,7 +7,6 @@ using namespace std;
 class BasicManager
 {
 protected:
-	string filename;
 	TimeOperator timer;
 	map<string,Basic> basicmap;
 public:
@@ -25,7 +24,10 @@ public:
 	void Compile(const string&);
 public:
 	bool Load(const string&);
-	bool Store(void);
+	bool Store(const string&);
+protected:
+	bool DoLoad(const string&);
+	bool DoStore(const string&);
 };
 
 #endif//__BASIC_MANAGER_H__

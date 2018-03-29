@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdarg.h>
+#include <string.h>
 #include "fileoperator.h"
 
 int FileOperator::AddLine(const string& line)
@@ -7,30 +7,13 @@ int FileOperator::AddLine(const string& line)
 	linemap[linemap.size()] = line;
 	return linemap.size();
 }
-int FileOperator::AddLine(const char* fmt,...)
-{
-	if( fmt )
-	{
-		int n = 0;
-		va_list ap;
-		char buf[4096];
-
-		va_start(ap, fmt);
-		n = vsnprintf(buf, sizeof(buf), fmt, ap);
-		va_end(ap);
-		AddLine(string(buf));
-		return n;
-	}
-
-	return 0;
-}
 int FileOperator::LineCout(void)
 {
 	return linemap.size();
 }
 const string& FileOperator::GetLine(int line)
 {
-	iterator i = linemap.find(line);
+	Iterator i = linemap.find(line);
 	if( linemap.end() == i )
 	{
 		return emptyline;
@@ -53,15 +36,20 @@ bool FileOperator::Load(const string& fname)
 		char buf[1024] = {0};
 		if( fgets(buf, sizeof(buf), fp) )
 		{
+			char *p = strchr(buf, '\n');
+			if( p )
+			{
+				*p = 0;
+			}
 			linemap[i] = buf;
 		}
 		else
 		{
-			return false;
+			break;
 		}
 	}
 	fclose(fp);
-	return true;
+	return !linemap.empty();
 }
 bool FileOperator::Store(const string& fname)
 {
@@ -74,12 +62,13 @@ bool FileOperator::Store(const string& fname)
 	{
 		return false;
 	}
-	for(iterator i = linemap.begin(); i != linemap.end(); i++)
+	for(Iterator i = begin(); i != end(); i++)
 	{
 		if( fwrite(i->second.data(), i->second.length(), 1, fp) != 1 )
 		{
 			return false;
 		}
+		fwrite("\n", 1, 1, fp);
 	}
 	fclose(fp);
 	return true;

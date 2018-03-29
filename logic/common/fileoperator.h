@@ -10,12 +10,13 @@ protected:
 	string emptyline;
 	map<int,string>	 linemap;
 public:
-	typedef map<int,string>::iterator iterator;
+	typedef map<int,string>::iterator Iterator;
+	Iterator begin(void){return linemap.begin();}
+	Iterator end(void){return linemap.end();}
 public:
 	int LineCout(void);
 	const string& GetLine(int);
 	int AddLine(const string&);
-	int AddLine(const char*,...);
 public:
 	bool Load(const string&);
 	bool Store(const string&);

@@ -1,24 +1,28 @@
 #include <stdio.h>
+#include "lineoperator.h"
 #include "fileoperator.h"
 
 int main(void)
 {
-	FileOperator file;
+	LineOperator line;
 	FileOperator filer;
+	FileOperator filew;
 
-	file.AddLine("test line one\n");
-	file.AddLine("test line tow\n");
-	file.AddLine("test line %d\n", 3);
-	for(int i = 0; i < file.LineCout(); i++)
+	filew.AddLine(line.Make("0,file1.bas"));
+	filew.AddLine(line.Make("1,file2.bas"));
+	filew.AddLine(line.Make("0,file%d.bas", 3));
+	for(FileOperator::Iterator i = filew.begin(); i != filew.end(); i++)
 	{
-		printf("%d:%s", i, file.GetLine(i).data());
+		printf("%s\n", i->second.data()); 
 	}
-	file.Store("test.file");
+	filew.Store("test.file");
 
 	filer.Load("test.file");
-	for(int i = 0; i < filer.LineCout(); i++)
+	for(FileOperator::Iterator i = filer.begin(); i != filer.end(); i++)
 	{
-		printf("%d:%s", i, filer.GetLine(i).data());
+		line.Set(i->second).Trim();
+		line.Set(line.Get()).Trim();
+		printf("%s\n", line.Get().data());
 	}
 
 	return 0;

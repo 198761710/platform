@@ -16,6 +16,19 @@ bool BasicService::Process(void)
 {
 	switch( packet.type() )
 	{
+	case Pkt_LoadBasic:
+		basicmanager.Load(packet.body());
+		break;
+	case Pkt_StoreBasic:
+		basicmanager.Store(packet.body());
+		break;
+
+	case Pkt_LoadVarible:
+		cachemanager.Load(packet.body());
+		break;
+	case Pkt_StoreVarible:
+		cachemanager.Store(packet.body());
+		break;
 	case Pkt_SetVarAdd:
 		cachemanager.Add(packet.body());
 		break;

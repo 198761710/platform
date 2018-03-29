@@ -18,14 +18,9 @@ const bool Basic::GetRun(void)
 {
 	return m_run;
 }
-const bool Basic::Change(void)
+const bool Basic::GetChange(void)
 {
-	if( m_change )
-	{
-		m_change = false;
-		return true;
-	}
-	return false;
+	return m_change;
 }
 const bool Basic::GetDebug(void)
 {
@@ -47,9 +42,14 @@ void Basic::SetDebug(bool b)
 {
 	m_debug = b;
 }
+void Basic::SetChange(bool b)
+{
+	m_change = b;
+}
 void Basic::SetName(const string& n)
 {
 	m_name = n;
+	m_change = true;
 	GetCache().SetName(m_name);
 	yysetfilename(m_name.data());
 }
