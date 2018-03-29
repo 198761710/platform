@@ -9,7 +9,9 @@ protected:
 	Cache::Iterator end(void){return GlobalVariable.end();}
 	Cache::Iterator begin(void){return GlobalVariable.begin();}
 	Cache::Iterator find(const string& n){return GlobalVariable.find(n);}
-
+protected:
+	bool DoLoad(const string&);
+	bool DoStore(const string&);
 public:
 	void Run(void);
 	bool Load(const string&);

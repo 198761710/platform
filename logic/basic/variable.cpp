@@ -7,7 +7,6 @@
 Variable::Variable(void)
 {
 	init = false;
-	change = 0x01;
 	manual = false;
 	death  = 0.0001;
 	valueI = 0.000;
@@ -15,12 +14,13 @@ Variable::Variable(void)
 	runtime = 0.0000;
 	abtype = AB_Analog;
 	iotype = IO_Holding;
+	change = Chg_Unchange;
 }
 const string& Variable::GetName(void)
 {
 	return name;
 }
-char Variable::GetChange(void)
+ChangeType Variable::GetChange(void)
 {
 	return change;
 }
@@ -113,7 +113,7 @@ void Variable::SetManual(const bool b)
 		init = true;
 	}
 }
-void Variable::SetChange(const char c)
+void Variable::SetChange(const ChangeType c)
 {
 	change = c;
 }
@@ -168,11 +168,11 @@ void Variable::SetReal(const double &v)
 		ontime.init();
 	}
 	valueI = v;
-	if( AB_Binary == abtype )
+	//if( AB_Binary == abtype )
 	{
-		if( 0 == change )
+		if( Chg_Unchange == change )
 		{
-			change = 1;
+			change = Chg_Chnage;
 		}
 	}
 }

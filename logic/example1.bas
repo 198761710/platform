@@ -31,6 +31,7 @@ main:
 	rps = a / a.ontime
 	c = (0.0010 == 0.0009)
 	d = a.ontime
+	fan_open = a.ontime % 2;
 	fan_ontime = fan.ontime
 	fan_offtime = fan.offtime + 1
 	if (fan.offtime > 4) and (tempreture < 4) then tempreture = (fan.offtime + b.ontime)

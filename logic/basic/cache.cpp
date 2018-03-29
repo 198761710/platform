@@ -14,7 +14,7 @@ void Cache::Del(const string& name)
 	Iterator i = find(name);
 	if( end() != i )
 	{
-		i->second.SetChange(2);
+		i->second.SetChange(Chg_Delete);
 	}
 }
 void Cache::SetTokenFind(Token& token)

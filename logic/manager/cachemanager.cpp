@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "lineoperator.h"
+#include "fileoperator.h"
 #include "cachemanager.h"
 
 
@@ -7,11 +9,76 @@ void CacheManager::Run(void)
 }
 bool CacheManager::Load(const string& fname)
 {
-	return false;
+	if( DoLoad(fname + "A") )
+	{
+		return true;
+	}
+	return DoLoad(fname + "B");
+}
+bool CacheManager::DoLoad(const string& fname)
+{
+	FileOperator file;
+
+	if( file.Load(fname) == false )
+	{
+		return false;
+	}
+	for(FileOperator::Iterator i = file.begin(); i != file.end(); i++)
+	{
+		printf("%s\n", LineOperator(i->second).Trim().data());
+	}
+	return true;
 }
 bool CacheManager::Store(const string& fname)
 {
-	return true;
+	bool change = false;
+
+	for(Cache::Iterator i = begin(); i != end(); i++)
+	{
+		switch( i->second.GetChange() )
+		{
+			case Chg_Chnage:
+				change = true;
+				i->second.SetChange(Chg_Unchange);
+				break;
+			case Chg_Delete:
+				change = true;
+				i->second.SetChange(Chg_Deleted);
+				break;
+		}
+	}
+	if( false == change )
+	{
+		return true;
+	}
+	if( DoStore(fname + "A") )
+	{
+		return DoStore(fname + "B");
+	}
+	return false;
+}
+bool CacheManager::DoStore(const string& fname)
+{
+	FileOperator file;
+
+	for(Cache::Iterator i = begin(); i != end(); i++)
+	{
+		LineOperator line;
+
+		line.Add( i->second.GetABType() );
+		line.Add( i->second.GetIOType() );
+		line.Add( i->second.GetInit() );
+		line.Add( i->second.GetManual() );
+		line.Add( i->second.GetDeath() );
+		line.Add( i->second.GetValueI() );
+		line.Add( i->second.GetValueO() );
+		line.Add( i->second.GetRuntime() );
+		line.Add( i->second.GetName() );
+
+		file.AddLine( line.Make() );
+	}
+
+	return file.Store(fname);
 }
 void CacheManager::Add(const string& args)
 {

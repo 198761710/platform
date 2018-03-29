@@ -17,13 +17,18 @@ typedef enum
 	AB_Analog,
 	AB_Binary,
 }ABType;
+typedef enum{
+	Chg_Chnage,
+	Chg_Unchange,
+	Chg_Delete,
+	Chg_Deleted,
+}ChangeType;
 
 class Variable
 {
 protected:
 	bool init;
 	bool manual;
-	char change;
 	double death;
 	double valueI;
 	double valueO;
@@ -31,6 +36,7 @@ protected:
 	string name;
 	ABType abtype;
 	IOType iotype;
+	ChangeType change;
 	TimeOperator ontime;
 	TimeOperator offtime;
 	TimeOperator outtime;
@@ -40,7 +46,6 @@ public:
 	bool Output(void);
 	bool GetInit(void);
 	bool GetManual(void);
-	char GetChange(void);
 	double GetDeath(void);
 	double GetValueI(void);
 	double GetValueO(void);
@@ -49,16 +54,17 @@ public:
 	double GetRuntime(void);
 	ABType GetABType(void);
 	IOType GetIOType(void);
+	ChangeType GetChange(void);
 	const string& GetName(void);
 public:
 	void SetName(const string&);
 	void SetInit(const bool);
-	void SetChange(const char);
 	void SetManual(const bool);
 	void SetDeath(const double&);
 	void SetRuntime(const double&);
 	void SetIOType(const IOType);
 	void SetABType(const ABType);
+	void SetChange(const ChangeType);
 public:
 	void SetReal(const double&);
 	void SetValue(const double&);
