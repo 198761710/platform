@@ -19,6 +19,8 @@ public:
 public:
 	void Add(const string&);
 	void Del(const string&);
+	void Config(const string&);
+public:
 	void SetInit(const string&);
 	void SetValue(const string&);
 	void SetDeath(const string&);

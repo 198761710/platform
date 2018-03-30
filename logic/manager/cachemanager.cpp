@@ -3,7 +3,6 @@
 #include "fileoperator.h"
 #include "cachemanager.h"
 
-
 void CacheManager::Run(void)
 {
 }
@@ -25,7 +24,7 @@ bool CacheManager::DoLoad(const string& fname)
 	}
 	for(FileOperator::Iterator i = file.begin(); i != file.end(); i++)
 	{
-		printf("%s\n", LineOperator(i->second).Trim().data());
+		Config(i->second);
 	}
 	return true;
 }
@@ -63,11 +62,15 @@ bool CacheManager::DoStore(const string& fname)
 
 	for(Cache::Iterator i = begin(); i != end(); i++)
 	{
+		if( i->second.GetChange() == Chg_Deleted )
+		{
+			continue;
+		}
 		LineOperator line;
 
+		line.Add( i->second.GetInit() );
 		line.Add( i->second.GetABType() );
 		line.Add( i->second.GetIOType() );
-		line.Add( i->second.GetInit() );
 		line.Add( i->second.GetManual() );
 		line.Add( i->second.GetDeath() );
 		line.Add( i->second.GetValueI() );
@@ -82,11 +85,46 @@ bool CacheManager::DoStore(const string& fname)
 }
 void CacheManager::Add(const string& args)
 {
-	GlobalVariable.Add(args);
+	return GlobalVariable.Add(args);
 }
 void CacheManager::Del(const string& args)
 {
 	GlobalVariable.Del(args);
+}
+void CacheManager::Config(const string& args)
+{
+	int init = 0;
+	int abtype = 0;
+	int iotype = 0;
+	int manual = 0;
+	char name[64];
+	double death = 0.0;
+	double valueI = 0.0;
+	double valueO = 0.0;
+	double runtime = 0.0;
+	LineOperator line(args);
+
+	line.Trim();
+	line.Scan("%d,%d,%d,%d,%lf,%lf,%lf,%lf,%s",
+			&init,
+			&abtype,
+			&iotype,
+			&manual,
+			&death,
+			&valueI,
+			&valueO,
+			&runtime,
+			name);
+	name[sizeof(name)-1] = 0;
+	GlobalVariable.Config(name,
+						  !!init,
+						  (ABType)abtype,
+						  (IOType)iotype,
+						  !!manual,
+						  death,
+						  valueI,
+						  valueO,
+						  runtime);
 }
 void CacheManager::SetInit(const string& args)
 {

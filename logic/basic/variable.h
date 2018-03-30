@@ -68,6 +68,7 @@ public:
 public:
 	void SetReal(const double&);
 	void SetValue(const double&);
+	void SetValueIO(const double&, const double&);
 public:
 	void Define(ABType, IOType);
 };

@@ -5,6 +5,7 @@ DO fan_close
 DI fan_status
 AV fan_ontime
 AV fan_offtime
+AV value
 AI tempreture
 
 goto main
@@ -31,6 +32,7 @@ main:
 	rps = a / a.ontime
 	c = (0.0010 == 0.0009)
 	d = a.ontime
+	value = value + 1;
 	fan_open = a.ontime % 2;
 	fan_ontime = fan.ontime
 	fan_offtime = fan.offtime + 1

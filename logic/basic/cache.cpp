@@ -17,6 +17,29 @@ void Cache::Del(const string& name)
 		i->second.SetChange(Chg_Delete);
 	}
 }
+void Cache::Config(
+const string& name, 
+bool init, 
+ABType abtype, 
+IOType iotype, 
+bool manul,
+double death, 
+double valueI, 
+double valueO, 
+double runtime)
+{
+
+	Variable& var = varmap[name];
+	
+	var.SetName(name);
+	var.SetInit(init);
+	var.SetABType(abtype);
+	var.SetIOType(iotype);
+	var.SetManual(manul);
+	var.SetDeath(death);
+	var.SetRuntime(runtime);
+	var.SetValueIO(valueI, valueO);
+}
 void Cache::SetTokenFind(Token& token)
 {
 	Iterator i = find(token.name);

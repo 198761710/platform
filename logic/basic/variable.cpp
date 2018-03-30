@@ -133,23 +133,20 @@ void Variable::SetABType(const ABType t)
 {
 	abtype = t;
 }
-
-void Variable::SetValue(const double &v)
+void Variable::Define(ABType ab, IOType io)
 {
-	if( manual )
+	abtype = ab;
+	iotype = io;
+	switch(iotype)
 	{
-		return;
-	}
-	switch( iotype )
-	{
-		case IO_Holding:
 		case IO_Input:
-			SetReal(v);
-			break;
 		case IO_Output:
-			valueO = v;
+			break;
+		case IO_Holding:
+			init = true;
 			break;
 	}
+	printf("%s,%d,%d\n", __func__, abtype, iotype);
 }
 void Variable::SetReal(const double &v)
 {
@@ -176,18 +173,33 @@ void Variable::SetReal(const double &v)
 		}
 	}
 }
-void Variable::Define(ABType ab, IOType io)
+void Variable::SetValue(const double &v)
 {
-	abtype = ab;
-	iotype = io;
-	switch(iotype)
+	if( manual )
 	{
-		case IO_Input:
-		case IO_Output:
-			break;
+		return;
+	}
+	switch( iotype )
+	{
 		case IO_Holding:
-			init = true;
+		case IO_Input:
+			SetReal(v);
+			break;
+		case IO_Output:
+			valueO = v;
 			break;
 	}
-	printf("%s,%d,%d\n", __func__, abtype, iotype);
+}
+void Variable::SetValueIO(const double& I, const double& O)
+{
+	switch( iotype )
+	{
+		case IO_Holding:
+		case IO_Input:
+			SetReal(I);
+			break;
+		case IO_Output:
+			valueO = O;
+			break;
+	}
 }

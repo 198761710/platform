@@ -30,7 +30,7 @@ main:
 	b = b + 2
 	rps = a / a.ontime
 	c = (0.0010 == 0.0009)
-	fan_ontime = fan.ontime
+	fan_ontime = fan.ontime + a
 	fan_offtime = fan.offtime + 1
 	if (fan.offtime > 4) and (tempreture < 4) then tempreture = (fan.offtime + b.ontime)
 	if (fan.ontime > 5) and (tempreture < 6) then fan = 0

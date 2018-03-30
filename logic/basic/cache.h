@@ -25,6 +25,15 @@ public:
 public:
 	void Add(const string&);
 	void Del(const string&);
+	void Config(const string&,
+				bool,
+				ABType,
+				IOType,
+				bool,
+				double,
+				double,
+				double,
+				double);
 public:
 	void SetTokenFind(Token&);
 	void SetTokenForce(Token&);
