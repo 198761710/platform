@@ -27,5 +27,6 @@ public:
 	static void ShowList(void);
 };
 #define NODE(x,y) BasicCC::AddToken(Token(x,y))
+#define NODE5(t,c,s,f,o,n) BasicCC::AddToken(Token(t,c,s,f,o,n))
 
 #endif//__BASICCC_H__

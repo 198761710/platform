@@ -1,5 +1,6 @@
 #include <math.h>
 #include <stdlib.h>
+#include <strings.h>
 #include "token.h"
 #include "parser.h"
 #include "cache.h"
@@ -8,16 +9,51 @@
 
 extern Cache GlobalVariable;
 
-Token::Token(void):var(0),type(-1),value(0.0),bindup(0)
+Token::Token(void)
+:type(-1)
+,var(0x0)
+,line(0x0)
+,value(0.0)
+,bindup(false)
+,comid(0x000000)
+,keyid(0x000000)
 {
 	name = "unknow-token";
 }
-Token::Token(signed t, const string& n):var(0),type(t),name(n)
+Token::Token(unsigned t, const xstring& n)
+:name(n)
+,type(t)
+,var(0x0)
+,line(0x0)
+,value(0.0)
+,bindup(false)
+,comid(0x000000)
+,keyid(0x000000)
 {
+	TokenValue();
+}
+Token::Token(unsigned t, const xstring& c, const xstring& s, const xstring& f, const xstring& o, const string& n)
+:name(n)
+,type(t)
+,var(0x0)
+,line(0x0)
+,value(0.0)
+,bindup(false)
+,comid(c.toint())
+,keyid(0x00000000)
+{
+	uint8_t slave = s.toint();
+	uint8_t fcode = f.toint();
+	uint16_t offset = o.toint();
+
+	keyid = (((unsigned)slave) << 24)
+		  | (((unsigned)fcode) << 16)
+		  | (((unsigned)offset) << 0);
 	TokenValue();
 }
 Token::~Token(void)
 {
+
 	//GlobalVariable.DelTokon(*this);
 	var = NULL;
 }
@@ -64,7 +100,6 @@ const double Token::GetValue(void)
 	switch(type)
 	{
 	case NUM:
-	case HEX:
 	case TIME:
 	case DATE:
 	case DATETIME:
@@ -155,11 +190,11 @@ void Token::TokenValue(void)
 	switch(type)
 	{
 	case NUM:
-		value = strtod(name.data(), 0); 
+	{
+		int base = strncasecmp(name.data(), "0x", 0x2);
+		value = strtol(name.data(), 0, !base ? 16 : 10);
 		break;
-	case HEX:
-		value = strtol(name.data(), 0, 16);
-		break;
+	}
 	case TIME:
 	{
 		struct tm t = {0,0,0,0,0,0,0,0,0,0,0};

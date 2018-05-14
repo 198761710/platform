@@ -61,7 +61,6 @@ public:
 	double Execute_IDF(void);
 	double Execute_IDV(void);
 	double Execute_NUM(void);
-	double Execute_HEX(void);
 	double Execute_TIME(void);
 	double Execute_DATE(void);
 	double Execute_DATETIME(void);

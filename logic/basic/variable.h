@@ -33,6 +33,8 @@ protected:
 	double valueI;
 	double valueO;
 	double runtime;
+	unsigned comid;
+	unsigned keyid;
 	string name;
 	ABType abtype;
 	IOType iotype;
@@ -56,7 +58,11 @@ public:
 	IOType GetIOType(void);
 	ChangeType GetChange(void);
 	const string& GetName(void);
+	const unsigned GetCom(void)const;
+	const unsigned GetKey(void)const;
 public:
+	void SetCom(const unsigned);
+	void SetKey(const unsigned);
 	void SetName(const string&);
 	void SetInit(const bool);
 	void SetManual(const bool);
@@ -70,7 +76,7 @@ public:
 	void SetValue(const double&);
 	void SetValueIO(const double&, const double&);
 public:
-	void Define(ABType, IOType);
+	void Define(ABType, IOType, unsigned, unsigned);
 };
 
 #endif//__VARIABLE_H__

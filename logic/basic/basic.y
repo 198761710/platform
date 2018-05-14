@@ -30,7 +30,7 @@ extern "C" void yysetfilename(const char *s);
 
 %token	ID IDR IDO IDF IDV IDB IDM
 
-%token  NUM HEX DATE TIME DATETIME
+%token  NUM DATE TIME DATETIME
 
 %token	IF THEN ELSE 
 
@@ -42,7 +42,7 @@ extern "C" void yysetfilename(const char *s);
 
 %token	LP RP LB RB CM
 
-%token	SET GOTO LABEL
+%token	SET GOTO LABEL DEF
 
 %left AND OR NOT
 %left EQ NE GT LT GE LE
@@ -99,17 +99,17 @@ label_expression:
 	LABEL {NODE(LABEL, $<t>1);}
 	;
 define_expression:
-	DI ID {NODE(DI, $<t>2);}
+	DEF LP DI CM NUM CM NUM CM NUM CM NUM RP ID {NODE5(DI, $<t>5, $<t>7, $<t>9, $<t>11, $<t>13);}
 	|
-	DO ID {NODE(DO, $<t>2);}
-	|
-	DV ID {NODE(DV, $<t>2);}
-	|
-	AI ID {NODE(AI, $<t>2);}
-	|
-	AO ID {NODE(AO, $<t>2);}
-	|
-	AV ID {NODE(AV, $<t>2);}
+	DEF LP DO CM NUM CM NUM CM NUM CM NUM RP ID {NODE5(DO, $<t>5, $<t>7, $<t>9, $<t>11, $<t>13);}
+	|                                
+	DEF LP DV CM NUM CM NUM CM NUM CM NUM RP ID {NODE5(DV, $<t>5, $<t>7, $<t>9, $<t>11, $<t>13);}
+	|                                
+	DEF LP AI CM NUM CM NUM CM NUM CM NUM RP ID {NODE5(AI, $<t>5, $<t>7, $<t>9, $<t>11, $<t>13);}
+	|                                
+	DEF LP AO CM NUM CM NUM CM NUM CM NUM RP ID {NODE5(AI, $<t>5, $<t>7, $<t>9, $<t>11, $<t>13);}
+	|                                
+	DEF LP AV CM NUM CM NUM CM NUM CM NUM RP ID {NODE5(AI, $<t>5, $<t>7, $<t>9, $<t>11, $<t>13);}
 	;
 value_expression:
 	LC {NODE(LC, $<t>1);} 
@@ -137,8 +137,6 @@ value_expression:
 	IDM {NODE(IDM, $<t>1);}
 	|
 	NUM {NODE(NUM, $<t>1);} 
-	| 
-	HEX {NODE(HEX, $<t>1);} 
 	| 
 	DATE {NODE(DATE, $<t>1);}
 	|

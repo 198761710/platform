@@ -41,16 +41,18 @@ void ShowCache(Cache& cache)
 	printf("%s:\n", cache.GetName().data());
 	for(Cache::Iterator i = cache.begin(); i != cache.end(); i++)
 	{
-		printf("name(%s)", i->second.GetName().data());
-		printf(".init(%d)", i->second.GetInit());
-		printf(".manual(%d)", i->second.GetManual());
-		printf(".death(%.1f)", i->second.GetDeath());
-		printf(".valueI(%.1f)", i->second.GetValueI());
-		printf(".valueO(%.1f)", i->second.GetValueO());
-		printf(".Ontime(%.1f)", i->second.GetOnTime());
-		printf(".Offtime(%.1f)", i->second.GetOffTime());
-		printf(".Runtime(%.0f)", i->second.GetRuntime());
-		printf(".abtype(%d)", i->second.GetABType());
-		printf(".iotype(%d)\n", i->second.GetIOType());
+		printf(" %-20s", i->second.GetName().data());
+		printf(" com(%d)", i->second.GetCom());
+		printf(" key(%08X)", i->second.GetKey());
+		printf(" init(%d)", i->second.GetInit());
+		printf(" manual(%d)", i->second.GetManual());
+		printf(" death(%.1f)", i->second.GetDeath());
+		printf(" valueI(%.1f)", i->second.GetValueI());
+		printf(" valueO(%.1f)", i->second.GetValueO());
+		printf(" Ontime(%.1f)", i->second.GetOnTime());
+		printf(" Offtime(%.1f)", i->second.GetOffTime());
+		printf(" Runtime(%.0f)", i->second.GetRuntime());
+		printf(" abtype(%d)", i->second.GetABType());
+		printf(" iotype(%d)\n", i->second.GetIOType());
 	}
 }

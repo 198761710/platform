@@ -100,7 +100,6 @@ void Expression::CreateTree(list<Token>& line)
 		case IDF:
 		case IDV:
 		case NUM:
-		case HEX:
 		case DATE:
 		case TIME:
 		case DATETIME:
@@ -316,8 +315,6 @@ double Expression::Execute(void)
 			return Execute_IDV();
 		case NUM:
 			return Execute_NUM();
-		case HEX:
-			return Execute_HEX();
 		case TIME:
 			return Execute_TIME();
 		case DATE:
@@ -554,11 +551,6 @@ double Expression::Execute_IDV(void)
 	return (double)token.Invalid();
 }
 double Expression::Execute_NUM(void)
-{
-	//printf("%s ", token.name.data());
-	return token.GetValue();
-}
-double Expression::Execute_HEX(void)
 {
 	//printf("%s ", token.name.data());
 	return token.GetValue();

@@ -10,6 +10,7 @@ extern "C" void* yystring(const char *s);
 #define CopyText() strcpy(yylval.t, yytext)
 %}
 
+DEF			DEF
 DI			(DI)|(di)
 DO			(DO)|(do)
 DV			(DV)|(dv)
@@ -17,28 +18,27 @@ AI			(AI)|(ai)
 AO			(AO)|(ao)
 AV			(AV)|(av)
 LC			[a-z]
-LCO			{LC}[.]ontime(\(\))?
-LCF			{LC}[.]offtime(\(\))?
-LCBT		{LC}[.]bit(([1-2]?[0-9])|(3[0-1]))
-LCMK		{LC}[.]make
-ID			[a-zA-Z_][_a-zA-Z0-9]{1,31}
-IDBT		{ID}[.]bit(([1-2]?[0-9])|(3[0-1]))
-IDRT		{ID}[.]runtime(\(\))?
-IDOT		{ID}[.]ontime(\(\))?
-IDFT		{ID}[.]offtime(\(\))?
-IDVL		{ID}[.]invalid(\(\))?
-IDMK		{ID}[.]make
-NUM			[0-9]+([.][0-9]+)?
-HEX			0x[0-9a-fA-F]{1,16}
-y			[0-9]{4,4}
-m			(0[0-9])|(1[0-2])
-d			(0[1-9])|([1-2][0-9])|(3[0-1])
-H			([0-1]?[0-9])|([2][0-3])
-M			([0-5]?[0-9])
-S			([0-5]?[0-9])
-TIME		{H}:{M}:{S}
-DATE		{y}[.]{m}[.]{d}
-DATETIME	({DATE}[ ]{TIME})|({DATE})|({TIME})
+LCO			{LC}\.ontime(\(\))?
+LCF			{LC}\.offtime(\(\))?
+LCBT		{LC}\.bit(([1-2]?[0-9])|(3[0-1]))
+LCMK		{LC}\.make
+ID			[a-z_A-Z][a-z_A-Z0-9]{1,31}
+IDBT		{ID}\.bit(([1-2]?[0-9])|(3[0-1]))
+IDRT		{ID}\.runtime(\(\))?
+IDOT		{ID}\.ontime(\(\))?
+IDFT		{ID}\.offtime(\(\))?
+IDVL		{ID}\.invalid(\(\))?
+IDMK		{ID}\.make
+NUM			([0-9]+(\.[0-9]+)?)|(0x[0-9a-fA-F]{1,16})
+YEAR		[0-9]{4,4}
+MONTH		(0[0-9])|(1[0-2])
+DAY			(0[1-9])|([1-2][0-9])|(3[0-1])
+HOUR		([0-1]?[0-9])|([2][0-3])
+MINUTE		([0-5]?[0-9])
+SECONND		([0-5]?[0-9])
+TIME		{HOUR}:{MINUTE}:{SECONND}
+DATE		{YEAR}\.{MONTH}\.{DAY}
+DATETIME	({DATE}\ {TIME})|({DATE})|({TIME})
 LABEL		{ID}[:]
 
 %%
@@ -47,6 +47,7 @@ LABEL		{ID}[:]
 <INITIAL>"then"		{CopyText(); return THEN;}
 <INITIAL>"else"		{CopyText(); return ELSE;}
 <INITIAL>"goto"		{CopyText(); return GOTO;}
+<INITIAL>"DEF" 		{CopyText(); return DEF;}
 <INITIAL>"and"		{CopyText(); return AND;}
 <INITIAL>"or"		{CopyText(); return OR;}
 <INITIAL>"not"		{CopyText(); return NOT;}
@@ -81,7 +82,6 @@ LABEL		{ID}[:]
 <INITIAL>{LCO}		{CopyText(); return LCO;}
 <INITIAL>{LCF}		{CopyText(); return LCF;}
 <INITIAL>{NUM}		{CopyText(); return NUM;}
-<INITIAL>{HEX}		{CopyText(); return HEX;}
 <INITIAL>{TIME}		{CopyText(); return TIME;}
 <INITIAL>{DATE}		{CopyText(); return DATE;}
 <INITIAL>{DATETIME}	{CopyText(); return DATETIME;}

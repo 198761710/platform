@@ -19,22 +19,22 @@ void BasicCC::AddToken(const Token& node)
 	switch( node.type )
 	{
 		case DI:
-			GlobalVariable.Define(node.name, AB_Binary, IO_Input);
+			GlobalVariable.Define(node, AB_Binary, IO_Input);
 			return;
 		case DO:
-			GlobalVariable.Define(node.name, AB_Binary, IO_Output);
+			GlobalVariable.Define(node, AB_Binary, IO_Output);
 			return;
 		case DV:
-			GlobalVariable.Define(node.name, AB_Binary, IO_Holding);
+			GlobalVariable.Define(node, AB_Binary, IO_Holding);
 			return;
 		case AI:
-			GlobalVariable.Define(node.name, AB_Analog, IO_Input);
+			GlobalVariable.Define(node, AB_Analog, IO_Input);
 			return;
 		case AO:
-			GlobalVariable.Define(node.name, AB_Analog, IO_Output);
+			GlobalVariable.Define(node, AB_Analog, IO_Output);
 			return;
 		case AV:
-			GlobalVariable.Define(node.name, AB_Analog, IO_Holding);
+			GlobalVariable.Define(node, AB_Analog, IO_Holding);
 			return;
 	}
 	tokenlist.push_back(node);

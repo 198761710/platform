@@ -59,10 +59,12 @@ void Cache::SetTokenForce(Token& token)
 	var.SetName(token.name);
 	token.SetVariable( var );
 }
-void Cache::Define(const string &name, ABType ab, IOType io)
+void Cache::Define(const Token& token, ABType ab, IOType io)
 {
-	varmap[name].SetName(name);
-	varmap[name].Define(ab, io);
+	Variable& variable = varmap[token.name];
+
+	variable.SetName(token.name);
+	variable.Define(ab, io, token.comid, token.keyid);
 }
 void Cache::GetInput(map<string,Variable>& m)
 {

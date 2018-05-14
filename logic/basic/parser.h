@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.0.2.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -64,41 +64,41 @@ extern int yydebug;
     IDB = 274,
     IDM = 275,
     NUM = 276,
-    HEX = 277,
-    DATE = 278,
-    TIME = 279,
-    DATETIME = 280,
-    IF = 281,
-    THEN = 282,
-    ELSE = 283,
-    AND = 284,
-    OR = 285,
-    NOT = 286,
-    EQ = 287,
-    NE = 288,
-    GE = 289,
-    LE = 290,
-    GT = 291,
-    LT = 292,
-    ADD = 293,
-    MIN = 294,
-    MUL = 295,
-    DIV = 296,
-    MOD = 297,
-    LP = 298,
-    RP = 299,
-    LB = 300,
-    RB = 301,
-    CM = 302,
-    SET = 303,
-    GOTO = 304,
-    LABEL = 305
+    DATE = 277,
+    TIME = 278,
+    DATETIME = 279,
+    IF = 280,
+    THEN = 281,
+    ELSE = 282,
+    AND = 283,
+    OR = 284,
+    NOT = 285,
+    EQ = 286,
+    NE = 287,
+    GE = 288,
+    LE = 289,
+    GT = 290,
+    LT = 291,
+    ADD = 292,
+    MIN = 293,
+    MUL = 294,
+    DIV = 295,
+    MOD = 296,
+    LP = 297,
+    RP = 298,
+    LB = 299,
+    RB = 300,
+    CM = 301,
+    SET = 302,
+    GOTO = 303,
+    LABEL = 304,
+    DEF = 305
   };
 #endif
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE YYSTYPE;
+
 union YYSTYPE
 {
 #line 18 "basic.y" /* yacc.c:1909  */
@@ -111,6 +111,8 @@ union YYSTYPE
 
 #line 113 "parser.h" /* yacc.c:1909  */
 };
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

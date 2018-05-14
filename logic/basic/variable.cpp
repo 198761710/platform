@@ -16,6 +16,15 @@ Variable::Variable(void)
 	iotype = IO_Holding;
 	change = Chg_Unchange;
 }
+
+const unsigned Variable::GetCom(void)const
+{
+	return comid;
+}
+const unsigned Variable::GetKey(void)const
+{
+	return keyid;
+}
 const string& Variable::GetName(void)
 {
 	return name;
@@ -97,6 +106,14 @@ ABType Variable::GetABType(void)
 {
 	return abtype;
 }
+void Variable::SetCom(unsigned com)
+{
+	comid = com;
+}
+void Variable::SetKey(unsigned key)
+{
+	keyid = key;
+}
 void Variable::SetName(const string& n)
 {
 	name = n;
@@ -133,10 +150,12 @@ void Variable::SetABType(const ABType t)
 {
 	abtype = t;
 }
-void Variable::Define(ABType ab, IOType io)
+void Variable::Define(ABType ab, IOType io, unsigned com, unsigned key)
 {
 	abtype = ab;
 	iotype = io;
+	comid = com;
+	keyid = key;
 	switch(iotype)
 	{
 		case IO_Input:

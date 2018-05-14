@@ -37,11 +37,11 @@ public:
 public:
 	void SetTokenFind(Token&);
 	void SetTokenForce(Token&);
+	void Define(const Token&, ABType, IOType);
 public:
 	void GetInput(map<string,Variable>&);
 	void GetOutput(map<string,Variable>&);
 	void GetHolding(map<string,Variable>&);
-	void Define(const string&, ABType, IOType);
 };
 extern Cache GlobalVariable;
 

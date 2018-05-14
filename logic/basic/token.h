@@ -1,21 +1,23 @@
 #ifndef __TOKEN_H__
 #define __TOKEN_H__
-#include <string>
-using namespace std;
+#include "xstring.h"
 
 class Variable;
 class Token
 {
 public:
-	signed type;
-	double value;
-	unsigned line;
+	xstring name;
 	bool bindup;
-	string name;
+	double value;
+	unsigned type;
+	unsigned comid;
+	unsigned keyid;
+	unsigned line;
 	Variable *var;
 public:
 	Token(void);
-	Token(signed t, const string& n);
+	Token(unsigned t, const xstring& n);
+	Token(unsigned t, const xstring& c, const xstring& s, const xstring& f, const xstring& o, const string& n);
 	~Token(void);
 public:
 	bool SetContext(class Context&);
